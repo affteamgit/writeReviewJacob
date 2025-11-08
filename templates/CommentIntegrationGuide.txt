@@ -1,0 +1,131 @@
+## Q&A Format: Manual Comment Integration Logic
+
+This guide explains how to intelligently integrate manual comments into the Q&A review format.
+
+### Core Principle:
+Manual comments must EITHER be integrated into existing Q&A pairs OR form new Q&A pairs. Never leave comments unaddressed.
+
+### Step-by-Step Process:
+
+**STEP 1: Analyze Each Manual Comment**
+For each manual comment provided, identify:
+- What feature/topic is it discussing?
+- What specific information does it provide?
+- Is this information critical to include?
+
+**STEP 2: Check for Existing Question Match**
+Review all the pre-defined questions in the section template and ask:
+- Does any existing question already cover this feature/topic?
+- Would this comment naturally fit as additional information in an existing answer?
+
+Examples of matches:
+- Comment about "VPN works but slow" → Matches existing Q: "Can I use a VPN to play in [casino]?"
+- Comment about "KYC took 3 days for me" → Matches existing Q: "How long can KYC reviews take?"
+- Comment about "They have 15 exclusive slots" → Matches existing Q: "Does [casino] have Originals or provably fair games?"
+
+**STEP 3a: If Match Found - Integrate into Existing Answer**
+- Add the comment information to the relevant existing question's answer
+- Maintain the answer's existing structure and flow
+- Incorporate the new information naturally without disrupting the answer
+- Keep the original answer content and ADD the new information from the comment
+- Make sure the added information is clearly stated with all details from the comment
+
+Example:
+Existing Q&A:
+Q: Can I use a VPN to play in [casino]?
+A: Yes, [casino] is VPN friendly, which means you can access it from restricted regions...
+
+After adding comment "VPN works but connection drops sometimes":
+Q: Can I use a VPN to play in [casino]?
+A: Yes, [casino] is VPN friendly, which means you can access it from restricted regions. However, I noticed that VPN connections can drop occasionally, which might interrupt your gaming session.
+
+**STEP 3b: If No Match Found - Create New Q&A Pair**
+- Formulate a clear, specific question based on the comment topic
+- Write a complete answer using all information from the comment
+- Follow the same question format as other questions in that section
+- Place the new Q&A pair under the "+ questions/answers from manual comments" section
+- Ensure the question is phrased as it would be asked by a user
+
+Question Formulation Guidelines:
+- Use the same format as existing questions: "Does [casino]...", "Can I...", "How...", "What..."
+- Make questions specific and clear
+- Avoid yes/no questions unless they lead to detailed answers
+
+Example comment → Q&A conversion:
+
+Comment: "The casino offers a unique cashback program that gives 10% daily cashback on losses, no wagering required."
+
+New Q&A:
+Q: Does [casino] offer any unique loyalty or cashback programs?
+A: Yes, [casino] offers a daily cashback program that returns 10% of your losses with no wagering requirements. This is quite player-friendly since you get real money back without having to meet any playthrough conditions.
+
+Comment: "Customer support replies in German and English only, no other languages available."
+
+New Q&A:
+Q: What languages does [casino] customer support handle?
+A: [Casino] customer support operates in German and English only. If you need assistance in other languages, you might face communication barriers. This is more limited than many international casinos that support 5+ languages.
+
+**STEP 4: Categorization Rules**
+Place new Q&A pairs in the appropriate section based on topic:
+- **General**: Overall experience, VPN, reputation, support languages, website issues, regional restrictions
+- **Payments**: Deposit/withdrawal methods, processing times, limits, fees, KYC, payment issues
+- **Games**: Game selection, specific games, game features, providers, performance issues
+- **Responsible Gambling**: Limits, tools, self-exclusion, account controls
+- **Bonuses**: Any promotional offers, bonus terms, wagering, restrictions
+
+**STEP 5: Quality Checks**
+Before finalizing, verify:
+- ✓ All manual comments have been addressed (either integrated or converted to new Q&A)
+- ✓ No duplicate information across different Q&A pairs
+- ✓ New questions follow the same format and style as existing questions
+- ✓ All specific details from comments are included (numbers, names, exact mechanisms)
+- ✓ Answers maintain the conversational, analytical tone consistent with the guidelines
+
+### Special Cases:
+
+**Multiple Comments About Same Topic:**
+If you have multiple comments about the same feature:
+- Combine them into one comprehensive answer
+- OR add them as separate points within the same answer
+- Do NOT create multiple Q&A pairs for the same topic
+
+**Conflicting Comments:**
+If a comment conflicts with existing data:
+- Prioritize the manual comment (it's more recent/specific)
+- Mention both perspectives if appropriate
+- Example: "While the casino states X, in practice I found Y..."
+
+**Vague Comments:**
+If a comment is unclear:
+- Do your best to interpret the intent
+- Focus on the factual information provided
+- If you cannot create a meaningful Q&A, integrate it into the most relevant existing answer
+
+### Format for Manual Comment Section:
+
+At the end of each section template, you'll see:
+```
+## + questions/answers from manual comments
+* Include any additional [section] questions and answers provided in the manual comments section.
+```
+
+This is where you should place NEW Q&A pairs created from comments that don't match existing questions.
+
+Format:
+```
+## Q: [Your formulated question]?
+
+[Your complete answer based on the comment information]
+
+## Q: [Next formulated question if applicable]?
+
+[Next answer]
+```
+
+### CRITICAL REMINDERS:
+- NEVER summarize or condense comment information - include ALL details
+- NEVER skip manual comments - they MUST all be addressed
+- ALWAYS maintain first-person perspective ("I") and address reader as "you"
+- ALWAYS bold key features mentioned in comments
+- ALWAYS include specific numbers, names, and mechanisms from comments
+- NEVER add information not in the comment or existing data

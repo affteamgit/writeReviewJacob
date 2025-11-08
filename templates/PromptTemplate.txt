@@ -1,0 +1,27 @@
+NEVER USE Em dashes (—)!
+
+Write a Q&A style review of "{casino}" focusing on "{section}".
+
+CRITICAL INSTRUCTION FOR MANUAL COMMENTS:
+The casino data below may include manual comments that provide additional specific information. You MUST handle these comments using the following logic:
+
+1. For each manual comment, first check if it relates to any EXISTING question in the structure template
+2. If YES: Integrate the comment information directly into that existing question's answer (do NOT create a new Q&A)
+3. If NO: Create a NEW Q&A pair in the "questions/answers from manual comments" section
+
+See the structure template for detailed instructions on handling manual comments.
+
+Follow these GUIDELINES:
+{guidelines}
+
+Use this STRUCTURE:
+{structure}
+
+Casino data:
+{main}
+
+Top Casinos comparison:
+{top}
+
+Similar Casinos comparison:
+{sim}

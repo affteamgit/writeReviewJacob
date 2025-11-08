@@ -1,0 +1,57 @@
+* DO NOT USE Em DASH (—) ANYWHERE!
+
+## Q: Can I use a VPN to play in [casino]?
+
+* If the casino is VPN friendly, state that it is VPN friendly and explain why being VPN friendly is important for a crypto casino. Provide examples of different reasons related to the casino and user relationship (for example, unrestricted access in different locations). For every benefit you mention, explain why this benefit should matter to the reader and provide an example. Use short sentences, maximum 20 words per sentence, no more than 4 sentences total.
+* If the casino isn't VPN friendly, state that it is not VPN friendly and recommend one or two other brands that are VPN friendly from the Top Casinos which are VPN friendly.
+
+## Q: Can I stay anonymous?
+
+* If the casino is anonymous (email only), say that it is an anonymous crypto casino (use one of different synonyms to describe this, for example: Anonymous crypto casino, Anonymous cryptocurrency casino, Anonymous bitcoin casino, Crypto casino with anonymity, Bitcoin casino offering anonymity). Explain how keeping your anonymity, especially when using crypto, can benefit the reader. For every benefit you mention, explain why this benefit should matter to the reader and provide an example. Use short sentences, maximum 20 words per sentence.
+* If the casino isn't anonymous, say that it requires more than just an email to play, invite the reader to choose another brand if such anonymity is important to them, and recommend one or two other brands that are anonymous from Top Casinos which are anonymous.
+
+## Q: How long has [casino] been in the industry?
+
+* ONLY answer this question if the casino is older than 5 years. If answered, mention this as a good thing (for example, this can mean they have experience and have been able to stand the test of time, they have been doing something right, the gambling industry is very fast-moving and often risky, so an 'older' casino is a good sign, they have had more time to tighten up security, fix vulnerabilities, build safer systems, such casinos usually also have a more refined UI, less bugs, smoother gameplay, more games, exclusive partnerships, a more reliable payout speed and consistency, etc). For every benefit you mention, explain why this benefit should matter to the reader and provide an example. Use short sentences, maximum 20 words per sentence.
+* If the casino is not older than 5 years - DO NOT ANSWER THIS QUESTION AT ALL. Skip it entirely.
+
+## Q: Does [casino] offer sports betting or other products?
+
+* ONLY answer this question if the casino offers lottery or trading besides casino games and sports betting. If answered, mention this as something unique because most casinos don't offer this. Explain how having more versatility like this can benefit the reader, adding to their experience, showing effort on behalf of the casino, etc. For every benefit you mention, explain why this benefit should matter to the reader and provide an example. Use short sentences, maximum 20 words per sentence.
+* If the casino does not offer lottery or trading - DO NOT ANSWER THIS QUESTION AT ALL. Skip it entirely.
+
+## Q: Can I play in [casino] from my country?
+
+* Check how many countries the casino restricts. If the casino restricts over 40 countries, warn the reader to double-check if they're eligible to play to avoid trouble, and recommend one or two other brands from the Top Casinos that restrict less than 40 countries.
+* If the casino restricts less than 40 countries - DO NOT ANSWER THIS QUESTION. Skip it entirely.
+
+## Q: Is live chat support available 24/7?
+
+* ONLY answer this question if the casino's live chat is not available 24/7. If answered, warn the reader about it. Offering a responsive 24/7 live chat is considered the minimum standard for every decent casino, otherwise it can take days or longer for players to resolve any payment or account issues. Offer an alternative casino that offers a 24/7 live support from Top Casinos.
+* If the casino has live chat available 24/7 - DO NOT ANSWER THIS QUESTION. Skip it entirely.
+
+## Q: Does [casino] have good UX?
+
+* ONLY answer this question if the casino has any annoying pop-ups, broken images, or links. If answered:
+  - If the casino has annoying pop-ups, warn the reader about it. While some players don't mind pop-ups, especially if that means getting more promotions, most people find them disrupting.
+  - If the casino has broken images or links, tell the reader that you found some, which is a sign that the casino hasn't quite managed to get their site under control yet. This can mean a lack of care or a general challenge with keeping the brand working at 100%.
+  - If the casino's look isn't modern, explain how that can negatively affect the reader (for example, not keeping a brand up to date with modern style can mean a lack of care or a general challenge with keeping the brand competitive, etc.).
+* If the casino has no annoying pop-ups, broken images, links, or issues with modern look - DO NOT ANSWER THIS QUESTION. Skip it entirely.
+
+## + questions/answers from manual comments
+
+IMPORTANT: Review the CommentIntegrationGuide.txt for detailed instructions on handling manual comments.
+
+For each manual comment in this section:
+1. First, check if the comment relates to ANY of the existing questions above (VPN, anonymity, industry age, other products, country restrictions, live chat, UX)
+2. If YES: Add the comment information to that existing question's answer - DO NOT create a new Q&A
+3. If NO: Create a NEW Q&A pair below using this format:
+
+## Q: [Formulate a clear question based on the comment]?
+
+[Write a complete answer using ALL information from the comment, maintaining the same tone and style as other answers]
+
+* All manual comments MUST be addressed - either integrated into existing Q&A pairs OR converted into new Q&A pairs
+* Include ALL specific details from comments (numbers, names, exact mechanisms)
+* Never summarize or condense comment information
+* Format new questions to match the style of existing questions in this section

@@ -1,0 +1,44 @@
+* DO NOT USE Em DASH (—) ANYWHERE!
+
+## Q: Can I self-exclude in [casino]?
+
+* If the casino doesn't offer self-exclusion, warn the reader about this and follow up by saying that this is the most basic and usually mandatory tool for every online casino. If a casino doesn't have this, it means they are either not operating legally when it comes to responsible gaming, or they don't care about players enough to offer this tool.
+* If the casino offers self-exclusion, confirm that self-exclusion is available and briefly explain what it means and how it protects the reader.
+
+## Q: Which responsible gambling tools are available besides self-exclusion?
+
+* State how many other responsible gambling tools, except self-exclusion, the casino offers and list them as bullet points.
+* Follow up by commenting on this number based on this criteria (do not mention the criteria):
+  - If the casino offers 3 or 4 of these tools, they are above average and offer the safest experience possible in terms of responsible gambling.
+  - If the casino offers 1 or 2 such tools, they are average, meaning it's ok, but could be better for the highest safety and ease of mind.
+  - If the casino offers no other tools, they need to step up the game; responsible gambling tools don't bring money to the casino, but create a safer environment for players, which shows care and responsibility on the casino's side.
+* Explain how these tools benefit the reader and why responsible gambling tools matter.
+
+## Q: Is there a cooling-off option?
+
+* If the casino offers a cooling-off option, commend the casino on it, as this isn't the most common responsible gambling tool and often isn't found in casinos. This either shows that the casino is hosted on a platform where this tool is also offered, or the casino went the extra mile to offer an even safer environment for its players.
+* If the casino doesn't offer the cooling-off option, say that this is usually the case in online casinos and if the reader prefers to have this option available, recommend another casino that does offer cooling-off as an alternative option, taken from the Top Casinos with cooling-off option.
+
+## Q: Can I use responsible gaming tools without contacting support?
+
+* State whether responsible gambling tools are available without having to contact support or not.
+* Having these tools available at a click of a button means a much easier control of gambling for a player, and is usually the preferred way. While having to contact support for this means an unnecessary additional step, it's still better than having no tools to use at all.
+* Explain how this impacts the reader's experience and ability to manage their gambling responsibly.
+
+## + questions/answers from manual comments
+
+IMPORTANT: Review the CommentIntegrationGuide.txt for detailed instructions on handling manual comments.
+
+For each manual comment in this section:
+1. First, check if the comment relates to ANY of the existing questions above (self-exclusion, available tools, cooling-off, support contact requirements)
+2. If YES: Add the comment information to that existing question's answer - DO NOT create a new Q&A
+3. If NO: Create a NEW Q&A pair below using this format:
+
+## Q: [Formulate a clear question based on the comment]?
+
+[Write a complete answer using ALL information from the comment, maintaining the same tone and style as other answers]
+
+* All manual comments MUST be addressed - either integrated into existing Q&A pairs OR converted into new Q&A pairs
+* Include ALL specific details from comments (numbers, names, exact mechanisms)
+* Never summarize or condense comment information
+* Format new questions to match the style of existing questions in this section

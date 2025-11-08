@@ -1,0 +1,68 @@
+* DO NOT USE Em DASH (—) ANYWHERE!
+
+## Q: How long can withdrawals take in [casino]?
+
+* IMPORTANT: You must explicitly state in the answer that the mentioned withdrawal timeframes apply to cases where the casino needs to manually process the withdrawal. Use phrases like "In cases where manual processing is needed" or "When the casino manually reviews your withdrawal" or "If your withdrawal requires manual processing" before stating the timeframe.
+* For casinos with withdrawal time less than 12 hours, when mentioning how long it takes, use randomly one of the following responses: a matter of hours; Within a couple of hours; up to a few hours.
+* For casinos with withdrawal time 12-24 hours, when mentioning how long it takes, use randomly one of the following responses: Within a day; less than a day; less than 24 hours.
+* For casinos with withdrawal time 24-72 hours, when mentioning how long it takes, use randomly one of the following responses: a couple of days; less than three days; Within a few days.
+* For casinos with withdrawal time more than 72 hours, when mentioning how long it takes, use randomly one of the following responses: More than three days; Three days and more; More than a couple of days.
+* Explain why fast withdrawal time should be important to the reader, how the reader benefits from this. For every benefit you mention, explain why this benefit should matter to the reader and provide an example. Use short sentences, maximum 20 words per sentence.
+* ONLY If the casino's withdrawal time is not less than 12 hours, mention a brand with faster withdrawal time from Top Casinos.
+
+## Q: What are the minimum and maximum withdrawal limits?
+
+* List all limits available (by day, by week, by month) and comment which are very good, very bad, or could be better based on the following criteria:
+  - Daily limits: anything over $3,000 is considered good and anything below $2,000 is considered not so good.
+  - Weekly limits: anything over $12,000 is considered good and anything below $8,000 is considered not so good.
+  - Monthly limits: anything over $24,000 is considered good and anything below $16,000 is considered not so good.
+* If any BTC values appear, convert them internally to USD before comparing them to other casinos, but do not mention USD in the review text. Only mention the BTC amounts.
+* Explain how friendly the casino's withdrawal limits are and how this impacts the reader.
+
+## Q: How long can KYC reviews take?
+
+* IMPORTANT: You must explicitly state in the answer that the mentioned KYC verification timeframes apply to cases where the casino needs to manually review the verification documents. Use phrases like "In cases where manual verification is needed" or "When the casino manually reviews your documents" or "If your verification requires manual processing" before stating the timeframe.
+* For casinos with KYC verification speed less than 12 hours, when mentioning how long it takes, use randomly one of the following responses: Within a couple of hours; a matter of hours; up to a few hours.
+* For casinos with KYC verification speed 12-24 hours, when mentioning how long it takes, use randomly one of the following responses: less than a day; less than 24 hours; Within a day.
+* For casinos with KYC verification speed 24-72 hours, when mentioning how long it takes, use randomly one of the following responses: a couple of days; Within a few days; less than three days.
+* For casinos with KYC verification speed more than 72 hours, when mentioning how long it takes, use randomly one of the following responses: can take multiple days, is done in matter of days, can take a couple of days.
+* ONLY If the casino's KYC verification speed is not less than 12 hours, mention a brand with faster KYC verification speed from Top Casinos.
+
+## Q: Are there any bonus-related restrictions on withdrawals, like capped cashouts?
+
+* If the casino has any bonus-related withdrawal restrictions or capped cashouts, explain what they are and how they affect the reader.
+* Explain why this matters and whether the restrictions are player-friendly or not.
+* Use short sentences, maximum 20 words per sentence.
+* If there are no significant bonus-related withdrawal restrictions, you can briefly mention this as a positive.
+
+## Q: Can I deposit different altcoins?
+
+* State how many cryptocurrencies the casino accepts.
+* If the casino accepts more than 15 cryptocurrencies, say that this is an above average number and offer 1 brand that accepts similar or more cryptocurrencies from Similar Casinos.
+* If the casino accepts less than 5 cryptocurrencies, say that such a low number can hardly qualify the casino to be called a 'crypto casino'.
+* If the casino accepts 5 to 15 cryptocurrencies, say that this is an average number found in most crypto casinos.
+* If the casino accepts less than 15 cryptocurrencies, advise the reader to double-check that their currency is supported and recommend 1 or 2 casinos that accept more cryptocurrencies taken from the Top Casinos.
+* If you can buy crypto in the casino, mention that the casino supports this, which despite not being ideal for buying crypto this way due to additional fees, it can still be less hassle if you run out of crypto and don't have to move back and forth between the casino and an exchange.
+
+## Q: Can I swap crypto in [casino]?
+
+* ONLY answer this question if the casino offers crypto conversion/swapping. If answered, mention it as something very unique and useful. Very few casinos offer this and it can mean that players can play with virtually any token that's supported by the conversion tool. They can also deposit in one cryptocurrency and withdraw in another.
+* If the casino does not offer crypto swapping - DO NOT ANSWER THIS QUESTION. Skip it entirely.
+
+## + questions/answers from manual comments
+
+IMPORTANT: Review the CommentIntegrationGuide.txt for detailed instructions on handling manual comments.
+
+For each manual comment in this section:
+1. First, check if the comment relates to ANY of the existing questions above (withdrawal times, limits, KYC, bonus restrictions, altcoins, crypto swapping)
+2. If YES: Add the comment information to that existing question's answer - DO NOT create a new Q&A
+3. If NO: Create a NEW Q&A pair below using this format:
+
+## Q: [Formulate a clear question based on the comment]?
+
+[Write a complete answer using ALL information from the comment, maintaining the same tone and style as other answers]
+
+* All manual comments MUST be addressed - either integrated into existing Q&A pairs OR converted into new Q&A pairs
+* Include ALL specific details from comments (numbers, names, exact mechanisms)
+* Never summarize or condense comment information
+* Format new questions to match the style of existing questions in this section

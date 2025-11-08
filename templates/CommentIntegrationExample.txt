@@ -1,0 +1,172 @@
+## Q&A Format: Manual Comment Integration Examples
+
+This document shows practical examples of how to integrate manual comments into the Q&A review format.
+
+---
+
+### Example 1: Comment Matches Existing Question (INTEGRATE)
+
+**Manual Comment:**
+"VPN works but I noticed the connection drops every 30 minutes, which is annoying during gameplay."
+
+**Existing Question in Template:**
+Q: Can I use a VPN to play in [casino]?
+
+**Decision:** This comment is about VPN functionality, which matches the existing VPN question.
+
+**ACTION: Integrate into existing answer (DO NOT create new Q&A)**
+
+**Result:**
+
+## Q: Can I use a VPN to play in [casino]?
+
+Yes, **[casino] is VPN friendly**, which means you can access it from different regions without restrictions. This is particularly useful if you're traveling or in a country where access might be limited. However, I noticed that **VPN connections tend to drop every 30 minutes or so**, which can interrupt your gaming session. You might need to reconnect periodically, which is something to keep in mind during longer play sessions.
+
+---
+
+### Example 2: Comment is New Topic (CREATE NEW Q&A)
+
+**Manual Comment:**
+"The casino has a mobile app for iOS and Android that works perfectly with biometric login."
+
+**Existing Questions in General Section:**
+- Can I use a VPN to play in [casino]?
+- Can I stay anonymous?
+- How long has [casino] been in the industry?
+- etc.
+
+**Decision:** None of the existing questions cover mobile apps or biometric features. This is a NEW topic.
+
+**ACTION: Create new Q&A in manual comments section**
+
+**Result:**
+
+## + questions/answers from manual comments
+
+## Q: Does [casino] have a mobile app?
+
+Yes, **[casino] offers dedicated mobile apps for both iOS and Android**. The app includes **biometric login support**, which means you can use fingerprint or face recognition for quick and secure access. This adds convenience and an extra layer of security compared to typing passwords every time you want to play.
+
+---
+
+### Example 3: Multiple Comments About Same Topic (COMBINE)
+
+**Manual Comments:**
+1. "Withdrawal took 48 hours for me"
+2. "They processed my withdrawal in about 2 days"
+3. "Support said manual reviews usually take 1-2 days"
+
+**Existing Question in Template:**
+Q: How long can withdrawals take in [casino]?
+
+**Decision:** All three comments are about withdrawal processing time - matches existing question.
+
+**ACTION: Integrate ALL comments into existing answer**
+
+**Result:**
+
+## Q: How long can withdrawals take in [casino]?
+
+**In cases where manual processing is needed**, withdrawals at [casino] typically take **a couple of days**. Based on actual player experiences, you can expect your withdrawal to be processed **within 48 hours** or about **1-2 days** according to their support team. This is relatively fast compared to casinos that take 3+ days for manual reviews. The quick processing time means you get your winnings faster, which is especially important if you need the funds urgently.
+
+---
+
+### Example 4: Comment About Existing Topic But Adds Specific Detail
+
+**Manual Comment:**
+"Live chat is available 24/7 but only in English and German, no other languages."
+
+**Existing Question in Template:**
+Q: Is live chat support available 24/7?
+
+**Decision:** The comment mentions 24/7 availability (matches existing question) BUT also adds NEW information about language limitations.
+
+**ACTION: Two options**
+Option A: Integrate into existing Q&A if language support naturally fits
+Option B: Create separate Q&A if language deserves its own question
+
+**Best Result (Option B - Create Separate Q&A):**
+
+Keep the original question as-is (only answer if NOT 24/7), and create a new question:
+
+## + questions/answers from manual comments
+
+## Q: What languages does [casino] support for customer service?
+
+**Live chat at [casino] operates in English and German only**. If you need assistance in other languages, you might face communication barriers. This is more limited than many international casinos that support 5+ languages. If you're comfortable with English or German, you'll have no issues, but players who speak other languages should be aware of this limitation.
+
+---
+
+### Example 5: Comment Contradicts Existing Data (USE COMMENT)
+
+**Manual Comment:**
+"Despite the casino stating 10,000+ games, I could only find about 7,500 actual games after removing duplicates."
+
+**Existing Data:**
+Casino claims: 10,000 games
+
+**Existing Question in Template:**
+Q: How many games are in [casino]?
+
+**Decision:** Comment relates to number of games (matches question). Comment provides more accurate, tested information.
+
+**ACTION: Integrate comment, prioritizing the manual comment's findings**
+
+**Result:**
+
+## Q: How many games are in [casino]?
+
+[Casino] advertises **over 10,000 games**, but when you actually count unique titles, the number is closer to **around 7,500 games** after removing duplicates. Some slots appear multiple times under different categories, which inflates the count. Still, **7,500 games is well above average** and gives you plenty of variety. You'll find enough options across slots, table games, and live casino to keep things interesting. The large selection means you're unlikely to get bored, even if the actual count is lower than advertised.
+
+---
+
+### Example 6: Vague Comment (DO YOUR BEST)
+
+**Manual Comment:**
+"Support was slow"
+
+**Decision:** This is about customer support speed. Check if there's a related question.
+
+**Existing Questions:**
+- Is live chat support available 24/7? (this is about availability, not speed)
+
+**ACTION: Create new Q&A since no existing question covers support response speed**
+
+**Result:**
+
+## + questions/answers from manual comments
+
+## Q: How responsive is [casino] customer support?
+
+In my experience, **customer support response times were slower than expected**. While many casinos respond within minutes, [casino]'s support took noticeably longer to address inquiries. If you have urgent issues, this could be frustrating. For non-urgent matters, the slower response might be acceptable, but it's something to be aware of if you value quick support.
+
+---
+
+### Example 7: Comment Belongs in Different Section
+
+**Manual Comment (appears in General section):**
+"They accept 25 different cryptocurrencies including all major ones."
+
+**Decision:** This is about payment methods (cryptocurrencies), NOT general casino features.
+
+**Existing Question in Payments Template:**
+Q: Can I deposit different altcoins?
+
+**ACTION: This will be handled when the Payments section is generated. The comment should appear in the Payments section data, not General. If it appears in the wrong section, note this for the user.**
+
+**Note to User:**
+If you encounter comments that clearly belong to a different section, you should ideally move them to the appropriate section before AI processing. However, if the AI receives such comments, it should:
+1. Recognize the mismatch
+2. Mention in output: "Note: This information is typically covered in the [Payments] section"
+3. Still create appropriate Q&A in current section if needed
+
+---
+
+## Key Takeaways:
+
+✓ **Always check existing questions first** - Most comments will relate to existing topics
+✓ **Integrate when possible** - Add to existing answers rather than creating duplicates
+✓ **Create new Q&A for new topics** - Don't force unrelated comments into existing questions
+✓ **Keep all details** - Never summarize or condense comment information
+✓ **Use natural language** - New questions should sound like questions users would ask
+✓ **Maintain consistency** - Follow the same format, tone, and style across all Q&As
