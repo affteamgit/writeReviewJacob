@@ -23,8 +23,7 @@ SHEET_NAME     = st.secrets["SHEET_NAME"]
 FOLDER_ID = st.secrets["FOLDER_ID"]
 GUIDELINES_FOLDER_ID = st.secrets["GUIDELINES_FOLDER_ID"]
 
-# Fine-tuned model for Adam's rewriting
-FINE_TUNED_MODEL = "ft:gpt-3.5-turbo-1106:affiliation:adam0301:ByHlJhcR"
+# No fine-tuned model needed - Jacob will generate factual reviews only
 
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets.readonly",
@@ -169,37 +168,7 @@ def extract_casino_names_from_data(comparison_data):
 
     return casino_names
 
-def extract_casino_links_map(comparison_data):
-    """Extract casino names and their corresponding links from comparison data.
-    Returns a dictionary mapping casino names to their URLs.
-    Assumes format like 'CasinoName (link): data...' or '[CasinoName](link): data...'
-    """
-    casino_links = {}
-
-    # Pattern to match both formats:
-    # - "[CasinoName](https://...)"
-    # - "CasinoName (https://...)"
-    patterns = [
-        (r'\[([^\]]+)\]\((https?://[^\)]+)\)', 1, 2),  # [CasinoName](link) - groups 1=name, 2=url
-        (r'^([A-Z][A-Za-z0-9\s\.]+?)\s*\((https?://[^\)]+)\)', 1, 2),  # CasinoName (link) - groups 1=name, 2=url
-    ]
-
-    for line in comparison_data.split('\n'):
-        line = line.strip()
-        if not line or line.startswith('[No '):
-            continue
-
-        for pattern, name_group, url_group in patterns:
-            match = re.search(pattern, line)
-            if match:
-                casino_name = match.group(name_group).strip()
-                casino_url = match.group(url_group).strip()
-                if casino_name and casino_url and casino_name not in casino_links:
-                    casino_links[casino_name] = casino_url
-                    print(f"Extracted link: {casino_name} -> {casino_url}")
-                break
-
-    return casino_links
+# Removed extract_casino_links_map - not needed for factual Jacob reviews
 
 def get_next_comparison_casino(available_casinos, used_casinos_tracker):
     """Select next casino using round-robin logic.
@@ -289,65 +258,6 @@ Format your response exactly like this:
         # Fallback: return empty sections
         return {"General": "", "Payments": "", "Games": "", "Responsible Gambling": "", "Bonuses": ""}
 
-def incorporate_comments_into_review(review_content, comments):
-    """Use AI to incorporate relevant comments into the review before Adam's rewrite."""
-    if not comments.strip():
-        return review_content
-    
-    # Parse the review into sections first to maintain structure
-    sections = parse_review_sections(review_content)
-    
-    if not sections:
-        # If parsing fails, just return original content
-        print("Failed to parse sections for comment incorporation, returning original")
-        return review_content
-    
-    print(f"Incorporating comments into {len(sections)} sections")
-    
-    # For each section, ask AI to incorporate relevant comments
-    updated_sections = []
-    
-    # Get the title (first line before sections)
-    lines = review_content.split('\n')
-    title = lines[0] if lines else ""
-    
-    for section in sections:
-        section_title = section['title']
-        section_content = section['content']
-        
-        # Ask AI to incorporate comments for this specific section
-        prompt = f"""You are incorporating feedback comments into a specific section of a casino review.
-
-Section: {section_title}
-Current content:
-{section_content}
-
-All available comments:
-{comments}
-
-Please:
-1. Look for any comments that specifically mention "{section_title}" or are clearly about this section
-2. If you find relevant comments, incorporate that information into the section content
-3. If no comments are relevant to this section, return the original content unchanged
-4. Keep the writing style consistent with the original content
-5. Do NOT include the section header in your response - only return the updated content
-
-Return only the updated section content (without the **{section_title}** header):"""
-        
-        try:
-            updated_content = call_claude(prompt)
-            updated_sections.append(f"**{section_title}**\n{updated_content}")
-            print(f"Successfully incorporated comments for section: {section_title}")
-        except Exception as e:
-            print(f"Error incorporating comments for {section_title}: {e}")
-            # Fallback to original content for this section
-            updated_sections.append(f"**{section_title}**\n{section_content}")
-    
-    # Reconstruct the full review
-    result = title + "\n\n" + "\n\n".join(updated_sections)
-    print("Comment incorporation completed successfully")
-    return result
-
 def parse_review_sections(content):
     """Parse review content into sections based on **Section Name** format."""
     section_headers = [
@@ -399,253 +309,7 @@ def parse_review_sections(content):
     
     return sections
 
-def rewrite_section(section_title, section_content):
-    """Rewrite a single section using the fine-tuned model."""
-    try:
-        print(f"Rewriting section: {section_title}")
-        response = client.chat.completions.create(
-            model=FINE_TUNED_MODEL,
-            messages=[
-                {"role": "system", "content": "You are Adam Gros, founder and editor-in-chief of Gamblineers, a seasoned crypto casino expert with over 10 years of experience. Your background is in mathematics and data analysis. You are a helpful assistant that rewrites content provided by the user - ONLY THROUGH YOUR TONE AND STYLE, YOU DO NOT CHANGE FACTS or ADD NEW FACTS. YOU REWRITE GIVEN FACTS IN YOUR OWN STYLE.\n\nYou write from a first-person singular perspective and speak directly to \"you,\" the reader.\n\nYour voice is analytical, witty, blunt, and honest-with a sharp eye for BS and a deep respect for data. You balance professionalism with dry humor. You call things as they are, whether good or bad, and never sugarcoat reviews.\n\nWriting & Style Rules\n- Always write in first-person singular (\"I\")\n- Speak directly to you, the reader\n- Keep sentences under 20 words\n- Never use em dashes or emojis\n- Never use fluff words like: \"fresh,\" \"solid,\" \"straightforward,\" \"smooth,\" \"game-changer\"\n- Avoid clichés: \"kept me on the edge of my seat,\" \"whether you're this or that,\" etc.\n- Bold key facts, bonuses, or red flags\n- Use short paragraphs (2–3 sentences max)\n- Use bullet points for clarity (pros/cons, bonuses, steps, etc.)\n- Tables are optional for comparisons\n- Be helpful without sounding preachy or salesy\n- If something sucks, say it. If it's good, explain why.\n\nTone\n- Casual but sharp\n- Witty, occasionally sarcastic (in good taste)\n- Confident, never condescending\n- Conversational, never robotic\n- Always honest-even when it hurts\n\nMission & Priorities\n- Save readers from scammy casinos and shady bonus terms\n- Transparency beats hype-user satisfaction > feature lists\n- Crypto usability matters\n- The site serves readers, not casinos\n- Highlight what others overlook-good or bad\n\nPersonality Snapshot\n- INTJ: Strategic, opinionated, allergic to buzzwords\n- Meticulous and detail-obsessed\n- Enjoys awkward silences and bad data being called out\n- Prefers dry humor and meaningful critiques."},
-                {"role": "user", "content": section_content}
-            ],
-            timeout=30  # Reduced timeout to 30 seconds
-        )
-        print(f"Successfully rewrote section: {section_title}")
-        return response.choices[0].message.content
-    except Exception as error:
-        error_msg = f"Fine-tuned model failed for {section_title}: {error}"
-        print(error_msg)
-        return f"[Error rewriting {section_title}]\n{section_content}"
-
-def generate_tldr_points(review_content):
-    """Generate 4-5 TLDR bullet points summarizing the entire review."""
-    try:
-        print("Generating TLDR points from the full review...")
-
-        tldr_prompt = f"""Based on the following casino review, create 4-5 concise TLDR bullet points that summarize the key findings across ALL sections (General, Payments, Games, Responsible Gambling, Bonuses).
-
-Review content:
-{review_content}
-
-Create TLDR points that:
-1. Cover the most important aspects from different sections
-2. Include specific facts, numbers, or standout features mentioned in the review
-3. Mention both positive and negative aspects if present
-4. Are concise but informative (1-2 sentences each)
-5. Use Adam's direct, analytical tone
-
-Format your response as exactly 4-5 bullet points, one per line, starting with "- " (dash and space).
-Do not include any introduction or explanation - just the bullet points."""
-
-        response = client.chat.completions.create(
-            model=FINE_TUNED_MODEL,
-            messages=[
-                {"role": "system", "content": "You are Adam Gros, founder and editor-in-chief of Gamblineers. Create concise, analytical TLDR points that capture the essence of casino reviews with your direct, no-nonsense style."},
-                {"role": "user", "content": tldr_prompt}
-            ],
-            timeout=30
-        )
-
-        tldr_content = response.choices[0].message.content.strip()
-
-        # Parse the bullet points into a list
-        bullet_points = []
-        for line in tldr_content.split('\n'):
-            line = line.strip()
-            if line.startswith('- '):
-                bullet_points.append(line[2:])  # Remove "- " prefix
-
-        print(f"Successfully generated {len(bullet_points)} TLDR points")
-        return bullet_points
-
-    except Exception as error:
-        print(f"Error generating TLDR points: {error}")
-        return ["Error generating TLDR summary"]
-
-def generate_overview_section(casino_name, keyword, main_points, tldr_points=None):
-    """Generate Overview section using Adam's fine-tuned model, optionally with TLDR."""
-    try:
-        print("Generating Overview section with Adam's voice...")
-
-        # Create prompt for overview generation
-        overview_prompt = f"""Write an engaging overview/introduction for a {casino_name} casino review. Use the following details:
-
-SEO Keywords (MUST appear verbatim): {keyword}
-
-Main points to cover:
-{main_points}
-
-Context: This overview will introduce a comprehensive review that covers General info, Payments, Games, Responsible Gambling, and Bonuses sections.
-
-Write a compelling 2-3 paragraph introduction that:
-1. MUST include the exact phrase "{keyword}" somewhere in the overview (verbatim for SEO purposes)
-2. Touches on the main points provided
-3. Sets expectations for what the full review will cover
-4. Maintains your signature analytical and honest approach
-
-CRITICAL: The phrase "{keyword}" must appear exactly as written in the overview text for SEO purposes. Do not paraphrase or modify these words.
-
-Do not repeat information that will be covered in detail in other sections - this should be a high-level introduction that draws readers in."""
-
-        response = client.chat.completions.create(
-            model=FINE_TUNED_MODEL,
-            messages=[
-                {"role": "system", "content": "You are Adam Gros, founder and editor-in-chief of Gamblineers, a seasoned crypto casino expert with over 10 years of experience. Your background is in mathematics and data analysis. You are a helpful assistant that writes content in your distinctive voice and style.\n\nYou write from a first-person singular perspective and speak directly to \"you,\" the reader.\n\nYour voice is analytical, witty, blunt, and honest-with a sharp eye for BS and a deep respect for data. You balance professionalism with dry humor. You call things as they are, whether good or bad, and never sugarcoat reviews.\n\nWriting & Style Rules\n- Always write in first-person singular (\"I\")\n- Speak directly to you, the reader\n- Keep sentences under 20 words\n- Never use em dashes or emojis\n- Never use fluff words like: \"fresh,\" \"solid,\" \"straightforward,\" \"smooth,\" \"game-changer\"\n- Avoid clichés: \"kept me on the edge of my seat,\" \"whether you're this or that,\" etc.\n- Bold key facts, bonuses, or red flags\n- Use short paragraphs (2–3 sentences max)\n- Use bullet points for clarity (pros/cons, bonuses, steps, etc.)\n- Tables are optional for comparisons\n- Be helpful without sounding preachy or salesy\n- If something sucks, say it. If it's good, explain why.\n\nTone\n- Casual but sharp\n- Witty, occasionally sarcastic (in good taste)\n- Confident, never condescending\n- Conversational, never robotic\n- Always honest-even when it hurts"},
-                {"role": "user", "content": overview_prompt}
-            ],
-            timeout=30
-        )
-
-        overview_content = response.choices[0].message.content.strip()
-
-        # Add TLDR section if points are provided
-        if tldr_points:
-            tldr_section = "\n\n**TLDR**"
-            for point in tldr_points:
-                tldr_section += f"\n- {point}"
-            overview_content += tldr_section
-
-        print("Successfully generated Overview section")
-        return f"**Overview**\n{overview_content}"
-
-    except Exception as error:
-        error_msg = f"Failed to generate Overview section: {error}"
-        print(error_msg)
-        return f"**Overview**\n[Error generating Overview section: {error}]"
-
-def rewrite_review_with_adam(review_content):
-    """Rewrite the entire review using Adam's voice, section by section."""
-    try:
-        print("Starting Adam's rewrite process...")
-        sections = parse_review_sections(review_content)
-        
-        if not sections:
-            print("No sections detected, rewriting as whole")
-            # If no sections detected, rewrite as whole
-            return rewrite_section("Full Review", review_content)
-        
-        print(f"Found {len(sections)} sections to rewrite")
-        rewritten_sections = []
-        
-        for i, section in enumerate(sections, 1):
-            print(f"Processing section {i}/{len(sections)}: {section['title']}")
-            rewritten_content = rewrite_section(section['title'], section['content'])
-            
-            # If there was an error, still include it to avoid breaking the flow
-            if rewritten_content.startswith("[Error rewriting"):
-                print(f"Failed to rewrite {section['title']}, using original content")
-                # Use original content if rewrite fails
-                rewritten_sections.append(f"**{section['title']}**\n{section['content']}")
-            else:
-                rewritten_sections.append(f"**{section['title']}**\n{rewritten_content}")
-        
-        print("Adam's rewrite process completed successfully")
-        return "\n\n".join(rewritten_sections)
-        
-    except Exception as e:
-        error_msg = f"Fatal error in rewrite_review_with_adam: {str(e)}"
-        print(error_msg)
-        # Return original content if everything fails
-        return f"[Rewrite failed - using original content]\n\n{review_content}"
-
-def add_internal_links_to_casinos(review_content, casino_links_map, reviewed_casino_name):
-    """Add internal links to casino names mentioned in the review.
-
-    Args:
-        review_content: The review text content
-        casino_links_map: Dictionary mapping casino names to their URLs
-        reviewed_casino_name: Name of the casino being reviewed (to exclude from linking)
-
-    Returns:
-        Review content with casino names linked in [CasinoName](url) format
-    """
-    if not casino_links_map:
-        print("No casino links found to add")
-        return review_content
-
-    print(f"Adding internal links for {len(casino_links_map)} casinos...")
-
-    # Sort casino names by length (longest first) to avoid partial matches
-    sorted_casinos = sorted(casino_links_map.keys(), key=len, reverse=True)
-
-    # Remove the reviewed casino from the list
-    sorted_casinos = [c for c in sorted_casinos if c.lower() != reviewed_casino_name.lower()]
-
-    linked_content = review_content
-
-    for casino_name in sorted_casinos:
-        casino_url = casino_links_map[casino_name]
-
-        # Create a pattern that matches the casino name but NOT if it's already in a link
-        # This prevents double-linking and linking casino names that are already formatted
-        # Pattern explanation:
-        # - Negative lookbehind: (?<!\[) - not preceded by [
-        # - Negative lookbehind: (?<!\]) - not preceded by ]
-        # - Negative lookbehind: (?<!\() - not preceded by (
-        # - The casino name (escaped for regex special chars)
-        # - Negative lookahead: (?!\]) - not followed by ]
-        # - Negative lookahead: (?!\() - not followed by (
-
-        # Escape special regex characters in casino name
-        escaped_name = re.escape(casino_name)
-
-        # Pattern to match casino name not already in link format
-        pattern = r'(?<!\[)(?<!\])(?<!\()' + escaped_name + r'(?!\])(?!\()'
-
-        # Replace with markdown link format
-        replacement = f'[{casino_name}]({casino_url})'
-
-        # Use a function to check each match and only replace if not already linked
-        def replace_if_not_linked(match):
-            # Get surrounding context to double-check
-            start = max(0, match.start() - 10)
-            end = min(len(linked_content), match.end() + 10)
-            context = linked_content[start:end]
-
-            # If the context already contains link markers, skip
-            if '](' in context or '[' in context[:match.start()-start+1]:
-                return match.group(0)
-
-            return replacement
-
-        # Count how many replacements we'll make
-        matches = list(re.finditer(pattern, linked_content))
-        if matches:
-            print(f"Linking {len(matches)} mention(s) of '{casino_name}'")
-            linked_content = re.sub(pattern, replacement, linked_content)
-
-    print("Internal linking completed")
-    return linked_content
-
-def fix_bullet_points(review_content):
-    """Fix all formatting issues from Adam's rewrite for proper Google Docs display."""
-    try:
-        import re
-
-        # 1. Replace \* at the beginning of lines with dash bullets for Google Docs
-        fixed_content = re.sub(r'^\\\\\* ', r'- ', review_content, flags=re.MULTILINE)
-
-        # 2. Convert escaped hash headers (\#\#\#) to bold format - preserve existing ** if present
-        fixed_content = re.sub(r'^\\\\\#\\\\\#\\\\\# \*\*(.+?)\*\*$', r'**\1**', fixed_content, flags=re.MULTILINE)
-        fixed_content = re.sub(r'^\\\\\#\\\\\#\\\\\# (.+)$', r'**\1**', fixed_content, flags=re.MULTILINE)
-
-        # 3. Convert markdown headings (## Heading) to bold format
-        fixed_content = re.sub(r'^## (.+)$', r'**\1**', fixed_content, flags=re.MULTILINE)
-
-        # 4. Fix escaped plus signs in bonus descriptions (\+ -> +)
-        fixed_content = re.sub(r'\\\\\+', r'+', fixed_content)
-
-        # 5. Ensure \- bullets (which are already correct) stay as - bullets
-        fixed_content = re.sub(r'^\\\\\- ', r'- ', fixed_content, flags=re.MULTILINE)
-
-        print("All formatting issues fixed successfully")
-        return fixed_content
-
-    except Exception as e:
-        print(f"Error fixing formatting: {e}")
-        # Return original content if fixing fails
-        return review_content
+# Removed add_internal_links_to_casinos - not needed for factual Jacob reviews
 
 def generate_sections_parallel(casino: str, secs: Dict, sorted_comments: Dict, templates: Dict, btc_str: str) -> list:
     """Generate all sections in parallel while maintaining round-robin casino selection"""
@@ -739,7 +403,7 @@ def generate_section_with_assignment(section_data: Tuple) -> str:
         # Get comments for this specific section
         section_comments = ""
         if sorted_comments.get(sec, "").strip():
-            section_comments = f"\n\nCRITICAL USER FEEDBACK - MUST INCLUDE ALL DETAILS:\n{sorted_comments[sec]}\n\nIMPORTANT: The above user feedback contains specific, detailed information that MUST be included in your review. Do NOT summarize, simplify, or condense this information. Include ALL details, numbers, steps, mechanisms, and specifics exactly as provided. This information is factual and verified - include it comprehensively in the review section."
+            section_comments = f"\n\nCRITICAL USER FEEDBACK - MUST INCLUDE ALL DETAILS:\n{sorted_comments[sec]}\n\nIMPORTANT: The above user feedback contains specific, detailed information that MUST be included in your review. Do NOT summarize, simplify, or condense this information. Include ALL details, numbers, steps, mechanisms, and specifics exactly as provided.\n\nFor each piece of feedback:\n- If there is NO similar question/topic already in the review, create a NEW question and answer pair\n- If there IS already a similar question/topic in the review, APPEND the new information to that existing question and answer\n- This information is factual and verified - include it comprehensively in the review section."
 
         # Build round-robin instruction for the prompt
         round_robin_instruction = ""
@@ -898,188 +562,26 @@ def find_existing_doc(drive_service, folder_id, title):
     return files[0]["id"] if files else None
 
 def main():
-    st.set_page_config(page_title="Merged Review Generator", layout="centered", initial_sidebar_state="collapsed")
-    
+    st.set_page_config(page_title="Jacob Factual Review Generator", layout="centered", initial_sidebar_state="collapsed")
+
     # Initialize session state
     if 'review_completed' not in st.session_state:
         st.session_state.review_completed = False
         st.session_state.review_url = None
         st.session_state.casino_name = None
-        st.session_state.rewritten_review = None
-        st.session_state.awaiting_overview = False
-        st.session_state.casino_links_map = {}
-    
-    # If review is completed and awaiting overview input
-    if st.session_state.awaiting_overview and st.session_state.rewritten_review:
-        st.markdown(f"## Review Complete! Now add the Overview section for: **{st.session_state.casino_name}**")
-        
-        # Show the completed review for reference
-        with st.expander("📖 View Completed Review (for reference)", expanded=False):
-            st.markdown(st.session_state.rewritten_review)
-        
-        st.markdown("### Add Overview Section")
-        st.markdown("Please provide a keyword and main points for the introduction:")
 
-        # Input fields for overview
-        keyword = st.text_input("Keyword",
-                               placeholder="Enter the keyword")
 
-        main_points = st.text_area("Main Points (2-3 key points to highlight in the overview)",
-                                  placeholder="• Strong crypto integration\n• Excellent customer support\n• Wide game variety",
-                                  height=120)
-
-        # Generate and display TLDR options
-        st.markdown("### TLDR Section")
-        st.markdown("Select which TLDR bullet points to include at the bottom of the overview:")
-
-        # Initialize TLDR points in session state if not already done
-        if 'tldr_points' not in st.session_state:
-            if keyword or main_points:  # Only generate if user has started filling the form
-                with st.spinner("🔄 Generating TLDR bullet points..."):
-                    st.session_state.tldr_points = generate_tldr_points(st.session_state.rewritten_review)
-            else:
-                st.session_state.tldr_points = []
-
-        # Show TLDR options with checkboxes if we have points
-        selected_tldr_points = []
-        if st.session_state.tldr_points:
-            st.markdown("**Choose TLDR bullet points to include:**")
-            for i, point in enumerate(st.session_state.tldr_points):
-                if st.checkbox(point, key=f"tldr_{i}", value=True):  # Default to checked
-                    selected_tldr_points.append(point)
-        else:
-            # Button to generate TLDR points
-            if st.button("Generate TLDR Points", type="secondary"):
-                with st.spinner("🔄 Generating TLDR bullet points..."):
-                    st.session_state.tldr_points = generate_tldr_points(st.session_state.rewritten_review)
-                st.rerun()
-        
-        # Generate overview and finalize
-        col1, col2 = st.columns([1, 1])
-        with col1:
-            if st.button("Generate Overview & Post to Google Docs", type="primary", disabled=not (keyword and main_points)):
-                if keyword and main_points:
-                    try:
-                        # Generate overview section with selected TLDR points
-                        st.info("🔄 Generating Overview section with Adam's voice...")
-                        overview_section = generate_overview_section(
-                            st.session_state.casino_name,
-                            keyword,
-                            main_points,
-                            selected_tldr_points if selected_tldr_points else None
-                        )
-                        
-                        # Combine overview with the rest of the review - Overview goes first
-                        title_line = f"{st.session_state.casino_name} review"
-                        final_review = f"{title_line}\n\n{overview_section}\n\n{st.session_state.rewritten_review}"
-
-                        # Fix bullet points before uploading
-                        final_review = fix_bullet_points(final_review)
-
-                        # Add internal links to casino names
-                        st.info("🔗 Adding internal links to comparison casinos...")
-                        final_review = add_internal_links_to_casinos(
-                            final_review,
-                            st.session_state.casino_links_map,
-                            st.session_state.casino_name
-                        )
-
-                        # Post to Google Docs
-                        st.info("📤 Uploading to Google Drive...")
-                        user_creds = get_service_account_credentials()
-                        docs_service = build("docs", "v1", credentials=user_creds)
-                        drive_service = build("drive", "v3", credentials=user_creds)
-                        
-                        doc_title = f"{st.session_state.casino_name} Review"
-                        existing_doc_id = find_existing_doc(drive_service, FOLDER_ID, doc_title)
-
-                        if existing_doc_id:
-                            drive_service.files().delete(fileId=existing_doc_id).execute()
-
-                        doc_id = create_google_doc_in_folder(docs_service, drive_service, FOLDER_ID, doc_title, final_review)
-                        doc_url = f"https://docs.google.com/document/d/{doc_id}"
-                        
-                        # Write the review link to the spreadsheet
-                        write_review_link_to_sheet(doc_url)
-                        
-                        # Mark as completed
-                        st.session_state.review_completed = True
-                        st.session_state.review_url = doc_url
-                        st.session_state.awaiting_overview = False
-                        st.session_state.rewritten_review = None
-                        if 'tldr_points' in st.session_state:
-                            del st.session_state.tldr_points
-
-                        st.rerun()
-                        
-                    except Exception as e:
-                        st.error(f"❌ Error finalizing review: {e}")
-        
-        with col2:
-            if st.button("Skip Overview (Post without Overview)", type="secondary"):
-                try:
-                    # Post to Google Docs without overview - using exact original workflow
-                    st.info("📤 Uploading to Google Drive...")
-                    user_creds = get_service_account_credentials()
-                    docs_service = build("docs", "v1", credentials=user_creds)
-                    drive_service = build("drive", "v3", credentials=user_creds)
-                    
-                    doc_title = f"{st.session_state.casino_name} Review"
-                    existing_doc_id = find_existing_doc(drive_service, FOLDER_ID, doc_title)
-
-                    if existing_doc_id:
-                        drive_service.files().delete(fileId=existing_doc_id).execute()
-
-                    # Use original review format - exactly as it was before
-                    final_review = f"{st.session_state.casino_name} review\n\n{st.session_state.rewritten_review}"
-
-                    # Fix bullet points before uploading
-                    final_review = fix_bullet_points(final_review)
-
-                    # Add internal links to casino names
-                    st.info("🔗 Adding internal links to comparison casinos...")
-                    final_review = add_internal_links_to_casinos(
-                        final_review,
-                        st.session_state.casino_links_map,
-                        st.session_state.casino_name
-                    )
-
-                    doc_id = create_google_doc_in_folder(docs_service, drive_service, FOLDER_ID, doc_title, final_review)
-                    doc_url = f"https://docs.google.com/document/d/{doc_id}"
-                    
-                    # Write the review link to the spreadsheet
-                    write_review_link_to_sheet(doc_url)
-                    
-                    # Mark as completed
-                    st.session_state.review_completed = True
-                    st.session_state.review_url = doc_url
-                    st.session_state.awaiting_overview = False
-                    st.session_state.rewritten_review = None
-                    if 'tldr_points' in st.session_state:
-                        del st.session_state.tldr_points
-
-                    st.rerun()
-                    
-                except Exception as e:
-                    st.error(f"❌ Error posting review: {e}")
-        
-        return
-    
     # If review is already completed, show the success message
     if st.session_state.review_completed:
-        st.success("Review successfully written & rewritten with Adam's voice, check the sheet :)")
+        st.success("Factual review successfully generated in Jacob structure!")
         if st.session_state.review_url:
             st.info(f"Review link: {st.session_state.review_url}")
-        
+
         # Add a button to generate a new review
         if st.button("Write New Review", type="primary"):
             st.session_state.review_completed = False
             st.session_state.review_url = None
             st.session_state.casino_name = None
-            st.session_state.rewritten_review = None
-            st.session_state.awaiting_overview = False
-            if 'tldr_points' in st.session_state:
-                del st.session_state.tldr_points
             st.rerun()
         return
     
@@ -1093,8 +595,8 @@ def main():
         return
     
     # Show casino name and generate button
-    st.markdown(f"## Ready to write a review for: **{casino}**")
-    st.markdown("The review will be written and then rewritten in Adam's voice before upload.")
+    st.markdown(f"## Ready to write a factual review for: **{casino}**")
+    st.markdown("The review will be generated in the Jacob structure with all factual data and comments.")
     
     # Only generate review when button is clicked
     if st.button("Write Review", type="primary", use_container_width=True):
@@ -1139,42 +641,36 @@ def main():
             progress_placeholder.markdown("## Sorting comments by section...")
             sorted_comments = sort_comments_by_section(comments)
 
-            # Extract casino links from all comparison data
-            print("Extracting casino links from comparison data...")
-            casino_links_map = {}
-            for section_name, section_data in secs.items():
-                # Extract links from top casinos
-                top_links = extract_casino_links_map(section_data.get("top", ""))
-                casino_links_map.update(top_links)
-
-                # Extract links from similar casinos
-                sim_links = extract_casino_links_map(section_data.get("sim", ""))
-                casino_links_map.update(sim_links)
-
-            print(f"Extracted {len(casino_links_map)} unique casino links")
-
             # Generate all sections in parallel
             progress_placeholder.markdown("## Generating review sections in parallel...")
             parallel_results = generate_sections_parallel(casino, secs, sorted_comments, templates, btc_str)
 
-            # Combine results
-            out = [f"{casino} review\n"] + parallel_results
+            # Combine results into final factual review
+            factual_review = "\n".join([f"{casino} review\n"] + parallel_results)
 
-            # Step 2: Rewrite with Adam's voice
-            progress_placeholder.markdown("## Rewriting with Adam's voice...")
+            # Upload to Google Docs
+            progress_placeholder.markdown("## Uploading to Google Drive...")
+            doc_title = f"{casino} Review - Jacob Factual"
+            existing_doc_id = find_existing_doc(drive_service, FOLDER_ID, doc_title)
 
-            initial_review = "\n".join(out)
+            if existing_doc_id:
+                drive_service.files().delete(fileId=existing_doc_id).execute()
 
-            rewritten_review = rewrite_review_with_adam(initial_review)
+            doc_id = create_google_doc_in_folder(docs_service, drive_service, FOLDER_ID, doc_title, factual_review)
+            doc_url = f"https://docs.google.com/document/d/{doc_id}"
 
-            # Step 3: Store rewritten review and casino links, then prompt for Overview input
-            st.session_state.rewritten_review = rewritten_review
-            st.session_state.casino_links_map = casino_links_map
-            st.session_state.awaiting_overview = True
+            # Write the review link to the spreadsheet
+            write_review_link_to_sheet(doc_url)
+
+            # Mark as completed
+            st.session_state.review_completed = True
+            st.session_state.review_url = doc_url
             st.session_state.casino_name = casino
-            
-            # Clear progress message and show overview input screen
+
+            # Clear progress message
             progress_placeholder.empty()
+            st.success(f"Factual review generated successfully!")
+            st.info(f"Review link: {doc_url}")
             st.rerun()
 
         except Exception as e:
