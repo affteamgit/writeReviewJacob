@@ -251,7 +251,16 @@ Format your response exactly like this:
                     sections[current_section] += " " + line
                 else:
                     sections[current_section] = line
-        
+
+        # Redirect Bonuses comments to General section (temporary until Bonuses structure template is ready)
+        if sections.get("Bonuses", "").strip():
+            print("Redirecting Bonuses comments to General section")
+            if sections["General"]:
+                sections["General"] += " " + sections["Bonuses"]
+            else:
+                sections["General"] = sections["Bonuses"]
+            sections["Bonuses"] = ""
+
         return sections
     except Exception as e:
         print(f"Error sorting comments: {e}")
