@@ -1,39 +1,62 @@
 * DO NOT USE Em DASH (—) ANYWHERE!
 
-## Q: How long can withdrawals take in [casino]?
+## Q: How long can withdrawal take?
 
-* IMPORTANT: You must explicitly state in the answer that the mentioned withdrawal timeframes apply to cases where the casino needs to manually process the withdrawal. Use phrases like "In cases where manual processing is needed" or "When the casino manually reviews your withdrawal" or "If your withdrawal requires manual processing" before stating the timeframe.
-* For casinos with withdrawal time less than 12 hours, when mentioning how long it takes, use randomly one of the following responses: a matter of hours; Within a couple of hours; up to a few hours.
-* For casinos with withdrawal time 12-24 hours, when mentioning how long it takes, use randomly one of the following responses: Within a day; less than a day; less than 24 hours.
-* For casinos with withdrawal time 24-72 hours, when mentioning how long it takes, use randomly one of the following responses: a couple of days; less than three days; Within a few days.
-* For casinos with withdrawal time more than 72 hours, when mentioning how long it takes, use randomly one of the following responses: More than three days; Three days and more; More than a couple of days.
-* Explain why fast withdrawal time should be important to the reader, how the reader benefits from this. For every benefit you mention, explain why this benefit should matter to the reader and provide an example. Use short sentences, maximum 20 words per sentence.
+* FIRST, state that withdrawals should ideally be instant for crypto casinos.
+* If there is manual verification or processing required, mention the timeframe from the spreadsheet data.
+* IMPORTANT: You must explicitly state that the mentioned withdrawal timeframes apply to cases where the casino needs to manually process the withdrawal. Use phrases like "In cases where manual processing is needed" or "When the casino manually reviews your withdrawal" or "If your withdrawal requires manual processing" before stating the timeframe.
+* PREFER EXACT FIGURES: If the casino data provides a specific number (e.g., "24 hours", "48 hours", "up to 2 hours"), use that exact figure -- do NOT replace it with a vague phrase. For example, write "up to 48 hours" instead of "a couple of days".
+* Only use the vague phrases below as a FALLBACK when no exact figure is available in the data:
+  - Less than 12 hours: "a matter of hours" / "within a few hours"
+  - 12-24 hours: "less than a day" / "less than 24 hours"
+  - 24-72 hours: "up to a few days"
+  - More than 72 hours: "more than three days"
+* If the terms use deliberately vague language (e.g., "reasonable time", "as soon as practicable") with no concrete number, flag this explicitly: the casino does not commit to a specific withdrawal timeframe in its terms, which means delays are harder to dispute.
+* ADDITIONALLY, check Trustpilot and AskGamblers reviews for any mentions of actual withdrawal times experienced by players. If withdrawal time information is found in reviews, include this real-world feedback in your answer.
+* Explain why fast withdrawal time should be important to the reader, how the reader benefits from this. Use short sentences, maximum 20 words per sentence.
 * ONLY If the casino's withdrawal time is not less than 12 hours, mention a brand with faster withdrawal time from Top Casinos.
 
-## Q: What are the minimum and maximum withdrawal limits?
+## Q: What are the withdrawal limits?
 
 * List all limits available (by day, by week, by month) and comment which are very good, very bad, or could be better based on the following criteria:
   - Daily limits: anything over $3,000 is considered good and anything below $2,000 is considered not so good.
   - Weekly limits: anything over $12,000 is considered good and anything below $8,000 is considered not so good.
   - Monthly limits: anything over $24,000 is considered good and anything below $16,000 is considered not so good.
 * If any BTC values appear, convert them internally to USD before comparing them to other casinos, but do not mention USD in the review text. Only mention the BTC amounts.
-* Explain how friendly the casino's withdrawal limits are and how this impacts the reader.
+* Explain how friendly the casino's withdrawal limits are and how this impacts the reader. Keep it concise.
+* IMPORTANT - Check the casino's AML (Anti-Money Laundering) wagering requirement:
+  - If the requirement is 1x (wager deposited amount once), DO NOT mention it at all.
+  - If the requirement is MORE than 1x, state it clearly: "This casino requires you to wager your deposited amount [n] times before withdrawal" where n > 1.
+  - If MORE than 1x, explain that 1x is the industry standard and this requirement is higher than normal.
+  - If MORE than 1x, recommend one or two brands from Top Casinos that require only 1x wagering (the industry standard).
 
 ## Q: How long can KYC reviews take?
 
+* FIRST, check the casino's knowledge base/terms and conditions for any specified KYC processing timeframe.
+* If a specific timeframe IS specified in the terms: Use that exact timeframe in your answer. Do NOT replace specific numbers with vague phrases. For example, write "up to 72 hours" instead of "a few days".
+* If NO timeframe is specified in the terms (which is most common): Warn the reader that the casino has nothing written in their terms about KYC processing time, which means the casino can take as much time as they want to process verification. Players should keep this in mind.
+* If the terms use deliberately vague language (e.g., "reasonable time", "as soon as practicable") with no concrete number, flag this: the casino avoids committing to a specific verification deadline, which gives them flexibility to delay.
+* If the terms mention "business days" for processing: Note that this prolongs the process even more since it excludes weekends and holidays.
+* DISTINGUISH between two different timeframes if present: (1) the deadline for YOU to submit documents after being asked, and (2) the time the CASINO takes to review your documents. Only the casino's review time matters for this question. Do not confuse these two.
 * IMPORTANT: You must explicitly state in the answer that the mentioned KYC verification timeframes apply to cases where the casino needs to manually review the verification documents. Use phrases like "In cases where manual verification is needed" or "When the casino manually reviews your documents" or "If your verification requires manual processing" before stating the timeframe.
-* For casinos with KYC verification speed less than 12 hours, when mentioning how long it takes, use randomly one of the following responses: Within a couple of hours; a matter of hours; up to a few hours.
-* For casinos with KYC verification speed 12-24 hours, when mentioning how long it takes, use randomly one of the following responses: less than a day; less than 24 hours; Within a day.
-* For casinos with KYC verification speed 24-72 hours, when mentioning how long it takes, use randomly one of the following responses: a couple of days; Within a few days; less than three days.
-* For casinos with KYC verification speed more than 72 hours, when mentioning how long it takes, use randomly one of the following responses: can take multiple days, is done in matter of days, can take a couple of days.
-* ONLY If the casino's KYC verification speed is not less than 12 hours, mention a brand with faster KYC verification speed from Top Casinos.
+* Only use the vague phrases below as a FALLBACK when no exact figure is available in the data:
+  - Less than 12 hours: "within a few hours" -- this is really good.
+  - 12-24 hours: "less than 24 hours" / "less than a day" -- this is good and above average.
+  - 24-72 hours or more: "up to a few days" / "can take multiple days" -- this is not ideal and could be better.
+* If the timeframe is large (more than 24 hours) OR not specified at all, recommend a brand with faster and more reliable KYC verification from Top Casinos.
 
 ## Q: Are there any bonus-related restrictions on withdrawals, like capped cashouts?
 
-* If the casino has any bonus-related withdrawal restrictions or capped cashouts, explain what they are and how they affect the reader.
+* Check if the casino has bonuses. If it does, evaluate the following criteria:
+  - Cashout caps: Check if there are maximum cashout limits on bonus winnings.
+  - Win caps: Check if there are maximum win limits on bonus play.
+  - Wagering requirements: Best case is 20x or lower, applied only on the bonus amount OR only on the deposit amount (not both).
+  - Wagering time: Best case is 7 days or less to complete the wagering.
+* BEST CASE SCENARIO: If a casino has bonuses with NO cashout caps, NO win caps, wagering requirement is average or below average (20x or lower, only on bonus OR only on deposit), AND wagering time is 7 days or less - this is excellent and very player-friendly. Commend the casino for this.
+* If there are cashout caps, win caps, high wagering requirements (over 20x), or long wagering times (over 7 days), explain what they are and how they affect the reader.
 * Explain why this matters and whether the restrictions are player-friendly or not.
 * Use short sentences, maximum 20 words per sentence.
-* If there are no significant bonus-related withdrawal restrictions, you can briefly mention this as a positive.
+* IMPORTANT: Verify that all this information (cashout caps, win caps, wagering requirements, wagering time) is available in the tempoutput data for each casino when creating a review.
 
 ## Q: Can I deposit different altcoins?
 
@@ -42,12 +65,9 @@
 * If the casino accepts less than 5 cryptocurrencies, say that such a low number can hardly qualify the casino to be called a 'crypto casino'.
 * If the casino accepts 5 to 15 cryptocurrencies, say that this is an average number found in most crypto casinos.
 * If the casino accepts less than 15 cryptocurrencies, advise the reader to double-check that their currency is supported and recommend 1 or 2 casinos that accept more cryptocurrencies taken from the Top Casinos.
-* If you can buy crypto in the casino, mention that the casino supports this, which despite not being ideal for buying crypto this way due to additional fees, it can still be less hassle if you run out of crypto and don't have to move back and forth between the casino and an exchange.
-
-## Q: Can I swap crypto in [casino]?
-
-* ONLY answer this question if the casino offers crypto conversion/swapping. If answered, mention it as something very unique and useful. Very few casinos offer this and it can mean that players can play with virtually any token that's supported by the conversion tool. They can also deposit in one cryptocurrency and withdraw in another.
-* If the casino does not offer crypto swapping - DO NOT ANSWER THIS QUESTION. Skip it entirely.
+* If the Buy crypto option is available in the casino, mention that the casino supports this feature. Despite not being ideal for buying crypto this way due to additional fees, it can still be less hassle if you run out of crypto and don't have to move back and forth between the casino and an exchange.
+* If the Crypto Swap feature is available in the casino, mention it as something very unique and useful. Very few casinos offer this and it can mean that players can play with virtually any token that's supported by the conversion tool. They can also deposit in one cryptocurrency and withdraw in another.
+* IMPORTANT: Only mention Buy crypto or Crypto Swap features if they are actually available. Do NOT mention them if they are not available.
 
 ## + questions/answers from manual comments
 

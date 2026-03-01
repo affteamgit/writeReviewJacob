@@ -8,6 +8,7 @@ from googleapiclient.discovery import build
 from anthropic import Anthropic
 from pathlib import Path
 import re
+import random
 import concurrent.futures
 from typing import Dict, Tuple
 
@@ -121,24 +122,24 @@ anthropic = Anthropic(api_key=ANTHROPIC_API_KEY)
 
 def call_openai(prompt):
     # Add fact constraint system message
-    fact_constraint = "CRITICAL: Only use facts explicitly provided in the prompt. Never add information not in the source data. Do not make assumptions or add general knowledge about casinos."
+    fact_constraint = "CRITICAL: Only use facts explicitly provided in the prompt. Never add information not in the source data. Do not make assumptions or add general knowledge about casinos. Never claim exclusivity or uniqueness unless the data explicitly states it."
     full_prompt = f"{fact_constraint}\n\n{prompt}"
-    return client.chat.completions.create(model="gpt-4o", messages=[{"role": "user", "content": full_prompt}], temperature=0.3, max_tokens=1200).choices[0].message.content.strip()
+    return client.chat.completions.create(model="gpt-4o", messages=[{"role": "user", "content": full_prompt}], temperature=0.45, max_tokens=1200).choices[0].message.content.strip()
 
 def call_grok(prompt):
     # Add fact constraint system message
-    fact_constraint = "CRITICAL: Only use facts explicitly provided in the prompt. Never add information not in the source data. Do not make assumptions or add general knowledge about casinos."
+    fact_constraint = "CRITICAL: Only use facts explicitly provided in the prompt. Never add information not in the source data. Do not make assumptions or add general knowledge about casinos. Never claim exclusivity or uniqueness unless the data explicitly states it."
     full_prompt = f"{fact_constraint}\n\n{prompt}"
     headers = {"Content-Type": "application/json", "Authorization": f"Bearer {GROK_API_KEY}"}
-    payload = {"model": "grok-3", "messages": [{"role": "user", "content": full_prompt}], "temperature": 0.3, "max_tokens": 1200}
+    payload = {"model": "grok-3", "messages": [{"role": "user", "content": full_prompt}], "temperature": 0.45, "max_tokens": 1200}
     j = requests.post("https://api.x.ai/v1/chat/completions", json=payload, headers=headers).json()
     return j.get("choices", [{}])[0].get("message", {}).get("content", "[Grok failed]").strip()
 
 def call_claude(prompt):
     # Add fact constraint system message
-    fact_constraint = "CRITICAL: Only use facts explicitly provided in the prompt. Never add information not in the source data. Do not make assumptions or add general knowledge about casinos."
+    fact_constraint = "CRITICAL: Only use facts explicitly provided in the prompt. Never add information not in the source data. Do not make assumptions or add general knowledge about casinos. Never claim exclusivity or uniqueness unless the data explicitly states it."
     full_prompt = f"{fact_constraint}\n\n{prompt}"
-    return anthropic.messages.create(model="claude-sonnet-4-20250514", max_tokens=1200, temperature=0.3, messages=[{"role": "user", "content": full_prompt}]).content[0].text.strip()
+    return anthropic.messages.create(model="claude-sonnet-4-20250514", max_tokens=1200, temperature=0.45, messages=[{"role": "user", "content": full_prompt}]).content[0].text.strip()
 
 def extract_casino_names_from_data(comparison_data):
     """Extract casino names from comparison data string.
@@ -171,7 +172,7 @@ def extract_casino_names_from_data(comparison_data):
 # Removed extract_casino_links_map - not needed for factual Jacob reviews
 
 def get_next_comparison_casino(available_casinos, used_casinos_tracker):
-    """Select next casino using round-robin logic.
+    """Select next casino using shuffled round-robin logic.
 
     Args:
         available_casinos: List of casino names available for comparison
@@ -186,12 +187,14 @@ def get_next_comparison_casino(available_casinos, used_casinos_tracker):
     # Filter out recently used casinos (within last 5 uses)
     available = [c for c in available_casinos if c not in used_casinos_tracker[-5:]]
 
-    # If all casinos have been used recently, reset and use the first one
+    # If all casinos have been used recently, reset with full list
     if not available:
-        available = available_casinos
+        available = list(available_casinos)
 
-    # Return the first available casino
-    return available[0] if available else None
+    # Shuffle to avoid always picking the same first casino
+    shuffled = list(available)
+    random.shuffle(shuffled)
+    return shuffled[0] if shuffled else None
 
 def update_used_casinos_tracker(tracker, casino_name):
     """Add casino to the used tracker list."""

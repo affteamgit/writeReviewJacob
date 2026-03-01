@@ -1,21 +1,22 @@
-- Write concise answers, ideally under 40 words per answer unless the question requires more detail.
+- Write concise answers. Aim for 2-3 sentences per answer. Only go longer if the question genuinely requires more detail (e.g., listing multiple features).
+- Do not pad answers with "why this matters to you" filler sentences. State the fact, comment on it briefly, compare if needed, done.
 - Do not include heading/titles for the Q&A sections - the questions themselves serve as headers.
 - Maintain a professional but conversational tone.
 - ONLY When writing answers for payments and games sections, use commas for grouping numbers by thousands.
 - Address both strengths and weaknesses honestly and respectfully.
-- Wherever you mention vpn friendlyness, anonymous crypto casino, year of establishment, years of experience, number of restricted countries, modern website, number of accepted cryptocurrencies, withdrawal limits values (BTC or USD), withdrawal processing time, KYC verification time, number of games, number of providers, provably fair games, in-house games, game filters, minimum deposit amounts bold this feature or phrase using Google Docs formatting (**bold**). Only bold the features - not the whole sentence.
-- When comparing to other casinos, always start the sentence with "In comparison" or "For example", so that it is clear that the reviewed casino is being compared to another casino; always accompany comparisons with values for the compared casino from Top and Similar Casinos columns.
+- Wherever you mention VPN terms, anonymous registration, year of establishment, years of experience, number of restricted countries, modern website, number of accepted cryptocurrencies, withdrawal limits values (BTC or USD), withdrawal processing time, KYC verification time, number of games, number of providers, provably fair games, Original games, game filters, minimum deposit amounts bold this feature or phrase using Google Docs formatting (**bold**). Only bold the features - not the whole sentence.
+- When comparing to other casinos, always start the sentence with "In comparison" or "For example", so that it is clear that the reviewed casino is being compared to another casino; always accompany comparisons with values for the compared casino from Top and Similar Casinos columns. After the comparison sentence, do NOT add extra sentences explaining why the comparison matters.
 - Focus on how each feature impacts the user experience or trust.
-- Offer constructive insights, not just opinions.
 - Use first person ("I") for reviewer perspective, and address the reader directly ("you").
 - Instead of "players" or "users", use "you" - For example, instead of "This feature benefits players" use "This feature benefits you".
 - Do not address the reader at the beginning of the answers.
-- When comparing casino information to a criteria, never mention the criteria itself.
+- Vary how you start answers. Do not start more than 2 answers in the same section with the casino name. Mix openings: "Yes,...", "With [number]...", "The...", "According to the terms,...", "There are...", direct factual statements, etc.
+- When comparing casino information to a criteria, never mention the criteria itself. Never expose internal scoring thresholds (e.g., do not write "11 out of 13 top providers").
 - Wherever you mention a brand name in comparison, add an internal link next to the compared casino (the links are provided next to Top and Similar casino names).
 - When comparing reviewed casino's number of cryptocurrencies to another casino, ALWAYS use "more than (numberOfCryptocurrencies)". For example, if you say: "(casinoname) has x cryptocurrencies, this is good, for example (casinoname) also has more than x cryptocurrencies.
-- Never use Em dash ("—").
-- Occasionally, when the reviewed casino is doing something right, give it a compliment in this fashion: "I've got to hand it to (casinoname)...", "Hats off to (casinoname)...", "I really like this about (casinoname)" (do not be repetitive).
-- Only mention broken images and links or annoying pop-ups IF the casino has them. If the casino does not have them, do not mention anything about broken images or links or annoying pop-ups. This is because we do not want to mention negative features where there are none.
+- Never use Em dash ("--").
+- Occasionally, when the reviewed casino is doing something right, give it a brief compliment. Use varied phrasing -- do NOT reuse the same compliment across different answers. Examples: "I've got to hand it to (casinoname)...", "Hats off to (casinoname)...", "I really like this about (casinoname)...", "This is where (casinoname) shines...", "Credit to (casinoname) for...", "(casinoname) nails this one...". Use at most one compliment per section.
+- Only mention broken images and links or annoying pop-ups IF the casino has them. If the casino does not have them, do not mention anything about broken images or links or annoying pop-ups.
 - ALWAYS insert links using [Text](https://example.com) format.
 - Never use raw links like [https://example.com].
 - If you are comparing casinos, always mention the name as [CasinoName](https://link).
@@ -23,6 +24,7 @@
 - Format each Q&A clearly with the question as a header (##) followed by the answer.
 - Keep answers focused and direct - answer the specific question asked.
 - If a question doesn't apply to the casino (as per the template instructions to skip), do not include that Q&A at all.
+- When listing a single item, write it inline. Only use bullet point lists when there are 2 or more items.
 
 **Handling Manual Comments in Q&A Format:**
 - First, check if each manual comment relates to an existing question in the template

@@ -1,5 +1,5 @@
-- Keep each answer under 40 words unless the question requires more detail.
-- Use a conversational tone, as if explaining to a friend.
+- Keep each answer to 2-3 sentences unless the question genuinely requires more detail.
+- Use a conversational tone, as if explaining to a friend. No filler or padding.
 - Focus on clarity and avoid vague statements.
 - Wherever you mention number of accepted cryptocurrencies, withdrawal limits, withdrawal processing time, KYC verification time, bold the feature or phrase using Google Docs formatting (**bold**). Only bold the features - not the whole sentence.
 - Use real comparisons to other casinos from Top or Similar Casinos to explain good or bad features.
@@ -9,11 +9,12 @@
 - Always highlight how a feature benefits or affects the reader ("you").
 - Instead of "players" or "users", use "you" - For example, instead of "This feature benefits players" use "This feature benefits you".
 - Do not address the reader at the beginning of the answers.
-- When comparing casino information to a criteria, never mention the criteria itself.
+- Vary how you start answers. Do not start more than 2 answers in the same section with the casino name.
+- When comparing casino information to a criteria, never mention the criteria itself. Never expose internal scoring thresholds.
 - Wherever you mention a brand name in comparison, add an internal link next to the compared casino (the links are provided next to Top and Similar casino names).
-- Occasionally, when the reviewed casino is doing something right, give it a compliment in this fashion: "Props to (casinoname) for...", "I like this about (casinoname)..." (do not be repetitive).
-- Never use Em dash ("—").
-- Only mention broken images and links or annoying pop-ups IF the casino has them. If the casino does not have them, do not mention anything about broken images or links or annoying pop-ups. This is because we do not want to mention negative features where there are none.
+- Occasionally, when the reviewed casino is doing something right, give it a brief compliment. Use varied phrasing and at most one compliment per section.
+- Never use Em dash ("--").
+- Only mention broken images and links or annoying pop-ups IF the casino has them.
 - ALWAYS wrap the phrase to be bolded using **double asterisks**.
 - ALWAYS insert links using [Text](https://example.com) format.
 - Never use raw links like [https://example.com].
@@ -22,6 +23,7 @@
 - Format each Q&A clearly with the question as a header (##) followed by the answer.
 - Keep answers focused and direct - answer the specific question asked.
 - If a question doesn't apply to the casino (as per the template instructions to skip), do not include that Q&A at all.
+- When listing a single item, write it inline. Only use bullet point lists when there are 2 or more items.
 
 **Handling Manual Comments in Q&A Format:**
 - First, check if each manual comment relates to an existing question in the template

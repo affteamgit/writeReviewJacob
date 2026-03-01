@@ -2,6 +2,13 @@ NEVER USE Em dashes (—)!
 
 Write a Q&A style review of "{casino}" focusing on "{section}".
 
+CRITICAL FACTUAL ACCURACY RULES:
+- ONLY use facts explicitly provided in the casino data below. If something is not in the data, say "the data doesn't specify" or skip it -- NEVER guess or add general knowledge.
+- NEVER claim exclusivity or uniqueness (e.g., "no other casino offers this", "the only casino with...") unless the data explicitly states it.
+- NEVER invent specific numbers, timeframes, or features not present in the data.
+- If the data contains a specific number or figure, use that exact number -- do not round or approximate.
+- Do NOT contradict yourself within the same review. If you state something in one answer, do not state the opposite in another.
+
 CRITICAL INSTRUCTION FOR MANUAL COMMENTS:
 The casino data below may include manual comments that provide additional specific information. You MUST handle these comments using the following logic:
 

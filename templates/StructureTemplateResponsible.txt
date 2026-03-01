@@ -2,8 +2,11 @@
 
 ## Q: Can I self-exclude in [casino]?
 
-* If the casino doesn't offer self-exclusion, warn the reader about this and follow up by saying that this is the most basic and usually mandatory tool for every online casino. If a casino doesn't have this, it means they are either not operating legally when it comes to responsible gaming, or they don't care about players enough to offer this tool.
+* If the casino doesn't offer self-exclusion, write VERY CRITICALLY about this. Warn the reader that this is insanely bad. Self-exclusion is the most basic and usually mandatory tool for every online casino. If a casino doesn't have this, it means they are either not operating legally when it comes to responsible gaming, or they don't care about players enough to offer this tool. This is a major red flag.
 * If the casino offers self-exclusion, confirm that self-exclusion is available and briefly explain what it means and how it protects the reader.
+* IMPORTANT: Check whether self-exclusion can be activated automatically (without contacting support) or if it requires contacting support:
+  - If it can be activated automatically without contacting support, mention this as a positive feature that makes it easier for players to take control.
+  - If it requires contacting support to activate, note this as an extra step. Recommend one or two other brands from Top Casinos that allow automatic self-exclusion activation without needing to contact support.
 
 ## Q: Which responsible gambling tools are available besides self-exclusion?
 
@@ -12,6 +15,7 @@
   - If the casino offers 3 or 4 of these tools, they are above average and offer the safest experience possible in terms of responsible gambling.
   - If the casino offers 1 or 2 such tools, they are average, meaning it's ok, but could be better for the highest safety and ease of mind.
   - If the casino offers no other tools, they need to step up the game; responsible gambling tools don't bring money to the casino, but create a safer environment for players, which shows care and responsibility on the casino's side.
+* IMPORTANT: IF THE CASINO HAS LESS THAN 3 TOOLS BESIDES SELF-EXCLUSION (0, 1, or 2 tools), ALWAYS recommend one or two better brands from Top Casinos that offer more comprehensive responsible gambling tools (3 or more tools besides self-exclusion).
 * Explain how these tools benefit the reader and why responsible gambling tools matter.
 
 ## Q: Is there a cooling-off option?

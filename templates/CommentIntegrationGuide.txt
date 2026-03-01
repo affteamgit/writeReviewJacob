@@ -47,8 +47,11 @@ A: Yes, [casino] is VPN friendly, which means you can access it from restricted 
 - Ensure the question is phrased as it would be asked by a user
 
 Question Formulation Guidelines:
-- Use the same format as existing questions: "Does [casino]...", "Can I...", "How...", "What..."
-- Make questions specific and clear
+- Write questions as a real player would type them into a search engine, not as a formal survey question
+- Use natural phrasing: "Can I...", "Is there...", "How does...", "What happens if..."
+- BAD: "What is the nature of the loyalty program structure?" -- too formal
+- GOOD: "Does [casino] have a cashback or loyalty program?" -- natural
+- GOOD: "Can I withdraw without completing KYC?" -- direct, practical
 - Avoid yes/no questions unless they lead to detailed answers
 
 Example comment → Q&A conversion:
@@ -129,3 +132,4 @@ Format:
 - ALWAYS bold key features mentioned in comments
 - ALWAYS include specific numbers, names, and mechanisms from comments
 - NEVER add information not in the comment or existing data
+- NEVER generate a Q&A that simply restates what the comment said without adding context or analysis -- always frame the answer in terms of how it affects the reader
