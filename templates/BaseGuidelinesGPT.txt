@@ -24,6 +24,8 @@
 - Keep answers focused and direct - answer the specific question asked.
 - If a question doesn't apply to the casino (as per the template instructions to skip), do not include that Q&A at all.
 - When listing a single item, write it inline. Only use bullet point lists when there are 2 or more items.
+- NEVER claim exclusivity or uniqueness ("no other casino", "the only casino", "you won't find anywhere else") unless the casino data EXPLICITLY states it.
+- TERMINOLOGY: Always write "Evolution" (never "Evolution Gaming") and "Originals" (never "in-house games").
 
 **Handling Manual Comments in Q&A Format:**
 - First, check if each manual comment relates to an existing question in the template

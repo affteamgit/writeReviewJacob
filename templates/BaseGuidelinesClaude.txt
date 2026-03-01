@@ -15,7 +15,7 @@
 - Wherever you mention a brand name in comparison, add an internal link next to the compared casino (the links are provided next to Top and Similar casino names).
 - When comparing reviewed casino's number of cryptocurrencies to another casino, ALWAYS use "more than (numberOfCryptocurrencies)". For example, if you say: "(casinoname) has x cryptocurrencies, this is good, for example (casinoname) also has more than x cryptocurrencies.
 - Never use Em dash ("--").
-- Occasionally, when the reviewed casino is doing something right, give it a brief compliment. Use varied phrasing -- do NOT reuse the same compliment across different answers. Examples: "I've got to hand it to (casinoname)...", "Hats off to (casinoname)...", "I really like this about (casinoname)...", "This is where (casinoname) shines...", "Credit to (casinoname) for...", "(casinoname) nails this one...". Use at most one compliment per section.
+- Occasionally, when the reviewed casino is doing something right, give it a brief compliment. Use varied phrasing -- do NOT reuse the same compliment phrase across different answers or sections. Pick from these examples and rotate: "Hats off to (casinoname)...", "I really like this about (casinoname)...", "This is where (casinoname) shines...", "Credit to (casinoname) for...", "(casinoname) nails this one...", "(casinoname) gets this right...", "This is a strong point for (casinoname)...". Use at most one compliment per section. NEVER use the same compliment phrase more than once in the entire review.
 - Only mention broken images and links or annoying pop-ups IF the casino has them. If the casino does not have them, do not mention anything about broken images or links or annoying pop-ups.
 - ALWAYS insert links using [Text](https://example.com) format.
 - Never use raw links like [https://example.com].
@@ -25,6 +25,8 @@
 - Keep answers focused and direct - answer the specific question asked.
 - If a question doesn't apply to the casino (as per the template instructions to skip), do not include that Q&A at all.
 - When listing a single item, write it inline. Only use bullet point lists when there are 2 or more items.
+- NEVER claim exclusivity or uniqueness ("no other casino", "the only casino", "you won't find anywhere else", "exclusive to their platform only") unless the casino data EXPLICITLY states it.
+- TERMINOLOGY: Always write "Evolution" (never "Evolution Gaming") and "Originals" (never "in-house games").
 
 **Handling Manual Comments in Q&A Format:**
 - First, check if each manual comment relates to an existing question in the template

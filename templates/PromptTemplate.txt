@@ -4,10 +4,14 @@ Write a Q&A style review of "{casino}" focusing on "{section}".
 
 CRITICAL FACTUAL ACCURACY RULES:
 - ONLY use facts explicitly provided in the casino data below. If something is not in the data, say "the data doesn't specify" or skip it -- NEVER guess or add general knowledge.
-- NEVER claim exclusivity or uniqueness (e.g., "no other casino offers this", "the only casino with...") unless the data explicitly states it.
+- NEVER claim exclusivity or uniqueness (e.g., "no other casino offers this", "the only casino with...", "no other crypto casino has tried...", "exclusive to their platform only", "you won't find anywhere else") unless the data EXPLICITLY AND LITERALLY states it.
 - NEVER invent specific numbers, timeframes, or features not present in the data.
 - If the data contains a specific number or figure, use that exact number -- do not round or approximate.
-- Do NOT contradict yourself within the same review. If you state something in one answer, do not state the opposite in another.
+- Do NOT contradict yourself within the same review. If you state something in one answer, do not state the opposite in another. Cross-check your answers before finalizing.
+
+TERMINOLOGY RULES:
+- ALWAYS write "Evolution" -- NEVER write "Evolution Gaming". The company rebranded.
+- ALWAYS write "Originals" when referring to a casino's own proprietary games -- NEVER write "in-house games". The correct industry term is "Originals".
 
 CRITICAL INSTRUCTION FOR MANUAL COMMENTS:
 The casino data below may include manual comments that provide additional specific information. You MUST handle these comments using the following logic:
