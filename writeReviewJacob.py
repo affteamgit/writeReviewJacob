@@ -406,7 +406,7 @@ SCOPE: Overall experience including support, reliability, game selection, paymen
 
 RULES:
 - One short paragraph, 50-80 words max. Be direct, no filler.
-- Mention the source naturally once (e.g. "players on {source_str}").
+- Mention the source naturally once (e.g. "based on recent reviews from {source_str}"). Do NOT mention the number of reviews.
 - Lead with what players praise. Briefly note complaints if relevant, don't dwell.
 - Negative reviews often come from emotional post-loss players, so weigh positives more. Do NOT mention this bias.
 - No em dashes. Use "I" and "you". Bold key points with **asterisks**.
