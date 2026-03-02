@@ -325,11 +325,11 @@ def parse_review_sections(content):
 
 # Removed add_internal_links_to_casinos - not needed for factual Jacob reviews
 
-def scrape_player_feedback(casino_name: str) -> str:
+def scrape_player_feedback(casino_name: str) -> dict:
     """Scrape AskGamblers and Trustpilot for player feedback about a casino.
 
-    Tries both sources and merges the reviews. Returns a formatted Q&A string
-    to append to the Payments section, or empty string if nothing found.
+    Tries both sources and merges the reviews. Returns a dict with raw reviews
+    and source info, or empty dict if nothing found.
     """
     all_reviews = []
     sources = []
@@ -363,153 +363,119 @@ def scrape_player_feedback(casino_name: str) -> str:
         traceback.print_exc()
 
     if not all_reviews:
-        return ""
-
-    # Broad keywords covering payments and general casino experience
-    section_keywords = {
-        'payments': [
-            'withdrawal', 'withdraw', 'payout', 'cashout', 'deposit',
-            'payment', 'pending', 'processing', 'KYC', 'verification'
-        ],
-        'experience': [
-            'support', 'customer service', 'scam', 'rigged', 'legit',
-            'trust', 'reliable', 'slow', 'fast', 'bonus', 'wagering'
-        ],
-    }
-
-    # Use AskGamblers scraper instance for analysis (same logic for both)
-    ag_scraper = AskGamblersScraper(timeout=30)
-    experiences = ag_scraper.extract_player_experiences(all_reviews, section_keywords)
-    withdrawal_data = ag_scraper.analyze_withdrawal_mentions(all_reviews)
-
-    # Collect all unique relevant reviews across both keyword groups
-    seen_texts = set()
-    relevant_reviews = []
-    for section_info in experiences.values():
-        for rev in section_info.get('reviews', []):
-            key = (rev.get('text', '') or rev.get('title', ''))[:80]
-            if key and key not in seen_texts:
-                seen_texts.add(key)
-                relevant_reviews.append(rev)
-
-    if not relevant_reviews:
-        return ""
+        return {}
 
     source_str = " and ".join(sources)
-    return format_player_feedback_qa(
-        casino_name, withdrawal_data, relevant_reviews, len(all_reviews), source_str
-    )
+    return {
+        "casino_name": casino_name,
+        "reviews": all_reviews,
+        "total_count": len(all_reviews),
+        "source_str": source_str,
+    }
 
 
-def format_player_feedback_qa(casino_name, withdrawal_data, experience_reviews, total_reviews, source_str="AskGamblers") -> str:
-    """Format scraped player data into a Q&A block matching the review style."""
-    parts = []
-    parts.append("")
-    parts.append(f"## Q: What do players say about {casino_name}?")
-    parts.append("")
-    parts.append(
-        f"Based on **{total_reviews}** recent player reviews analyzed from {source_str}, "
-        f"here is what players report about their experience with {casino_name}."
-    )
-
-    # Withdrawal sentiment summary
-    pos = withdrawal_data.get('positive_count', 0)
-    neg = withdrawal_data.get('negative_count', 0)
-    if pos or neg:
-        parts.append("")
-        sentiment_pieces = []
-        if pos:
-            sentiment_pieces.append(f"**{pos}** report fast or smooth payouts")
-        if neg:
-            sentiment_pieces.append(f"**{neg}** report delays or issues")
-        parts.append(
-            "On the withdrawal and payment side, " + " while ".join(sentiment_pieces) + "."
-        )
-
-    # Pick up to 4 diverse quotes
-    selected = []
-    payment_kw = {'withdrawal', 'withdraw', 'payout', 'cashout', 'deposit', 'payment', 'pending', 'processing', 'kyc', 'verification'}
-    experience_kw = {'support', 'customer service', 'scam', 'rigged', 'legit', 'trust', 'reliable', 'bonus', 'wagering'}
-
-    payment_quotes = []
-    experience_quotes = []
-    other_quotes = []
-
-    for rev in experience_reviews:
+def _prepare_reviews_for_prompt(reviews, max_reviews=20):
+    """Prepare a compact text block of reviews for an AI prompt."""
+    lines = []
+    for i, rev in enumerate(reviews[:max_reviews], 1):
+        rating = rev.get('rating', 'N/A')
         text = (rev.get('text') or rev.get('title') or '').strip()
         if not text:
             continue
-        lower = text.lower()
-        if any(kw in lower for kw in payment_kw):
-            payment_quotes.append(text)
-        elif any(kw in lower for kw in experience_kw):
-            experience_quotes.append(text)
-        else:
-            other_quotes.append(text)
+        # Truncate long reviews
+        if len(text) > 300:
+            text = text[:300].rsplit(' ', 1)[0] + "..."
+        lines.append(f"[{rating}] {text}")
+    return "\n".join(lines)
 
-    # Pick diverse quotes: prefer one from each bucket, max 4 total
-    for bucket in [payment_quotes, experience_quotes, other_quotes]:
-        if bucket and len(selected) < 4:
-            selected.append(bucket[0])
-    for bucket in [payment_quotes, experience_quotes, other_quotes]:
-        for q in bucket:
-            if q not in selected and len(selected) < 4:
-                selected.append(q)
 
-    if selected:
-        # Separate into pros and cons. AskGamblers reviews have "Pros:"/"Cons:"
-        # prefixes; Trustpilot reviews are plain text classified by rating.
-        pros_lines = []
-        cons_lines = []
-        for quote_text in selected:
-            # Check if it has AskGamblers-style Pros:/Cons: structure
-            if quote_text.lower().startswith("pros:") or "\ncons:" in quote_text.lower() or "\npros:" in quote_text.lower():
-                for block in quote_text.split("\n\n"):
-                    block = block.strip()
-                    if block.lower().startswith("pros:"):
-                        clean = block[5:].strip()
-                        if clean:
-                            pros_lines.append(clean)
-                    elif block.lower().startswith("cons:"):
-                        clean = block[5:].strip()
-                        if clean:
-                            cons_lines.append(clean)
-            else:
-                # Plain text (Trustpilot) -- classify by sentiment keywords
-                lower = quote_text.lower()
-                is_negative = any(w in lower for w in ['scam', 'fraud', 'never', 'worst', 'terrible', 'avoid', 'stolen', 'refuse'])
-                if is_negative:
-                    cons_lines.append(quote_text)
-                else:
-                    pros_lines.append(quote_text)
+def generate_general_player_summary(casino_name, feedback_data):
+    """Use Claude to summarize player reviews for the General section."""
+    reviews = feedback_data["reviews"]
+    source_str = feedback_data["source_str"]
+    total = feedback_data["total_count"]
 
-        parts.append("")
-        parts.append("Here are some notable player comments:")
-        if pros_lines:
-            parts.append("")
-            parts.append("**Pros:**")
-            for line in pros_lines[:2]:
-                truncated = line[:150].rstrip()
-                if len(line) > 150:
-                    truncated = truncated.rsplit(' ', 1)[0] + "..."
-                parts.append(f'- "{truncated}"')
-        if cons_lines:
-            parts.append("")
-            parts.append("**Cons:**")
-            for line in cons_lines[:2]:
-                truncated = line[:150].rstrip()
-                if len(line) > 150:
-                    truncated = truncated.rsplit(' ', 1)[0] + "..."
-                parts.append(f'- "{truncated}"')
+    reviews_text = _prepare_reviews_for_prompt(reviews)
+    if not reviews_text:
+        return ""
 
-    if len(experience_reviews) < 3:
-        parts.append("")
-        parts.append(
-            f"Note: Limited player data is available for {casino_name}. "
-            "These insights are based on a small number of relevant reviews."
-        )
+    prompt = f"""You are writing a section for a casino review article about {casino_name}.
+Summarize what players say about {casino_name} based on {total} recent reviews from {source_str}.
 
-    return "\n".join(parts)
+RULES:
+- Write 2-3 short paragraphs as a Q&A answer (the question is "What do players say about {casino_name}?")
+- Start with something like "Based on {total} recent player reviews from {source_str}, ..."
+- Focus primarily on what players praise (good support, fast payouts, game variety, etc.)
+- Lightly mention common complaints if any exist, but don't dwell on them
+- Keep in mind many negative reviews come from emotional post-loss players, so weigh positives more heavily
+- Do NOT mention that players might be biased or salty -- just focus on the actual feedback
+- Do NOT use em dashes (use commas or periods instead)
+- Use first person "I" and address the reader as "you"
+- Bold key highlights with **double asterisks**
+- Keep it concise, 80-150 words total
+- Do NOT include the question heading, just the answer text
+
+PLAYER REVIEWS:
+{reviews_text}"""
+
+    try:
+        summary = call_claude(prompt)
+        result = f"\n## Q: What do players say about {casino_name}?\n\n{summary}"
+        return result
+    except Exception as e:
+        print(f"General player summary AI call failed: {e}")
+        return ""
+
+
+def generate_payments_player_summary(casino_name, feedback_data):
+    """Use Claude to summarize payment-related player reviews for the Payments section."""
+    reviews = feedback_data["reviews"]
+    source_str = feedback_data["source_str"]
+    total = feedback_data["total_count"]
+
+    # Filter to payment-related reviews
+    payment_kw = ['withdrawal', 'withdraw', 'payout', 'cashout', 'deposit',
+                   'payment', 'pending', 'processing', 'kyc', 'verification',
+                   'cash out', 'pay out', 'waiting']
+    payment_reviews = []
+    for rev in reviews:
+        content = (rev.get('text', '') + ' ' + rev.get('title', '')).lower()
+        if any(kw in content for kw in payment_kw):
+            payment_reviews.append(rev)
+
+    if not payment_reviews:
+        return ""
+
+    reviews_text = _prepare_reviews_for_prompt(payment_reviews)
+    if not reviews_text:
+        return ""
+
+    prompt = f"""You are writing a section for a casino review article about {casino_name}.
+Summarize what players say about payments and withdrawals at {casino_name} based on player reviews from {source_str}.
+
+RULES:
+- Write 1-2 short paragraphs as a Q&A answer (the question is "What do players say about {casino_name} withdrawals?")
+- Start with something like "Based on player feedback from {source_str}, ..."
+- Focus primarily on positive payment experiences (fast payouts, smooth processing, etc.)
+- Lightly mention withdrawal complaints if they exist, but don't overemphasize them
+- Keep in mind many negative reviews come from emotional post-loss players, so weigh positives more heavily
+- Do NOT mention that players might be biased or salty -- just focus on the actual feedback
+- Do NOT use em dashes (use commas or periods instead)
+- Use first person "I" and address the reader as "you"
+- Bold key highlights with **double asterisks**
+- Keep it concise, 60-120 words total
+- Do NOT include the question heading, just the answer text
+
+PAYMENT-RELATED PLAYER REVIEWS ({len(payment_reviews)} of {total} total reviews):
+{reviews_text}"""
+
+    try:
+        summary = call_claude(prompt)
+        result = f"\n## Q: What do players say about {casino_name} withdrawals?\n\n{summary}"
+        return result
+    except Exception as e:
+        print(f"Payments player summary AI call failed: {e}")
+        return ""
 
 
 def generate_sections_parallel(casino: str, secs: Dict, sorted_comments: Dict, templates: Dict, btc_str: str) -> list:
@@ -852,26 +818,34 @@ def main():
 
             parallel_results = generate_sections_parallel(casino, secs, sorted_comments, templates, btc_str)
 
-            # Collect AskGamblers result (should be done by now since sections take longer)
+            # Collect scraper result (should be done by now since sections take longer)
             try:
-                askgamblers_qa = askgamblers_future.result(timeout=90)
+                feedback_data = askgamblers_future.result(timeout=90)
             except Exception as e:
-                askgamblers_qa = ""
-                print(f"AskGamblers future failed: {e}")
+                feedback_data = {}
+                print(f"Player feedback scraper failed: {e}")
             finally:
                 bg_executor.shutdown(wait=False)
 
-            # DEBUG: log scraper result
-            if askgamblers_qa:
-                print(f"AskGamblers: got player feedback ({len(askgamblers_qa)} chars)")
-                st.session_state.askgamblers_debug = f"AskGamblers: got {len(askgamblers_qa)} chars of player feedback"
-            else:
-                print("AskGamblers: no player feedback returned")
-                st.session_state.askgamblers_debug = "AskGamblers: no player feedback returned"
+            # Generate AI summaries from scraped reviews
+            if feedback_data and feedback_data.get("reviews"):
+                review_count = feedback_data["total_count"]
+                source = feedback_data["source_str"]
+                print(f"Player feedback: {review_count} reviews from {source}")
+                st.session_state.askgamblers_debug = f"Player feedback: {review_count} reviews from {source}"
 
-            # Append player feedback to Payments section (index 1 in section_order)
-            if askgamblers_qa and len(parallel_results) > 1:
-                parallel_results[1] = parallel_results[1].rstrip('\n') + "\n" + askgamblers_qa + "\n"
+                # AI call for General section
+                general_summary = generate_general_player_summary(casino, feedback_data)
+                if general_summary and len(parallel_results) > 0:
+                    parallel_results[0] = parallel_results[0].rstrip('\n') + "\n" + general_summary + "\n"
+
+                # AI call for Payments section
+                payments_summary = generate_payments_player_summary(casino, feedback_data)
+                if payments_summary and len(parallel_results) > 1:
+                    parallel_results[1] = parallel_results[1].rstrip('\n') + "\n" + payments_summary + "\n"
+            else:
+                print("No player feedback returned")
+                st.session_state.askgamblers_debug = "No player feedback returned"
 
             # Combine results into final factual review
             factual_review = "\n".join([f"{casino} review\n"] + parallel_results)
