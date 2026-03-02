@@ -379,11 +379,11 @@ def scrape_askgamblers_player_feedback(casino_name: str) -> str:
 def format_askgamblers_player_qa(casino_name, withdrawal_data, experience_reviews, total_reviews) -> str:
     """Format scraped AskGamblers data into a Q&A block matching the review style."""
     parts = []
-    parts.append(f"## Q: What do real players say about {casino_name}?")
+    parts.append(f"## Q: What do players say about {casino_name}?")
     parts.append("")
     parts.append(
         f"Based on **{total_reviews}** recent player reviews analyzed from AskGamblers, "
-        f"here is what real users report about their experience with {casino_name}."
+        f"here is what players report about their experience with {casino_name}."
     )
 
     # Withdrawal sentiment summary
@@ -433,14 +433,41 @@ def format_askgamblers_player_qa(casino_name, withdrawal_data, experience_review
                 selected.append(q)
 
     if selected:
+        # Split quotes into pros and cons, stripping the per-line prefixes
+        pros_lines = []
+        cons_lines = []
+        for quote_text in selected:
+            for block in quote_text.split("\n\n"):
+                block = block.strip()
+                if block.lower().startswith("pros:"):
+                    clean = block[5:].strip()
+                    if clean:
+                        pros_lines.append(clean)
+                elif block.lower().startswith("cons:"):
+                    clean = block[5:].strip()
+                    if clean:
+                        cons_lines.append(clean)
+                elif block:
+                    pros_lines.append(block)
+
         parts.append("")
         parts.append("Here are some notable player comments:")
-        parts.append("")
-        for quote_text in selected:
-            truncated = quote_text[:150].rstrip()
-            if len(quote_text) > 150:
-                truncated = truncated.rsplit(' ', 1)[0] + "..."
-            parts.append(f'- "{truncated}"')
+        if pros_lines:
+            parts.append("")
+            parts.append("**Pros:**")
+            for line in pros_lines:
+                truncated = line[:150].rstrip()
+                if len(line) > 150:
+                    truncated = truncated.rsplit(' ', 1)[0] + "..."
+                parts.append(f'- "{truncated}"')
+        if cons_lines:
+            parts.append("")
+            parts.append("**Cons:**")
+            for line in cons_lines:
+                truncated = line[:150].rstrip()
+                if len(line) > 150:
+                    truncated = truncated.rsplit(' ', 1)[0] + "..."
+                parts.append(f'- "{truncated}"')
 
     if len(experience_reviews) < 3:
         parts.append("")
