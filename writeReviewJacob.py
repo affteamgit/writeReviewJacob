@@ -12,6 +12,7 @@ import random
 import concurrent.futures
 from typing import Dict, Tuple
 from askgamblers_scraper import AskGamblersScraper
+from trustpilot_scraper import TrustpilotScraper
 
 # CONFIG 
 OPENAI_API_KEY      = st.secrets["OPENAI_API_KEY"]
@@ -324,65 +325,89 @@ def parse_review_sections(content):
 
 # Removed add_internal_links_to_casinos - not needed for factual Jacob reviews
 
-def scrape_askgamblers_player_feedback(casino_name: str) -> str:
-    """Scrape AskGamblers for real player feedback about a casino.
+def scrape_player_feedback(casino_name: str) -> str:
+    """Scrape AskGamblers and Trustpilot for player feedback about a casino.
 
-    Returns a formatted Q&A string to append to the Payments section,
-    or an empty string if no relevant reviews are found or on any error.
+    Tries both sources and merges the reviews. Returns a formatted Q&A string
+    to append to the Payments section, or empty string if nothing found.
     """
+    all_reviews = []
+    sources = []
+
+    # --- AskGamblers ---
     try:
-        scraper = AskGamblersScraper(timeout=30)
-        review_data = scraper.scrape_casino_reviews(casino_name, max_reviews=50, months=6)
-
-        reviews = review_data.get('reviews', [])
-        if not reviews:
-            return ""
-
-        # Broad keywords covering payments and general casino experience
-        section_keywords = {
-            'payments': [
-                'withdrawal', 'withdraw', 'payout', 'cashout', 'deposit',
-                'payment', 'pending', 'processing', 'KYC', 'verification'
-            ],
-            'experience': [
-                'support', 'customer service', 'scam', 'rigged', 'legit',
-                'trust', 'reliable', 'slow', 'fast', 'bonus', 'wagering'
-            ],
-        }
-
-        experiences = scraper.extract_player_experiences(reviews, section_keywords)
-        withdrawal_data = scraper.analyze_withdrawal_mentions(reviews)
-
-        # Collect all unique relevant reviews across both keyword groups
-        seen_texts = set()
-        relevant_reviews = []
-        for section_info in experiences.values():
-            for rev in section_info.get('reviews', []):
-                key = (rev.get('text', '') or rev.get('title', ''))[:80]
-                if key and key not in seen_texts:
-                    seen_texts.add(key)
-                    relevant_reviews.append(rev)
-
-        if not relevant_reviews:
-            return ""
-
-        return format_askgamblers_player_qa(
-            casino_name, withdrawal_data, relevant_reviews, len(reviews)
-        )
+        ag_scraper = AskGamblersScraper(timeout=30)
+        ag_data = ag_scraper.scrape_casino_reviews(casino_name, max_reviews=50, months=6)
+        ag_reviews = ag_data.get('reviews', [])
+        if ag_reviews:
+            all_reviews.extend(ag_reviews)
+            sources.append("AskGamblers")
+            print(f"AskGamblers: {len(ag_reviews)} reviews")
     except Exception as e:
         import traceback
         print(f"AskGamblers scrape failed for {casino_name}: {e}")
         traceback.print_exc()
+
+    # --- Trustpilot ---
+    try:
+        tp_scraper = TrustpilotScraper(timeout=30)
+        tp_data = tp_scraper.scrape_casino_reviews(casino_name, max_reviews=50, months=6)
+        tp_reviews = tp_data.get('reviews', [])
+        if tp_reviews:
+            all_reviews.extend(tp_reviews)
+            sources.append("Trustpilot")
+            print(f"Trustpilot: {len(tp_reviews)} reviews")
+    except Exception as e:
+        import traceback
+        print(f"Trustpilot scrape failed for {casino_name}: {e}")
+        traceback.print_exc()
+
+    if not all_reviews:
         return ""
 
+    # Broad keywords covering payments and general casino experience
+    section_keywords = {
+        'payments': [
+            'withdrawal', 'withdraw', 'payout', 'cashout', 'deposit',
+            'payment', 'pending', 'processing', 'KYC', 'verification'
+        ],
+        'experience': [
+            'support', 'customer service', 'scam', 'rigged', 'legit',
+            'trust', 'reliable', 'slow', 'fast', 'bonus', 'wagering'
+        ],
+    }
 
-def format_askgamblers_player_qa(casino_name, withdrawal_data, experience_reviews, total_reviews) -> str:
-    """Format scraped AskGamblers data into a Q&A block matching the review style."""
+    # Use AskGamblers scraper instance for analysis (same logic for both)
+    ag_scraper = AskGamblersScraper(timeout=30)
+    experiences = ag_scraper.extract_player_experiences(all_reviews, section_keywords)
+    withdrawal_data = ag_scraper.analyze_withdrawal_mentions(all_reviews)
+
+    # Collect all unique relevant reviews across both keyword groups
+    seen_texts = set()
+    relevant_reviews = []
+    for section_info in experiences.values():
+        for rev in section_info.get('reviews', []):
+            key = (rev.get('text', '') or rev.get('title', ''))[:80]
+            if key and key not in seen_texts:
+                seen_texts.add(key)
+                relevant_reviews.append(rev)
+
+    if not relevant_reviews:
+        return ""
+
+    source_str = " and ".join(sources)
+    return format_player_feedback_qa(
+        casino_name, withdrawal_data, relevant_reviews, len(all_reviews), source_str
+    )
+
+
+def format_player_feedback_qa(casino_name, withdrawal_data, experience_reviews, total_reviews, source_str="AskGamblers") -> str:
+    """Format scraped player data into a Q&A block matching the review style."""
     parts = []
     parts.append(f"## Q: What do players say about {casino_name}?")
     parts.append("")
     parts.append(
-        f"Based on **{total_reviews}** recent player reviews analyzed from AskGamblers, "
+        f"Based on **{total_reviews}** recent player reviews analyzed from {source_str}, "
         f"here is what players report about their experience with {casino_name}."
     )
 
@@ -472,7 +497,7 @@ def format_askgamblers_player_qa(casino_name, withdrawal_data, experience_review
     if len(experience_reviews) < 3:
         parts.append("")
         parts.append(
-            f"Note: Limited player data is available for {casino_name} on AskGamblers. "
+            f"Note: Limited player data is available for {casino_name}. "
             "These insights are based on a small number of relevant reviews."
         )
 
@@ -815,7 +840,7 @@ def main():
             progress_placeholder.markdown("## Generating review sections in parallel...")
 
             bg_executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
-            askgamblers_future = bg_executor.submit(scrape_askgamblers_player_feedback, casino)
+            askgamblers_future = bg_executor.submit(scrape_player_feedback, casino)
 
             parallel_results = generate_sections_parallel(casino, secs, sorted_comments, templates, btc_str)
 
