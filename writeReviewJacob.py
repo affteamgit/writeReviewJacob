@@ -399,17 +399,30 @@ def generate_general_player_summary(casino_name, feedback_data):
     if not reviews_text:
         return ""
 
+    # Randomize opening style to avoid repetitive outputs across casinos
+    openers = [
+        f"Looking at recent {source_str} reviews,",
+        f"From what I found on {source_str},",
+        f"Player feedback on {source_str} suggests",
+        f"According to {source_str} reviews,",
+        f"Checking {source_str} for player opinions,",
+    ]
+    opener = random.choice(openers)
+
     prompt = f"""Summarize player sentiment about {casino_name} for a casino review article.
-Data: {total} recent reviews from {source_str}.
+Source: {source_str}.
 
 SCOPE: Overall experience including support, reliability, game selection, payments, and withdrawals.
 
 RULES:
 - One short paragraph, 50-80 words max. Be direct, no filler.
-- Mention the source naturally once (e.g. "based on recent reviews from {source_str}"). Do NOT mention the number of reviews.
+- Start with or incorporate this opener naturally: "{opener}"
+- Do NOT start with "Based on recent reviews from..." -- vary your sentence structure.
+- Do NOT mention how many reviews were analyzed.
 - Lead with what players praise. Briefly note complaints if relevant, don't dwell.
 - Negative reviews often come from emotional post-loss players, so weigh positives more. Do NOT mention this bias.
 - No em dashes. Use "I" and "you". Bold key points with **asterisks**.
+- Vary your word choices. Avoid always using "praise", "highlight", "consistently", "frequently".
 - Output ONLY the paragraph text, no heading.
 
 REVIEWS:
