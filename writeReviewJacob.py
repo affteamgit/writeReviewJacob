@@ -425,9 +425,8 @@ def format_player_feedback_qa(casino_name, withdrawal_data, experience_reviews, 
             "On the withdrawal and payment side, " + " while ".join(sentiment_pieces) + "."
         )
 
-    # Pick up to 3 diverse quotes
+    # Pick up to 4 diverse quotes
     selected = []
-    # Try to get one payment-related and one experience-related quote for diversity
     payment_kw = {'withdrawal', 'withdraw', 'payout', 'cashout', 'deposit', 'payment', 'pending', 'processing', 'kyc', 'verification'}
     experience_kw = {'support', 'customer service', 'scam', 'rigged', 'legit', 'trust', 'reliable', 'bonus', 'wagering'}
 
@@ -447,40 +446,48 @@ def format_player_feedback_qa(casino_name, withdrawal_data, experience_reviews, 
         else:
             other_quotes.append(text)
 
-    # Pick diverse quotes: prefer one from each bucket
+    # Pick diverse quotes: prefer one from each bucket, max 4 total
     for bucket in [payment_quotes, experience_quotes, other_quotes]:
-        if bucket and len(selected) < 3:
+        if bucket and len(selected) < 4:
             selected.append(bucket[0])
-    # Fill remaining slots from any bucket
     for bucket in [payment_quotes, experience_quotes, other_quotes]:
         for q in bucket:
-            if q not in selected and len(selected) < 3:
+            if q not in selected and len(selected) < 4:
                 selected.append(q)
 
     if selected:
-        # Split quotes into pros and cons, stripping the per-line prefixes
+        # Separate into pros and cons. AskGamblers reviews have "Pros:"/"Cons:"
+        # prefixes; Trustpilot reviews are plain text classified by rating.
         pros_lines = []
         cons_lines = []
         for quote_text in selected:
-            for block in quote_text.split("\n\n"):
-                block = block.strip()
-                if block.lower().startswith("pros:"):
-                    clean = block[5:].strip()
-                    if clean:
-                        pros_lines.append(clean)
-                elif block.lower().startswith("cons:"):
-                    clean = block[5:].strip()
-                    if clean:
-                        cons_lines.append(clean)
-                elif block:
-                    pros_lines.append(block)
+            # Check if it has AskGamblers-style Pros:/Cons: structure
+            if quote_text.lower().startswith("pros:") or "\ncons:" in quote_text.lower() or "\npros:" in quote_text.lower():
+                for block in quote_text.split("\n\n"):
+                    block = block.strip()
+                    if block.lower().startswith("pros:"):
+                        clean = block[5:].strip()
+                        if clean:
+                            pros_lines.append(clean)
+                    elif block.lower().startswith("cons:"):
+                        clean = block[5:].strip()
+                        if clean:
+                            cons_lines.append(clean)
+            else:
+                # Plain text (Trustpilot) -- classify by sentiment keywords
+                lower = quote_text.lower()
+                is_negative = any(w in lower for w in ['scam', 'fraud', 'never', 'worst', 'terrible', 'avoid', 'stolen', 'refuse'])
+                if is_negative:
+                    cons_lines.append(quote_text)
+                else:
+                    pros_lines.append(quote_text)
 
         parts.append("")
         parts.append("Here are some notable player comments:")
         if pros_lines:
             parts.append("")
             parts.append("**Pros:**")
-            for line in pros_lines:
+            for line in pros_lines[:2]:
                 truncated = line[:150].rstrip()
                 if len(line) > 150:
                     truncated = truncated.rsplit(' ', 1)[0] + "..."
@@ -488,7 +495,7 @@ def format_player_feedback_qa(casino_name, withdrawal_data, experience_reviews, 
         if cons_lines:
             parts.append("")
             parts.append("**Cons:**")
-            for line in cons_lines:
+            for line in cons_lines[:2]:
                 truncated = line[:150].rstrip()
                 if len(line) > 150:
                     truncated = truncated.rsplit(' ', 1)[0] + "..."
