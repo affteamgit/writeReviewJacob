@@ -13,7 +13,7 @@
   - More than 72 hours: "more than three days"
 * If the terms use deliberately vague language (e.g., "reasonable time", "as soon as practicable") with no concrete number, flag this explicitly: the casino does not commit to a specific withdrawal timeframe in its terms, which means delays are harder to dispute.
 * ADDITIONALLY, check Trustpilot and AskGamblers reviews for any mentions of actual withdrawal times experienced by players. If withdrawal time information is found in reviews, include this real-world feedback in your answer.
-* Explain why fast withdrawal time should be important to the reader, how the reader benefits from this. Use short sentences, maximum 20 words per sentence.
+* Do NOT add generic sentences about why fast withdrawals matter. The reader already knows.
 * ONLY If the casino's withdrawal time is not less than 12 hours, mention a brand with faster withdrawal time from Top Casinos.
 
 ## Q: What are the withdrawal limits?
@@ -23,7 +23,7 @@
   - Weekly limits: anything over $12,000 is considered good and anything below $8,000 is considered not so good.
   - Monthly limits: anything over $24,000 is considered good and anything below $16,000 is considered not so good.
 * If any BTC values appear, convert them internally to USD before comparing them to other casinos, but do not mention USD in the review text. Only mention the BTC amounts.
-* Explain how friendly the casino's withdrawal limits are and how this impacts the reader. Keep it concise.
+* Comment briefly on whether the limits are player-friendly. Do not add filler about "why limits matter to you."
 * IMPORTANT - Check the casino's AML (Anti-Money Laundering) wagering requirement:
   - If the requirement is 1x (wager deposited amount once), DO NOT mention it at all.
   - If the requirement is MORE than 1x, state it clearly: "This casino requires you to wager your deposited amount [n] times before withdrawal" where n > 1.
@@ -54,8 +54,7 @@
   - Wagering time: Best case is 7 days or less to complete the wagering.
 * BEST CASE SCENARIO: If a casino has bonuses with NO cashout caps, NO win caps, wagering requirement is average or below average (20x or lower, only on bonus OR only on deposit), AND wagering time is 7 days or less - this is excellent and very player-friendly. Commend the casino for this.
 * If there are cashout caps, win caps, high wagering requirements (over 20x), or long wagering times (over 7 days), explain what they are and how they affect the reader.
-* Explain why this matters and whether the restrictions are player-friendly or not.
-* Use short sentences, maximum 20 words per sentence.
+* Use short sentences, maximum 20 words per sentence. Keep the answer factual and concise.
 * IMPORTANT: Verify that all this information (cashout caps, win caps, wagering requirements, wagering time) is available in the tempoutput data for each casino when creating a review.
 
 ## Q: Can I deposit different altcoins?

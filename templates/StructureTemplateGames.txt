@@ -5,18 +5,18 @@
 * State the number of games in the casino, then comment on the number based on the following criteria (but do not mention the criteria): anything over 7,000 games is a lot, anything below 5,000 games is low and can be improved, everything in between is average.
 * If the casino has LESS than 5,000 games: Recommend a casino from Top Casinos that has more than 7,000 games as a better alternative.
 * If the casino has 7,000 games or MORE: Compare it to a well-known casino with a lower number of games to show that this number is actually quite good. This helps put the large game count into perspective for the reader.
-* When commenting focus on benefits or drawbacks for the reader. For every benefit you mention, explain why this benefit should matter to the reader and provide an example. Use short sentences, maximum 20 words per sentence.
+* Keep commentary brief. State the fact, comment on it, compare if needed. No "why this matters to you" filler. Use short sentences, maximum 20 words per sentence.
 
 ## Q: Can I find games from most popular game providers?
 
 * IMPORTANT: Make sure to carefully check all provider names and not miss any providers when analyzing the casino's provider list.
 * State the number of game providers in the casino, then comment on the number based on the following criteria (but do not mention the criteria): More than 70 game providers is a lot, anything below 40 providers is not a lot, everything in between is average.
 * After commenting on the total number of providers, assess which of the following top game providers are present in the casino's provider list: BetSoft, BGaming, Evolution, Microgaming, NetEnt, Novomatic, Play'n Go, Playtech, Pragmatic Play, QuickSpin, Red Tiger, Spinomenal, Yggdrasil. IMPORTANT: Always write "Evolution" -- never "Evolution Gaming". Do not mention the total count of top providers being checked. Based on how many of these top providers are MISSING from the casino, comment as follows (but do not mention the criteria or thresholds):
-  - If 0 top providers are missing (casino has all 13): This is very rare and exceptional. Commend the casino highly for this achievement. Make the reader feel this is a very special and valuable offering that sets this casino apart. Explain how having all the industry-leading providers benefits the reader with unmatched game variety, quality, and access to the best titles from every major studio. Use short sentences, maximum 20 words per sentence.
-  - If 1-2 top providers are missing: This is still pretty good. Mention specifically which 1 or 2 top providers are missing by name, but also commend the casino for having such strong provider coverage. Explain how the reader still gets access to nearly all the best game studios and top-quality titles. Use short sentences, maximum 20 words per sentence.
-  - If 3-4 top providers are missing: This is not the best. Mention which top providers are missing and comment that the casino could do better in this department. Suggest they should try to add more of the top-tier providers to compete with leading casinos. Explain how the reader might miss out on some popular games from these missing studios. Use short sentences, maximum 20 words per sentence.
-  - If 5 or more top providers are missing: This is bad. Mention 2 of the missing top providers by name and state that more than that are missing. Comment that the casino needs to catch up in this department if they want to be taken seriously as a competitive casino. Explain how the reader is missing out on a significant portion of industry-leading game content. Use short sentences, maximum 20 words per sentence.
-* When commenting focus on benefits or drawbacks for the reader. For every benefit you mention, explain why this benefit should matter to the reader and provide an example. Use short sentences, maximum 20 words per sentence.
+  - If 0 top providers are missing (casino has all 13): Very rare and exceptional. Commend the casino briefly. Use short sentences, maximum 20 words per sentence.
+  - If 1-2 top providers are missing: Still pretty good. Mention which 1 or 2 are missing by name, but commend the casino for strong coverage. Use short sentences, maximum 20 words per sentence.
+  - If 3-4 top providers are missing: Not the best. Mention which are missing and note the casino could do better. Use short sentences, maximum 20 words per sentence.
+  - If 5 or more top providers are missing: Bad. Mention 2 missing providers by name and state more are missing. The casino needs to catch up. Use short sentences, maximum 20 words per sentence.
+* Keep the answer focused. State which providers are present/missing and comment briefly. No "explain why this matters to you" padding.
 
 ## Q: Does [casino] have Originals or provably fair games?
 
@@ -29,7 +29,7 @@
   4. Any combination of the above.
 * CROSS-CHECK: Before referencing BGaming, Spribe, or Turbogaming as offering provably fair games, verify that the provider actually appears in the casino's provider list. Do NOT say "provably fair games through BGaming" if BGaming was listed as MISSING in the providers question. Your answers must be consistent with each other.
 * If the casino has Originals: State how many Originals the casino has. List the most popular Original titles by name. In addition to the most popular ones, mention which additional Originals are available. Point to the casino's originals page to get all this information.
-* Commend the casino for having Originals by explaining how they benefit the reader (for example, the casino shows preparedness to go the extra mile to offer something new and unique, Originals are usually modern and fast-paced, casinos can offer exclusive promotions tied to their Originals, making for a much more diverse and unique user experience, etc.). For every benefit you mention, explain why this benefit should matter to the reader and provide an example. Use short sentences, maximum 20 words per sentence.
+* Briefly commend the casino for having Originals in 1-2 sentences. Do not list multiple generic benefits. Use short sentences, maximum 20 words per sentence.
 * DO NOT say that Originals are connected to provably fair games. Instead, if the casino has provably fair games through the three providers mentioned (BGaming, Spribe, Turbogaming), state which of these game providers the casino has that offer provably fair games. Explain the benefit of provably fair games to the reader.
 * IMPORTANT: If the casino has NO Originals AND NO provably fair games (through providers or otherwise), DO NOT ANSWER THIS QUESTION AT ALL. Skip it entirely.
 

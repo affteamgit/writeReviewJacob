@@ -3,20 +3,22 @@
 ## Q: Can I self-exclude in [casino]?
 
 * If the casino doesn't offer self-exclusion, write VERY CRITICALLY about this. Warn the reader that this is insanely bad. Self-exclusion is the most basic and usually mandatory tool for every online casino. If a casino doesn't have this, it means they are either not operating legally when it comes to responsible gaming, or they don't care about players enough to offer this tool. This is a major red flag.
-* If the casino offers self-exclusion, confirm that self-exclusion is available and briefly explain what it means and how it protects the reader.
+* If the casino offers self-exclusion, confirm it's available in 1-2 sentences. Do NOT repeat a generic explanation of what self-exclusion is -- the reader already knows. Just confirm availability and state whether support contact is needed.
+* IMPORTANT: Vary your wording across reviews. Do NOT always write "which is a crucial tool for managing gambling habits." Mix it up: "a must-have for any serious casino", "one of the basics every casino should have", "good to see this in place", or just state the fact without a qualifier.
 * IMPORTANT: Check whether self-exclusion can be activated automatically (without contacting support) or if it requires contacting support:
-  - If it can be activated automatically without contacting support, mention this as a positive feature that makes it easier for players to take control.
+  - If it can be activated automatically without contacting support, mention this as a positive.
   - If it requires contacting support to activate, note this as an extra step. Recommend one or two other brands from Top Casinos that allow automatic self-exclusion activation without needing to contact support.
 
 ## Q: Which responsible gambling tools are available besides self-exclusion?
 
-* State how many other responsible gambling tools, except self-exclusion, the casino offers and list them as bullet points.
+* IMPORTANT: Count ALL responsible gambling tools the casino offers besides self-exclusion. This INCLUDES the cooling-off option if available -- cooling-off is a responsible gambling tool and must be counted here. Do NOT say the casino has "no other tools" if it has cooling-off.
+* State how many other responsible gambling tools, except self-exclusion, the casino offers and list them as bullet points (or inline if only one item).
 * Follow up by commenting on this number based on this criteria (do not mention the criteria):
   - If the casino offers 3 or 4 of these tools, they are above average and offer the safest experience possible in terms of responsible gambling.
   - If the casino offers 1 or 2 such tools, they are average, meaning it's ok, but could be better for the highest safety and ease of mind.
   - If the casino offers no other tools, they need to step up the game; responsible gambling tools don't bring money to the casino, but create a safer environment for players, which shows care and responsibility on the casino's side.
 * IMPORTANT: IF THE CASINO HAS LESS THAN 3 TOOLS BESIDES SELF-EXCLUSION (0, 1, or 2 tools), ALWAYS recommend one or two better brands from Top Casinos that offer more comprehensive responsible gambling tools (3 or more tools besides self-exclusion).
-* Explain how these tools benefit the reader and why responsible gambling tools matter.
+* Keep the answer concise. Do not add generic sentences about why responsible gambling matters.
 
 ## Q: Is there a cooling-off option?
 
@@ -26,8 +28,9 @@
 ## Q: Can I use responsible gaming tools without contacting support?
 
 * State whether responsible gambling tools are available without having to contact support or not.
-* Having these tools available at a click of a button means a much easier control of gambling for a player, and is usually the preferred way. While having to contact support for this means an unnecessary additional step, it's still better than having no tools to use at all.
-* Explain how this impacts the reader's experience and ability to manage their gambling responsibly.
+* If available without support: mention this as a positive in one sentence.
+* If support is required: note this as an extra step, but still better than having no tools at all.
+* Keep it to 2-3 sentences max. No generic filler about why tool access matters.
 
 ## + questions/answers from manual comments
 
