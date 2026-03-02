@@ -404,6 +404,7 @@ def scrape_player_feedback(casino_name: str) -> str:
 def format_player_feedback_qa(casino_name, withdrawal_data, experience_reviews, total_reviews, source_str="AskGamblers") -> str:
     """Format scraped player data into a Q&A block matching the review style."""
     parts = []
+    parts.append("")
     parts.append(f"## Q: What do players say about {casino_name}?")
     parts.append("")
     parts.append(
