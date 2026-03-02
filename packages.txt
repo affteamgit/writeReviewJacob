@@ -16,3 +16,4 @@ libcairo2
 libasound2
 libatspi2.0-0
 libxshmfence1
+libxkbcommon0
