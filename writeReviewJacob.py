@@ -402,7 +402,7 @@ def generate_general_player_summary(casino_name, feedback_data):
     prompt = f"""Summarize player sentiment about {casino_name} for a casino review article.
 Data: {total} recent reviews from {source_str}.
 
-SCOPE: Overall experience only (support, reliability, game selection, UX). Do NOT cover payments or withdrawals, that's handled separately.
+SCOPE: Overall experience including support, reliability, game selection, payments, and withdrawals.
 
 RULES:
 - One short paragraph, 50-80 words max. Be direct, no filler.
@@ -421,54 +421,6 @@ REVIEWS:
         return result
     except Exception as e:
         print(f"General player summary AI call failed: {e}")
-        return ""
-
-
-def generate_payments_player_summary(casino_name, feedback_data):
-    """Use Claude to summarize payment-related player reviews for the Payments section."""
-    reviews = feedback_data["reviews"]
-    source_str = feedback_data["source_str"]
-    total = feedback_data["total_count"]
-
-    # Filter to payment-related reviews
-    payment_kw = ['withdrawal', 'withdraw', 'payout', 'cashout', 'deposit',
-                   'payment', 'pending', 'processing', 'kyc', 'verification',
-                   'cash out', 'pay out', 'waiting']
-    payment_reviews = []
-    for rev in reviews:
-        content = (rev.get('text', '') + ' ' + rev.get('title', '')).lower()
-        if any(kw in content for kw in payment_kw):
-            payment_reviews.append(rev)
-
-    if not payment_reviews:
-        return ""
-
-    reviews_text = _prepare_reviews_for_prompt(payment_reviews)
-    if not reviews_text:
-        return ""
-
-    prompt = f"""Summarize what players say about payments and withdrawals at {casino_name} for a casino review article.
-Data: {len(payment_reviews)} payment-related reviews (of {total} total) from {source_str}.
-
-SCOPE: Only withdrawals, deposits, payout speed, KYC, and payment processing. Do NOT repeat general casino opinions.
-
-RULES:
-- One short paragraph, 40-70 words max. Be direct, no filler.
-- Mention the source naturally once (e.g. "feedback on {source_str}").
-- Lead with positive payment experiences. Briefly note issues if relevant, don't dwell.
-- Negative reviews often come from emotional post-loss players, so weigh positives more. Do NOT mention this bias.
-- No em dashes. Use "I" and "you". Bold key points with **asterisks**.
-- Output ONLY the paragraph text, no heading.
-
-REVIEWS:
-{reviews_text}"""
-
-    try:
-        summary = call_claude(prompt)
-        result = f"\n## Q: What do players say about {casino_name} withdrawals?\n\n{summary}"
-        return result
-    except Exception as e:
-        print(f"Payments player summary AI call failed: {e}")
         return ""
 
 
@@ -832,11 +784,6 @@ def main():
                 general_summary = generate_general_player_summary(casino, feedback_data)
                 if general_summary and len(parallel_results) > 0:
                     parallel_results[0] = parallel_results[0].rstrip('\n') + "\n" + general_summary + "\n"
-
-                # AI call for Payments section
-                payments_summary = generate_payments_player_summary(casino, feedback_data)
-                if payments_summary and len(parallel_results) > 1:
-                    parallel_results[1] = parallel_results[1].rstrip('\n') + "\n" + payments_summary + "\n"
             else:
                 print("No player feedback returned")
                 st.session_state.askgamblers_debug = "No player feedback returned"
