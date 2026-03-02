@@ -64,4 +64,4 @@ For each manual comment in this section:
 * Include ALL specific details from comments (numbers, names, exact mechanisms)
 * Never summarize or condense comment information
 * Format new questions to match the style of existing questions in this section
-* New questions must sound like something a real player would search for -- avoid formal or technical phrasing
+* New questions must sound like something a player would search for BEFORE knowing the feature exists. Keep questions broad and natural -- the answer is where you get specific. See CommentIntegrationGuide.txt for examples.

@@ -47,11 +47,16 @@ A: Yes, [casino] is VPN friendly, which means you can access it from restricted 
 - Ensure the question is phrased as it would be asked by a user
 
 Question Formulation Guidelines:
-- Write questions as a real player would type them into a search engine, not as a formal survey question
-- Use natural phrasing: "Can I...", "Is there...", "How does...", "What happens if..."
+- Write questions as a real player would type them into a search engine BEFORE knowing about the feature. The player doesn't know the feature exists yet, so the question should be broad enough that someone would naturally ask it.
+- BAD: "Does TrustDice have their own blockchain token?" -- too specific, no player would ask this without already knowing it exists
 - BAD: "What is the nature of the loyalty program structure?" -- too formal
+- BAD: "How does the Rain feature work in Bombastic's chat?" -- assumes knowledge of a specific feature
+- GOOD: "Are there any unique features at TrustDice?" -- broad, natural, leads to the specific answer
 - GOOD: "Does [casino] have a cashback or loyalty program?" -- natural
 - GOOD: "Can I withdraw without completing KYC?" -- direct, practical
+- GOOD: "What community features does Bombastic offer?" -- broad enough to discover the Rain feature through the answer
+- The ANSWER is where you get specific. The QUESTION should be what a curious player would search for.
+- Use natural phrasing: "Can I...", "Is there...", "How does...", "What happens if...", "Are there any...", "What makes..."
 - Avoid yes/no questions unless they lead to detailed answers
 
 Example comment → Q&A conversion:
@@ -59,14 +64,16 @@ Example comment → Q&A conversion:
 Comment: "The casino offers a unique cashback program that gives 10% daily cashback on losses, no wagering required."
 
 New Q&A:
-Q: Does [casino] offer any unique loyalty or cashback programs?
-A: Yes, [casino] offers a daily cashback program that returns 10% of your losses with no wagering requirements. This is quite player-friendly since you get real money back without having to meet any playthrough conditions.
+Q: Are there any standout promotions at [casino]?
+A: Yes, [casino] offers a daily cashback program that returns 10% of your losses with no wagering requirements. You get real money back without any playthrough conditions.
 
-Comment: "Customer support replies in German and English only, no other languages available."
+Comment: "The casino has its own blockchain token called XYZ on the EOS chain, earnable through play-to-earn."
 
 New Q&A:
-Q: What languages does [casino] customer support handle?
-A: [Casino] customer support operates in German and English only. If you need assistance in other languages, you might face communication barriers. This is more limited than many international casinos that support 5+ languages.
+Q: What unique features does [casino] offer?
+A: [Casino] has its own blockchain token called XYZ, issued on the EOS chain. You can earn it through a play-to-earn system where...
+
+(Note: the question is broad because a player wouldn't know about the token beforehand. The answer then introduces the specific feature.)
 
 **STEP 4: Categorization Rules**
 Place new Q&A pairs in the appropriate section based on topic:
