@@ -2,20 +2,22 @@
 
 ## Q: Can I use a VPN to play in [casino]?
 
-* FIRST, state how many countries are restricted by the casino. If many (over 40), note this is significant. If you're in a restricted country, you're not allowed to use the casino at all.
-* THEN, check the casino's terms and conditions for any VPN-related language:
-  - If the terms explicitly prohibit VPN use or IP masking (e.g., "use of VPN constitutes a breach"), state clearly: "According to [casino]'s terms, using a VPN to bypass geo-restrictions is not allowed and could result in account closure or confiscated funds." Recommend one or two VPN-friendly alternatives from Top Casinos.
-  - If the terms mention detecting IP masking or geo-location but don't explicitly ban VPN use, warn the reader: "[Casino]'s terms mention they can detect IP masking, so using a VPN carries risk even if it's not explicitly banned."
-  - If the terms say nothing about VPN use at all, state: "There's nothing in [casino]'s terms that prohibits VPN use." Keep it brief.
-  - If the terms explicitly allow VPN use, state this clearly.
-* IMPORTANT: Do NOT call a casino "VPN friendly" if the terms prohibit VPN use or IP masking. Only use "VPN friendly" when the terms genuinely allow it or say nothing against it.
+* Include TWO facts: (1) how many countries are restricted, and (2) what the terms say about VPN use. You can present these in any order.
+* If many countries restricted (over 40), note this is significant.
+* Check the casino's terms and conditions for VPN-related language:
+  - If the terms explicitly prohibit VPN use or IP masking: state this clearly and warn about consequences (account closure, confiscated funds). Recommend one or two VPN-friendly alternatives from Top Casinos.
+  - If the terms mention detecting IP masking but don't explicitly ban VPN: warn the reader that using a VPN carries risk.
+  - If the terms say nothing about VPN use: convey that the terms don't prohibit it. Do NOT always use the exact phrase "There's nothing in [casino]'s terms that prohibits VPN use." Vary the wording each time, e.g.: "their terms don't mention any VPN restrictions", "VPN use isn't addressed in the terms", "nothing in the T&Cs blocks VPN access", "the terms are silent on VPN use".
+  - If the terms explicitly allow VPN use: state this clearly.
+* IMPORTANT: Do NOT call a casino "VPN friendly" if the terms prohibit VPN use or IP masking.
+* Do NOT add closing sentences like "This makes [casino] accessible for players who..." -- the facts speak for themselves.
 * Do NOT add generic sentences about VPN benefits. Stick to what the terms say.
-* Use short sentences, maximum 20 words per sentence, no more than 4 sentences total.
+* 2-3 sentences max. No filler.
 
 ## Q: Can I stay anonymous?
 
-* If the casino is anonymous (email-only registration), state this in one sentence. Mention what personal info is NOT required.
-* If the casino isn't anonymous, state what information is required beyond email (e.g., full name, address, date of birth, documents). Recommend one or two anonymous alternatives from Top Casinos.
+* If anonymous (email-only): state this in one sentence. Mention what's NOT required. Vary the wording -- do NOT always write "offers anonymous registration requiring only your email address." Alternatives: "you only need an email to sign up", "registration is email-only", "no personal details needed beyond email", etc.
+* If not anonymous: state what's required beyond email. Recommend one or two anonymous alternatives from Top Casinos.
 * IMPORTANT - Check the casino's terms for KYC activation thresholds:
   - If specific thresholds are mentioned (withdrawal amounts, deposit amounts, etc.), state these thresholds clearly so the reader knows when KYC might be triggered. Include this in the anonymity answer.
   - If the casino has the standard "we reserve the right to require KYC" language in a typical way, ignore it and don't mention it.

@@ -1,5 +1,6 @@
 - Write concise answers. Aim for 2-3 sentences per answer. Only go longer if the question genuinely requires more detail (e.g., listing multiple features).
 - Do not pad answers with "why this matters to you" filler sentences. State the fact, comment on it briefly, compare if needed, done.
+- CRITICAL -- CROSS-REVIEW VARIABILITY: These reviews are published side by side. If two casinos share a similar feature, the answers MUST read differently. Never use the same sentence structure, opener, or phrasing for the same question across different casinos. Vary sentence order, word choice, and how you frame the same fact. The template tells you WHAT to say, not HOW to say it. Each review should feel like it was written fresh, not from a template.
 - Do not include heading/titles for the Q&A sections - the questions themselves serve as headers.
 - Maintain a professional but conversational tone.
 - ONLY When writing answers for payments and games sections, use commas for grouping numbers by thousands.

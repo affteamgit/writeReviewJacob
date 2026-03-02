@@ -2,10 +2,11 @@
 
 ## Q: How many games are in [casino]?
 
-* State the number of games in the casino, then comment on the number based on the following criteria (but do not mention the criteria): anything over 7,000 games is a lot, anything below 5,000 games is low and can be improved, everything in between is average.
-* If the casino has LESS than 5,000 games: Recommend a casino from Top Casinos that has more than 7,000 games as a better alternative.
-* If the casino has 7,000 games or MORE: Compare it to a well-known casino with a lower number of games to show that this number is actually quite good. This helps put the large game count into perspective for the reader.
-* Keep commentary brief. State the fact, comment on it, compare if needed. No "why this matters to you" filler. Use short sentences, maximum 20 words per sentence.
+* State the number of games and comment on it (do not mention the criteria): over 7,000 = a lot, below 5,000 = low, in between = average.
+* If less than 5,000: recommend a casino from Top Casinos with more than 7,000 as an alternative.
+* If 7,000 or more: compare to a casino with fewer games to show this is impressive.
+* Vary how you frame the game count. Do NOT always use "which falls below what I'd consider a strong game library" or "which is quite impressive." Find a fresh way to say it each time.
+* Keep it brief. State fact, comment, compare if needed. No filler. Max 20 words per sentence.
 
 ## Q: Can I find games from most popular game providers?
 
@@ -30,7 +31,7 @@
 * CROSS-CHECK: Before referencing BGaming, Spribe, or Turbogaming as offering provably fair games, verify that the provider actually appears in the casino's provider list. Do NOT say "provably fair games through BGaming" if BGaming was listed as MISSING in the providers question. Your answers must be consistent with each other.
 * If the casino has Originals: State how many Originals the casino has. List the most popular Original titles by name. In addition to the most popular ones, mention which additional Originals are available. Point to the casino's originals page to get all this information.
 * Briefly commend the casino for having Originals in 1-2 sentences. Do not list multiple generic benefits. Use short sentences, maximum 20 words per sentence.
-* DO NOT say that Originals are connected to provably fair games. Instead, if the casino has provably fair games through the three providers mentioned (BGaming, Spribe, Turbogaming), state which of these game providers the casino has that offer provably fair games. Explain the benefit of provably fair games to the reader.
+* DO NOT say that Originals are connected to provably fair games. Instead, if the casino has provably fair games through the three providers mentioned (BGaming, Spribe, Turbogaming), state which of these providers the casino has. Mention provably fair benefits briefly (1 sentence max) and vary the wording -- do NOT always write "verify each game result's fairness mathematically" or "gives you confidence that the games aren't rigged against you."
 * IMPORTANT: If the casino has NO Originals AND NO provably fair games (through providers or otherwise), DO NOT ANSWER THIS QUESTION AT ALL. Skip it entirely.
 
 ## Q: Can I search for games based on RTP or volatility?

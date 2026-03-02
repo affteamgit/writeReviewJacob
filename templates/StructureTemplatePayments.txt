@@ -2,9 +2,9 @@
 
 ## Q: How long can withdrawal take?
 
-* FIRST, state that withdrawals should ideally be instant for crypto casinos.
+* Convey that crypto casino withdrawals should ideally be instant, but vary how you say this each time. Do NOT always open with "Withdrawals should ideally be instant for crypto casinos." Use different framings.
 * If there is manual verification or processing required, mention the timeframe from the spreadsheet data.
-* IMPORTANT: You must explicitly state that the mentioned withdrawal timeframes apply to cases where the casino needs to manually process the withdrawal. Use phrases like "In cases where manual processing is needed" or "When the casino manually reviews your withdrawal" or "If your withdrawal requires manual processing" before stating the timeframe.
+* Make clear that the timeframes apply to manual processing cases. Vary the phrasing -- do NOT always write "In cases where manual processing is needed." Alternatives: "When manual review is required", "If your withdrawal gets flagged for manual processing", "For manually processed withdrawals", etc.
 * PREFER EXACT FIGURES: If the casino data provides a specific number (e.g., "24 hours", "48 hours", "up to 2 hours"), use that exact figure -- do NOT replace it with a vague phrase. For example, write "up to 48 hours" instead of "a couple of days".
 * Only use the vague phrases below as a FALLBACK when no exact figure is available in the data:
   - Less than 12 hours: "a matter of hours" / "within a few hours"
@@ -38,7 +38,7 @@
 * If the terms use deliberately vague language (e.g., "reasonable time", "as soon as practicable") with no concrete number, flag this: the casino avoids committing to a specific verification deadline, which gives them flexibility to delay.
 * If the terms mention "business days" for processing: Note that this prolongs the process even more since it excludes weekends and holidays.
 * DISTINGUISH between two different timeframes if present: (1) the deadline for YOU to submit documents after being asked, and (2) the time the CASINO takes to review your documents. Only the casino's review time matters for this question. Do not confuse these two.
-* IMPORTANT: You must explicitly state in the answer that the mentioned KYC verification timeframes apply to cases where the casino needs to manually review the verification documents. Use phrases like "In cases where manual verification is needed" or "When the casino manually reviews your documents" or "If your verification requires manual processing" before stating the timeframe.
+* Make clear that the KYC timeframes apply to manual review cases. Vary the phrasing across reviews -- do NOT always use the same "In cases where manual verification is needed" opener.
 * Only use the vague phrases below as a FALLBACK when no exact figure is available in the data:
   - Less than 12 hours: "within a few hours" -- this is really good.
   - 12-24 hours: "less than 24 hours" / "less than a day" -- this is good and above average.
@@ -59,12 +59,12 @@
 
 ## Q: Can I deposit different altcoins?
 
-* State how many cryptocurrencies the casino accepts.
-* If the casino accepts more than 15 cryptocurrencies, say that this is an above average number and offer 1 brand that accepts similar or more cryptocurrencies from Similar Casinos.
-* If the casino accepts less than 5 cryptocurrencies, say that such a low number can hardly qualify the casino to be called a 'crypto casino'.
-* If the casino accepts 5 to 15 cryptocurrencies, say that this is an average number found in most crypto casinos.
-* If the casino accepts less than 15 cryptocurrencies, advise the reader to double-check that their currency is supported and recommend 1 or 2 casinos that accept more cryptocurrencies taken from the Top Casinos.
-* If the Buy crypto option is available in the casino, mention that the casino supports this feature. Despite not being ideal for buying crypto this way due to additional fees, it can still be less hassle if you run out of crypto and don't have to move back and forth between the casino and an exchange.
+* State how many cryptocurrencies the casino accepts and comment on the number:
+  - More than 15: above average. Offer 1 brand with similar or more from Similar Casinos.
+  - 5 to 15: average. Advise checking if their currency is supported. Recommend 1-2 with more from Top Casinos.
+  - Less than 5: very low, hardly qualifies as a crypto casino.
+* Vary how you describe the count. Do NOT always use "above average number" or "average number found in most crypto casinos." Rephrase naturally each time.
+* If Buy crypto is available, mention it briefly. It's convenient despite fees.
 * If the Crypto Swap feature is available in the casino, mention it as something very unique and useful. Very few casinos offer this and it can mean that players can play with virtually any token that's supported by the conversion tool. They can also deposit in one cryptocurrency and withdraw in another.
 * IMPORTANT: Only mention Buy crypto or Crypto Swap features if they are actually available. Do NOT mention them if they are not available.
 
