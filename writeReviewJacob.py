@@ -331,7 +331,7 @@ def scrape_askgamblers_player_feedback(casino_name: str) -> str:
     or an empty string if no relevant reviews are found or on any error.
     """
     try:
-        scraper = AskGamblersScraper(timeout=15)
+        scraper = AskGamblersScraper(timeout=30)
         review_data = scraper.scrape_casino_reviews(casino_name, max_reviews=50, months=6)
 
         reviews = review_data.get('reviews', [])
@@ -370,7 +370,9 @@ def scrape_askgamblers_player_feedback(casino_name: str) -> str:
             casino_name, withdrawal_data, relevant_reviews, len(reviews)
         )
     except Exception as e:
+        import traceback
         print(f"AskGamblers scrape failed for {casino_name}: {e}")
+        traceback.print_exc()
         return ""
 
 
@@ -783,16 +785,18 @@ def main():
             # Generate all sections in parallel + scrape AskGamblers in background
             progress_placeholder.markdown("## Generating review sections in parallel...")
 
-            with concurrent.futures.ThreadPoolExecutor(max_workers=1) as bg_executor:
-                askgamblers_future = bg_executor.submit(scrape_askgamblers_player_feedback, casino)
+            bg_executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+            askgamblers_future = bg_executor.submit(scrape_askgamblers_player_feedback, casino)
 
             parallel_results = generate_sections_parallel(casino, secs, sorted_comments, templates, btc_str)
 
             # Collect AskGamblers result (should be done by now since sections take longer)
             try:
-                askgamblers_qa = askgamblers_future.result(timeout=30)
+                askgamblers_qa = askgamblers_future.result(timeout=90)
             except Exception:
                 askgamblers_qa = ""
+            finally:
+                bg_executor.shutdown(wait=False)
 
             # Append player feedback to Payments section (index 1 in section_order)
             if askgamblers_qa and len(parallel_results) > 1:
