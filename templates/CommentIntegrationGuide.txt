@@ -40,11 +40,12 @@ Q: Can I use a VPN to play in [casino]?
 A: Yes, [casino] is VPN friendly, which means you can access it from restricted regions. However, I noticed that VPN connections can drop occasionally, which might interrupt your gaming session.
 
 **STEP 3b: If No Match Found - Create New Q&A Pair**
-- Formulate a clear, specific question based on the comment topic
+- Formulate a BROAD, GENERAL question that a player would naturally ask WITHOUT knowing the specific feature exists. The comment reveals the answer, but the question should be something a curious player would search for.
+- WRONG approach: comment about a blockchain token → "Does [casino] have a blockchain token?" (too specific, assumes knowledge)
+- RIGHT approach: comment about a blockchain token → "Are there any unique reward systems at [casino]?" or "What special features does [casino] offer?" (broad, discoverable)
 - Write a complete answer using all information from the comment
 - Follow the same question format as other questions in that section
 - Place the new Q&A pair under the "+ questions/answers from manual comments" section
-- Ensure the question is phrased as it would be asked by a user
 
 Question Formulation Guidelines:
 - Write questions as a real player would type them into a search engine BEFORE knowing about the feature. The player doesn't know the feature exists yet, so the question should be broad enough that someone would naturally ask it.

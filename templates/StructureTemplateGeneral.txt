@@ -56,12 +56,12 @@ For each manual comment in this section:
 2. If YES: Add the comment information to that existing question's answer - DO NOT create a new Q&A
 3. If NO: Create a NEW Q&A pair below using this format:
 
-## Q: [Formulate a clear question based on the comment]?
+## Q: [Write a BROAD question a player would ask WITHOUT knowing the feature exists]?
 
 [Write a complete answer using ALL information from the comment, maintaining the same tone and style as other answers]
 
 * All manual comments MUST be addressed - either integrated into existing Q&A pairs OR converted into new Q&A pairs
 * Include ALL specific details from comments (numbers, names, exact mechanisms)
 * Never summarize or condense comment information
-* Format new questions to match the style of existing questions in this section
-* New questions must sound like something a player would search for BEFORE knowing the feature exists. Keep questions broad and natural -- the answer is where you get specific. See CommentIntegrationGuide.txt for examples.
+* QUESTION RULES: The question must be something a player would naturally search for BEFORE discovering the feature. Do NOT put the specific feature name in the question. Keep it broad -- "What unique features does [casino] offer?", "Are there any special promotions?", "What sets [casino] apart?" The ANSWER is where you reveal the specifics.
+* Also consider GROUPING related comments into a single broader Q&A instead of creating one question per comment. For example, 3 comments about loyalty/tokens/gamification can become one Q&A: "What reward and gamification features does [casino] have?"

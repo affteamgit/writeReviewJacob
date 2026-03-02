@@ -77,11 +77,12 @@ For each manual comment in this section:
 2. If YES: Add the comment information to that existing question's answer - DO NOT create a new Q&A
 3. If NO: Create a NEW Q&A pair below using this format:
 
-## Q: [Formulate a clear question based on the comment]?
+## Q: [Write a BROAD question a player would ask WITHOUT knowing the feature exists]?
 
 [Write a complete answer using ALL information from the comment, maintaining the same tone and style as other answers]
 
 * All manual comments MUST be addressed - either integrated into existing Q&A pairs OR converted into new Q&A pairs
 * Include ALL specific details from comments (numbers, names, exact mechanisms)
 * Never summarize or condense comment information
-* Format new questions to match the style of existing questions in this section
+* QUESTION RULES: The question must be something a player would naturally search for BEFORE discovering the feature. Do NOT put the specific feature name in the question. Keep it broad. The ANSWER is where you reveal the specifics.
+* Group related comments into a single broader Q&A when possible.
