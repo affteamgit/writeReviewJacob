@@ -793,10 +793,17 @@ def main():
             # Collect AskGamblers result (should be done by now since sections take longer)
             try:
                 askgamblers_qa = askgamblers_future.result(timeout=90)
-            except Exception:
+            except Exception as e:
                 askgamblers_qa = ""
+                print(f"AskGamblers future failed: {e}")
             finally:
                 bg_executor.shutdown(wait=False)
+
+            # DEBUG: show scraper result in UI
+            if askgamblers_qa:
+                st.success(f"AskGamblers: got player feedback ({len(askgamblers_qa)} chars)")
+            else:
+                st.warning("AskGamblers: no player feedback returned (check logs)")
 
             # Append player feedback to Payments section (index 1 in section_order)
             if askgamblers_qa and len(parallel_results) > 1:

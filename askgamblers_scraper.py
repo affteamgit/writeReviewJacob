@@ -5,9 +5,25 @@ to bypass anti-bot protection.
 """
 
 import subprocess
+import sys
 import re
 from datetime import datetime, timedelta
 from typing import List, Dict
+
+
+def _install_chromium():
+    """Install Playwright Chromium browser binary if not already present."""
+    try:
+        subprocess.run(
+            [sys.executable, "-m", "playwright", "install", "chromium"],
+            check=True,
+            capture_output=True,
+            timeout=120,
+        )
+        print("Playwright Chromium installed successfully")
+    except Exception as e:
+        print(f"Failed to install Playwright Chromium: {e}")
+        raise
 
 
 class AskGamblersScraper:
@@ -29,13 +45,9 @@ class AskGamblersScraper:
 
         try:
             self._browser = self._playwright.chromium.launch(headless=True)
-        except Exception:
-            # Browser binary not installed yet -- install and retry
-            subprocess.run(
-                ["python3", "-m", "playwright", "install", "chromium"],
-                check=True,
-                capture_output=True,
-            )
+        except Exception as e:
+            print(f"Browser launch failed ({e}), installing Chromium...")
+            _install_chromium()
             self._browser = self._playwright.chromium.launch(headless=True)
 
         self._context = self._browser.new_context(
