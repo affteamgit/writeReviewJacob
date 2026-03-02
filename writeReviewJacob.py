@@ -399,23 +399,20 @@ def generate_general_player_summary(casino_name, feedback_data):
     if not reviews_text:
         return ""
 
-    prompt = f"""You are writing a section for a casino review article about {casino_name}.
-Summarize what players say about {casino_name} based on {total} recent reviews from {source_str}.
+    prompt = f"""Summarize player sentiment about {casino_name} for a casino review article.
+Data: {total} recent reviews from {source_str}.
+
+SCOPE: Overall experience only (support, reliability, game selection, UX). Do NOT cover payments or withdrawals, that's handled separately.
 
 RULES:
-- Write 2-3 short paragraphs as a Q&A answer (the question is "What do players say about {casino_name}?")
-- Start with something like "Based on {total} recent player reviews from {source_str}, ..."
-- Focus primarily on what players praise (good support, fast payouts, game variety, etc.)
-- Lightly mention common complaints if any exist, but don't dwell on them
-- Keep in mind many negative reviews come from emotional post-loss players, so weigh positives more heavily
-- Do NOT mention that players might be biased or salty -- just focus on the actual feedback
-- Do NOT use em dashes (use commas or periods instead)
-- Use first person "I" and address the reader as "you"
-- Bold key highlights with **double asterisks**
-- Keep it concise, 80-150 words total
-- Do NOT include the question heading, just the answer text
+- One short paragraph, 50-80 words max. Be direct, no filler.
+- Mention the source naturally once (e.g. "players on {source_str}").
+- Lead with what players praise. Briefly note complaints if relevant, don't dwell.
+- Negative reviews often come from emotional post-loss players, so weigh positives more. Do NOT mention this bias.
+- No em dashes. Use "I" and "you". Bold key points with **asterisks**.
+- Output ONLY the paragraph text, no heading.
 
-PLAYER REVIEWS:
+REVIEWS:
 {reviews_text}"""
 
     try:
@@ -450,23 +447,20 @@ def generate_payments_player_summary(casino_name, feedback_data):
     if not reviews_text:
         return ""
 
-    prompt = f"""You are writing a section for a casino review article about {casino_name}.
-Summarize what players say about payments and withdrawals at {casino_name} based on player reviews from {source_str}.
+    prompt = f"""Summarize what players say about payments and withdrawals at {casino_name} for a casino review article.
+Data: {len(payment_reviews)} payment-related reviews (of {total} total) from {source_str}.
+
+SCOPE: Only withdrawals, deposits, payout speed, KYC, and payment processing. Do NOT repeat general casino opinions.
 
 RULES:
-- Write 1-2 short paragraphs as a Q&A answer (the question is "What do players say about {casino_name} withdrawals?")
-- Start with something like "Based on player feedback from {source_str}, ..."
-- Focus primarily on positive payment experiences (fast payouts, smooth processing, etc.)
-- Lightly mention withdrawal complaints if they exist, but don't overemphasize them
-- Keep in mind many negative reviews come from emotional post-loss players, so weigh positives more heavily
-- Do NOT mention that players might be biased or salty -- just focus on the actual feedback
-- Do NOT use em dashes (use commas or periods instead)
-- Use first person "I" and address the reader as "you"
-- Bold key highlights with **double asterisks**
-- Keep it concise, 60-120 words total
-- Do NOT include the question heading, just the answer text
+- One short paragraph, 40-70 words max. Be direct, no filler.
+- Mention the source naturally once (e.g. "feedback on {source_str}").
+- Lead with positive payment experiences. Briefly note issues if relevant, don't dwell.
+- Negative reviews often come from emotional post-loss players, so weigh positives more. Do NOT mention this bias.
+- No em dashes. Use "I" and "you". Bold key points with **asterisks**.
+- Output ONLY the paragraph text, no heading.
 
-PAYMENT-RELATED PLAYER REVIEWS ({len(payment_reviews)} of {total} total reviews):
+REVIEWS:
 {reviews_text}"""
 
     try:
