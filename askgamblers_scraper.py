@@ -1,211 +1,294 @@
 """
 AskGamblers Scraper Module
-Scrapes casino reviews from AskGamblers to gather player experiences
+Scrapes casino reviews from AskGamblers using Playwright headless browser
+to bypass anti-bot protection.
 """
 
-import requests
-from bs4 import BeautifulSoup
-from datetime import datetime, timedelta
-from typing import List, Dict, Optional, Tuple
-import time
+import subprocess
 import re
-from urllib.parse import quote
+from datetime import datetime, timedelta
+from typing import List, Dict
 
 
 class AskGamblersScraper:
-    """
-    Scraper for extracting casino reviews from AskGamblers
-    """
-
     BASE_URL = "https://www.askgamblers.com"
-    SEARCH_URL = f"{BASE_URL}/search"
 
     def __init__(self, timeout: int = 10):
-        """
-        Initialize the scraper
+        self.timeout = timeout * 1000  # Playwright uses milliseconds
+        self._playwright = None
+        self._browser = None
+        self._context = None
 
-        Args:
-            timeout: Request timeout in seconds (default: 10)
-        """
-        self.timeout = timeout
-        self.session = requests.Session()
-        self.session.headers.update({
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
-            'Accept-Language': 'en-US,en;q=0.9',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Cache-Control': 'max-age=0',
-            'Sec-Ch-Ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"',
-            'Sec-Ch-Ua-Mobile': '?0',
-            'Sec-Ch-Ua-Platform': '"Windows"',
-            'Sec-Fetch-Dest': 'document',
-            'Sec-Fetch-Mode': 'navigate',
-            'Sec-Fetch-Site': 'none',
-            'Sec-Fetch-User': '?1',
-            'Upgrade-Insecure-Requests': '1',
-            'Referer': 'https://www.google.com/'
-        })
+    def _ensure_browser(self):
+        if self._browser is not None:
+            return
+
+        from playwright.sync_api import sync_playwright
+
+        self._playwright = sync_playwright().start()
+
+        try:
+            self._browser = self._playwright.chromium.launch(headless=True)
+        except Exception:
+            # Browser binary not installed yet -- install and retry
+            subprocess.run(
+                ["python3", "-m", "playwright", "install", "chromium"],
+                check=True,
+                capture_output=True,
+            )
+            self._browser = self._playwright.chromium.launch(headless=True)
+
+        self._context = self._browser.new_context(
+            user_agent=(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/131.0.0.0 Safari/537.36"
+            ),
+            viewport={"width": 1920, "height": 1080},
+        )
+
+    def _cleanup(self):
+        if self._context:
+            self._context.close()
+            self._context = None
+        if self._browser:
+            self._browser.close()
+            self._browser = None
+        if self._playwright:
+            self._playwright.stop()
+            self._playwright = None
 
     def search_casino(self, casino_name: str) -> List[Dict]:
-        """
-        Search for a casino on AskGamblers by name
-
-        Args:
-            casino_name: Name of the casino (e.g., "stake", "bc.game")
-
-        Returns:
-            List of search results with their URLs and names
-        """
         try:
-            # Clean casino name for search (remove .com, .io, etc.)
-            search_term = re.sub(r'\.(com|io|net|org|casino)$', '', casino_name.lower())
+            self._ensure_browser()
 
-            results = []
+            search_term = (
+                re.sub(r"\.(com|io|net|org|casino)$", "", casino_name.lower())
+                .replace(" ", "-")
+                .replace(".", "-")
+            )
+            # Remove any non-alphanumeric chars except hyphens (mirrors extension)
+            search_term = re.sub(r"[^a-z0-9-]", "", search_term)
+
+            possible_urls = [
+                f"{self.BASE_URL}/online-casinos/reviews/{search_term}-casino",
+                f"{self.BASE_URL}/online-casinos/reviews/{search_term}",
+                f"{self.BASE_URL}/reviews/{search_term}-casino",
+                f"{self.BASE_URL}/reviews/{search_term}",
+            ]
 
             print(f"Searching AskGamblers for: {casino_name}")
 
-            # Try constructing direct URL patterns (most reliable)
-            possible_urls = [
-                f"{self.BASE_URL}/online-casinos/reviews/{search_term}-casino-review",
-                f"{self.BASE_URL}/online-casinos/reviews/{search_term}-review",
-                f"{self.BASE_URL}/online-casinos/{search_term}-casino",
-                f"{self.BASE_URL}/online-casinos/reviews/{search_term}",
-            ]
+            page = self._context.new_page()
+            try:
+                for url in possible_urls:
+                    try:
+                        print(f"Trying URL: {url}")
+                        page.goto(url, wait_until="domcontentloaded", timeout=self.timeout)
+                        page.wait_for_timeout(3000)
 
-            # Try each possible URL pattern
-            for url in possible_urls:
-                try:
-                    print(f"Trying URL: {url}")
-                    time.sleep(1)  # Small delay between attempts
+                        # Current site uses #reviews section with div[id^="review-"] cards
+                        review_section = page.query_selector("#reviews")
+                        if review_section:
+                            print(f"Found working URL: {url}")
+                            return [{"url": url, "name": search_term, "matches": True}]
+                        else:
+                            print(f"No #reviews section at {url}")
 
-                    response = self.session.get(url, timeout=self.timeout, allow_redirects=True)
+                    except Exception as e:
+                        print(f"Failed to load {url}: {str(e)[:100]}")
+                        continue
+            finally:
+                page.close()
 
-                    if response.status_code == 200:
-                        # Verify it's a valid casino page
-                        soup = BeautifulSoup(response.content, 'html.parser')
-
-                        # Check if page has review content
-                        has_reviews = (
-                            soup.find('div', class_=re.compile(r'.*review.*', re.IGNORECASE)) or
-                            soup.find('article', class_=re.compile(r'.*review.*', re.IGNORECASE)) or
-                            soup.find(string=re.compile(r'user.*review', re.IGNORECASE))
-                        )
-
-                        if has_reviews:
-                            results.append({
-                                'url': response.url,
-                                'name': search_term,
-                                'matches': True
-                            })
-                            print(f"✓ Found working URL: {response.url}")
-                            return results
-                    else:
-                        print(f"✗ Status {response.status_code}")
-
-                except requests.exceptions.RequestException as e:
-                    print(f"✗ Request failed: {str(e)[:100]}")
-                    continue
-                except Exception as e:
-                    print(f"✗ Error: {str(e)[:100]}")
-                    continue
-
-            # If all direct attempts fail, return empty
-            if not results:
-                print("Could not find casino page with direct URLs")
-                print("Note: AskGamblers may have anti-scraping protection active")
-
-            return results
+            print("Could not find casino page with any URL pattern")
+            return []
 
         except Exception as e:
             print(f"Error searching for casino: {e}")
             return []
 
-    def verify_casino_on_page(self, url: str, expected_name: str) -> bool:
-        """
-        Verify the casino name on the review page matches expected name
+    def scrape_casino_reviews(
+        self,
+        casino_name: str,
+        max_reviews: int = 50,
+        months: int = 6,
+    ) -> Dict:
+        print(f"\n{'='*60}")
+        print(f"Starting AskGamblers scrape for: {casino_name}")
+        print(f"{'='*60}\n")
 
-        Args:
-            url: URL of the AskGamblers review page
-            expected_name: Expected casino name
-
-        Returns:
-            True if casino matches, False otherwise
-        """
         try:
-            response = self.session.get(url, timeout=self.timeout)
-            response.raise_for_status()
+            search_results = self.search_casino(casino_name)
 
-            soup = BeautifulSoup(response.content, 'html.parser')
+            if not search_results:
+                return {
+                    "casino_name": casino_name,
+                    "reviews": [],
+                    "total_count": 0,
+                    "error": "No results found on AskGamblers",
+                }
 
-            # Look for casino name in multiple places
-            # 1. Check page title
-            title = soup.find('title')
-            if title and expected_name.lower() in title.get_text().lower():
-                return True
+            target_url = search_results[0]["url"]
 
-            # 2. Check h1 heading
-            h1 = soup.find('h1')
-            if h1 and expected_name.lower() in h1.get_text().lower():
-                return True
+            self._ensure_browser()
+            page = self._context.new_page()
 
-            # 3. Check meta tags
-            meta_title = soup.find('meta', property='og:title')
-            if meta_title:
-                content = meta_title.get('content', '')
-                if expected_name.lower() in content.lower():
-                    return True
+            try:
+                print(f"Navigating to {target_url}")
+                page.goto(target_url, wait_until="domcontentloaded", timeout=self.timeout)
+                page.wait_for_timeout(3000)
 
-            # 4. Check URL
-            if expected_name.lower() in url.lower():
-                return True
+                review_section = page.query_selector("#reviews")
+                if not review_section:
+                    print("Review section not found on page")
+                    return {
+                        "casino_name": casino_name,
+                        "reviews": [],
+                        "total_count": 0,
+                        "askgamblers_url": target_url,
+                        "error": "Review section not found",
+                    }
 
-            return False
+                # Reviews are div elements with id="review-<hash>"
+                review_cards = page.query_selector_all("div[id^='review-']")
+                print(f"Found {len(review_cards)} review cards")
 
-        except Exception as e:
-            print(f"Error verifying casino: {e}")
-            return False
+                all_reviews = []
+
+                for idx, card in enumerate(review_cards):
+                    if len(all_reviews) >= max_reviews:
+                        break
+
+                    try:
+                        # Date -- secondary color span inside user info
+                        date_elem = card.query_selector("span.body-compact-01.text--secondary-color")
+                        if not date_elem:
+                            continue
+                        date_str = date_elem.inner_text().strip()
+
+                        if not self.is_review_recent(date_str, months):
+                            continue
+
+                        # Rating -- heading-compact-02 inside .review__user-rating (out of 10)
+                        rating = None
+                        rating_elem = card.query_selector(".review__user-rating .heading-compact-02")
+                        if rating_elem:
+                            try:
+                                rating = float(rating_elem.inner_text().strip())
+                            except ValueError:
+                                pass
+
+                        # Author -- primary color span inside user info
+                        author = "Anonymous"
+                        author_elem = card.query_selector("span.heading-compact-01.text--primary-color")
+                        if author_elem:
+                            author = author_elem.inner_text().strip()
+
+                        # Text -- pros/cons identified by thumbs-up/down icons
+                        # Each .review__comment-wrapper has an icon followed by a <p>
+                        text = ""
+                        title = ""
+
+                        comment_wrappers = card.query_selector_all(".review__comment-wrapper")
+                        for wrapper in comment_wrappers:
+                            has_thumbs_up = wrapper.query_selector(".icon-aph-thumbs-up")
+                            has_thumbs_down = wrapper.query_selector(".icon-aph-thumbs-down")
+                            text_elem = wrapper.query_selector("p.review__comment-text")
+
+                            if text_elem:
+                                comment_text = text_elem.inner_text().strip()
+                                if not comment_text:
+                                    continue
+
+                                if has_thumbs_up:
+                                    prefix = "Pros: "
+                                elif has_thumbs_down:
+                                    prefix = "Cons: "
+                                else:
+                                    prefix = ""
+
+                                if text:
+                                    text += "\n\n"
+                                text += f"{prefix}{comment_text}"
+
+                        if text or title:
+                            all_reviews.append(
+                                {
+                                    "date": date_str,
+                                    "rating": rating,
+                                    "title": title,
+                                    "text": text,
+                                    "author": author,
+                                    "full_content": f"{title} {text}".strip(),
+                                }
+                            )
+
+                    except Exception as e:
+                        print(f"Error parsing review card {idx}: {e}")
+                        continue
+
+            finally:
+                page.close()
+
+        finally:
+            self._cleanup()
+
+        all_reviews = all_reviews[:max_reviews]
+
+        result = {
+            "casino_name": casino_name,
+            "reviews": all_reviews,
+            "total_count": len(all_reviews),
+            "askgamblers_url": target_url,
+            "scraped_at": datetime.now().isoformat(),
+        }
+
+        print(f"\n{'='*60}")
+        print(f"Scraping complete: {len(all_reviews)} reviews collected")
+        print(f"{'='*60}\n")
+
+        return result
 
     def is_review_recent(self, date_str: str, months: int = 6) -> bool:
-        """
-        Check if a review date is within the specified months
-
-        Args:
-            date_str: Date string from review
-            months: Number of months to check (default: 6)
-
-        Returns:
-            True if review is recent, False otherwise
-        """
         try:
             cutoff_date = datetime.now() - timedelta(days=months * 30)
 
-            # Try to parse various date formats
             date_formats = [
-                '%Y-%m-%dT%H:%M:%S.%fZ',  # ISO 8601 with milliseconds
-                '%Y-%m-%dT%H:%M:%SZ',      # ISO 8601 without milliseconds
-                '%Y-%m-%d',
-                '%B %d, %Y',
-                '%b %d, %Y',
-                '%d %B %Y',
-                '%d %b %Y',
-                '%d/%m/%Y',
-                '%m/%d/%Y',
+                "%Y-%m-%dT%H:%M:%S.%fZ",
+                "%Y-%m-%dT%H:%M:%SZ",
+                "%Y-%m-%d",
+                "%B %d, %Y",
+                "%b %d, %Y",
+                "%d %B %Y",
+                "%d %b %Y",
+                "%d/%m/%Y",
+                "%m/%d/%Y",
             ]
 
-            # Handle relative dates
             lower_date = date_str.lower()
-            if any(word in lower_date for word in ['today', 'yesterday', 'day ago', 'days ago']):
+            if any(
+                word in lower_date
+                for word in ["today", "yesterday", "day ago", "days ago"]
+            ):
                 return True
-            if 'hour' in lower_date or 'minute' in lower_date:
+            if "hour" in lower_date or "minute" in lower_date:
                 return True
-            if 'week' in lower_date:
-                weeks = int(re.search(r'\d+', date_str).group()) if re.search(r'\d+', date_str) else 1
+            if "week" in lower_date:
+                weeks = (
+                    int(re.search(r"\d+", date_str).group())
+                    if re.search(r"\d+", date_str)
+                    else 1
+                )
                 return weeks <= (months * 4)
-            if 'month' in lower_date:
-                mons = int(re.search(r'\d+', date_str).group()) if re.search(r'\d+', date_str) else 1
+            if "month" in lower_date:
+                mons = (
+                    int(re.search(r"\d+", date_str).group())
+                    if re.search(r"\d+", date_str)
+                    else 1
+                )
                 return mons <= months
 
-            # Try parsing exact dates
             review_date = None
             for fmt in date_formats:
                 try:
@@ -223,267 +306,10 @@ class AskGamblersScraper:
             print(f"Error parsing date '{date_str}': {e}")
             return False
 
-    def scrape_reviews_from_page(self, url: str, months: int = 6) -> Tuple[List[Dict], bool]:
-        """
-        Scrape reviews from a single AskGamblers page
-
-        Args:
-            url: URL of the AskGamblers review page
-            months: Only include reviews from last N months
-
-        Returns:
-            Tuple of (list of reviews, whether last review is recent)
-        """
-        try:
-            print(f"Scraping reviews from: {url}")
-            response = self.session.get(url, timeout=self.timeout)
-            response.raise_for_status()
-
-            soup = BeautifulSoup(response.content, 'html.parser')
-
-            reviews = []
-
-            # Try multiple selectors for review cards
-            review_cards = soup.find_all('div', class_=re.compile(r'.*review.*card.*', re.IGNORECASE))
-
-            if not review_cards:
-                review_cards = soup.find_all('div', class_=re.compile(r'.*user.*review.*', re.IGNORECASE))
-
-            if not review_cards:
-                review_cards = soup.find_all('article', class_=re.compile(r'.*review.*', re.IGNORECASE))
-
-            if not review_cards:
-                # Try finding by data attributes
-                review_cards = soup.find_all('div', attrs={'data-review': True})
-
-            last_review_is_recent = False
-
-            for idx, card in enumerate(review_cards):
-                try:
-                    # Extract date
-                    date_elem = card.find('time')
-                    if not date_elem:
-                        date_elem = card.find('span', class_=re.compile(r'.*date.*', re.IGNORECASE))
-                    if not date_elem:
-                        date_elem = card.find('div', class_=re.compile(r'.*date.*', re.IGNORECASE))
-
-                    date_str = date_elem.get('datetime') if date_elem and date_elem.get('datetime') else (
-                        date_elem.get_text().strip() if date_elem else ''
-                    )
-
-                    if not date_str:
-                        continue
-
-                    is_recent = self.is_review_recent(date_str, months)
-
-                    # Track if last review is recent
-                    if idx == len(review_cards) - 1:
-                        last_review_is_recent = is_recent
-
-                    # Only include recent reviews
-                    if not is_recent:
-                        continue
-
-                    # Extract rating (AskGamblers typically uses 1-5 scale)
-                    rating = None
-                    rating_elem = card.find('div', class_=re.compile(r'.*rating.*', re.IGNORECASE))
-                    if not rating_elem:
-                        rating_elem = card.find('span', class_=re.compile(r'.*rating.*', re.IGNORECASE))
-
-                    if rating_elem:
-                        # Look for rating value in various formats
-                        rating_text = rating_elem.get_text()
-                        rating_match = re.search(r'(\d+(?:\.\d+)?)\s*(?:/\s*\d+)?', rating_text)
-                        if rating_match:
-                            rating = float(rating_match.group(1))
-
-                        # Check data attributes
-                        if not rating:
-                            for attr in ['data-rating', 'data-score', 'rating']:
-                                if rating_elem.get(attr):
-                                    try:
-                                        rating = float(rating_elem.get(attr))
-                                        break
-                                    except:
-                                        pass
-
-                    # Extract title
-                    title_elem = card.find('h3')
-                    if not title_elem:
-                        title_elem = card.find('h4')
-                    if not title_elem:
-                        title_elem = card.find('div', class_=re.compile(r'.*title.*', re.IGNORECASE))
-
-                    title = title_elem.get_text().strip() if title_elem else ''
-
-                    # Extract review text
-                    text_elem = card.find('p', class_=re.compile(r'.*review.*text.*', re.IGNORECASE))
-                    if not text_elem:
-                        text_elem = card.find('div', class_=re.compile(r'.*review.*content.*', re.IGNORECASE))
-                    if not text_elem:
-                        # Fallback: find first substantial p tag
-                        all_p = card.find_all('p')
-                        for p in all_p:
-                            p_text = p.get_text().strip()
-                            if p_text and len(p_text) > 20:
-                                text_elem = p
-                                break
-
-                    text = text_elem.get_text().strip() if text_elem else ''
-
-                    # Extract author
-                    author_elem = card.find('span', class_=re.compile(r'.*author.*', re.IGNORECASE))
-                    if not author_elem:
-                        author_elem = card.find('div', class_=re.compile(r'.*user.*name.*', re.IGNORECASE))
-                    if not author_elem:
-                        author_elem = card.find('span', class_=re.compile(r'.*user.*', re.IGNORECASE))
-
-                    author = author_elem.get_text().strip() if author_elem else 'Anonymous'
-
-                    # Only add review if it has substantial content
-                    if text or title:
-                        review_data = {
-                            'date': date_str,
-                            'rating': rating,
-                            'title': title,
-                            'text': text,
-                            'author': author,
-                            'full_content': f"{title} {text}".strip()
-                        }
-
-                        reviews.append(review_data)
-
-                except Exception as e:
-                    print(f"Error parsing review card: {e}")
-                    continue
-
-            print(f"Found {len(reviews)} recent reviews on this page")
-            return reviews, last_review_is_recent
-
-        except Exception as e:
-            print(f"Error scraping page: {e}")
-            return [], False
-
-    def scrape_casino_reviews(
-        self,
-        casino_name: str,
-        max_reviews: int = 50,
-        months: int = 6
-    ) -> Dict:
-        """
-        Scrape all recent reviews for a casino
-
-        Args:
-            casino_name: Name or domain of casino (e.g., "stake.com" or "stake")
-            max_reviews: Maximum number of reviews to scrape (default: 50)
-            months: Only include reviews from last N months (default: 6)
-
-        Returns:
-            Dictionary with reviews and metadata
-        """
-        print(f"\n{'='*60}")
-        print(f"Starting AskGamblers scrape for: {casino_name}")
-        print(f"{'='*60}\n")
-
-        # Step 1: Search for casino
-        search_results = self.search_casino(casino_name)
-
-        if not search_results:
-            print("No search results found")
-            return {
-                'casino_name': casino_name,
-                'reviews': [],
-                'total_count': 0,
-                'error': 'No results found on AskGamblers'
-            }
-
-        # Step 2: Find correct result by verifying casino name
-        correct_url = None
-        clean_name = re.sub(r'\.(com|io|net|org|casino)$', '', casino_name.lower())
-
-        for idx, result in enumerate(search_results):
-            print(f"\nChecking result #{idx + 1}: {result['name']}")
-
-            if self.verify_casino_on_page(result['url'], clean_name):
-                print(f"✓ Casino verified for: {result['url']}")
-                correct_url = result['url']
-                break
-            else:
-                print(f"✗ Casino mismatch for: {result['url']}")
-
-            # Add timeout between checks
-            time.sleep(1)
-
-        if not correct_url:
-            print("\nNo matching casino found in search results")
-            return {
-                'casino_name': casino_name,
-                'reviews': [],
-                'total_count': 0,
-                'error': 'Casino verification failed'
-            }
-
-        # Step 3: Scrape reviews from pages
-        all_reviews = []
-        page = 1
-
-        while len(all_reviews) < max_reviews:
-            # AskGamblers pagination might use different URL patterns
-            page_url = correct_url if page == 1 else f"{correct_url}?page={page}"
-
-            print(f"\nScraping page {page}...")
-            reviews, last_is_recent = self.scrape_reviews_from_page(page_url, months)
-
-            if not reviews:
-                print("No more reviews found")
-                break
-
-            all_reviews.extend(reviews)
-
-            # Check if we should continue to next page
-            if page == 1 and last_is_recent and len(all_reviews) < max_reviews:
-                print("Last review on first page is recent, checking next page...")
-                page += 1
-                time.sleep(2)  # Polite delay between page requests
-            else:
-                print("Stopping pagination")
-                break
-
-        # Limit to max_reviews
-        all_reviews = all_reviews[:max_reviews]
-
-        result = {
-            'casino_name': casino_name,
-            'reviews': all_reviews,
-            'total_count': len(all_reviews),
-            'askgamblers_url': correct_url,
-            'scraped_at': datetime.now().isoformat()
-        }
-
-        print(f"\n{'='*60}")
-        print(f"Scraping complete: {len(all_reviews)} reviews collected")
-        print(f"{'='*60}\n")
-
-        return result
-
     def analyze_withdrawal_mentions(self, reviews: List[Dict]) -> Dict:
-        """
-        Analyze reviews for withdrawal-related mentions
-
-        Args:
-            reviews: List of review dictionaries
-
-        Returns:
-            Dictionary with withdrawal analysis
-        """
         withdrawal_keywords = [
-            'withdrawal', 'withdraw', 'payout', 'cashout', 'cash out',
-            'payment', 'pay out', 'pending', 'processing', 'waiting'
-        ]
-
-        time_keywords = [
-            'instant', 'immediately', 'fast', 'quick', 'slow', 'delayed',
-            'hours', 'days', 'weeks', 'minutes', 'never', 'still waiting'
+            "withdrawal", "withdraw", "payout", "cashout", "cash out",
+            "payment", "pay out", "pending", "processing", "waiting",
         ]
 
         withdrawal_reviews = []
@@ -491,21 +317,23 @@ class AskGamblersScraper:
         negative_mentions = []
 
         for review in reviews:
-            content = review.get('full_content', '').lower()
+            content = review.get("full_content", "").lower()
 
-            # Check if review mentions withdrawals
             if any(keyword in content for keyword in withdrawal_keywords):
                 withdrawal_reviews.append(review)
 
-                # Categorize as positive or negative based on rating and keywords
-                rating = review.get('rating', 0)
-
-                # Handle None ratings
+                rating = review.get("rating", 0)
                 if rating is None:
                     rating = 0
 
-                is_positive = rating >= 4 or any(word in content for word in ['instant', 'fast', 'quick', 'immediately', 'smooth'])
-                is_negative = rating <= 2 or any(word in content for word in ['slow', 'delayed', 'never', 'still waiting', 'pending'])
+                is_positive = rating >= 7 or any(
+                    word in content
+                    for word in ["instant", "fast", "quick", "immediately", "smooth"]
+                )
+                is_negative = rating <= 4 or any(
+                    word in content
+                    for word in ["slow", "delayed", "never", "still waiting", "pending"]
+                )
 
                 if is_positive and not is_negative:
                     positive_mentions.append(review)
@@ -513,90 +341,74 @@ class AskGamblersScraper:
                     negative_mentions.append(review)
 
         return {
-            'total_withdrawal_mentions': len(withdrawal_reviews),
-            'positive_count': len(positive_mentions),
-            'negative_count': len(negative_mentions),
-            'reviews': withdrawal_reviews,
-            'positive_reviews': positive_mentions,
-            'negative_reviews': negative_mentions,
-            'has_sufficient_data': len(withdrawal_reviews) >= 10
+            "total_withdrawal_mentions": len(withdrawal_reviews),
+            "positive_count": len(positive_mentions),
+            "negative_count": len(negative_mentions),
+            "reviews": withdrawal_reviews,
+            "positive_reviews": positive_mentions,
+            "negative_reviews": negative_mentions,
+            "has_sufficient_data": len(withdrawal_reviews) >= 10,
         }
 
-    def extract_player_experiences(self, reviews: List[Dict], section_keywords: Dict[str, List[str]]) -> Dict:
-        """
-        Extract player experiences by section based on keywords
-
-        Args:
-            reviews: List of review dictionaries
-            section_keywords: Dictionary mapping section names to keyword lists
-
-        Returns:
-            Dictionary with experiences by section
-        """
+    def extract_player_experiences(
+        self, reviews: List[Dict], section_keywords: Dict[str, List[str]]
+    ) -> Dict:
         experiences = {}
 
         for section, keywords in section_keywords.items():
             matching_reviews = []
 
             for review in reviews:
-                content = review.get('full_content', '').lower()
+                content = review.get("full_content", "").lower()
 
-                # Check if review mentions any keywords for this section
                 if any(keyword.lower() in content for keyword in keywords):
-                    matching_reviews.append({
-                        'rating': review.get('rating'),
-                        'date': review.get('date'),
-                        'title': review.get('title'),
-                        'text': review.get('text')
-                    })
+                    matching_reviews.append(
+                        {
+                            "rating": review.get("rating"),
+                            "date": review.get("date"),
+                            "title": review.get("title"),
+                            "text": review.get("text"),
+                        }
+                    )
 
             experiences[section] = {
-                'count': len(matching_reviews),
-                'reviews': matching_reviews,
-                'has_sufficient_data': len(matching_reviews) >= 10
+                "count": len(matching_reviews),
+                "reviews": matching_reviews,
+                "has_sufficient_data": len(matching_reviews) >= 10,
             }
 
         return experiences
 
 
 def format_review_summary(review_data: Dict, include_details: bool = True) -> str:
-    """
-    Format review data into a readable summary for AI consumption
-
-    Args:
-        review_data: Dictionary returned from scrape_casino_reviews
-        include_details: Whether to include individual review details
-
-    Returns:
-        Formatted string summary
-    """
-    if not review_data or review_data.get('total_count', 0) == 0:
+    if not review_data or review_data.get("total_count", 0) == 0:
         return f"No recent reviews found on AskGamblers for {review_data.get('casino_name', 'this casino')}."
 
     summary_parts = []
 
-    # Header
     summary_parts.append(f"AskGamblers Player Reviews for {review_data['casino_name']}")
     summary_parts.append(f"Total recent reviews: {review_data['total_count']}")
     summary_parts.append(f"Source: {review_data.get('askgamblers_url', 'N/A')}")
     summary_parts.append("")
 
-    # Data sufficiency warning
-    if review_data['total_count'] < 10:
-        summary_parts.append("NOTE: Less than 10 reviews available. Take this data with a grain of salt.")
+    if review_data["total_count"] < 10:
+        summary_parts.append(
+            "NOTE: Less than 10 reviews available. Take this data with a grain of salt."
+        )
         summary_parts.append("")
 
-    # Review details
-    if include_details and review_data.get('reviews'):
+    if include_details and review_data.get("reviews"):
         summary_parts.append("Player Comments:")
-        for idx, review in enumerate(review_data['reviews'][:20], 1):  # Limit to 20 reviews
-            rating_str = f"{review.get('rating', 'N/A')}" if review.get('rating') else 'N/A'
-            summary_parts.append(f"\n{idx}. [{rating_str}/5] {review.get('date', 'N/A')}")
-            if review.get('title'):
+        for idx, review in enumerate(review_data["reviews"][:20], 1):
+            rating_str = (
+                f"{review.get('rating', 'N/A')}" if review.get("rating") else "N/A"
+            )
+            summary_parts.append(f"\n{idx}. [{rating_str}/10] {review.get('date', 'N/A')}")
+            if review.get("title"):
                 summary_parts.append(f"   Title: {review['title']}")
-            if review.get('text'):
-                text_preview = review['text'][:300]
-                if len(review['text']) > 300:
+            if review.get("text"):
+                text_preview = review["text"][:300]
+                if len(review["text"]) > 300:
                     text_preview += "..."
                 summary_parts.append(f"   Review: {text_preview}")
 
