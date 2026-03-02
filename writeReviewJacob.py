@@ -399,30 +399,40 @@ def generate_general_player_summary(casino_name, feedback_data):
     if not reviews_text:
         return ""
 
-    # Randomize opening style to avoid repetitive outputs across casinos
-    openers = [
-        f"Looking at recent {source_str} reviews,",
-        f"From what I found on {source_str},",
-        f"Player feedback on {source_str} suggests",
-        f"According to {source_str} reviews,",
-        f"Checking {source_str} for player opinions,",
+    # Pick a random style to force structural variation
+    styles = [
+        {
+            "instruction": f"Start by mentioning a specific standout feature players love, then briefly note {source_str} as the source mid-sentence.",
+            "example": f"**Fast crypto payouts** are the most common praise you'll see in {source_str} reviews for {casino_name}, along with..."
+        },
+        {
+            "instruction": f"Start with your own take as a reviewer who checked {source_str}, then summarize what you found.",
+            "example": f"I checked {source_str} to see what players think of {casino_name}, and the feedback is..."
+        },
+        {
+            "instruction": f"Start with the overall sentiment (positive/mixed/negative) in one short sentence, then give details. Mention {source_str} naturally.",
+            "example": f"{casino_name} gets mostly positive marks on {source_str}. Players enjoy..."
+        },
+        {
+            "instruction": f"Lead with what makes this casino different from others according to {source_str} reviews.",
+            "example": f"What stands out in {source_str} feedback is {casino_name}'s..."
+        },
     ]
-    opener = random.choice(openers)
+    style = random.choice(styles)
 
     prompt = f"""Summarize player sentiment about {casino_name} for a casino review article.
 Source: {source_str}.
 
-SCOPE: Overall experience including support, reliability, game selection, payments, and withdrawals.
+STYLE: {style["instruction"]}
+Example opening (adapt, don't copy): {style["example"]}
 
 RULES:
-- One short paragraph, 50-80 words max. Be direct, no filler.
-- Start with or incorporate this opener naturally: "{opener}"
-- Do NOT start with "Based on recent reviews from..." -- vary your sentence structure.
+- One short paragraph, 50-80 words. Direct, no filler.
+- FORBIDDEN phrases: "Based on recent reviews", "players frequently praise", "players consistently praise", "with many highlighting". Do NOT use these.
 - Do NOT mention how many reviews were analyzed.
-- Lead with what players praise. Briefly note complaints if relevant, don't dwell.
+- Focus on positives. Briefly note complaints if relevant, one short clause max.
 - Negative reviews often come from emotional post-loss players, so weigh positives more. Do NOT mention this bias.
 - No em dashes. Use "I" and "you". Bold key points with **asterisks**.
-- Vary your word choices. Avoid always using "praise", "highlight", "consistently", "frequently".
 - Output ONLY the paragraph text, no heading.
 
 REVIEWS:
