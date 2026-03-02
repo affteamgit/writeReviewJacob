@@ -717,6 +717,8 @@ def main():
         st.success("Factual review successfully generated in Jacob structure!")
         if st.session_state.review_url:
             st.info(f"Review link: {st.session_state.review_url}")
+        if st.session_state.get('askgamblers_debug'):
+            st.caption(st.session_state.askgamblers_debug)
 
         # Add a button to generate a new review
         if st.button("Write New Review", type="primary"):
@@ -799,11 +801,13 @@ def main():
             finally:
                 bg_executor.shutdown(wait=False)
 
-            # DEBUG: show scraper result in UI
+            # DEBUG: log scraper result
             if askgamblers_qa:
-                st.success(f"AskGamblers: got player feedback ({len(askgamblers_qa)} chars)")
+                print(f"AskGamblers: got player feedback ({len(askgamblers_qa)} chars)")
+                st.session_state.askgamblers_debug = f"AskGamblers: got {len(askgamblers_qa)} chars of player feedback"
             else:
-                st.warning("AskGamblers: no player feedback returned (check logs)")
+                print("AskGamblers: no player feedback returned")
+                st.session_state.askgamblers_debug = "AskGamblers: no player feedback returned"
 
             # Append player feedback to Payments section (index 1 in section_order)
             if askgamblers_qa and len(parallel_results) > 1:
