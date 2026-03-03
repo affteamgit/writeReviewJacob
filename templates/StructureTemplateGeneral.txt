@@ -7,9 +7,9 @@
 * Check the casino's terms and conditions for VPN-related language:
   - If the terms explicitly prohibit VPN use or IP masking: state this clearly and warn about consequences (account closure, confiscated funds). Recommend one or two VPN-friendly alternatives from Top Casinos.
   - If the terms mention detecting IP masking but don't explicitly ban VPN: warn the reader that using a VPN carries risk.
-  - If the terms say nothing about VPN use: convey that the terms don't prohibit it. Do NOT always use the exact phrase "There's nothing in [casino]'s terms that prohibits VPN use." Vary the wording each time, e.g.: "their terms don't mention any VPN restrictions", "VPN use isn't addressed in the terms", "nothing in the T&Cs blocks VPN access", "the terms are silent on VPN use".
-  - If the terms explicitly allow VPN use: state this clearly.
-* IMPORTANT: Do NOT call a casino "VPN friendly" if the terms prohibit VPN use or IP masking.
+  - If the terms say nothing about VPN use OR the data simply says "VPN friendly" without quoting specific T&C clauses: convey that the terms don't mention VPN restrictions. Vary the wording, e.g.: "their terms don't mention any VPN restrictions", "VPN use isn't addressed in the terms", "nothing in the T&Cs blocks VPN access", "the terms are silent on VPN use".
+  - ONLY say the terms "explicitly allow" VPN if you can point to a specific clause or sentence in the terms that says VPN use is permitted. A general "VPN friendly: yes" label in the data does NOT count as explicit allowance.
+* IMPORTANT: Do NOT call a casino "VPN friendly" or say "explicitly allowing VPN use." The most you can say when terms don't mention VPN is that the terms don't restrict it. There is a big difference between "not restricted" and "explicitly allowed."
 * Do NOT add closing sentences like "This makes [casino] accessible for players who..." -- the facts speak for themselves.
 * Do NOT add generic sentences about VPN benefits. Stick to what the terms say.
 * 2-3 sentences max. No filler.
