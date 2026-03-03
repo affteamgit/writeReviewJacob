@@ -521,7 +521,7 @@ def generate_section_with_assignment(section_data: Tuple) -> str:
         "General": ("BaseGuidelinesClaude", "StructureTemplateGeneral", call_claude),
         "Payments": ("BaseGuidelinesClaude", "StructureTemplatePayments", call_claude),
         "Games": ("BaseGuidelinesClaude", "StructureTemplateGames", call_claude),
-        "Responsible Gambling": ("BaseGuidelinesGrok", "StructureTemplateResponsible", call_grok),
+        "Responsible Gambling": ("BaseGuidelinesClaude", "StructureTemplateResponsible", call_claude),
         "Bonuses": ("BaseGuidelinesClaude", "StructureTemplateBonuses", call_claude),
     }
 
