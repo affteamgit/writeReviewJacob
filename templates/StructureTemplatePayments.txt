@@ -47,23 +47,37 @@
 
 ## Q: Are there any bonus-related restrictions on withdrawals, like capped cashouts?
 
-* Check if the casino has bonuses. If it does, evaluate the following criteria:
-  - Cashout caps: Check if there are maximum cashout limits on bonus winnings.
-  - Win caps: Check if there are maximum win limits on bonus play.
-  - Wagering requirements: Best case is 20x or lower, applied only on the bonus amount OR only on the deposit amount (not both).
-  - Wagering time: Best case is 7 days or less to complete the wagering.
-* BEST CASE SCENARIO: If a casino has bonuses with NO cashout caps, NO win caps, wagering requirement is average or below average (20x or lower, only on bonus OR only on deposit), AND wagering time is 7 days or less - this is excellent and very player-friendly. Commend the casino for this.
-* If there are cashout caps, win caps, high wagering requirements (over 20x), or long wagering times (over 7 days), explain what they are and how they affect the reader.
+* EXCLUDE THIS QUESTION ONLY if the casino has NO bonuses at all. If the casino has any bonuses, this question MUST be answered.
+* Look at ALL bonuses the casino offers (welcome bonus, deposit bonuses, free spins, no-deposit bonuses, etc.) and for EACH bonus check:
+  - Max cashout (cashout cap): Is there a maximum amount you can cash out from bonus winnings?
+  - Max win (win cap): Is there a maximum amount you can win while playing with the bonus?
+  - Wagering requirements: What is the wagering multiplier (e.g., 20x, 30x, 40x)? Is it applied to the bonus only, the deposit only, or both (bonus + deposit)?
+* For EACH restriction found, state what it is AND whether it's good or bad:
+  - Wagering: 20x or lower on bonus only or deposit only = good. 25x-35x = average. 35x+ = bad. Applied to bonus + deposit = worse than bonus only.
+  - Max cashout: No cap = great. Cap exists = state the amount and note this limits your upside.
+  - Max win: No cap = great. Cap exists = state the amount and note this limits your upside.
+  - Wagering time: 7 days or less = good. 14 days = average. 30 days = generous timeframe.
+* BEST CASE: If a casino has bonuses with NO cashout caps, NO win caps, and reasonable wagering (20x or lower) -- this is excellent. Commend the casino.
+* If the casino has bonuses but NONE of these restrictions (no caps, no excessive wagering), explicitly state that the casino doesn't impose these common restrictions and that this is very player-friendly.
 * Use short sentences, maximum 20 words per sentence. Keep the answer factual and concise.
-* IMPORTANT: Verify that all this information (cashout caps, win caps, wagering requirements, wagering time) is available in the tempoutput data for each casino when creating a review.
+* The spreadsheet data should contain this information. Only use what is provided -- do not guess bonus terms.
 
 ## Q: Can I deposit different altcoins?
 
 * State how many cryptocurrencies the casino accepts and comment on the number:
   - More than 15: above average. Offer 1 brand with similar or more from Similar Casinos.
-  - 5 to 15: average. Advise checking if their currency is supported. Recommend 1-2 with more from Top Casinos.
-  - Less than 5: very low, hardly qualifies as a crypto casino.
+  - 5 to 15: average. Advise checking if their currency is supported. Recommend 1-2 brands with MORE cryptos from Top Casinos.
+  - Less than 5: very low, hardly qualifies as a crypto casino. Recommend 1-2 brands with MORE cryptos from Top Casinos.
+* IMPORTANT - Recommendation logic: Only recommend a SIMILAR casino (from Similar Casinos) if the casino is above average (15+). If the casino is average or below, recommend a BETTER casino (from Top Casinos) that has more crypto options. Do NOT recommend similar-level casinos to average or below-average ones.
 * Vary how you describe the count. Do NOT always use "above average number" or "average number found in most crypto casinos." Rephrase naturally each time.
+* MAJOR CRYPTOCURRENCIES CHECK - Only do this check if the casino accepts at least 5 cryptocurrencies total:
+  The following 12 are considered major cryptocurrencies: Bitcoin, Ethereum, Tether, Litecoin, Tron, Dogecoin, Binance Coin, Ripple, Bitcoin Cash, USD Coin, Cardano, Solana.
+  Check which of these major cryptos the casino supports and comment accordingly:
+  - If the casino has ALL 12 major cryptos: Great coverage. Mention that all major cryptocurrencies are supported, including the total crypto count.
+  - If 1-2 major cryptos are missing: Good coverage overall. Name the specific 1-2 that are missing.
+  - If 3-5 major cryptos are missing: Some major cryptos are missing. Name 2 random ones that are missing as examples.
+  - If more than 5 major cryptos are missing: Most major cryptos are missing. Give 2 examples of missing ones. This is a notable gap.
+  - If the casino has fewer than 5 cryptos total, skip the major crypto check entirely.
 * If Buy crypto is available, mention it briefly. It's convenient despite fees.
 * If the Crypto Swap feature is available in the casino, mention it as something very unique and useful. Very few casinos offer this and it can mean that players can play with virtually any token that's supported by the conversion tool. They can also deposit in one cryptocurrency and withdraw in another.
 * IMPORTANT: Only mention Buy crypto or Crypto Swap features if they are actually available. Do NOT mention them if they are not available.

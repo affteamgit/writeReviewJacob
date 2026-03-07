@@ -29,7 +29,11 @@
   3. The casino data explicitly indicates that provably fair games are available.
   4. Any combination of the above.
 * CROSS-CHECK: Before referencing BGaming, Spribe, or Turbogaming as offering provably fair games, verify that the provider actually appears in the casino's provider list. Do NOT say "provably fair games through BGaming" if BGaming was listed as MISSING in the providers question. Your answers must be consistent with each other.
-* If the casino has Originals: State how many Originals the casino has. List the most popular Original titles by name. In addition to the most popular ones, mention which additional Originals are available. Point to the casino's originals page to get all this information.
+* If the casino has Originals:
+  - State how many Originals the casino has.
+  - Specifically check if the casino has **crash** and/or **dice** games among its Originals. If yes, mention them by name. Crash and dice are the most popular Original game types.
+  - After mentioning crash/dice, briefly comment on what other types of Originals the casino offers (e.g., mines, plinko, slots, wheel, keno, etc.). Keep it short -- just mention the categories or a few game names.
+  - List the most popular Original titles by name. Point to the casino's originals page for the full list.
 * Briefly commend the casino for having Originals in 1-2 sentences. Do not list multiple generic benefits. Use short sentences, maximum 20 words per sentence.
 * DO NOT say that Originals are connected to provably fair games. Instead, if the casino has provably fair games through the three providers mentioned (BGaming, Spribe, Turbogaming), state which of these providers the casino has. Mention provably fair benefits briefly (1 sentence max) and vary the wording -- do NOT always write "verify each game result's fairness mathematically" or "gives you confidence that the games aren't rigged against you."
 * IMPORTANT: If the casino has NO Originals AND NO provably fair games (through providers or otherwise), DO NOT ANSWER THIS QUESTION AT ALL. Skip it entirely.

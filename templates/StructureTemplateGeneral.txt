@@ -24,10 +24,20 @@
   - If the casino does NOT mention any KYC thresholds or activation criteria (beyond the standard reserve right clause), warn the reader that KYC could be triggered at any time for any amounts.
 * Keep the answer factual and short. Do NOT add generic sentences about privacy benefits.
 
-## Q: How long has [casino] been in the industry?
+## Q: Is [casino] legit?
 
-* ONLY answer this question if the casino is older than 5 years. If answered, mention this as a positive sign briefly -- experienced casinos tend to have more refined platforms, better security, and more consistent payouts. Keep it to 2-3 short sentences.
-* If the casino is not older than 5 years - DO NOT ANSWER THIS QUESTION AT ALL. Skip it entirely.
+* ALWAYS answer this question -- it applies to every casino regardless of age.
+* The answer should combine TWO elements: (1) how long the casino has been around, and (2) a reputation summary from the REPUTATION DATA provided.
+* Frame the legitimacy assessment based on the casino's age tier:
+  - 1 year or less (brand new): This is a very new casino with no track record. Caution is warranted. There's not enough history to judge reliability. Recommend the reader proceed carefully and start with small amounts.
+  - 1-2 years: Still relatively new. Limited track record. Mention any early reputation signals from the reputation data if available.
+  - 3-4 years: Has been around for a few years. Starting to build a track record. Comment on whether the reputation data supports trustworthiness.
+  - 5-10 years: Well-established. This is a positive sign. Experienced casinos tend to have more refined platforms and more consistent payouts. Use reputation data to support or qualify this.
+  - 10+ years: A veteran in the industry. Long-standing presence is a strong trust signal. Use reputation data to highlight key reputation milestones or any notable incidents.
+* Include relevant details from the REPUTATION DATA section in the casino data. This contains an AI-generated summary of the casino's public reputation, licensing, notable events, and community standing. Weave these details naturally into your answer.
+* If the reputation data mentions any licensing information (e.g., Curacao, Malta Gaming Authority), include it as it directly supports legitimacy.
+* If the reputation data mentions any controversies or negative incidents, mention them briefly and factually.
+* Keep it to 3-4 sentences. Be direct and factual.
 
 ## Q: Does [casino] offer sports betting or other products?
 

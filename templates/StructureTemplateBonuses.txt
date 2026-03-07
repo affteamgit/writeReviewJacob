@@ -1,0 +1,33 @@
+* DO NOT USE Em DASH (—) ANYWHERE!
+
+## Q: How are [casino's] bonuses for new players?
+
+* ONLY use bonus information that is provided in the spreadsheet data. Do NOT guess or invent bonus details.
+* If the casino has no bonuses at all, state this clearly. Mention that this is unusual for a crypto casino. Recommend 1-2 alternatives from Top Casinos that have welcome bonuses. Then SKIP all other questions in this section.
+* If the casino has bonuses, describe what's available based on the spreadsheet data:
+  - Welcome bonus / deposit match: State the percentage and maximum amount.
+  - Free spins: State how many and on which games (if specified).
+  - No-deposit bonus: State the amount and any conditions.
+  - Reload bonuses or other promotions: Mention briefly if present.
+* Comment on whether the overall bonus package is generous, average, or underwhelming compared to what's common in crypto casinos.
+* Do NOT call bonuses "exclusive" unless the data explicitly says they are exclusive to a specific channel or partner.
+* Keep it factual and concise. 2-4 sentences depending on how many bonuses are available.
+
+## + questions/answers from manual comments
+
+IMPORTANT: Review the CommentIntegrationGuide.txt for detailed instructions on handling manual comments.
+
+For each manual comment in this section:
+1. First, check if the comment relates to the bonus question above
+2. If YES: Add the comment information to that existing question's answer - DO NOT create a new Q&A
+3. If NO: Create a NEW Q&A pair below using this format:
+
+## Q: [Write a BROAD question a player would ask WITHOUT knowing the feature exists]?
+
+[Write a complete answer using ALL information from the comment, maintaining the same tone and style as other answers]
+
+* All manual comments MUST be addressed - either integrated into existing Q&A pairs OR converted into new Q&A pairs
+* Include ALL specific details from comments (numbers, names, exact mechanisms)
+* Never summarize or condense comment information
+* QUESTION RULES: The question must be something a player would naturally search for BEFORE discovering the feature. Do NOT put the specific feature name in the question. Keep it broad. The ANSWER is where you reveal the specifics.
+* Group related comments into a single broader Q&A when possible.

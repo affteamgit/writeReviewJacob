@@ -143,6 +143,36 @@ def call_claude(prompt):
     full_prompt = f"{fact_constraint}\n\n{prompt}"
     return anthropic.messages.create(model="claude-sonnet-4-20250514", max_tokens=1200, temperature=0.45, messages=[{"role": "user", "content": full_prompt}]).content[0].text.strip()
 
+def get_casino_reputation_summary(casino_name: str) -> str:
+    """Use Claude to generate a reputation summary of the casino based on its general knowledge.
+
+    This is intentionally NOT constrained to spreadsheet data -- the AI uses its training
+    knowledge to provide a reputation overview for the 'Is [casino] legit?' question.
+    """
+    prompt = f"""Provide a brief factual reputation summary of the crypto casino "{casino_name}". Include:
+- When it was founded/launched (if known)
+- Licensing information (e.g., Curacao, Malta Gaming Authority, etc.)
+- Any notable reputation milestones (awards, partnerships)
+- Any notable controversies or negative incidents
+- General community standing among crypto gambling players
+
+Keep it to 3-5 sentences. Be factual and balanced. If you don't have reliable information about this casino, say so clearly -- do not fabricate details.
+
+Output ONLY the summary paragraph, no headings or labels."""
+
+    try:
+        # Call Claude WITHOUT the strict fact constraint -- we want general knowledge here
+        result = anthropic.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=400,
+            temperature=0.3,
+            messages=[{"role": "user", "content": prompt}]
+        ).content[0].text.strip()
+        return result
+    except Exception as e:
+        print(f"Reputation summary failed for {casino_name}: {e}")
+        return "No reputation data available."
+
 def extract_casino_names_from_data(comparison_data):
     """Extract casino names from comparison data string.
     Assumes format like 'CasinoName (link): data...' or '[CasinoName](link): data...'
@@ -256,15 +286,6 @@ Format your response exactly like this:
                     sections[current_section] += " " + line
                 else:
                     sections[current_section] = line
-
-        # Redirect Bonuses comments to General section (temporary until Bonuses structure template is ready)
-        if sections.get("Bonuses", "").strip():
-            print("Redirecting Bonuses comments to General section")
-            if sections["General"]:
-                sections["General"] += " " + sections["Bonuses"]
-            else:
-                sections["General"] = sections["Bonuses"]
-            sections["Bonuses"] = ""
 
         return sections
     except Exception as e:
@@ -775,9 +796,18 @@ def main():
                 st.error(f"Error: Could not fetch required templates: {', '.join(missing_templates)}")
                 return
             
-            # Sort comments by section using AI
-            progress_placeholder.markdown("## Sorting comments by section...")
-            sorted_comments = sort_comments_by_section(comments)
+            # Sort comments by section using AI + fetch casino reputation
+            progress_placeholder.markdown("## Sorting comments and fetching reputation data...")
+
+            with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
+                comments_future = executor.submit(sort_comments_by_section, comments)
+                reputation_future = executor.submit(get_casino_reputation_summary, casino)
+                sorted_comments = comments_future.result()
+                reputation_summary = reputation_future.result()
+
+            # Inject reputation data into General section's main data
+            if reputation_summary and "General" in secs:
+                secs["General"]["main"] += f"\n\nREPUTATION DATA (from online sources):\n{reputation_summary}"
 
             # Generate all sections in parallel + scrape AskGamblers in background
             progress_placeholder.markdown("## Generating review sections in parallel...")
