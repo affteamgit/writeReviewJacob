@@ -1,10 +1,32 @@
 * DO NOT USE Em DASH (—) ANYWHERE!
 
-## Q: How long can withdrawal take?
+## CONDITIONAL LOGIC FOR WITHDRAWAL TIME AND KYC QUESTIONS:
+##
+## CHECK the casino data for withdrawal time info AND KYC verification time info.
+##
+## SCENARIO A -- NO INFO for BOTH withdrawal time AND KYC time:
+##   Merge both topics into a SINGLE question: "## Q: How long can withdrawals take?"
+##   Do NOT include a separate KYC question.
+##   Follow the instructions under [WITHDRAWAL TIME QUESTION] below, and at the end of
+##   the answer add a note that the same situation applies to KYC verification times --
+##   the casino does not provide specific timeframes for KYC either, so the same
+##   considerations apply.
+##
+## SCENARIO B -- INFO EXISTS for ONE or BOTH (withdrawal time and/or KYC time):
+##   Use TWO SEPARATE questions:
+##   1. "## Q: How long can withdrawal take?" -- follow [WITHDRAWAL TIME QUESTION] below
+##   2. "## Q: How long can KYC reviews take?" -- follow [KYC QUESTION] below
+##
 
-* Convey that crypto casino withdrawals should ideally be instant, but vary how you say this each time. Do NOT always open with "Withdrawals should ideally be instant for crypto casinos." Use different framings.
-* If there is manual verification or processing required, mention the timeframe from the spreadsheet data.
-* Make clear that the timeframes apply to manual processing cases. Vary the phrasing -- do NOT always write "In cases where manual processing is needed." Alternatives: "When manual review is required", "If your withdrawal gets flagged for manual processing", "For manually processed withdrawals", etc.
+## Q: How long can withdrawals take?
+## [WITHDRAWAL TIME QUESTION]
+
+* IMPORTANT: The withdrawal timeframe data reflects what the casino states or promises. First, comment on whether the casino provides this information and where it can be found.
+* When stating the timeframe, mention that this is especially relevant in cases where manual processing is involved. Vary the phrasing -- use phrases like "especially if manual confirmation is required", "if they process your withdrawal manually", "in cases where they check it manually", etc.
+* Then, frame the casino's stated withdrawal time using randomly one of the following three angles:
+  (1) This information should ideally be found in the casino's Terms & Conditions, because T&Cs are the legal binding agreement between the player and the casino -- if it's there, it holds legal weight.
+  (2) This is essentially the casino's promise to its players -- it sets an expectation, and players should hold the casino accountable to it.
+  (3) Without a binding commitment, casinos can technically drag out the processing as long as they want -- so having a stated timeframe, even if not in T&Cs, is still better than nothing.
 * PREFER EXACT FIGURES: If the casino data provides a specific number (e.g., "24 hours", "48 hours", "up to 2 hours"), use that exact figure -- do NOT replace it with a vague phrase. For example, write "up to 48 hours" instead of "a couple of days".
 * Only use the vague phrases below as a FALLBACK when no exact figure is available in the data:
   - Less than 12 hours: "a matter of hours" / "within a few hours"
@@ -15,6 +37,30 @@
 * ADDITIONALLY, check Trustpilot and AskGamblers reviews for any mentions of actual withdrawal times experienced by players. If withdrawal time information is found in reviews, include this real-world feedback in your answer.
 * Do NOT add generic sentences about why fast withdrawals matter. The reader already knows.
 * ONLY If the casino's withdrawal time is not less than 12 hours, mention a brand with faster withdrawal time from Top Casinos.
+* SCENARIO A ONLY: At the end, add a note that the same applies to KYC verification -- the casino does not provide specific KYC processing timeframes either, so the same concerns about lack of commitment apply to identity verification as well.
+
+## Q: How long can KYC reviews take?
+## [KYC QUESTION] -- Only include this as a separate question under SCENARIO B.
+
+* FIRST, check the casino's knowledge base/terms and conditions for any specified KYC processing timeframe.
+* IMPORTANT: The KYC verification timeframe data reflects what the casino states or promises. First, comment on whether the casino provides this information and where it can be found.
+* When stating the timeframe, mention that this is especially relevant in cases where manual verification is involved. Vary the phrasing -- use phrases like "especially if manual verification is required", "if they check your documents manually", "in cases where they review it manually", etc.
+* Then, frame the casino's stated KYC time using randomly one of the following three angles:
+  (1) This information should ideally be found in the casino's Terms & Conditions, because T&Cs are the legal binding agreement between the player and the casino -- if it's there, it holds legal weight.
+  (2) This is essentially the casino's promise to its players -- it sets an expectation, and players should hold the casino accountable to it.
+  (3) Without a binding commitment, casinos can technically drag out the verification as long as they want -- so having a stated timeframe, even if not in T&Cs, is still better than nothing.
+* SPECIAL CASE -- 0 hours / No KYC: If the casino's KYC verification time is 0 hours, this means the casino has NO KYC process at all -- not that there's no KYC up to a certain cap or threshold. This is a complete absence of identity verification. Mention this clearly and explain what it means for the player. Note that some casinos in this category may still have a soft-KYC process, such as confirming a phone number or email address, but this is not the same as a full KYC verification.
+* If a specific timeframe IS specified in the terms: Use that exact timeframe in your answer. Do NOT replace specific numbers with vague phrases. For example, write "up to 72 hours" instead of "a few days".
+* If NO timeframe is specified in the terms (which is most common): Warn the reader that the casino has nothing written in their terms about KYC processing time, which means the casino can take as much time as they want to process verification. Players should keep this in mind.
+* If the terms use deliberately vague language (e.g., "reasonable time", "as soon as practicable") with no concrete number, flag this: the casino avoids committing to a specific verification deadline, which gives them flexibility to delay.
+* If the terms mention "business days" for processing: Note that this prolongs the process even more since it excludes weekends and holidays.
+* DISTINGUISH between two different timeframes if present: (1) the deadline for YOU to submit documents after being asked, and (2) the time the CASINO takes to review your documents. Only the casino's review time matters for this question. Do not confuse these two.
+* Make clear that the KYC timeframes apply to manual review cases. Vary the phrasing across reviews -- do NOT always use the same "In cases where manual verification is needed" opener.
+* Only use the vague phrases below as a FALLBACK when no exact figure is available in the data:
+  - Less than 12 hours (but not 0): "within a few hours" -- this is really good.
+  - 12-24 hours: "less than 24 hours" / "less than a day" -- this is good and above average.
+  - 24-72 hours or more: "up to a few days" / "can take multiple days" -- this is not ideal and could be better.
+* If the timeframe is large (more than 24 hours) OR not specified at all, recommend a brand with faster and more reliable KYC verification from Top Casinos.
 
 ## Q: What are the withdrawal limits?
 
@@ -29,21 +75,6 @@
   - If the requirement is MORE than 1x, state it clearly: "This casino requires you to wager your deposited amount [n] times before withdrawal" where n > 1.
   - If MORE than 1x, explain that 1x is the industry standard and this requirement is higher than normal.
   - If MORE than 1x, recommend one or two brands from Top Casinos that require only 1x wagering (the industry standard).
-
-## Q: How long can KYC reviews take?
-
-* FIRST, check the casino's knowledge base/terms and conditions for any specified KYC processing timeframe.
-* If a specific timeframe IS specified in the terms: Use that exact timeframe in your answer. Do NOT replace specific numbers with vague phrases. For example, write "up to 72 hours" instead of "a few days".
-* If NO timeframe is specified in the terms (which is most common): Warn the reader that the casino has nothing written in their terms about KYC processing time, which means the casino can take as much time as they want to process verification. Players should keep this in mind.
-* If the terms use deliberately vague language (e.g., "reasonable time", "as soon as practicable") with no concrete number, flag this: the casino avoids committing to a specific verification deadline, which gives them flexibility to delay.
-* If the terms mention "business days" for processing: Note that this prolongs the process even more since it excludes weekends and holidays.
-* DISTINGUISH between two different timeframes if present: (1) the deadline for YOU to submit documents after being asked, and (2) the time the CASINO takes to review your documents. Only the casino's review time matters for this question. Do not confuse these two.
-* Make clear that the KYC timeframes apply to manual review cases. Vary the phrasing across reviews -- do NOT always use the same "In cases where manual verification is needed" opener.
-* Only use the vague phrases below as a FALLBACK when no exact figure is available in the data:
-  - Less than 12 hours: "within a few hours" -- this is really good.
-  - 12-24 hours: "less than 24 hours" / "less than a day" -- this is good and above average.
-  - 24-72 hours or more: "up to a few days" / "can take multiple days" -- this is not ideal and could be better.
-* If the timeframe is large (more than 24 hours) OR not specified at all, recommend a brand with faster and more reliable KYC verification from Top Casinos.
 
 ## Q: Are there any bonus-related restrictions on withdrawals, like capped cashouts?
 
