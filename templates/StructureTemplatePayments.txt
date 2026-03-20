@@ -105,9 +105,9 @@
   The following 12 are considered major cryptocurrencies: Bitcoin, Ethereum, Tether, Litecoin, Tron, Dogecoin, Binance Coin, Ripple, Bitcoin Cash, USD Coin, Cardano, Solana.
   Check which of these major cryptos the casino supports and comment accordingly:
   - If the casino has ALL 12 major cryptos: Great coverage. Mention that all major cryptocurrencies are supported, including the total crypto count.
-  - If 1-2 major cryptos are missing: Good coverage overall. Name the specific 1-2 that are missing.
+  - If up to 3 major cryptos are missing: Good coverage overall. Name exactly which ones are missing.
   - If 3-5 major cryptos are missing: Some major cryptos are missing. Name 2 random ones that are missing as examples.
-  - If more than 5 major cryptos are missing: Most major cryptos are missing. Give 2 examples of missing ones. This is a notable gap.
+  - If more than 5 major cryptos are missing: Most major cryptos are missing. Give 2 examples of the ones that are missing.
   - If the casino has fewer than 5 cryptos total, skip the major crypto check entirely.
 * If Buy crypto is available, mention it briefly. It's convenient despite fees.
 * If the Crypto Swap feature is available in the casino, mention it as something very unique and useful. Very few casinos offer this and it can mean that players can play with virtually any token that's supported by the conversion tool. They can also deposit in one cryptocurrency and withdraw in another.
