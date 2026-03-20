@@ -37,7 +37,7 @@
 * ADDITIONALLY, check Trustpilot and AskGamblers reviews for any mentions of actual withdrawal times experienced by players. If withdrawal time information is found in reviews, include this real-world feedback in your answer.
 * Do NOT add generic sentences about why fast withdrawals matter. The reader already knows.
 * Do NOT compare to or recommend other casinos in this answer. No Top Casinos or Similar Casinos references.
-* SCENARIO A ONLY: At the end, add a note that the same applies to KYC verification -- the casino does not provide specific KYC processing timeframes either, so the same concerns about lack of commitment apply to identity verification as well.
+* SCENARIO A ONLY: Add a SEPARATE PARAGRAPH (new line break) at the end about KYC -- the casino does not provide specific KYC processing timeframes either, so the same concerns about lack of commitment apply to identity verification as well. This KYC note must start its own paragraph, not be appended to the withdrawal paragraph.
 
 ## Q: How long can KYC reviews take?
 ## [KYC QUESTION] -- Only include this as a separate question under SCENARIO B.
