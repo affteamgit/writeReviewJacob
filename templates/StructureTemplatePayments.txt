@@ -36,7 +36,7 @@
 * If the terms use deliberately vague language (e.g., "reasonable time", "as soon as practicable") with no concrete number, flag this explicitly: the casino does not commit to a specific withdrawal timeframe in its terms, which means delays are harder to dispute.
 * ADDITIONALLY, check Trustpilot and AskGamblers reviews for any mentions of actual withdrawal times experienced by players. If withdrawal time information is found in reviews, include this real-world feedback in your answer.
 * Do NOT add generic sentences about why fast withdrawals matter. The reader already knows.
-* ONLY If the casino's withdrawal time is not less than 12 hours, mention a brand with faster withdrawal time from Top Casinos.
+* Do NOT compare to or recommend other casinos in this answer. No Top Casinos or Similar Casinos references.
 * SCENARIO A ONLY: At the end, add a note that the same applies to KYC verification -- the casino does not provide specific KYC processing timeframes either, so the same concerns about lack of commitment apply to identity verification as well.
 
 ## Q: How long can KYC reviews take?
@@ -60,7 +60,7 @@
   - Less than 12 hours (but not 0): "within a few hours" -- this is really good.
   - 12-24 hours: "less than 24 hours" / "less than a day" -- this is good and above average.
   - 24-72 hours or more: "up to a few days" / "can take multiple days" -- this is not ideal and could be better.
-* If the timeframe is large (more than 24 hours) OR not specified at all, recommend a brand with faster and more reliable KYC verification from Top Casinos.
+* Do NOT compare to or recommend other casinos in this answer. No Top Casinos or Similar Casinos references.
 
 ## Q: What are the withdrawal limits?
 
