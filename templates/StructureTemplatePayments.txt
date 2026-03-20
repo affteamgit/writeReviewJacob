@@ -84,7 +84,7 @@
   1. Max cashout (cashout cap): Do all bonuses have a max cashout cap, or only some, or none? State which bonuses have caps and what the amounts are.
   2. Max win (win cap): Do all bonuses have a max win cap, or only some, or none? State which bonuses have caps and what the amounts are.
   3. Wagering requirements: What is the wagering multiplier for each bonus (e.g., 20x, 30x, 40x)? Is it applied to the bonus only, the deposit only, or both (bonus + deposit)?
-* For each restriction, state whether the terms are good or bad. The spreadsheet data includes assessments of these terms -- use the spreadsheet's evaluation when available. As a general reference:
+* For each restriction found, state what it is AND whether it's good or bad based on the following criteria:
   - Wagering: 20x or lower on bonus only or deposit only = good. 25x-35x = average. 35x+ = bad. Applied to bonus + deposit = worse than bonus only.
   - Max cashout: No cap = great. Cap exists = state the amount and note this limits your upside.
   - Max win: No cap = great. Cap exists = state the amount and note this limits your upside.
