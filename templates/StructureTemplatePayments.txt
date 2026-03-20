@@ -22,7 +22,7 @@
 ## [WITHDRAWAL TIME QUESTION]
 
 * IMPORTANT: The withdrawal timeframe data reflects what the casino states or promises. First, comment on whether the casino provides this information and where it can be found.
-* When stating the timeframe, mention that this is especially relevant in cases where manual processing is involved. Vary the phrasing -- use phrases like "especially if manual confirmation is required", "if they process your withdrawal manually", "in cases where they check it manually", etc.
+* The stated timeframes are most relevant when manual processing is involved. Work this idea naturally into the answer -- do NOT tack it on as a separate clause like "especially if manual confirmation is required." Instead, weave it into the sentence flow. Examples of natural integration: "This is the timeframe you'd be looking at if your withdrawal goes through manual processing", "Withdrawals that get flagged for manual review could take up to...", "If your cashout needs manual approval, the terms say it can take...", "For manually processed withdrawals, the casino gives itself up to...". The key is that manual processing should feel like context within the sentence, not a bolted-on qualifier.
 * Then, frame the casino's stated withdrawal time using randomly one of the following three angles:
   (1) This information should ideally be found in the casino's Terms & Conditions, because T&Cs are the legal binding agreement between the player and the casino -- if it's there, it holds legal weight.
   (2) This is essentially the casino's promise to its players -- it sets an expectation, and players should hold the casino accountable to it.
@@ -44,7 +44,7 @@
 
 * FIRST, check the casino's knowledge base/terms and conditions for any specified KYC processing timeframe.
 * IMPORTANT: The KYC verification timeframe data reflects what the casino states or promises. First, comment on whether the casino provides this information and where it can be found.
-* When stating the timeframe, mention that this is especially relevant in cases where manual verification is involved. Vary the phrasing -- use phrases like "especially if manual verification is required", "if they check your documents manually", "in cases where they review it manually", etc.
+* The stated timeframes are most relevant when manual document review is involved. Work this idea naturally into the answer -- do NOT tack it on as a separate clause like "especially if manual verification is required." Instead, weave it into the sentence flow. Examples of natural integration: "If your documents need manual review, the casino allows itself up to...", "For accounts that get flagged for manual verification, expect...", "The terms give them up to... to manually check your documents", "When your KYC goes through manual review, you could be waiting...". The key is that manual verification should feel like context within the sentence, not a bolted-on qualifier.
 * Then, frame the casino's stated KYC time using randomly one of the following three angles:
   (1) This information should ideally be found in the casino's Terms & Conditions, because T&Cs are the legal binding agreement between the player and the casino -- if it's there, it holds legal weight.
   (2) This is essentially the casino's promise to its players -- it sets an expectation, and players should hold the casino accountable to it.
@@ -55,7 +55,7 @@
 * If the terms use deliberately vague language (e.g., "reasonable time", "as soon as practicable") with no concrete number, flag this: the casino avoids committing to a specific verification deadline, which gives them flexibility to delay.
 * If the terms mention "business days" for processing: Note that this prolongs the process even more since it excludes weekends and holidays.
 * DISTINGUISH between two different timeframes if present: (1) the deadline for YOU to submit documents after being asked, and (2) the time the CASINO takes to review your documents. Only the casino's review time matters for this question. Do not confuse these two.
-* Make clear that the KYC timeframes apply to manual review cases. Vary the phrasing across reviews -- do NOT always use the same "In cases where manual verification is needed" opener.
+* The manual review context should already be woven into the answer per the instructions above. Do not repeat it as a separate sentence.
 * Only use the vague phrases below as a FALLBACK when no exact figure is available in the data:
   - Less than 12 hours (but not 0): "within a few hours" -- this is really good.
   - 12-24 hours: "less than 24 hours" / "less than a day" -- this is good and above average.
