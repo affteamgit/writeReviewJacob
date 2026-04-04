@@ -16,8 +16,9 @@
 
 ## Q: Can I stay anonymous?
 
-* If anonymous (email-only): state this in one sentence. Mention what's NOT required. Vary the wording -- do NOT always write "offers anonymous registration requiring only your email address." Alternatives: "you only need an email to sign up", "registration is email-only", "no personal details needed beyond email", etc.
-* If not anonymous: state what's required beyond email. Recommend one or two anonymous alternatives from Top Casinos.
+* IMPORTANT: Anonymity is NOT just about registration. It covers the full player journey: signup, deposit, play, AND withdraw. A casino is only truly anonymous if you can do all four without providing personal details.
+* If anonymous (email-only signup AND no mandatory KYC for withdrawals up to a threshold): state this clearly. Mention what's NOT required. Vary the wording -- do NOT always write "offers anonymous registration requiring only your email address." Alternatives: "you only need an email to sign up", "registration is email-only", "no personal details needed beyond email", etc.
+* If not anonymous: be specific about what personal details are required (name, address, phone number, etc.) and at which stage. Different casinos ask for different things. Recommend one or two anonymous alternatives from Top Casinos.
 * IMPORTANT - Check the casino's terms for KYC activation thresholds:
   - If specific thresholds are mentioned (withdrawal amounts, deposit amounts, etc.), state these thresholds clearly so the reader knows when KYC might be triggered. Include this in the anonymity answer.
   - If the casino has the standard "we reserve the right to require KYC" language in a typical way, ignore it and don't mention it.
@@ -28,8 +29,9 @@
 
 * ALWAYS answer this question -- it applies to every casino regardless of age.
 * The answer should combine TWO elements: (1) how long the casino has been around, and (2) a reputation summary from the REPUTATION DATA provided.
+* NEVER mention Trustpilot, AskGamblers, or any review platform by name. Refer to "player reviews", "player feedback", or "community feedback" instead.
 * Frame the legitimacy assessment based on the casino's age tier:
-  - 1 year or less (brand new): This is a very new casino with no track record. Caution is warranted. There's not enough history to judge reliability. Recommend the reader proceed carefully and start with small amounts.
+  - 1 year or less (brand new): This is a very new casino with no track record. Caution is warranted. However, also add a personal touch: if we are reviewing this casino, it means we've tested it ourselves. Say something like "I've personally used this casino and had no issues so far, but only time will tell if that experience holds up for everyone." Don't just leave the reader with pure caution -- balance it with your own experience.
   - 1-2 years: Still relatively new. Limited track record. Mention any early reputation signals from the reputation data if available.
   - 3-4 years: Has been around for a few years. Starting to build a track record. Comment on whether the reputation data supports trustworthiness.
   - 5-10 years: Well-established. This is a positive sign. Experienced casinos tend to have more refined platforms and more consistent payouts. Use reputation data to support or qualify this.
@@ -49,6 +51,15 @@
 
 * ONLY answer this question if the casino's live chat is not available 24/7. If answered, warn the reader about it. A responsive 24/7 live chat is the minimum standard. Offer an alternative from Top Casinos.
 * If the casino has live chat available 24/7 - DO NOT ANSWER THIS QUESTION. Skip it entirely.
+
+## Q: What makes [casino] stand out from other casinos?
+
+* ALWAYS answer this question. Every casino has at least one unique or standout feature.
+* Focus on what genuinely differentiates this casino from the competition. This could be a unique feature, an unusual product, a strong community element, an exceptional bonus structure, standout support, or anything that makes it worth choosing over alternatives.
+* Be specific and concrete. Don't just say "great features" -- name the actual feature and explain briefly why it matters to a player. If the casino has a specific tool, event, or product that competitors don't commonly offer, highlight it.
+* If the casino also offers sports betting, live streams, poker, or other non-casino products, this is a good place to mention them.
+* This answer will always be unique across casinos, which is exactly the point. Keep it to 2-4 sentences.
+* Draw from ALL available casino data, including manual comments, to identify the most compelling standout features.
 
 ## Q: Does [casino] have good UX?
 

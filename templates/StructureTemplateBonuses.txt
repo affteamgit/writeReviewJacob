@@ -3,22 +3,38 @@
 ## Q: How are [casino's] bonuses for new players?
 
 * ONLY use bonus information that is provided in the spreadsheet data. Do NOT guess or invent bonus details.
+* IMPORTANT: Only use bonus data that applies to the site you are generating the review for (BCK or Gamblineers). The spreadsheet may contain bonuses for multiple sites. Check which bonuses are tagged for the correct site before using them.
 * If the casino has no bonuses at all, state this clearly. Mention that this is unusual for a crypto casino. Recommend 1-2 alternatives from Top Casinos that have welcome bonuses. Then SKIP all other questions in this section.
-* If the casino has bonuses, describe what's available based on the spreadsheet data:
+* If the casino has bonuses, describe the welcome/first-deposit bonus based on the spreadsheet data:
   - Welcome bonus / deposit match: State the percentage and maximum amount.
-  - Free spins: State how many and on which games (if specified).
-  - No-deposit bonus: State the amount and any conditions.
-  - Reload bonuses or other promotions: Mention briefly if present.
-* Comment on whether the overall bonus package is generous, average, or underwhelming compared to what's common in crypto casinos.
+  - Free spins included with the welcome bonus: State how many and on which games (if specified).
+* Comment on whether the welcome bonus is generous, average, or underwhelming. Be honest -- if it's one of the weakest bonuses out there, say so. Jakob isn't afraid to express disappointment.
 * Do NOT call bonuses "exclusive" unless the data explicitly says they are exclusive to a specific channel or partner.
-* Keep it factual and concise. 2-4 sentences depending on how many bonuses are available.
+* Keep it factual and concise. 2-3 sentences.
+
+## Q: Is there a no-deposit bonus available?
+
+* ONLY include this question if the casino offers a no-deposit bonus (free spins or cash with no deposit required).
+* If available: State what the no-deposit bonus is (amount/free spins), any conditions, and comment on its value.
+* Make sure the question includes "no-deposit bonus" as a keyword for SEO.
+* If the casino has NO no-deposit bonus: DO NOT ANSWER THIS QUESTION. Skip it entirely. The absence will be noted by omission.
+
+## Q: Are there any ongoing promotions for returning players?
+
+* ALWAYS answer this question. Even if there are no ongoing promos, state that clearly.
+* If the casino has ongoing promotions (tournaments, races, raffles, lootboxes, rakeback, cashback, reload bonuses, etc.): Describe the most notable ones. Be specific about what's available.
+* If the casino has sports betting promotions, include them here -- especially for brands where sports is a major draw.
+* If the casino has a VIP or loyalty program, describe it briefly. Note whether it's open to all or invitation-only, as this matters to the reader.
+* If the casino has unique gamification elements (daily tasks, token systems, leveling, rain features), mention them here.
+* If there are genuinely no ongoing promos for returning players, state this clearly and recommend 1-2 alternatives from Top Casinos that have strong ongoing promotions.
+* Keep it to 2-4 sentences depending on how much there is to cover.
 
 ## + questions/answers from manual comments
 
 IMPORTANT: Review the CommentIntegrationGuide.txt for detailed instructions on handling manual comments.
 
 For each manual comment in this section:
-1. First, check if the comment relates to the bonus question above
+1. First, check if the comment relates to ANY of the existing questions above (welcome bonus, no-deposit bonus, ongoing promotions)
 2. If YES: Add the comment information to that existing question's answer - DO NOT create a new Q&A
 3. If NO: Create a NEW Q&A pair below using this format:
 

@@ -12,7 +12,7 @@
 ## Q: Which responsible gambling tools are available besides self-exclusion?
 
 * IMPORTANT: Count ALL responsible gambling tools the casino offers besides self-exclusion. This INCLUDES the cooling-off option if available -- cooling-off is a responsible gambling tool and must be counted here. Do NOT say the casino has "no other tools" if it has cooling-off.
-* State how many other responsible gambling tools, except self-exclusion, the casino offers and list them as bullet points (or inline if only one item).
+* State how many other responsible gambling tools, except self-exclusion, the casino offers and list them as bullet points (or inline if only one item). Include cooling-off in this list if available -- do NOT give it a separate question.
 * Follow up by commenting on this number based on this criteria (do not mention the criteria):
   - If the casino offers 3 or 4 of these tools, they are above average and offer the safest experience possible in terms of responsible gambling.
   - If the casino offers 1 or 2 such tools, they are average, meaning it's ok, but could be better for the highest safety and ease of mind.
@@ -20,16 +20,11 @@
 * IMPORTANT: IF THE CASINO HAS LESS THAN 3 TOOLS BESIDES SELF-EXCLUSION (0, 1, or 2 tools), ALWAYS recommend one or two better brands from Top Casinos that offer more comprehensive responsible gambling tools (3 or more tools besides self-exclusion).
 * Keep the answer concise. Do not add generic sentences about why responsible gambling matters.
 
-## Q: Is there a cooling-off option?
-
-* If available: briefly note it's a nice addition since not all casinos offer it. Keep it to 1-2 sentences. Do NOT always open with "Absolutely" -- vary your wording.
-* If not available: note this is common and recommend an alternative from Top Casinos. Do NOT always use the phrase "which is fairly common among online casinos" -- rephrase naturally.
-
 ## Q: Can I use responsible gaming tools without contacting support?
 
 * State whether responsible gambling tools are available without having to contact support or not.
-* If available without support: mention this as a positive in one sentence.
-* If support is required: note this as an extra step, but still better than having no tools at all.
+* If available without support: mention this as a positive. Jakob values this highly -- having full control over your own tools without needing to ask anyone is a big UX win.
+* If support is required: note this clearly as a friction point. For Jakob, having to contact support to manage your own gambling limits is a significant drawback. Recommend one or two brands from Top Casinos where tools can be self-managed without support.
 * Keep it to 2-3 sentences max. No generic filler about why tool access matters.
 
 ## + questions/answers from manual comments
@@ -37,7 +32,7 @@
 IMPORTANT: Review the CommentIntegrationGuide.txt for detailed instructions on handling manual comments.
 
 For each manual comment in this section:
-1. First, check if the comment relates to ANY of the existing questions above (self-exclusion, available tools, cooling-off, support contact requirements)
+1. First, check if the comment relates to ANY of the existing questions above (self-exclusion, available tools, support contact requirements)
 2. If YES: Add the comment information to that existing question's answer - DO NOT create a new Q&A
 3. If NO: Create a NEW Q&A pair below using this format:
 

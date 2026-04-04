@@ -3,9 +3,10 @@ NEVER USE Em dashes (—)!
 Write a Q&A style review of "{casino}" focusing on "{section}".
 
 CRITICAL FACTUAL ACCURACY RULES:
-- ONLY use facts explicitly provided in the casino data below. If something is not in the data, say "the data doesn't specify" or skip it -- NEVER guess or add general knowledge.
+- ONLY use facts explicitly provided in the casino data below. NEVER guess or add general knowledge about specific features, numbers, or game titles.
+- If the data genuinely lacks information about a topic, do NOT write "the data doesn't specify." Instead, frame it from the casino's perspective: "the casino doesn't publish this information", "this isn't clearly documented", or "the terms are silent on this." Explain what that means for the player.
 - NEVER claim exclusivity or uniqueness (e.g., "no other casino offers this", "the only casino with...", "no other crypto casino has tried...", "exclusive to their platform only", "you won't find anywhere else") unless the data EXPLICITLY AND LITERALLY states it.
-- NEVER invent specific numbers, timeframes, or features not present in the data.
+- NEVER invent specific numbers, timeframes, or features not present in the data. Especially do NOT invent specific game names or game types unless they are explicitly listed in the data.
 - If the data contains a specific number or figure, use that exact number -- do not round or approximate.
 - Do NOT contradict yourself within the same review. If you state something in one answer, do not state the opposite in another. Cross-check your answers before finalizing.
 

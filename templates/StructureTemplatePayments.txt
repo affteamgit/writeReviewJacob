@@ -34,7 +34,8 @@
   - 24-72 hours: "up to a few days"
   - More than 72 hours: "more than three days"
 * If the terms use deliberately vague language (e.g., "reasonable time", "as soon as practicable") with no concrete number, flag this explicitly: the casino does not commit to a specific withdrawal timeframe in its terms, which means delays are harder to dispute.
-* ADDITIONALLY, check Trustpilot and AskGamblers reviews for any mentions of actual withdrawal times experienced by players. If withdrawal time information is found in reviews, include this real-world feedback in your answer.
+* Do NOT say "the data doesn't specify" as a cop-out. If the provided data genuinely lacks this information, say the casino doesn't publish this information, and explain what that means for the player.
+* ADDITIONALLY, check player feedback for any mentions of actual withdrawal times experienced by players. If withdrawal time information is found in reviews, include this real-world feedback in your answer. NEVER name the source platform (no "Trustpilot", "AskGamblers") -- just say "player reviews" or "player feedback".
 * Do NOT add generic sentences about why fast withdrawals matter. The reader already knows.
 * Do NOT compare to or recommend other casinos in this answer. No Top Casinos or Similar Casinos references.
 * SCENARIO A ONLY: Add a SEPARATE PARAGRAPH (new line break) at the end about KYC -- the casino does not provide specific KYC processing timeframes either, so the same concerns about lack of commitment apply to identity verification as well. This KYC note must start its own paragraph, not be appended to the withdrawal paragraph.
@@ -92,6 +93,7 @@
 * If the casino has bonuses but NONE of these restrictions (no cashout caps, no win caps, no excessive wagering), explicitly state that the casino does not impose these common restrictions and that this is very player-friendly.
 * Use short sentences, maximum 20 words per sentence. Keep the answer factual and concise.
 * The spreadsheet data should contain this information. Only use what is provided -- do not guess bonus terms.
+* If the bonus terms data is genuinely not available, do NOT say "the data doesn't specify." Instead, state that the casino's bonus terms aren't fully transparent or that specific restrictions aren't clearly published, and explain what that means for the player (e.g., always read the fine print before claiming).
 
 ## Q: Can I deposit different altcoins?
 
@@ -105,9 +107,9 @@
   The following 12 are considered major cryptocurrencies: Bitcoin, Ethereum, Tether, Litecoin, Tron, Dogecoin, Binance Coin, Ripple, Bitcoin Cash, USD Coin, Cardano, Solana.
   Check which of these major cryptos the casino supports and comment accordingly:
   - If the casino has ALL 12 major cryptos: Great coverage. Mention that all major cryptocurrencies are supported, including the total crypto count.
-  - If up to 3 major cryptos are missing: Good coverage overall. Name exactly which ones are missing.
-  - If 3-5 major cryptos are missing: Some major cryptos are missing. Name 2 random ones that are missing as examples.
-  - If more than 5 major cryptos are missing: Most major cryptos are missing. Give 2 examples of the ones that are missing.
+  - If up to 3 major cryptos are missing: Good coverage overall. Name exactly which ones are missing and recommend an alternative that supports them.
+  - If 3-5 major cryptos are missing: Some major cryptos are missing. Name 2 that are missing and recommend an alternative that supports them.
+  - If more than 5 major cryptos are missing: Most major cryptos are missing. Name 2 that are missing. This is a notable gap. Recommend an alternative.
   - If the casino has fewer than 5 cryptos total, skip the major crypto check entirely.
 * If Buy crypto is available, mention it briefly. It's convenient despite fees.
 * If the Crypto Swap feature is available in the casino, mention it as something very unique and useful. Very few casinos offer this and it can mean that players can play with virtually any token that's supported by the conversion tool. They can also deposit in one cryptocurrency and withdraw in another.

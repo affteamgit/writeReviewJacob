@@ -2,9 +2,10 @@
 
 ## Q: How many games are in [casino]?
 
-* State the number of games and comment on it (do not mention the criteria): over 7,000 = a lot, below 5,000 = low, in between = average.
+* State the number of games and comment on it (do not mention the criteria): over 7,000 = a lot, 5,000-7,000 = decent, 3,000-5,000 = on the smaller side, below 3,000 = low and worth flagging.
 * If less than 5,000: recommend a casino from Top Casinos with more than 7,000 as an alternative.
 * If 7,000 or more: compare to a casino with fewer games to show this is impressive.
+* IMPORTANT: A game count below 3,000 is genuinely low for a crypto casino. Do not call it "average" or downplay it. With few games, even strong provider coverage may not help players find what they're looking for.
 * Vary how you frame the game count. Do NOT always use "which falls below what I'd consider a strong game library" or "which is quite impressive." Find a fresh way to say it each time.
 * Keep it brief. State fact, comment, compare if needed. No filler. Max 20 words per sentence.
 
@@ -18,6 +19,8 @@
   - If 3-4 top providers are missing: Not the best. Mention which are missing and note the casino could do better. Use short sentences, maximum 20 words per sentence.
   - If 5 or more top providers are missing: Bad. Mention 2 missing providers by name and state more are missing. The casino needs to catch up. Use short sentences, maximum 20 words per sentence.
 * Keep the answer focused. State which providers are present/missing and comment briefly. No "explain why this matters to you" padding.
+* When listing providers by name (present or missing), keep the list SHORT. Name at most 3-4 providers. Do NOT dump a long list of 8+ provider names.
+* LIVE GAMES: After assessing the top providers, add a brief comment on live game availability. If the casino has Evolution and/or Pragmatic Play (the two biggest live game providers), note that live game selection should be solid. If both are missing, flag that the live game selection may be limited. Keep this to 1 sentence.
 
 ## Q: Does [casino] have Originals or provably fair games?
 
@@ -35,8 +38,9 @@
   - After mentioning crash/dice, briefly comment on what other types of Originals the casino offers (e.g., mines, plinko, slots, wheel, keno, etc.). Keep it short -- just mention the categories or a few game names.
   - List the most popular Original titles by name. Point to the casino's originals page for the full list.
 * Briefly commend the casino for having Originals in 1-2 sentences. Do not list multiple generic benefits. Use short sentences, maximum 20 words per sentence.
-* DO NOT say that Originals are connected to provably fair games. Instead, if the casino has provably fair games through the three providers mentioned (BGaming, Spribe, Turbogaming), state which of these providers the casino has. Mention provably fair benefits briefly (1 sentence max) and vary the wording -- do NOT always write "verify each game result's fairness mathematically" or "gives you confidence that the games aren't rigged against you."
-* IMPORTANT: If the casino has NO Originals AND NO provably fair games (through providers or otherwise), DO NOT ANSWER THIS QUESTION AT ALL. Skip it entirely.
+* DO NOT say that Originals are connected to provably fair games. Instead, if the casino has provably fair games through the three providers mentioned (BGaming, Spribe, Turbogaming), simply state which of these providers the casino has. Do NOT explain how provably fair technology works -- no "cryptographic methods", "mathematical proof", or "verify fairness" explanations. Just state availability.
+* IMPORTANT: Only mention specific Original game titles or types if they are explicitly listed in the casino data. Do NOT guess or invent game names. If the data only says "Originals: yes" without listing specific games, just confirm they exist and mention the count if available.
+* IMPORTANT: If the casino has NO Originals AND NO provably fair games (through providers or otherwise), DO NOT SKIP THIS QUESTION. Instead, answer it by stating that the casino lacks Originals and provably fair games, and recommend 1-2 alternatives from Top Casinos that have a strong Originals collection. This is a notable gap worth flagging.
 
 ## Q: Can I search for games based on RTP or volatility?
 
