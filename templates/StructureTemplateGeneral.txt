@@ -39,6 +39,7 @@
 * Include relevant details from the REPUTATION DATA section in the casino data. This contains an AI-generated summary of the casino's public reputation, licensing, notable events, and community standing. Weave these details naturally into your answer.
 * If the reputation data mentions any licensing information (e.g., Curacao, Malta Gaming Authority), include it as it directly supports legitimacy.
 * If the reputation data mentions any controversies or negative incidents, mention them briefly and factually.
+* CRITICAL: If reputation data is missing, empty, or unhelpful, do NOT mention this. NEVER write "I don't have reputation data", "no comprehensive data available", or anything similar. Instead, write the answer using ONLY what you DO have (age, licensing if known, player feedback if available). Simply skip the reputation paragraph if there's nothing to say. Never draw attention to missing information.
 * Split the answer into TWO short paragraphs: one focused on the casino's age/track record, and one focused on the reputation data (licensing, community standing, any controversies). This keeps the answer visually digestible.
 * Keep it to 3-4 sentences total across both paragraphs. Be direct and factual.
 
