@@ -11,7 +11,7 @@
   - ONLY say the terms "explicitly allow" VPN if you can point to a specific clause or sentence in the terms that says VPN use is permitted. A general "VPN friendly: yes" label in the data does NOT count as explicit allowance.
 * IMPORTANT: Do NOT call a casino "VPN friendly" or say "explicitly allowing VPN use." The most you can say when terms don't mention VPN is that the terms don't restrict it. There is a big difference between "not restricted" and "explicitly allowed."
 * Do NOT add closing sentences like "This makes [casino] accessible for players who..." -- the facts speak for themselves.
-* Do NOT add generic sentences about VPN benefits. Stick to what the terms say.
+* Do NOT add generic sentences about VPN benefits like "This gives you more flexibility if you're traveling" or "for privacy reasons". Stick to what the terms say. No benefit sentences.
 * 2-3 sentences max. No filler.
 
 ## Q: Can I stay anonymous?
@@ -29,12 +29,12 @@
 
 * ALWAYS answer this question -- it applies to every casino regardless of age.
 * The answer should combine TWO elements: (1) how long the casino has been around, and (2) a reputation summary from the REPUTATION DATA provided.
-* NEVER mention Trustpilot, AskGamblers, or any review platform by name. Refer to "player reviews", "player feedback", or "community feedback" instead.
+* REMINDER: NEVER write "Trustpilot", "AskGamblers", or any review platform name anywhere in this answer. Use "player reviews" or "player feedback".
 * Frame the legitimacy assessment based on the casino's age tier:
   - 1 year or less (brand new): This is a very new casino with no track record. Caution is warranted. However, also add a personal touch: if we are reviewing this casino, it means we've tested it ourselves. Say something like "I've personally used this casino and had no issues so far, but only time will tell if that experience holds up for everyone." Don't just leave the reader with pure caution -- balance it with your own experience.
   - 1-2 years: Still relatively new. Limited track record. Mention any early reputation signals from the reputation data if available.
   - 3-4 years: Has been around for a few years. Starting to build a track record. Comment on whether the reputation data supports trustworthiness.
-  - 5-10 years: Well-established. This is a positive sign. Experienced casinos tend to have more refined platforms and more consistent payouts. Use reputation data to support or qualify this.
+  - 5-10 years: Well-established. This is a positive sign. Experienced casinos tend to have more refined operations and more consistent payouts. Use reputation data to support or qualify this.
   - 10+ years: A veteran in the industry. Long-standing presence is a strong trust signal. Use reputation data to highlight key reputation milestones or any notable incidents.
 * Include relevant details from the REPUTATION DATA section in the casino data. This contains an AI-generated summary of the casino's public reputation, licensing, notable events, and community standing. Weave these details naturally into your answer.
 * If the reputation data mentions any licensing information (e.g., Curacao, Malta Gaming Authority), include it as it directly supports legitimacy.

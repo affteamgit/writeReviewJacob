@@ -71,8 +71,9 @@
   - Monthly limits: anything over $24,000 is considered good and anything below $16,000 is considered not so good.
 * If any BTC values appear, convert them internally to USD before comparing them to other casinos, but do not mention USD in the review text. Only mention the BTC amounts.
 * Comment briefly on whether the limits are player-friendly. Do not add filler about "why limits matter to you."
+* REMINDER: Do NOT cite any statistic like "only 30% of crypto casinos" or "only 31% of crypto casinos offer this". Express rarity in your own unique words if needed.
 * IMPORTANT - Check the casino's AML (Anti-Money Laundering) wagering requirement:
-  - If the requirement is 1x (wager deposited amount once), DO NOT mention it at all.
+  - If the requirement is 1x (wager deposited amount once), DO NOT mention it at all. 1x is standard and not worth noting. Completely skip the AML section.
   - If the requirement is MORE than 1x, state it clearly: "This casino requires you to wager your deposited amount [n] times before withdrawal" where n > 1.
   - If MORE than 1x, explain that 1x is the industry standard and this requirement is higher than normal.
   - If MORE than 1x, recommend one or two brands from Top Casinos that require only 1x wagering (the industry standard).
@@ -93,7 +94,7 @@
 * If the casino has bonuses but NONE of these restrictions (no cashout caps, no win caps, no excessive wagering), explicitly state that the casino does not impose these common restrictions and that this is very player-friendly.
 * Use short sentences, maximum 20 words per sentence. Keep the answer factual and concise.
 * The spreadsheet data should contain this information. Only use what is provided -- do not guess bonus terms.
-* If the bonus terms data is genuinely not available, do NOT say "the data doesn't specify." Instead, state that the casino's bonus terms aren't fully transparent or that specific restrictions aren't clearly published, and explain what that means for the player (e.g., always read the fine print before claiming).
+* REMINDER: If the bonus terms data is not available, NEVER write "the data doesn't specify", "I can't specify", "the provided information doesn't include", or similar cop-outs. Instead, frame it as the casino's lack of transparency: "the casino doesn't clearly publish their bonus restrictions" or "these terms aren't documented transparently". Then advise the player to read the fine print before claiming.
 
 ## Q: Can I deposit different altcoins?
 
@@ -101,7 +102,7 @@
   - More than 15: above average. Offer 1 brand with similar or more from Similar Casinos.
   - 5 to 15: average. Advise checking if their currency is supported. Recommend 1-2 brands with MORE cryptos from Top Casinos.
   - Less than 5: very low, hardly qualifies as a crypto casino. Recommend 1-2 brands with MORE cryptos from Top Casinos.
-* IMPORTANT - Recommendation logic: Only recommend a SIMILAR casino (from Similar Casinos) if the casino is above average (15+). If the casino is average or below, recommend a BETTER casino (from Top Casinos) that has more crypto options. Do NOT recommend similar-level casinos to average or below-average ones.
+* IMPORTANT - Recommendation logic: Only recommend a SIMILAR casino (from Similar Casinos) if the casino is above average (15+). If the casino is average or below (15 or fewer), you MUST recommend a BETTER casino (from Top Casinos) that has MORE crypto options. NEVER compare to a casino with the same or fewer cryptos when the casino is average or below. The point is to show the reader a better alternative, not a similar one.
 * Vary how you describe the count. Do NOT always use "above average number" or "average number found in most crypto casinos." Rephrase naturally each time.
 * MAJOR CRYPTOCURRENCIES CHECK - Only do this check if the casino accepts at least 5 cryptocurrencies total:
   The following 12 are considered major cryptocurrencies: Bitcoin, Ethereum, Tether, Litecoin, Tron, Dogecoin, Binance Coin, Ripple, Bitcoin Cash, USD Coin, Cardano, Solana.

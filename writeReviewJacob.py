@@ -423,31 +423,33 @@ def generate_general_player_summary(casino_name, feedback_data):
     # Pick a random style to force structural variation
     styles = [
         {
-            "instruction": f"Start by mentioning a specific standout feature players love, then briefly note {source_str} as the source mid-sentence.",
-            "example": f"**Fast crypto payouts** are the most common praise you'll see in {source_str} reviews for {casino_name}, along with..."
+            "instruction": "Start by mentioning a specific standout feature players love, then summarize the rest.",
+            "example": f"**Fast crypto payouts** are the most common praise in player reviews for {casino_name}, along with..."
         },
         {
-            "instruction": f"Start with your own take as a reviewer who checked {source_str}, then summarize what you found.",
-            "example": f"I checked {source_str} to see what players think of {casino_name}, and the feedback is..."
+            "instruction": "Start with your own take as a reviewer who checked player feedback, then summarize what you found.",
+            "example": f"I looked into what players think of {casino_name}, and the feedback is..."
         },
         {
-            "instruction": f"Start with the overall sentiment (positive/mixed/negative) in one short sentence, then give details. Mention {source_str} naturally.",
-            "example": f"{casino_name} gets mostly positive marks on {source_str}. Players enjoy..."
+            "instruction": "Start with the overall sentiment (positive/mixed/negative) in one short sentence, then give details.",
+            "example": f"{casino_name} gets mostly positive marks from players. They enjoy..."
         },
         {
-            "instruction": f"Lead with what makes this casino different from others according to {source_str} reviews.",
-            "example": f"What stands out in {source_str} feedback is {casino_name}'s..."
+            "instruction": "Lead with what makes this casino different from others according to player reviews.",
+            "example": f"What stands out in player feedback is {casino_name}'s..."
         },
     ]
     style = random.choice(styles)
 
     prompt = f"""Summarize player sentiment about {casino_name} for a casino review article.
-Source: {source_str}.
 
 STYLE: {style["instruction"]}
 Example opening (adapt, don't copy): {style["example"]}
 
 RULES:
+- CRITICAL: NEVER mention Trustpilot, AskGamblers, or any review platform by name. Use "player reviews", "player feedback", or "what players report" instead. This is a hard requirement.
+- NEVER use the word "platform" to refer to a casino. Use "casino" or "site" instead.
+- NEVER single out individual reviews (e.g., "one player noted"). Always generalize: "some players report", "players mention", "feedback suggests".
 - One short paragraph, 50-80 words. Direct, no filler.
 - FORBIDDEN phrases: "Based on recent reviews", "players frequently praise", "players consistently praise", "with many highlighting". Do NOT use these.
 - Do NOT mention how many reviews were analyzed.

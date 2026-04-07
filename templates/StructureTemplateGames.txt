@@ -19,7 +19,7 @@
   - If 3-4 top providers are missing: Not the best. Mention which are missing and note the casino could do better. Use short sentences, maximum 20 words per sentence.
   - If 5 or more top providers are missing: Bad. Mention 2 missing providers by name and state more are missing. The casino needs to catch up. Use short sentences, maximum 20 words per sentence.
 * Keep the answer focused. State which providers are present/missing and comment briefly. No "explain why this matters to you" padding.
-* When listing providers by name (present or missing), keep the list SHORT. Name at most 3-4 providers. Do NOT dump a long list of 8+ provider names.
+* REMINDER: When listing providers by name (present or missing), name AT MOST 3-4 providers total. A list like "Evolution, Pragmatic Play, NetEnt, Play'n Go, Microgaming, BetSoft, and Red Tiger" is TOO LONG. Pick the 3-4 most important ones only.
 * LIVE GAMES: After assessing the top providers, add a brief comment on live game availability. If the casino has Evolution and/or Pragmatic Play (the two biggest live game providers), note that live game selection should be solid. If both are missing, flag that the live game selection may be limited. Keep this to 1 sentence.
 
 ## Q: Does [casino] have Originals or provably fair games?
@@ -38,7 +38,8 @@
   - After mentioning crash/dice, briefly comment on what other types of Originals the casino offers (e.g., mines, plinko, slots, wheel, keno, etc.). Keep it short -- just mention the categories or a few game names.
   - List the most popular Original titles by name. Point to the casino's originals page for the full list.
 * Briefly commend the casino for having Originals in 1-2 sentences. Do not list multiple generic benefits. Use short sentences, maximum 20 words per sentence.
-* DO NOT say that Originals are connected to provably fair games. Instead, if the casino has provably fair games through the three providers mentioned (BGaming, Spribe, Turbogaming), simply state which of these providers the casino has. Do NOT explain how provably fair technology works -- no "cryptographic methods", "mathematical proof", or "verify fairness" explanations. Just state availability.
+* DO NOT say that Originals are connected to provably fair games. Instead, if the casino has provably fair games through the three providers mentioned (BGaming, Spribe, Turbogaming), simply state which of these providers the casino has.
+* REMINDER: Do NOT explain how provably fair technology works. No "cryptographic methods", "mathematical proof", "verify fairness", "verify game outcomes", "transparent gaming experiences", or "verify the fairness yourself". Just say provably fair games are available through [provider]. One short sentence. Nothing more.
 * IMPORTANT: Only mention specific Original game titles or types if they are explicitly listed in the casino data. Do NOT guess or invent game names. If the data only says "Originals: yes" without listing specific games, just confirm they exist and mention the count if available.
 * IMPORTANT: If the casino has NO Originals AND NO provably fair games (through providers or otherwise), DO NOT SKIP THIS QUESTION. Instead, answer it by stating that the casino lacks Originals and provably fair games, and recommend 1-2 alternatives from Top Casinos that have a strong Originals collection. This is a notable gap worth flagging.
 
