@@ -78,11 +78,11 @@ A: [Casino] has its own blockchain token called XYZ, issued on the EOS chain. Yo
 
 **STEP 4: Categorization Rules**
 Place new Q&A pairs in the appropriate section based on topic:
-- **General**: Overall experience, VPN, reputation, support languages, website issues, regional restrictions
+- **General**: Overall experience, VPN, reputation, support languages, website issues, regional restrictions, UX, standout features
 - **Payments**: Deposit/withdrawal methods, processing times, limits, fees, KYC, payment issues
 - **Games**: Game selection, specific games, game features, providers, performance issues
 - **Responsible Gambling**: Limits, tools, self-exclusion, account controls
-- **Bonuses**: Any promotional offers, bonus terms, wagering, restrictions
+- **Bonuses**: Any promotional offers, bonus terms, wagering, restrictions, loyalty programs, VIP programs, rakeback, cashback, reward systems, gamification features, token systems, ongoing promotions for returning players. NOTE: If a comment is about loyalty, rewards, VIP, rakeback, or any system that gives players ongoing value, it belongs in Bonuses (specifically under the ongoing promotions question), NOT in General.
 
 **STEP 5: Quality Checks**
 Before finalizing, verify:
