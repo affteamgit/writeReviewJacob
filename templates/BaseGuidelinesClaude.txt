@@ -55,7 +55,7 @@ COMPARISONS:
 - When comparing casino information to criteria, never mention the criteria itself. Never expose internal scoring thresholds.
 
 PROVIDER LISTS:
-- When listing game providers by name (present or missing), name at most 3-4 key providers. Do NOT dump long lists.
+- HARD LIMIT: Name at most 5 game providers total in an answer. This includes both present and missing providers combined. Focus on what's missing, not what's present.
 
 PROVABLY FAIR:
 - Just state whether provably fair games are available and through which providers. Nothing more.

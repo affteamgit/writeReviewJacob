@@ -13,13 +13,14 @@
 
 * IMPORTANT: Make sure to carefully check all provider names and not miss any providers when analyzing the casino's provider list.
 * State the number of game providers in the casino, then comment on the number based on the following criteria (but do not mention the criteria): More than 70 game providers is a lot, anything below 40 providers is not a lot, everything in between is average.
-* After commenting on the total number of providers, assess which of the following top game providers are present in the casino's provider list: BetSoft, BGaming, Evolution, Microgaming, NetEnt, Novomatic, Play'n Go, Playtech, Pragmatic Play, QuickSpin, Red Tiger, Spinomenal, Yggdrasil. IMPORTANT: Always write "Evolution" -- never "Evolution Gaming". Do not mention the total count of top providers being checked. Based on how many of these top providers are MISSING from the casino, comment as follows (but do not mention the criteria or thresholds):
-  - If 0 top providers are missing (casino has all 13): Very rare and exceptional. Commend the casino briefly. Use short sentences, maximum 20 words per sentence.
-  - If 1-2 top providers are missing: Still pretty good. Mention which 1 or 2 are missing by name, but commend the casino for strong coverage. Use short sentences, maximum 20 words per sentence.
-  - If 3-4 top providers are missing: Not the best. Mention which are missing and note the casino could do better. Use short sentences, maximum 20 words per sentence.
-  - If 5 or more top providers are missing: Bad. Mention 2 missing providers by name and state more are missing. The casino needs to catch up. Use short sentences, maximum 20 words per sentence.
-* Keep the answer focused. State which providers are present/missing and comment briefly. No "explain why this matters to you" padding.
-* REMINDER: When listing providers by name (present or missing), name AT MOST 3-4 providers total. A list like "Evolution, Pragmatic Play, NetEnt, Play'n Go, Microgaming, BetSoft, and Red Tiger" is TOO LONG. Pick the 3-4 most important ones only.
+* After commenting on the total number of providers, internally check which of these 13 top providers are present: BetSoft, BGaming, Evolution, Microgaming, NetEnt, Novomatic, Play'n Go, Playtech, Pragmatic Play, QuickSpin, Red Tiger, Spinomenal, Yggdrasil. IMPORTANT: Always write "Evolution" -- never "Evolution Gaming". Do not mention the total count of top providers being checked.
+* HARD LIMIT: Name AT MOST 5 providers total in the entire answer. This means 5 provider names maximum across BOTH present and missing lists combined. For example: 3 present + 2 missing = 5 total. Do NOT exceed this. A list like "Evolution, Pragmatic Play, NetEnt, Play'n Go, Microgaming, BetSoft, and Red Tiger" is BANNED -- that's 7 names which violates the limit.
+* Based on how many of these top providers are MISSING (do not mention the criteria or thresholds):
+  - If 0 missing: Commend the casino for having all major providers. Do NOT list them -- just say coverage is exceptional. Use short sentences, maximum 20 words per sentence.
+  - If 1-2 missing: Mention which 1-2 are missing by name, commend the casino for strong coverage overall. Do NOT list the present providers. Use short sentences, maximum 20 words per sentence.
+  - If 3-4 missing: Mention 2-3 notable missing providers by name. Note the casino could do better. Use short sentences, maximum 20 words per sentence.
+  - If 5 or more missing: Mention 2-3 missing providers by name and state more are absent. The casino needs to catch up. Use short sentences, maximum 20 words per sentence.
+* IMPORTANT: Focus on what's MISSING, not what's present. The reader cares about gaps. Only mention present providers if the casino has 0-2 missing (to commend coverage) -- even then, name at most 2-3 present providers as examples.
 * LIVE GAMES: After assessing the top providers, add a brief comment on live game availability. If the casino has Evolution and/or Pragmatic Play (the two biggest live game providers), note that live game selection should be solid. If both are missing, flag that the live game selection may be limited. Keep this to 1 sentence.
 
 ## Q: Does [casino] have Originals or provably fair games?
