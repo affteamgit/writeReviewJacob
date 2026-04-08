@@ -5,23 +5,32 @@
 * ONLY use bonus information that is provided in the spreadsheet data. Do NOT guess or invent bonus details.
 * IMPORTANT: Only use bonus data that applies to the site you are generating the review for (BCK or Gamblineers). The spreadsheet may contain bonuses for multiple sites. Check which bonuses are tagged for the correct site before using them.
 * If the casino has no bonuses at all, state this clearly. Mention that this is unusual for a crypto casino. Recommend 1-2 alternatives from Top Casinos that have welcome bonuses. Then SKIP all other questions in this section.
-* If the casino has ONE welcome bonus, describe it in a short paragraph with key details (match %, max amount, free spins, min deposit, wagering, time limit).
-* If the casino has MULTIPLE welcome bonus options, give each bonus its OWN paragraph with a clear label, and use bullet points to list the key terms for each. Example format:
+* If the casino has ONE welcome bonus, use bullet points to list its key terms:
 
-  **Option 1: [short name, e.g., "Deposit Match"]**
-  • Match: 100% up to 5 BTC
-  • Free spins: 100
-  • Minimum deposit: $50
-  • Wagering: 0x on bonus, 25x on free spins
+**Welcome Bonus**
+• Match: [percentage] up to [amount]
+• Free spins: [number]
+• Minimum deposit: [amount]
+• Wagering: [multiplier] on [what]
 
-  **Option 2: [short name, e.g., "Rakeback"]**
-  • Rakeback: 10% up to $2,500
-  • Minimum deposit: none
-  • Wagering: 0x
+Then add 1-2 sentences commenting on the bonus quality.
 
-  This makes it easy for the reader to compare options at a glance.
+* MANDATORY FORMAT FOR MULTIPLE BONUSES: If the casino has MORE THAN ONE welcome bonus option, you MUST use the following format. Do NOT write prose paragraphs. Each bonus gets its own labeled section with bullet points:
 
-* After listing the bonus details, add a brief 1-2 sentence comment on whether the overall package is generous, average, or underwhelming. Be honest -- Jakob isn't afraid to express disappointment.
+**Option 1: [short name]**
+• [key term]: [value]
+• [key term]: [value]
+• [key term]: [value]
+
+**Option 2: [short name]**
+• [key term]: [value]
+• [key term]: [value]
+• [key term]: [value]
+
+Then add 1-2 sentences commenting on the overall package.
+
+* This bullet point format is REQUIRED, not optional. Do NOT merge multiple bonuses into prose paragraphs. The reader needs to compare options at a glance.
+* Be honest about quality -- Jakob isn't afraid to express disappointment if a bonus is weak.
 * Do NOT call bonuses "exclusive" unless the data explicitly says they are exclusive to a specific channel or partner.
 
 ## Q: Is there a no-deposit bonus available?
