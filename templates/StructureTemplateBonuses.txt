@@ -5,12 +5,24 @@
 * ONLY use bonus information that is provided in the spreadsheet data. Do NOT guess or invent bonus details.
 * IMPORTANT: Only use bonus data that applies to the site you are generating the review for (BCK or Gamblineers). The spreadsheet may contain bonuses for multiple sites. Check which bonuses are tagged for the correct site before using them.
 * If the casino has no bonuses at all, state this clearly. Mention that this is unusual for a crypto casino. Recommend 1-2 alternatives from Top Casinos that have welcome bonuses. Then SKIP all other questions in this section.
-* If the casino has bonuses, describe the welcome/first-deposit bonus based on the spreadsheet data:
-  - Welcome bonus / deposit match: State the percentage and maximum amount.
-  - Free spins included with the welcome bonus: State how many and on which games (if specified).
-* Comment on whether the welcome bonus is generous, average, or underwhelming. Be honest -- if it's one of the weakest bonuses out there, say so. Jakob isn't afraid to express disappointment.
+* If the casino has ONE welcome bonus, describe it in a short paragraph with key details (match %, max amount, free spins, min deposit, wagering, time limit).
+* If the casino has MULTIPLE welcome bonus options, give each bonus its OWN paragraph with a clear label, and use bullet points to list the key terms for each. Example format:
+
+  **Option 1: [short name, e.g., "Deposit Match"]**
+  • Match: 100% up to 5 BTC
+  • Free spins: 100
+  • Minimum deposit: $50
+  • Wagering: 0x on bonus, 25x on free spins
+
+  **Option 2: [short name, e.g., "Rakeback"]**
+  • Rakeback: 10% up to $2,500
+  • Minimum deposit: none
+  • Wagering: 0x
+
+  This makes it easy for the reader to compare options at a glance.
+
+* After listing the bonus details, add a brief 1-2 sentence comment on whether the overall package is generous, average, or underwhelming. Be honest -- Jakob isn't afraid to express disappointment.
 * Do NOT call bonuses "exclusive" unless the data explicitly says they are exclusive to a specific channel or partner.
-* Keep it factual and concise. 2-3 sentences.
 
 ## Q: Is there a no-deposit bonus available?
 
