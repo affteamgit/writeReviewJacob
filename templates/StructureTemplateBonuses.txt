@@ -5,31 +5,8 @@
 * ONLY use bonus information that is provided in the spreadsheet data. Do NOT guess or invent bonus details.
 * IMPORTANT: Only use bonus data that applies to the site you are generating the review for (BCK or Gamblineers). The spreadsheet may contain bonuses for multiple sites. Check which bonuses are tagged for the correct site before using them.
 * If the casino has no bonuses at all, state this clearly. Mention that this is unusual for a crypto casino. Recommend 1-2 alternatives from Top Casinos that have welcome bonuses. Then SKIP all other questions in this section.
-* If the casino has ONE welcome bonus, use bullet points to list its key terms:
-
-**Welcome Bonus**
-• Match: [percentage] up to [amount]
-• Free spins: [number]
-• Minimum deposit: [amount]
-• Wagering: [multiplier] on [what]
-
-Then add 1-2 sentences commenting on the bonus quality.
-
-* MANDATORY FORMAT FOR MULTIPLE BONUSES: If the casino has MORE THAN ONE welcome bonus option, you MUST use the following format. Do NOT write prose paragraphs. Each bonus gets its own labeled section with bullet points:
-
-**Option 1: [short name]**
-• [key term]: [value]
-• [key term]: [value]
-• [key term]: [value]
-
-**Option 2: [short name]**
-• [key term]: [value]
-• [key term]: [value]
-• [key term]: [value]
-
-Then add 1-2 sentences commenting on the overall package.
-
-* This bullet point format is REQUIRED, not optional. Do NOT merge multiple bonuses into prose paragraphs. The reader needs to compare options at a glance.
+* If the casino has ONE welcome bonus, describe it in a short paragraph. Use bullet points for the key terms if there are several (match %, free spins, min deposit, wagering, time limit). Add 1-2 sentences commenting on bonus quality.
+* If the casino has MULTIPLE welcome bonus options, each bonus MUST be in its own separate paragraph or section. Do NOT pile all bonuses into one paragraph. The reader needs to clearly see where one bonus ends and the next begins. Use bullet points within each bonus section when listing multiple terms. Add 1-2 sentences at the end commenting on the overall package.
 * Be honest about quality -- Jakob isn't afraid to express disappointment if a bonus is weak.
 * Do NOT call bonuses "exclusive" unless the data explicitly says they are exclusive to a specific channel or partner.
 
