@@ -25,24 +25,16 @@
 
 ## Q: Does [casino] have Originals or provably fair games?
 
-* TERMINOLOGY: ALWAYS call these games "Originals" -- NEVER use "in-house games" or "in-house titles". The correct term is "Originals".
-* IMPORTANT: When discussing provably fair games, we are primarily thinking about Originals (the casino's own games). This question merges the concepts of Originals and provably fair games.
-* FIRST, check if the casino has Originals. There are 4 ways to determine if the casino has provably fair games:
-  1. The casino has one or more of these three providers: BGaming, Spribe, or Turbogaming (these providers offer provably fair games). If the casino has one but not the other two, mention which ones are missing.
-  2. The casino has Originals AND these Originals are provably fair.
-  3. The casino data explicitly indicates that provably fair games are available.
-  4. Any combination of the above.
-* CROSS-CHECK: Before referencing BGaming, Spribe, or Turbogaming as offering provably fair games, verify that the provider actually appears in the casino's provider list. Do NOT say "provably fair games through BGaming" if BGaming was listed as MISSING in the providers question. Your answers must be consistent with each other.
-* If the casino has Originals:
-  - State how many Originals the casino has.
-  - Specifically check if the casino has **crash** and/or **dice** games among its Originals. If yes, mention them by name. Crash and dice are the most popular Original game types.
-  - After mentioning crash/dice, briefly comment on what other types of Originals the casino offers (e.g., mines, plinko, slots, wheel, keno, etc.). Keep it short -- just mention the categories or a few game names.
-  - List the most popular Original titles by name. Point to the casino's originals page for the full list.
-* Briefly commend the casino for having Originals in 1-2 sentences. Do not list multiple generic benefits. Use short sentences, maximum 20 words per sentence.
-* DO NOT say that Originals are connected to provably fair games. Instead, if the casino has provably fair games through the three providers mentioned (BGaming, Spribe, Turbogaming), simply state which of these providers the casino has.
-* REMINDER: Do NOT explain how provably fair technology works. No "cryptographic methods", "mathematical proof", "verify fairness", "verify game outcomes", "transparent gaming experiences", or "verify the fairness yourself". Just say provably fair games are available through [provider]. One short sentence. Nothing more.
-* IMPORTANT: Only mention specific Original game titles or types if they are explicitly listed in the casino data. Do NOT guess or invent game names. If the data only says "Originals: yes" without listing specific games, just confirm they exist and mention the count if available.
-* IMPORTANT: If the casino has NO Originals AND NO provably fair games (through providers or otherwise), DO NOT SKIP THIS QUESTION. Instead, answer it by stating that the casino lacks Originals and provably fair games, and recommend 1-2 alternatives from Top Casinos that have a strong Originals collection. This is a notable gap worth flagging.
+* TERMINOLOGY: ALWAYS call these games "Originals" -- NEVER use "in-house games" or "in-house titles".
+* This answer should be SHORT and factual. State what exists and what doesn't. No fluff, no explanations of what Originals or provably fair games are, no "transparent gaming", no "verified fair gaming", no benefits or descriptions.
+* CROSS-CHECK: Before referencing BGaming, Spribe, or Turbogaming as offering provably fair games, verify that the provider actually appears in the casino's provider list. Your answers must be consistent with each other.
+* Answer structure -- just these facts and nothing more:
+  1. Does the casino have Originals? Yes or no. If yes, mention the count if available.
+  2. Does the casino have provably fair games? Yes or no. If yes, state through which providers (BGaming, Spribe, Turbogaming -- only name the ones actually present).
+  3. If the casino is MISSING Originals or provably fair games: recommend 1-2 alternatives from Top Casinos that have them.
+* Only mention specific Original game titles or types if explicitly listed in the casino data. Do NOT guess or invent game names.
+* Do NOT add any explanations, benefits, or descriptions of what Originals or provably fair games are. The reader already knows. Just state availability and recommend alternatives if needed.
+* Keep the answer to 2-3 sentences maximum.
 
 ## Q: Can I search for games based on RTP or volatility?
 
