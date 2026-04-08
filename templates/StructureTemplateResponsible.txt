@@ -11,17 +11,12 @@
 
 ## Q: Which responsible gambling tools are available besides self-exclusion?
 
-* IMPORTANT: Count ALL responsible gambling tools the casino offers besides self-exclusion. This INCLUDES the cooling-off option if available -- cooling-off is a responsible gambling tool and must be counted here. Do NOT say the casino has "no other tools" if it has cooling-off.
-* State how many other responsible gambling tools, except self-exclusion, the casino offers and list them as bullet points (or inline if only one item). Include cooling-off in this list if available -- do NOT give it a separate question.
-* Follow up by commenting on this number based on this criteria (do not mention the criteria):
-  - If the casino offers 3 or 4 of these tools, they are above average and offer the safest experience possible in terms of responsible gambling.
-  - If the casino offers 1 or 2 such tools, they are average, meaning it's ok, but could be better for the highest safety and ease of mind.
-  - If the casino offers no other tools, they need to step up the game; responsible gambling tools don't bring money to the casino, but create a safer environment for players, which shows care and responsibility on the casino's side.
-* IMPORTANT: IF THE CASINO HAS LESS THAN 3 TOOLS BESIDES SELF-EXCLUSION (0, 1, or 2 tools), ALWAYS recommend one or two better brands from Top Casinos that offer more comprehensive responsible gambling tools (3 or more tools besides self-exclusion).
-* IMPORTANT: State whether these tools can be managed WITHOUT contacting support or if support is required:
-  - If available without support: mention this as a positive. Having full control without asking anyone is a big UX win.
-  - If support is required: note this as a friction point and a drawback. Recommend one or two brands from Top Casinos where tools can be self-managed.
-* Keep the answer concise. Do not add generic sentences about why responsible gambling matters.
+* IMPORTANT: Count ALL responsible gambling tools the casino offers besides self-exclusion. This INCLUDES the cooling-off option if available -- cooling-off is a responsible gambling tool and must be counted here.
+* State how many tools are available and list them (inline if one, bullet points if multiple). Include cooling-off if available.
+* Comment briefly on the number (do not mention the criteria): 3-4 tools = above average, 1-2 = average/could be better, 0 = needs to step up.
+* State whether these tools can be managed without contacting support or if support is required. One sentence.
+* If the casino falls short in EITHER area (fewer than 3 tools OR requires support), recommend ONE alternative from Top Casinos that does better. Only ONE comparison total for this entire answer. Do not recommend separate casinos for tool count and support access.
+* Keep the entire answer to 3-4 sentences max. No filler about why responsible gambling matters.
 
 ## + questions/answers from manual comments
 
