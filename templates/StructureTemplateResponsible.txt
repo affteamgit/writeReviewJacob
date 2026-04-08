@@ -14,7 +14,10 @@
 * IMPORTANT: Count ALL responsible gambling tools the casino offers besides self-exclusion. This INCLUDES the cooling-off option if available -- cooling-off is a responsible gambling tool and must be counted here.
 * State how many tools are available and list them (inline if one, bullet points if multiple). Include cooling-off if available.
 * Comment briefly on the number (do not mention the criteria): 3-4 tools = above average, 1-2 = average/could be better, 0 = needs to step up.
-* State whether these tools can be managed without contacting support or if support is required. One sentence.
+* State whether these tools can be managed without contacting support or if support is required. Weave this naturally into the answer flow:
+  - If tools are limited AND support is required: use "You'll also need to contact support..." to connect it smoothly to the previous point about limited tools.
+  - If tools are good BUT support is required: frame it as a contrasting drawback. Vary the phrasing across reviews -- pick from forms like "The downside is you can't manage these yourself", "Unfortunately, you'll need to go through support to activate them", "The catch is that setting these up requires contacting support", "What holds this back is that you can't toggle these on your own", etc. Do NOT reuse the same phrasing across different casino reviews.
+  - If tools are self-managed: mention it as a positive that flows naturally, e.g., "and you can manage them all directly from your account."
 * If the casino falls short in EITHER area (fewer than 3 tools OR requires support), recommend ONE alternative from Top Casinos that does better. Only ONE comparison total for this entire answer. Do not recommend separate casinos for tool count and support access.
 * Keep the entire answer to 3-4 sentences max. No filler about why responsible gambling matters.
 
