@@ -80,9 +80,9 @@
 
 ## Q: Are there any bonus-related restrictions on withdrawals, like capped cashouts?
 
-* EXCLUDE THIS QUESTION ONLY if the casino has NO bonuses at all. If the casino has any bonuses, this question MUST be answered.
-* Look at ALL bonuses the casino offers (welcome bonus, deposit bonuses, free spins, no-deposit bonuses, etc.).
-* For ALL bonuses, check these three restrictions and summarize across all of them:
+* SKIP THIS QUESTION ENTIRELY if the casino has no bonuses at all OR if the casino data does not include specific bonus restriction details (max cashout, max win, wagering requirements). Do NOT answer with vague statements about the casino not publishing terms. If you don't have concrete bonus restriction data to discuss, simply omit this question from the review.
+* ONLY answer this question if the casino data contains SPECIFIC bonus restriction details (actual numbers for wagering, cashout caps, win caps, etc.).
+* When answering, look at ALL bonuses the casino offers and for EACH bonus check:
   1. Max cashout (cashout cap): Do all bonuses have a max cashout cap, or only some, or none? State which bonuses have caps and what the amounts are.
   2. Max win (win cap): Do all bonuses have a max win cap, or only some, or none? State which bonuses have caps and what the amounts are.
   3. Wagering requirements: What is the wagering multiplier for each bonus (e.g., 20x, 30x, 40x)? Is it applied to the bonus only, the deposit only, or both (bonus + deposit)?
@@ -91,10 +91,9 @@
   - Max cashout: No cap = great. Cap exists = state the amount and note this limits your upside.
   - Max win: No cap = great. Cap exists = state the amount and note this limits your upside.
   - Wagering time: 7 days or less = good. 14 days = average. 30 days = generous timeframe.
-* If the casino has bonuses but NONE of these restrictions (no cashout caps, no win caps, no excessive wagering), explicitly state that the casino does not impose these common restrictions and that this is very player-friendly.
+* If the casino has bonuses but NONE of these restrictions (no cashout caps, no win caps, no excessive wagering), explicitly state that the casino doesn't impose these common restrictions and that this is very player-friendly.
 * Use short sentences, maximum 20 words per sentence. Keep the answer factual and concise.
-* The spreadsheet data should contain this information. Only use what is provided -- do not guess bonus terms.
-* REMINDER: If the bonus terms data is not available, NEVER write "the data doesn't specify", "I can't specify", "the provided information doesn't include", or similar cop-outs. Instead, frame it as the casino's lack of transparency: "the casino doesn't clearly publish their bonus restrictions" or "these terms aren't documented transparently". Then advise the player to read the fine print before claiming.
+* Only use what is provided -- do not guess bonus terms.
 
 ## Q: Can I deposit different altcoins?
 
