@@ -19,12 +19,13 @@
 
 ## Q: Are there any ongoing promotions for returning players?
 
-* ALWAYS answer this question. Even if there are no ongoing promos, state that clearly.
+* ONLY describe what the data explicitly provides. If the data includes ongoing promotions, describe them. If the data does NOT mention tournaments, VIP programs, reload bonuses, or other ongoing promos, do NOT mention their absence. Just write about what IS available and nothing more.
+* NEVER write "the casino doesn't provide information about", "no details about additional promotions", "doesn't mention tournaments/VIP/etc". Only talk about what exists.
 * If the casino has ongoing promotions (tournaments, races, raffles, lootboxes, rakeback, cashback, reload bonuses, etc.): Describe the most notable ones. Be specific about what's available.
 * If the casino has sports betting promotions, include them here -- especially for brands where sports is a major draw.
 * If the casino has a VIP or loyalty program, describe it briefly. Note whether it's open to all or invitation-only, as this matters to the reader.
 * If the casino has unique gamification elements (daily tasks, token systems, leveling, rain features), mention them here.
-* If there are genuinely no ongoing promos for returning players, state this clearly and recommend 1-2 alternatives from Top Casinos that have strong ongoing promotions.
+* If the data contains absolutely NO ongoing promotions at all, state briefly that the casino focuses its bonuses on the welcome package and recommend 1-2 alternatives from Top Casinos for ongoing rewards.
 * Keep it to 2-4 sentences depending on how much there is to cover.
 
 ## + questions/answers from manual comments
