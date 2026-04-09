@@ -532,6 +532,22 @@ def generate_sections_parallel(casino: str, secs: Dict, sorted_comments: Dict, t
                 print(f"Error in parallel generation for {section_name}: {e}")
                 results[section_name] = f"**{section_name}**\n[Error: {str(e)}]\n"
 
+    # Move bonus cashout Q&A from Bonuses to Payments if present
+    if "Bonuses" in results and "Payments" in results:
+        bonuses_text = results["Bonuses"]
+        # Look for the bonus cashout question
+        cashout_pattern = re.search(
+            r'(## Q: Do any bonus terms affect the withdrawals\?.*?)(?=\n## Q:|\n## \+|\Z)',
+            bonuses_text,
+            re.DOTALL
+        )
+        if cashout_pattern:
+            cashout_qa = cashout_pattern.group(1).strip()
+            # Remove from Bonuses
+            results["Bonuses"] = bonuses_text.replace(cashout_pattern.group(0), '').strip()
+            # Append to Payments
+            results["Payments"] = results["Payments"].rstrip('\n') + "\n\n" + cashout_qa + "\n"
+
     # Return results in the original section order
     return [results[sec] for sec in section_order if sec in results]
 
