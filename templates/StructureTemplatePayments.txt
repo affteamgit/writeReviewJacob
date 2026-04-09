@@ -80,8 +80,9 @@
 
 ## Q: Do any bonus terms affect the withdrawals?
 
-* SKIP THIS QUESTION ENTIRELY if the casino data does not include Max Cashout information for any bonus. If there is no Max Cashout data present, simply omit this question from the review. Do NOT answer with vague statements about missing info.
-* ONLY answer this question if the casino data contains specific Max Cashout values for one or more bonuses.
+* Check the casino's bonus data for any Max Cashout or maximum cashout/withdrawal limits tied to bonuses. This info may appear as "Max Cashout", "Maximum Cashout", "max withdrawal", "cashout cap", or similar terms in the bonus details.
+* If ANY bonus has a Max Cashout value specified: ANSWER this question.
+* If NO bonus mentions any cashout limit at all: skip this question.
 * Max Cashout means: the maximum amount you can withdraw when you opt in for a particular bonus. This directly limits your upside from bonus play.
 * For each bonus that has a Max Cashout value, state:
   - Which bonus it applies to
