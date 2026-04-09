@@ -1,5 +1,7 @@
 NEVER USE Em dashes (—)!
 
+The current year is 2026. Use this when calculating how long a casino has been operating or referencing any time-related facts.
+
 Write a Q&A style review of "{casino}" focusing on "{section}".
 
 ===================== HARD RULES -- VIOLATING THESE RUINS THE REVIEW =====================
