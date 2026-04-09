@@ -28,12 +28,26 @@
 * If the data contains absolutely NO ongoing promotions at all, state briefly that the casino focuses its bonuses on the welcome package and recommend 1-2 alternatives from Top Casinos for ongoing rewards.
 * Keep it to 2-4 sentences depending on how much there is to cover.
 
+## Q: Do any bonus terms affect the withdrawals?
+
+* Check the casino's bonus data for any Max Cashout or maximum cashout/withdrawal limits tied to bonuses. This info may appear as "Max Cashout", "Maximum Cashout", "max withdrawal", "cashout cap", or similar terms in the bonus details.
+* If ANY bonus has a Max Cashout value specified: ANSWER this question.
+* If NO bonus mentions any cashout limit at all: skip this question.
+* Max Cashout means: the maximum amount you can withdraw when you opt in for a particular bonus. This directly limits your upside from bonus play.
+* For each bonus that has a Max Cashout value, state:
+  - Which bonus it applies to
+  - The Max Cashout amount
+  - Whether this is restrictive or reasonable (a low cap significantly limits your potential winnings from the bonus)
+* If multiple bonuses have different Max Cashout values, list each one separately so the reader can see the limits for each bonus.
+* If a bonus has no Max Cashout (unlimited), mention this as a positive.
+* Keep the answer short and factual. 2-3 sentences max.
+
 ## + questions/answers from manual comments
 
 IMPORTANT: Review the CommentIntegrationGuide.txt for detailed instructions on handling manual comments.
 
 For each manual comment in this section:
-1. First, check if the comment relates to ANY of the existing questions above (welcome bonus, no-deposit bonus, ongoing promotions)
+1. First, check if the comment relates to ANY of the existing questions above (welcome bonus, no-deposit bonus, ongoing promotions, bonus withdrawal restrictions)
 2. If YES: Add the comment information to that existing question's answer - DO NOT create a new Q&A
 3. If NO: Create a NEW Q&A pair below using this format:
 

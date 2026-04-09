@@ -78,20 +78,6 @@
   - If MORE than 1x, explain that 1x is the industry standard and this requirement is higher than normal.
   - If MORE than 1x, recommend one or two brands from Top Casinos that require only 1x wagering (the industry standard).
 
-## Q: Do any bonus terms affect the withdrawals?
-
-* Check the casino's bonus data for any Max Cashout or maximum cashout/withdrawal limits tied to bonuses. This info may appear as "Max Cashout", "Maximum Cashout", "max withdrawal", "cashout cap", or similar terms in the bonus details.
-* If ANY bonus has a Max Cashout value specified: ANSWER this question.
-* If NO bonus mentions any cashout limit at all: skip this question.
-* Max Cashout means: the maximum amount you can withdraw when you opt in for a particular bonus. This directly limits your upside from bonus play.
-* For each bonus that has a Max Cashout value, state:
-  - Which bonus it applies to
-  - The Max Cashout amount
-  - Whether this is restrictive or reasonable (a low cap significantly limits your potential winnings from the bonus)
-* If multiple bonuses have different Max Cashout values, list each one separately so the reader can see the limits for each bonus.
-* If a bonus has no Max Cashout (unlimited), mention this as a positive.
-* Keep the answer short and factual. 2-3 sentences max.
-
 ## Q: Can I deposit different altcoins?
 
 * State how many cryptocurrencies the casino accepts and comment on the number:
