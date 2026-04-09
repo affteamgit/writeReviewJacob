@@ -532,23 +532,46 @@ def generate_sections_parallel(casino: str, secs: Dict, sorted_comments: Dict, t
                 print(f"Error in parallel generation for {section_name}: {e}")
                 results[section_name] = f"**{section_name}**\n[Error: {str(e)}]\n"
 
-    # Move bonus cashout Q&A from Bonuses to Payments if present
-    if "Bonuses" in results and "Payments" in results:
+    # Redistribute Bonuses content to General and Payments, then drop Bonuses section
+    if "Bonuses" in results:
         bonuses_text = results["Bonuses"]
-        # Look for the bonus cashout question
-        cashout_pattern = re.search(
-            r'(## Q: Do any bonus terms affect the withdrawals\?.*?)(?=\n## Q:|\n## \+|\Z)',
-            bonuses_text,
-            re.DOTALL
-        )
-        if cashout_pattern:
-            cashout_qa = cashout_pattern.group(1).strip()
-            # Remove from Bonuses
-            results["Bonuses"] = bonuses_text.replace(cashout_pattern.group(0), '').strip()
-            # Append to Payments
-            results["Payments"] = results["Payments"].rstrip('\n') + "\n\n" + cashout_qa + "\n"
 
-    # Return results in the original section order
+        # Extract ongoing promotions Q&A -> move to General
+        if "General" in results:
+            promo_pattern = re.search(
+                r'(## Q: Are there any ongoing promotions for returning players\?.*?)(?=\n## Q:|\n## \+|\Z)',
+                bonuses_text,
+                re.DOTALL
+            )
+            if promo_pattern:
+                promo_qa = promo_pattern.group(1).strip()
+                bonuses_text = bonuses_text.replace(promo_pattern.group(0), '').strip()
+                results["General"] = results["General"].rstrip('\n') + "\n\n" + promo_qa + "\n"
+
+        # Extract bonus terms Q&A -> move to Payments
+        if "Payments" in results:
+            cashout_pattern = re.search(
+                r'(## Q: Do any bonus terms affect the withdrawals\?.*?)(?=\n## Q:|\n## \+|\Z)',
+                bonuses_text,
+                re.DOTALL
+            )
+            if cashout_pattern:
+                cashout_qa = cashout_pattern.group(1).strip()
+                bonuses_text = bonuses_text.replace(cashout_pattern.group(0), '').strip()
+                results["Payments"] = results["Payments"].rstrip('\n') + "\n\n" + cashout_qa + "\n"
+
+        # Any remaining manual comment Q&As from Bonuses -> append to General
+        remaining_qas = re.findall(r'(## Q: .*?)(?=\n## Q:|\Z)', bonuses_text, re.DOTALL)
+        if remaining_qas and "General" in results:
+            for qa in remaining_qas:
+                qa_stripped = qa.strip()
+                if qa_stripped and not qa_stripped.startswith("## + "):
+                    results["General"] = results["General"].rstrip('\n') + "\n\n" + qa_stripped + "\n"
+
+        # Remove Bonuses section from final output
+        del results["Bonuses"]
+
+    # Return results in the original section order (Bonuses excluded)
     return [results[sec] for sec in section_order if sec in results]
 
 def generate_section_with_assignment(section_data: Tuple) -> str:
@@ -689,7 +712,7 @@ def insert_parsed_text_with_formatting(docs_service, doc_id, review_text):
 
     doc = docs_service.documents().get(documentId=doc_id).execute()
     header_requests = []
-    section_titles = ["Overview", "General", "Payments", "Games", "Responsible Gambling", "Bonuses"]
+    section_titles = ["Overview", "General", "Payments", "Games", "Responsible Gambling"]
 
     for element in doc.get('body', {}).get('content', []):
         if 'paragraph' in element:
