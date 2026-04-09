@@ -78,22 +78,18 @@
   - If MORE than 1x, explain that 1x is the industry standard and this requirement is higher than normal.
   - If MORE than 1x, recommend one or two brands from Top Casinos that require only 1x wagering (the industry standard).
 
-## Q: Are there any bonus-related restrictions on withdrawals, like capped cashouts?
+## Q: Do any bonus terms affect the withdrawals?
 
-* SKIP THIS QUESTION ENTIRELY if the casino has no bonuses at all OR if the casino data does not include specific bonus restriction details (max cashout, max win, wagering requirements). Do NOT answer with vague statements about the casino not publishing terms. If you don't have concrete bonus restriction data to discuss, simply omit this question from the review.
-* ONLY answer this question if the casino data contains SPECIFIC bonus restriction details (actual numbers for wagering, cashout caps, win caps, etc.).
-* When answering, look at ALL bonuses the casino offers and for EACH bonus check:
-  1. Max cashout (cashout cap): Do all bonuses have a max cashout cap, or only some, or none? State which bonuses have caps and what the amounts are.
-  2. Max win (win cap): Do all bonuses have a max win cap, or only some, or none? State which bonuses have caps and what the amounts are.
-  3. Wagering requirements: What is the wagering multiplier for each bonus (e.g., 20x, 30x, 40x)? Is it applied to the bonus only, the deposit only, or both (bonus + deposit)?
-* For each restriction found, state what it is AND whether it's good or bad based on the following criteria:
-  - Wagering: 20x or lower on bonus only or deposit only = good. 25x-35x = average. 35x+ = bad. Applied to bonus + deposit = worse than bonus only.
-  - Max cashout: No cap = great. Cap exists = state the amount and note this limits your upside.
-  - Max win: No cap = great. Cap exists = state the amount and note this limits your upside.
-  - Wagering time: 7 days or less = good. 14 days = average. 30 days = generous timeframe.
-* If the casino has bonuses but NONE of these restrictions (no cashout caps, no win caps, no excessive wagering), explicitly state that the casino doesn't impose these common restrictions and that this is very player-friendly.
-* Use short sentences, maximum 20 words per sentence. Keep the answer factual and concise.
-* Only use what is provided -- do not guess bonus terms.
+* SKIP THIS QUESTION ENTIRELY if the casino data does not include Max Cashout information for any bonus. If there is no Max Cashout data present, simply omit this question from the review. Do NOT answer with vague statements about missing info.
+* ONLY answer this question if the casino data contains specific Max Cashout values for one or more bonuses.
+* Max Cashout means: the maximum amount you can withdraw when you opt in for a particular bonus. This directly limits your upside from bonus play.
+* For each bonus that has a Max Cashout value, state:
+  - Which bonus it applies to
+  - The Max Cashout amount
+  - Whether this is restrictive or reasonable (a low cap significantly limits your potential winnings from the bonus)
+* If multiple bonuses have different Max Cashout values, list each one separately so the reader can see the limits for each bonus.
+* If a bonus has no Max Cashout (unlimited), mention this as a positive.
+* Keep the answer short and factual. 2-3 sentences max.
 
 ## Q: Can I deposit different altcoins?
 
