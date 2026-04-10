@@ -225,10 +225,20 @@ Previous review text:
             messages=[{"role": "user", "content": prompt}]
         ).content[0].text.strip()
 
-        facts = json.loads(response)
+        # Strip markdown code fences if the AI wrapped the JSON
+        cleaned = response
+        if cleaned.startswith("```"):
+            cleaned = re.sub(r'^```(?:json)?\s*', '', cleaned)
+            cleaned = re.sub(r'\s*```$', '', cleaned)
+
+        facts = json.loads(cleaned)
         valid_sections = {"General", "Payments", "Games", "Responsible Gambling", "Bonuses"}
         return {k: v for k, v in facts.items() if k in valid_sections and isinstance(v, str)}
-    except (json.JSONDecodeError, Exception) as e:
+    except json.JSONDecodeError as e:
+        print(f"Error parsing evolution facts JSON: {e}")
+        print(f"Raw AI response (first 500 chars): {response[:500]}")
+        return {}
+    except Exception as e:
         print(f"Error extracting evolution facts: {e}")
         return {}
 
