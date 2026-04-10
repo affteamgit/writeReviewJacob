@@ -234,33 +234,31 @@ Previous review text:
 
 def fetch_and_extract_evolution_data(casino_id, casino_name):
     """Full pipeline: look up WP ID -> fetch old review -> extract facts.
-    Returns per-section evolution facts dict, or empty dict on any failure.
+    Returns (facts_dict, status_message) tuple.
     """
     if not casino_id:
-        print("No casino ID available, skipping evolution comparison")
-        return {}
+        return {}, "No Casino ID found -- old review comparison skipped"
 
     wp_id = get_review_wp_id(casino_id)
     if not wp_id:
-        print(f"No previous review WP ID found for casino ID {casino_id}")
-        return {}
+        return {}, f"No WP_ID found in spreadsheet for Casino ID {casino_id}"
     print(f"Found WP ID {wp_id} for casino ID {casino_id}")
 
     html_content = fetch_old_review_from_mysql(wp_id)
-    if not html_content:
-        print(f"No review content found in MySQL for WP ID {wp_id}")
-        return {}
+    if html_content is None:
+        return {}, f"Could not fetch review from database for WP ID {wp_id} (connection issue or post not found)"
 
     plain_text = strip_html_to_text(html_content)
     if not plain_text or len(plain_text.strip()) < 100:
-        print("Old review text too short or empty after stripping HTML")
-        return {}
+        return {}, f"Old review text too short after HTML stripping ({len(plain_text)} chars) for WP ID {wp_id}"
     print(f"Fetched old review: {len(plain_text)} chars")
 
     facts = extract_evolution_facts(casino_name, plain_text)
-    non_empty = {k: v for k, v in facts.items() if v}
-    print(f"Extracted evolution facts for {len(non_empty)} sections")
-    return facts
+    non_empty = {k: v for k, v in facts.items() if v.strip()}
+    if non_empty:
+        return facts, f"Old review data integrated ({len(non_empty)} section{'s' if len(non_empty) != 1 else ''} with evolution info)"
+    else:
+        return facts, f"Old review fetched (WP ID {wp_id}, {len(plain_text)} chars) but no comparable facts extracted"
 
 # AI CLIENTS
 client = openai.OpenAI(api_key=OPENAI_API_KEY)
@@ -998,21 +996,12 @@ def main():
                 sorted_comments = comments_future.result()
                 reputation_summary = reputation_future.result()
                 try:
-                    evolution_facts = evolution_future.result()
+                    evolution_facts, evolution_status = evolution_future.result()
                 except Exception as e:
                     evolution_facts = {}
+                    evolution_status = f"Old review fetch error: {e}"
                     print(f"Evolution data fetch failed: {e}")
-                    st.session_state.evolution_debug = f"Old review fetch error: {e}"
-
-            # Set evolution status for display (only if not already set by an error above)
-            if 'evolution_debug' not in st.session_state or not st.session_state.evolution_debug.startswith("Old review fetch error"):
-                if evolution_facts and any(v.strip() for v in evolution_facts.values()):
-                    non_empty = sum(1 for v in evolution_facts.values() if v.strip())
-                    st.session_state.evolution_debug = f"Old review data integrated ({non_empty} section{'s' if non_empty != 1 else ''} with evolution info)"
-                elif not casino_id:
-                    st.session_state.evolution_debug = "No Casino ID found -- old review comparison skipped"
-                else:
-                    st.session_state.evolution_debug = "No previous review found for this casino"
+                st.session_state.evolution_debug = evolution_status
 
             # Inject reputation data into General section's main data
             if reputation_summary and "General" in secs:
