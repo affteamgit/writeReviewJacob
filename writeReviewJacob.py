@@ -775,21 +775,21 @@ def generate_section_with_assignment(section_data: Tuple) -> str:
             round_robin_instruction = f"\n\nIMPORTANT - Casino Comparison Rotation:\nWhen making comparisons to other casinos in this section, rotate through these casinos from the Top/Similar data in THIS ORDER: '{casinos_str}'.\n\nFor your FIRST comparison, use '{casino_rotation_list[0]}'. For your SECOND comparison, use '{casino_rotation_list[1] if len(casino_rotation_list) > 1 else casino_rotation_list[0]}'. Continue rotating through this list for any additional comparisons. This ensures variety and prevents any single casino from being mentioned too frequently."
             print(f"Section {sec}: Rotation list = {casino_rotation_list}")
 
-        # Build evolution comparison block
-        evolution_block = ""
+        # Inject evolution data directly into main data so the AI sees old vs new together
+        evolution_addition = ""
         if evolution_data and evolution_data.strip():
-            evolution_block = f"\n\nPrevious review evolution data:\n{evolution_data}"
+            evolution_addition = f"\n\nPREVIOUS REVIEW DATA FOR COMPARISON (you MUST mention any differences between old and current data):\n{evolution_data}"
 
         prompt = prompt_template.format(
             casino=casino,
             section=sec,
             guidelines=guidelines,
             structure=structure,
-            main=content["main"] + section_comments,
+            main=content["main"] + section_comments + evolution_addition,
             top=content["top"],
             sim=content["sim"],
             btc_value=btc_str
-        ) + evolution_block + round_robin_instruction
+        ) + round_robin_instruction
 
         review = fn(prompt)
         return f"**{sec}**\n{review}\n"
