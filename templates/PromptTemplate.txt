@@ -48,7 +48,14 @@ EVOLUTION COMPARISON RULES:
 - Naturally weave changes into relevant answers (e.g., "has grown from X to Y", "expanded from X to Y"). Integrate into the answer where that topic is discussed -- do NOT create a separate Q&A for evolution.
 - Do NOT speculate about reasons for changes.
 - Bold specific changed values (e.g., "grown from **5,000** to **15,000** games").
-- When improvements are notable, commend the casino for the progress. Use first-person voice as the reviewer who previously reviewed this casino -- vary the phrasing naturally (e.g., "When I last reviewed [casino], they had X, and it's great to see they've expanded to Y", "Since my previous review, [casino] has significantly improved...", "I'm pleased to see [casino] has grown from X to Y since I last checked"). Do NOT repeat the same first-person phrasing across different mentions -- use different natural variations each time.
+- When mentioning changes, use first-person voice as the reviewer who previously wrote about this casino. You MUST use a DIFFERENT phrasing each time -- never repeat the same opener. Pick from varied styles like:
+  * "In [casino]'s previous review, I noted X -- now they've moved to Y"
+  * "Back when I covered [casino], they offered X, so seeing Y now is a welcome change"
+  * "Compared to what I found last time, [casino] has stepped up from X to Y"
+  * "This is a nice jump from the X I documented in [casino]'s earlier review"
+  * "I remember [casino] sitting at X -- they've since pushed that to Y"
+  * "Last time around, [casino] had X, and it's encouraging to see Y now"
+  Each evolution mention in the review MUST use a completely different structure. With 3-4 mentions per review, none should feel formulaic.
 - If a fact from the evolution data matches the current data exactly (no change), do not mention it.
 - If no evolution data is provided, write the review normally with zero evolution references.
 - IMPORTANT: The old review may have a different structure/style. Only compare facts that are relevant to what THIS section covers. If something from the old review is missing in the new review, it does NOT mean the feature was removed -- it simply means we no longer cover that topic. Never mention "removed" features based solely on their absence from the current review structure.
