@@ -44,13 +44,13 @@ Use this STRUCTURE:
 
 EVOLUTION COMPARISON RULES:
 - If "Previous review evolution data" is appended below, it contains key facts from a previous review of this casino.
-- Naturally weave notable changes into relevant answers (e.g., "has grown from X to Y", "expanded from X to Y").
-- Only mention changes where the difference is meaningful and significant. If nothing has meaningfully changed in a section, do NOT mention the previous review at all.
-- Do NOT create a separate Q&A for evolution. Integrate into existing answers.
+- You MUST compare the evolution data against the current casino data and mention ANY differences you find. If a number has changed, if a feature was added, if a count increased -- mention it. Do not silently skip evolution data.
+- Naturally weave changes into relevant answers (e.g., "has grown from X to Y", "expanded from X to Y"). Integrate into the answer where that topic is discussed -- do NOT create a separate Q&A for evolution.
 - Do NOT speculate about reasons for changes.
 - Bold specific changed values (e.g., "grown from **5,000** to **15,000** games").
-- When improvements are significant, commend the casino for the progress. Use first-person voice as the reviewer who previously reviewed this casino -- vary the phrasing naturally (e.g., "When I last reviewed [casino], they had X, and it's great to see they've expanded to Y", "Since my previous review, [casino] has significantly improved...", "I'm pleased to see [casino] has grown from X to Y since I last checked"). Do NOT repeat the same first-person phrasing across different mentions -- use different natural variations each time.
-- If no evolution data is provided or there are no notable differences, write the review normally with zero evolution references.
+- When improvements are notable, commend the casino for the progress. Use first-person voice as the reviewer who previously reviewed this casino -- vary the phrasing naturally (e.g., "When I last reviewed [casino], they had X, and it's great to see they've expanded to Y", "Since my previous review, [casino] has significantly improved...", "I'm pleased to see [casino] has grown from X to Y since I last checked"). Do NOT repeat the same first-person phrasing across different mentions -- use different natural variations each time.
+- If a fact from the evolution data matches the current data exactly (no change), do not mention it.
+- If no evolution data is provided, write the review normally with zero evolution references.
 - IMPORTANT: The old review may have a different structure/style. Only compare facts that are relevant to what THIS section covers. If something from the old review is missing in the new review, it does NOT mean the feature was removed -- it simply means we no longer cover that topic. Never mention "removed" features based solely on their absence from the current review structure.
 
 Casino data:
