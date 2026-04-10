@@ -231,6 +231,19 @@ Previous review text:
             cleaned = re.sub(r'^```(?:json)?\s*', '', cleaned)
             cleaned = re.sub(r'\s*```$', '', cleaned)
 
+        # Extract just the JSON object if AI appended extra text after it
+        brace_start = cleaned.find('{')
+        if brace_start != -1:
+            depth = 0
+            for i, ch in enumerate(cleaned[brace_start:], brace_start):
+                if ch == '{':
+                    depth += 1
+                elif ch == '}':
+                    depth -= 1
+                    if depth == 0:
+                        cleaned = cleaned[brace_start:i + 1]
+                        break
+
         facts = json.loads(cleaned)
         valid_sections = {"General", "Payments", "Games", "Responsible Gambling", "Bonuses"}
         return {k: v for k, v in facts.items() if k in valid_sections and isinstance(v, str)}
