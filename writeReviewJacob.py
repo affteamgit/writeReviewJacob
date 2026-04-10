@@ -26,6 +26,9 @@ SHEET_NAME     = st.secrets["SHEET_NAME"]
 FOLDER_ID = st.secrets["FOLDER_ID"]
 GUIDELINES_FOLDER_ID = st.secrets["GUIDELINES_FOLDER_ID"]
 
+# Evolution comparison config
+CALCULATION_SPREADSHEET_ID = "1av0ZgZQGPWErmlzFmCIyZg1ApkzOQPht2AUoB_MGvLg"
+
 # No fine-tuned model needed - Jacob will generate factual reviews only
 
 SCOPES = [
@@ -111,16 +114,157 @@ def get_selected_casino_data():
         else:
             sim = "[No similar comparison available]"
         data[sec] = {"main": main or "[No data provided]", "top": top, "sim": sim}
-    
-    return casino, data, all_comments
+
+    # Casino ID is in B2 (first row, first column of the B2:S range)
+    casino_id = rows[0][0].strip() if rows and len(rows[0]) > 0 else None
+
+    return casino, data, all_comments, casino_id
 
 def get_cached_casino_data():
     """Get casino data without caching to prevent tone interference"""
     return get_selected_casino_data()
 
+def get_review_wp_id(casino_id):
+    """Look up the WordPress post ID for a casino's previous review.
+    Reads the WP_IDs tab from the calculation spreadsheet.
+    Column A = internal Casino ID, Column B = review_WP_ID.
+    """
+    if not casino_id or not CALCULATION_SPREADSHEET_ID:
+        return None
+    try:
+        creds = get_service_account_credentials()
+        sheets = build("sheets", "v4", credentials=creds)
+        result = sheets.spreadsheets().values().get(
+            spreadsheetId=CALCULATION_SPREADSHEET_ID,
+            range="WP_IDs!A:B"
+        ).execute()
+        rows = result.get("values", [])
+        for row in rows:
+            if len(row) >= 2 and row[0].strip() == casino_id:
+                return row[1].strip()
+        return None
+    except Exception as e:
+        print(f"Error looking up WP ID for casino {casino_id}: {e}")
+        return None
+
+def fetch_old_review_from_mysql(wp_id):
+    """Fetch post_content from WordPress wp_posts for a given post ID."""
+    if not wp_id:
+        return None
+    try:
+        import pymysql
+        mysql_config = st.secrets.get("mysql", {})
+        if not mysql_config:
+            print("MySQL secrets not configured, skipping old review fetch")
+            return None
+        connection = pymysql.connect(
+            host=mysql_config["host"],
+            port=int(mysql_config.get("port", 3306)),
+            user=mysql_config["user"],
+            password=mysql_config["password"],
+            database=mysql_config["database"],
+            connect_timeout=10,
+            read_timeout=15
+        )
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT post_content FROM wp_posts WHERE ID = %s", (int(wp_id),))
+                result = cursor.fetchone()
+                return result[0] if result else None
+        finally:
+            connection.close()
+    except Exception as e:
+        print(f"Error fetching old review from MySQL (WP ID {wp_id}): {e}")
+        return None
+
+def strip_html_to_text(html_content):
+    """Strip WordPress HTML to plain text for AI processing."""
+    if not html_content:
+        return ""
+    text = re.sub(r'<[^>]+>', ' ', html_content)
+    text = re.sub(r'\[/?[^\]]+\]', ' ', text)  # WordPress shortcodes
+    text = re.sub(r'\s+', ' ', text).strip()
+    text = text.replace('&amp;', '&').replace('&lt;', '<').replace('&gt;', '>')
+    text = text.replace('&nbsp;', ' ').replace('&#8217;', "'").replace('&#8216;', "'")
+    text = text.replace('&#8220;', '"').replace('&#8221;', '"')
+    return text
+
+def extract_evolution_facts(casino_name, old_review_text):
+    """Use Claude to extract key comparable facts from an old review, organized by section."""
+    if not old_review_text or len(old_review_text.strip()) < 100:
+        return {}
+
+    # Truncate very long reviews to stay within reasonable token limits
+    max_chars = 15000
+    if len(old_review_text) > max_chars:
+        old_review_text = old_review_text[:max_chars]
+
+    prompt = f"""Analyze this previous review of the casino "{casino_name}" and extract key factual data points organized by section.
+
+For each section, extract ONLY concrete, measurable facts that could be compared to current data. Focus on:
+- Specific numbers (game counts, provider counts, crypto counts, withdrawal limits, bonus amounts)
+- Specific features that were present or absent (VPN policy, KYC requirements, self-exclusion tools)
+- Specific timeframes (withdrawal processing times, KYC verification times)
+- Specific bonus terms (wagering requirements, max cashout)
+
+Do NOT extract opinions, subjective assessments, or writing style. Only extract verifiable facts.
+
+Output ONLY valid JSON with this exact structure (no markdown, no code fences):
+{{"General": "bullet points of facts or empty string", "Payments": "bullet points of facts or empty string", "Games": "bullet points of facts or empty string", "Responsible Gambling": "bullet points of facts or empty string", "Bonuses": "bullet points of facts or empty string"}}
+
+If a section has no relevant facts in the old review, use an empty string for that section.
+
+Previous review text:
+{old_review_text}"""
+
+    try:
+        response = anthropic_client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=1500,
+            temperature=0.1,
+            messages=[{"role": "user", "content": prompt}]
+        ).content[0].text.strip()
+
+        facts = json.loads(response)
+        valid_sections = {"General", "Payments", "Games", "Responsible Gambling", "Bonuses"}
+        return {k: v for k, v in facts.items() if k in valid_sections and isinstance(v, str)}
+    except (json.JSONDecodeError, Exception) as e:
+        print(f"Error extracting evolution facts: {e}")
+        return {}
+
+def fetch_and_extract_evolution_data(casino_id, casino_name):
+    """Full pipeline: look up WP ID -> fetch old review -> extract facts.
+    Returns per-section evolution facts dict, or empty dict on any failure.
+    """
+    if not casino_id:
+        print("No casino ID available, skipping evolution comparison")
+        return {}
+
+    wp_id = get_review_wp_id(casino_id)
+    if not wp_id:
+        print(f"No previous review WP ID found for casino ID {casino_id}")
+        return {}
+    print(f"Found WP ID {wp_id} for casino ID {casino_id}")
+
+    html_content = fetch_old_review_from_mysql(wp_id)
+    if not html_content:
+        print(f"No review content found in MySQL for WP ID {wp_id}")
+        return {}
+
+    plain_text = strip_html_to_text(html_content)
+    if not plain_text or len(plain_text.strip()) < 100:
+        print("Old review text too short or empty after stripping HTML")
+        return {}
+    print(f"Fetched old review: {len(plain_text)} chars")
+
+    facts = extract_evolution_facts(casino_name, plain_text)
+    non_empty = {k: v for k, v in facts.items() if v}
+    print(f"Extracted evolution facts for {len(non_empty)} sections")
+    return facts
+
 # AI CLIENTS
 client = openai.OpenAI(api_key=OPENAI_API_KEY)
-anthropic = Anthropic(api_key=ANTHROPIC_API_KEY)
+anthropic_client = Anthropic(api_key=ANTHROPIC_API_KEY)
 
 def call_openai(prompt):
     # Add fact constraint system message
@@ -141,7 +285,7 @@ def call_claude(prompt):
     # Add fact constraint system message
     fact_constraint = "CRITICAL: Only use facts explicitly provided in the prompt. Never add information not in the source data. Do not make assumptions or add general knowledge about casinos. Never claim exclusivity or uniqueness unless the data explicitly states it."
     full_prompt = f"{fact_constraint}\n\n{prompt}"
-    return anthropic.messages.create(model="claude-sonnet-4-20250514", max_tokens=1200, temperature=0.45, messages=[{"role": "user", "content": full_prompt}]).content[0].text.strip()
+    return anthropic_client.messages.create(model="claude-sonnet-4-20250514", max_tokens=1200, temperature=0.45, messages=[{"role": "user", "content": full_prompt}]).content[0].text.strip()
 
 def get_casino_reputation_summary(casino_name: str) -> str:
     """Use Claude to generate a reputation summary of the casino based on its general knowledge.
@@ -162,7 +306,7 @@ Output ONLY the summary paragraph, no headings or labels."""
 
     try:
         # Call Claude WITHOUT the strict fact constraint -- we want general knowledge here
-        result = anthropic.messages.create(
+        result = anthropic_client.messages.create(
             model="claude-sonnet-4-20250514",
             max_tokens=400,
             temperature=0.3,
@@ -470,7 +614,7 @@ REVIEWS:
         return ""
 
 
-def generate_sections_parallel(casino: str, secs: Dict, sorted_comments: Dict, templates: Dict, btc_str: str) -> list:
+def generate_sections_parallel(casino: str, secs: Dict, sorted_comments: Dict, templates: Dict, btc_str: str, evolution_facts: Dict[str, str] = None) -> list:
     """Generate all sections in parallel while maintaining round-robin casino selection"""
 
     # Initialize tracker for used comparison casinos
@@ -510,7 +654,7 @@ def generate_sections_parallel(casino: str, secs: Dict, sorted_comments: Dict, t
 
     # Prepare data for each section with pre-assigned casino rotation lists
     section_data = [
-        (sec, secs[sec], templates, sorted_comments, casino, btc_str, section_assignments.get(sec, []))
+        (sec, secs[sec], templates, sorted_comments, casino, btc_str, section_assignments.get(sec, []), (evolution_facts or {}).get(sec, ""))
         for sec in section_order if sec in secs
     ]
 
@@ -576,7 +720,7 @@ def generate_sections_parallel(casino: str, secs: Dict, sorted_comments: Dict, t
 
 def generate_section_with_assignment(section_data: Tuple) -> str:
     """Generate section with pre-assigned rotation list of casinos"""
-    sec, content, templates, sorted_comments, casino, btc_str, casino_rotation_list = section_data
+    sec, content, templates, sorted_comments, casino, btc_str, casino_rotation_list, evolution_data = section_data
 
     # Define section configurations
     section_configs = {
@@ -610,6 +754,11 @@ def generate_section_with_assignment(section_data: Tuple) -> str:
             round_robin_instruction = f"\n\nIMPORTANT - Casino Comparison Rotation:\nWhen making comparisons to other casinos in this section, rotate through these casinos from the Top/Similar data in THIS ORDER: '{casinos_str}'.\n\nFor your FIRST comparison, use '{casino_rotation_list[0]}'. For your SECOND comparison, use '{casino_rotation_list[1] if len(casino_rotation_list) > 1 else casino_rotation_list[0]}'. Continue rotating through this list for any additional comparisons. This ensures variety and prevents any single casino from being mentioned too frequently."
             print(f"Section {sec}: Rotation list = {casino_rotation_list}")
 
+        # Build evolution comparison block
+        evolution_block = ""
+        if evolution_data and evolution_data.strip():
+            evolution_block = f"\n\nPrevious review evolution data:\n{evolution_data}"
+
         prompt = prompt_template.format(
             casino=casino,
             section=sec,
@@ -619,7 +768,7 @@ def generate_section_with_assignment(section_data: Tuple) -> str:
             top=content["top"],
             sim=content["sim"],
             btc_value=btc_str
-        ) + round_robin_instruction
+        ) + evolution_block + round_robin_instruction
 
         review = fn(prompt)
         return f"**{sec}**\n{review}\n"
@@ -788,7 +937,7 @@ def main():
     # Get casino name first to show in the interface
     try:
         user_creds = get_service_account_credentials()
-        casino, _, _ = get_cached_casino_data()
+        casino, _, _, _ = get_cached_casino_data()
         st.session_state.casino_name = casino
     except Exception as e:
         st.error(f"❌ Error loading casino data: {e}")
@@ -825,7 +974,7 @@ def main():
                 
                 # Collect results
                 templates = templates_future.result()
-                casino, secs, comments = casino_data_future.result()
+                casino, secs, comments, casino_id = casino_data_future.result()
                 price = btc_future.result()
             
             btc_str = f"1 BTC = ${price:,.2f}" if price else "[BTC price unavailable]"
@@ -837,14 +986,16 @@ def main():
                 st.error(f"Error: Could not fetch required templates: {', '.join(missing_templates)}")
                 return
             
-            # Sort comments by section using AI + fetch casino reputation
-            progress_placeholder.markdown("## Sorting comments and fetching reputation data...")
+            # Sort comments by section using AI + fetch casino reputation + fetch old review
+            progress_placeholder.markdown("## Sorting comments, fetching reputation & old review data...")
 
-            with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
                 comments_future = executor.submit(sort_comments_by_section, comments)
                 reputation_future = executor.submit(get_casino_reputation_summary, casino)
+                evolution_future = executor.submit(fetch_and_extract_evolution_data, casino_id, casino)
                 sorted_comments = comments_future.result()
                 reputation_summary = reputation_future.result()
+                evolution_facts = evolution_future.result()
 
             # Inject reputation data into General section's main data
             if reputation_summary and "General" in secs:
@@ -856,7 +1007,7 @@ def main():
             bg_executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
             askgamblers_future = bg_executor.submit(scrape_player_feedback, casino)
 
-            parallel_results = generate_sections_parallel(casino, secs, sorted_comments, templates, btc_str)
+            parallel_results = generate_sections_parallel(casino, secs, sorted_comments, templates, btc_str, evolution_facts)
 
             # Collect scraper result (should be done by now since sections take longer)
             try:
