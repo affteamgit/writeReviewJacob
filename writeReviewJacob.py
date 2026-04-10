@@ -199,25 +199,20 @@ def extract_evolution_facts(casino_name, old_review_text):
     if len(old_review_text) > max_chars:
         old_review_text = old_review_text[:max_chars]
 
-    prompt = f"""Analyze this previous review of the casino "{casino_name}" and extract ONLY the following specific data points if mentioned. Do not extract anything else.
+    prompt = f"""Analyze this previous review of the casino "{casino_name}" and extract key factual data points organized by section.
 
-DATA POINTS TO EXTRACT:
-- Total number of games
-- Number of game providers
-- Promotions and ongoing rewards for returning players
-- Withdrawal limits (daily, weekly, monthly)
-- Number of accepted cryptocurrencies
-- Number of restricted countries
-- Whether Originals (proprietary games) are available and how many
-- Whether provably fair games are available and through which providers
-- Available responsible gambling tools (list each one)
+For each section, extract ONLY concrete, measurable facts that could be compared to current data. Focus on:
+- Specific numbers (game counts, provider counts, crypto counts, withdrawal limits, bonus amounts)
+- Specific features that were present or absent (VPN policy, KYC requirements, self-exclusion tools)
+- Specific timeframes (withdrawal processing times, KYC verification times)
+- Specific bonus terms (wagering requirements, max cashout)
 
-For each data point found, write it as a short bullet point with the exact number or fact. Do NOT extract opinions, writing style, or anything not in the list above.
+Do NOT extract opinions, subjective assessments, or writing style. Only extract verifiable facts.
 
-Organize findings into sections. Output ONLY valid JSON (no markdown, no code fences):
-{{"General": "bullet points or empty string", "Payments": "bullet points or empty string", "Games": "bullet points or empty string", "Responsible Gambling": "bullet points or empty string", "Bonuses": "bullet points or empty string"}}
+Output ONLY valid JSON with this exact structure (no markdown, no code fences):
+{{"General": "bullet points of facts or empty string", "Payments": "bullet points of facts or empty string", "Games": "bullet points of facts or empty string", "Responsible Gambling": "bullet points of facts or empty string", "Bonuses": "bullet points of facts or empty string"}}
 
-Use empty string for sections where none of the listed data points are found.
+If a section has no relevant facts in the old review, use an empty string for that section.
 
 Previous review text:
 {old_review_text}"""
