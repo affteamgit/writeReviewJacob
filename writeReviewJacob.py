@@ -925,6 +925,8 @@ def main():
             st.info(f"Review link: {st.session_state.review_url}")
         if st.session_state.get('askgamblers_debug'):
             st.caption(st.session_state.askgamblers_debug)
+        if st.session_state.get('evolution_debug'):
+            st.caption(st.session_state.evolution_debug)
 
         # Add a button to generate a new review
         if st.button("Write New Review", type="primary"):
@@ -995,7 +997,22 @@ def main():
                 evolution_future = executor.submit(fetch_and_extract_evolution_data, casino_id, casino)
                 sorted_comments = comments_future.result()
                 reputation_summary = reputation_future.result()
-                evolution_facts = evolution_future.result()
+                try:
+                    evolution_facts = evolution_future.result()
+                except Exception as e:
+                    evolution_facts = {}
+                    print(f"Evolution data fetch failed: {e}")
+                    st.session_state.evolution_debug = f"Old review fetch error: {e}"
+
+            # Set evolution status for display (only if not already set by an error above)
+            if 'evolution_debug' not in st.session_state or not st.session_state.evolution_debug.startswith("Old review fetch error"):
+                if evolution_facts and any(v.strip() for v in evolution_facts.values()):
+                    non_empty = sum(1 for v in evolution_facts.values() if v.strip())
+                    st.session_state.evolution_debug = f"Old review data integrated ({non_empty} section{'s' if non_empty != 1 else ''} with evolution info)"
+                elif not casino_id:
+                    st.session_state.evolution_debug = "No Casino ID found -- old review comparison skipped"
+                else:
+                    st.session_state.evolution_debug = "No previous review found for this casino"
 
             # Inject reputation data into General section's main data
             if reputation_summary and "General" in secs:
