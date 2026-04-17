@@ -28,20 +28,17 @@
 ## Q: Is [casino] legit?
 
 * ALWAYS answer this question -- it applies to every casino regardless of age.
-* The answer should combine TWO elements: (1) how long the casino has been around, and (2) a reputation summary from the REPUTATION DATA provided.
 * REMINDER: NEVER write "Trustpilot", "AskGamblers", or any review platform name anywhere in this answer. Use "player reviews" or "player feedback".
-* Frame the legitimacy assessment based on the casino's age tier:
+* STEP 1 -- ALWAYS write a paragraph about the casino's age and track record:
   - 1 year or less (brand new): This is a very new casino with no track record. Caution is warranted. However, also add a personal touch: if we are reviewing this casino, it means we've tested it ourselves. Say something like "I've personally used this casino and had no issues so far, but only time will tell if that experience holds up for everyone." Don't just leave the reader with pure caution -- balance it with your own experience.
-  - 1-2 years: Still relatively new. Limited track record. Mention any early reputation signals from the reputation data if available.
-  - 3-4 years: Has been around for a few years. Starting to build a track record. Comment on whether the reputation data supports trustworthiness.
-  - 5-10 years: Well-established. This is a positive sign. Experienced casinos tend to have more refined operations and more consistent payouts. Use reputation data to support or qualify this.
-  - 10+ years: A veteran in the industry. Long-standing presence is a strong trust signal. Use reputation data to highlight key reputation milestones or any notable incidents.
-* Include relevant details from the REPUTATION DATA section in the casino data. This contains an AI-generated summary of the casino's public reputation, licensing, notable events, and community standing. Weave these details naturally into your answer.
-* If the reputation data mentions any licensing information (e.g., Curacao, Malta Gaming Authority), include it as it directly supports legitimacy.
-* If the reputation data mentions any controversies or negative incidents, mention them briefly and factually.
-* CRITICAL: If reputation data is missing, empty, or unhelpful, do NOT mention this in any way. This includes paraphrased forms like "While I don't have comprehensive reputation data", "I lack detailed reputation information", "without extensive community data", or ANY sentence that acknowledges the absence of data. The reader must never sense that information is missing. Instead, write the answer using ONLY what you DO have (age, licensing if known, player feedback if available). If there's nothing to say about reputation, just write one solid paragraph about the casino's age and track record and stop there. Do NOT force a second paragraph.
-* If you have reputation data: Split the answer into TWO short paragraphs -- one about age/track record, one about reputation (licensing, community standing, any controversies). If reputation data is missing or empty: Write ONE paragraph about age/track record only. Do NOT write a second paragraph that draws attention to missing information.
-* Keep it to 3-4 sentences total across both paragraphs. Be direct and factual.
+  - 1-2 years: Still relatively new. Limited track record.
+  - 3-4 years: Has been around for a few years. Starting to build a track record.
+  - 5-10 years: Well-established. This is a positive sign. Experienced casinos tend to have more refined operations and more consistent payouts.
+  - 10+ years: A veteran in the industry. Long-standing presence is a strong trust signal.
+* STEP 2 -- CHECK if REPUTATION DATA exists in the casino data. REPUTATION DATA is an AI-generated summary containing licensing, notable events, and community standing.
+  - If REPUTATION DATA is present and contains useful facts (licensing info, controversies, community standing): Write a SECOND paragraph covering those facts. If it mentions licensing (e.g., Curacao, Malta Gaming Authority), include it. If it mentions controversies, mention them briefly.
+  - If REPUTATION DATA is missing, empty, contains only generic filler, or says nothing concrete: STOP after the first paragraph. Do NOT write a second paragraph. Do NOT acknowledge that reputation data is missing. Do NOT write any sentence that implies you lack information. Just end the answer after the age paragraph.
+* Keep it to 2-4 sentences total. Be direct and factual.
 
 ## Q: Does [casino] offer sports betting or other products?
 
