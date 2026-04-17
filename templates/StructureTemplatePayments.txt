@@ -4,18 +4,21 @@
 ##
 ## CHECK the casino data for withdrawal time info AND KYC verification time info.
 ##
-## SCENARIO A -- NO INFO for BOTH withdrawal time AND KYC time:
+## SCENARIO A -- INFO MISSING for ONE or BOTH (withdrawal time and/or KYC time):
 ##   Merge both topics into a SINGLE question: "## Q: How long can withdrawals take?"
-##   Do NOT include a separate KYC question.
+##   Do NOT include a separate KYC question at all.
 ##   Follow the instructions under [WITHDRAWAL TIME QUESTION] below, and at the end of
-##   the answer add a note that the same situation applies to KYC verification times --
-##   the casino does not provide specific timeframes for KYC either, so the same
-##   considerations apply.
+##   the answer add a SEPARATE PARAGRAPH noting that the same situation applies to KYC
+##   verification times -- the casino does not provide specific timeframes for KYC either,
+##   so the same considerations apply.
+##   IMPORTANT: Do NOT repeat or duplicate KYC information. The KYC note at the end of
+##   the withdrawal answer is the ONLY place KYC is mentioned. No separate KYC question.
 ##
-## SCENARIO B -- INFO EXISTS for ONE or BOTH (withdrawal time and/or KYC time):
-##   Use TWO SEPARATE questions:
+## SCENARIO B -- SPECIFIC INFO EXISTS for BOTH withdrawal time AND KYC time:
+##   Only use TWO SEPARATE questions when you have concrete data for BOTH topics:
 ##   1. "## Q: How long can withdrawal take?" -- follow [WITHDRAWAL TIME QUESTION] below
 ##   2. "## Q: How long can KYC reviews take?" -- follow [KYC QUESTION] below
+##   If only ONE has data and the other doesn't, use SCENARIO A (single merged question).
 ##
 
 ## Q: How long can withdrawals take?
@@ -38,10 +41,10 @@
 * ADDITIONALLY, check player feedback for any mentions of actual withdrawal times experienced by players. If withdrawal time information is found in reviews, include this real-world feedback in your answer. NEVER name the source platform (no "Trustpilot", "AskGamblers") -- just say "player reviews" or "player feedback".
 * Do NOT add generic sentences about why fast withdrawals matter. The reader already knows.
 * Do NOT compare to or recommend other casinos in this answer. No Top Casinos or Similar Casinos references.
-* SCENARIO A ONLY: Add a SEPARATE PARAGRAPH (new line break) at the end about KYC -- the casino does not provide specific KYC processing timeframes either, so the same concerns about lack of commitment apply to identity verification as well. This KYC note must start its own paragraph, not be appended to the withdrawal paragraph.
+* SCENARIO A ONLY: Add a SEPARATE PARAGRAPH (new line break) at the end about KYC -- the casino does not provide specific KYC processing timeframes either, so the same concerns about lack of commitment apply to identity verification as well. This KYC note must start its own paragraph, not be appended to the withdrawal paragraph. This is the ONLY place KYC is mentioned under Scenario A -- do NOT also create a separate KYC question.
 
 ## Q: How long can KYC reviews take?
-## [KYC QUESTION] -- Only include this as a separate question under SCENARIO B.
+## [KYC QUESTION] -- ONLY include this as a separate question under SCENARIO B (when BOTH withdrawal AND KYC have specific data). If EITHER topic lacks data, this question must NOT appear -- use Scenario A instead.
 
 * FIRST, check the casino's knowledge base/terms and conditions for any specified KYC processing timeframe.
 * IMPORTANT: The KYC verification timeframe data reflects what the casino states or promises. First, comment on whether the casino provides this information and where it can be found.

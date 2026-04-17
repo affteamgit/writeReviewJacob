@@ -7,7 +7,7 @@ These will NEVER appear in any review. If you catch yourself writing any of them
 - "verify fairness" / "cryptographic methods" / "mathematical proof" / "verify game outcomes" / "verify each result"
 - "30% of crypto casinos" / "31% of crypto casinos" / any repeated stat across reviews
 - "the data doesn't specify" / "I can't specify" / "the provided information doesn't include"
-- "I don't have" / "no data available" / "no reputation data" / "I can't verify" / "I don't have access to" / "comprehensive reputation data"
+- "I don't have" / "no data available" / "no reputation data" / "I can't verify" / "I don't have access to" / "comprehensive reputation data" / "While I don't have" / "I don't have comprehensive" / "without comprehensive data"
 - "in-house games" --> use "Originals"
 - "Evolution Gaming" --> use "Evolution"
 - Em dash (—)

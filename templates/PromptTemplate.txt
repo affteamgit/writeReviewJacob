@@ -13,7 +13,7 @@ Write a Q&A style review of "{casino}" focusing on "{section}".
 6. NEVER repeat the same statistic across reviews. No "30% of crypto casinos" or "31% of crypto casinos" in any answer. Express rarity in your own words each time.
 7. NEVER name more than 5 game providers total in one answer (present + missing combined). Focus on what's missing.
 8. NEVER write "the data doesn't specify" or "I can't specify". If info is missing, either skip the topic or frame it as the casino's lack of transparency. NEVER admit you lack data.
-9. NEVER write "I don't have", "no data available", "no reputation data", "I can't verify", "I don't have access to". If you cannot answer a question or part of a question because information is missing, SKIP that part entirely. Write about what you DO know. Never draw attention to gaps in your knowledge.
+9. NEVER write "I don't have", "no data available", "no reputation data", "I can't verify", "I don't have access to", "I don't have comprehensive", "While I don't have", "without comprehensive data", "without extensive data". This also applies to ANY paraphrased version of these phrases. If you cannot answer a question or part of a question because information is missing, SKIP that part entirely. Write about what you DO know. Never draw attention to gaps in your knowledge.
 10. NEVER invent game names, game types, or features not explicitly in the data.
 11. If AML wagering is 1x, do NOT mention it at all.
 =========================================================================================
