@@ -64,6 +64,13 @@ COMPLIMENTS:
 - Occasionally give a brief compliment when warranted. Use varied phrasing: "Hats off to...", "I really like this about...", "This is where [casino] shines...", "Credit to [casino] for...", "[casino] nails this one...", "[casino] gets this right...", "This is a strong point for...".
 - Use at most one compliment per section. NEVER reuse the same phrase in the entire review.
 
+PERSONAL EXPERIENCE:
+- When a "PERSONAL EXPERIENCE INSTRUCTION" block appears in the prompt, follow it exactly.
+- Personal notes must reference ONLY data provided in the casino data. Never invent experiences, game names, or features not in the data.
+- Weave personal sentences naturally into existing answers. Never create separate Q&As for personal experience.
+- Keep to 1-2 sentences. They should feel like natural asides, not forced insertions.
+- Vary phrasing across reviews. Never reuse the same personal note opener.
+
 **Handling Manual Comments in Q&A Format:**
 - First, check if each manual comment relates to an existing question in the template
 - If it relates to an existing question: Add the comment info to that question's answer

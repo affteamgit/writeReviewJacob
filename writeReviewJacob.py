@@ -57,24 +57,39 @@ def get_file_content_from_github(filename):
         print(f"Error reading file {filename} from GitHub: {str(e)}")
         return None
 
+def get_json_from_github(filename):
+    """Get JSON content from GitHub repository and parse it."""
+    try:
+        github_base_url = "https://raw.githubusercontent.com/affteamgit/writeReviewJacob/main/templates/"
+        file_url = f"{github_base_url}{filename}.json"
+        response = requests.get(file_url)
+        response.raise_for_status()
+        return json.loads(response.text)
+    except Exception as e:
+        print(f"Error reading JSON file {filename} from GitHub: {str(e)}")
+        return None
+
+
 def get_all_templates():
     """Fetch all templates at once with parallel processing"""
     templates = {}
     files = [
-        'PromptTemplate', 
-        'BaseGuidelinesClaude', 
-        'BaseGuidelinesGrok', 
-        'StructureTemplateGeneral', 
-        'StructureTemplatePayments', 
-        'StructureTemplateGames', 
-        'StructureTemplateResponsible', 
+        'PromptTemplate',
+        'BaseGuidelinesClaude',
+        'BaseGuidelinesGrok',
+        'StructureTemplateGeneral',
+        'StructureTemplatePayments',
+        'StructureTemplateGames',
+        'StructureTemplateResponsible',
         'StructureTemplateBonuses'
     ]
-    
+
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
-        future_to_file = {executor.submit(get_file_content_from_github, filename): filename 
+        future_to_file = {executor.submit(get_file_content_from_github, filename): filename
                          for filename in files}
-        
+        # Also fetch personalization matrix as JSON
+        persona_future = executor.submit(get_json_from_github, 'PersonalizationMatrix')
+
         for future in concurrent.futures.as_completed(future_to_file):
             filename = future_to_file[future]
             try:
@@ -82,7 +97,14 @@ def get_all_templates():
             except Exception as e:
                 print(f"Error fetching template {filename}: {e}")
                 templates[filename] = None
-    
+
+        # Collect personalization matrix
+        try:
+            templates["PersonalizationMatrix"] = persona_future.result()
+        except Exception as e:
+            print(f"Error fetching PersonalizationMatrix: {e}")
+            templates["PersonalizationMatrix"] = None
+
     return templates
 
 def get_selected_casino_data():
@@ -635,6 +657,58 @@ REVIEWS:
         return ""
 
 
+def select_persona_scenario(section: str, main_data: str, matrix: dict, used_ids_this_review: list) -> dict:
+    """Select a random personalization scenario for a section based on casino data."""
+    section_hooks = matrix.get("sections", {}).get(section, [])
+    if not section_hooks:
+        return None
+
+    main_lower = main_data.lower()
+
+    # Filter to hooks whose data_keywords match the casino data
+    eligible = []
+    fallbacks = []
+    for hook in section_hooks:
+        keywords = hook.get("data_keywords", [])
+        is_fallback = hook.get("fallback_ok", False)
+
+        # Skip if already used in this review
+        if hook["id"] in used_ids_this_review:
+            continue
+
+        # If no keywords, it's a fallback-only hook
+        if not keywords:
+            if is_fallback:
+                fallbacks.append(hook)
+            continue
+
+        # Check if at least one keyword matches
+        if any(kw.lower() in main_lower for kw in keywords):
+            eligible.append(hook)
+        elif is_fallback:
+            fallbacks.append(hook)
+
+    # Pick from eligible first, then fallbacks
+    if eligible:
+        return random.choice(eligible)
+    if fallbacks:
+        return random.choice(fallbacks)
+    return None
+
+
+def build_personalization_block(scenario: dict) -> str:
+    """Build the personalization instruction block to inject into the prompt."""
+    instruction = scenario.get("instruction", "")
+    return (
+        f"\n\nPERSONAL EXPERIENCE INSTRUCTION (Jakob's personal touch):\n"
+        f"{instruction}\n"
+        f"CRITICAL: This personal note MUST be grounded in the casino data provided below. "
+        f"Do NOT invent experiences, game names, or features not in the data. "
+        f"Keep to exactly 1-2 sentences woven into the specified answer. "
+        f"Do NOT create a separate Q&A for personal experience."
+    )
+
+
 def generate_sections_parallel(casino: str, secs: Dict, sorted_comments: Dict, templates: Dict, btc_str: str, evolution_facts: Dict[str, str] = None) -> list:
     """Generate all sections in parallel while maintaining round-robin casino selection"""
 
@@ -673,9 +747,26 @@ def generate_sections_parallel(casino: str, secs: Dict, sorted_comments: Dict, t
             # Store assignment
             section_assignments[sec] = rotation_list
 
-    # Prepare data for each section with pre-assigned casino rotation lists
+    # Pre-select personalization scenarios sequentially (before parallel generation)
+    personalization_matrix = templates.get("PersonalizationMatrix")
+    section_persona = {}
+    used_scenario_ids = []
+    if personalization_matrix:
+        for sec in section_order:
+            if sec in secs:
+                scenario = select_persona_scenario(sec, secs[sec]["main"], personalization_matrix, used_scenario_ids)
+                if scenario:
+                    section_persona[sec] = scenario
+                    used_scenario_ids.append(scenario["id"])
+                    print(f"Section {sec}: Persona scenario = {scenario['id']}")
+                else:
+                    section_persona[sec] = None
+            else:
+                section_persona[sec] = None
+
+    # Prepare data for each section with pre-assigned casino rotation lists and persona scenarios
     section_data = [
-        (sec, secs[sec], templates, sorted_comments, casino, btc_str, section_assignments.get(sec, []), (evolution_facts or {}).get(sec, ""))
+        (sec, secs[sec], templates, sorted_comments, casino, btc_str, section_assignments.get(sec, []), (evolution_facts or {}).get(sec, ""), section_persona.get(sec))
         for sec in section_order if sec in secs
     ]
 
@@ -741,7 +832,7 @@ def generate_sections_parallel(casino: str, secs: Dict, sorted_comments: Dict, t
 
 def generate_section_with_assignment(section_data: Tuple) -> str:
     """Generate section with pre-assigned rotation list of casinos"""
-    sec, content, templates, sorted_comments, casino, btc_str, casino_rotation_list, evolution_data = section_data
+    sec, content, templates, sorted_comments, casino, btc_str, casino_rotation_list, evolution_data, persona_scenario = section_data
 
     # Define section configurations
     section_configs = {
@@ -775,6 +866,11 @@ def generate_section_with_assignment(section_data: Tuple) -> str:
             round_robin_instruction = f"\n\nIMPORTANT - Casino Comparison Rotation:\nWhen making comparisons to other casinos in this section, rotate through these casinos from the Top/Similar data in THIS ORDER: '{casinos_str}'.\n\nFor your FIRST comparison, use '{casino_rotation_list[0]}'. For your SECOND comparison, use '{casino_rotation_list[1] if len(casino_rotation_list) > 1 else casino_rotation_list[0]}'. Continue rotating through this list for any additional comparisons. This ensures variety and prevents any single casino from being mentioned too frequently."
             print(f"Section {sec}: Rotation list = {casino_rotation_list}")
 
+        # Inject personalization instruction into structure template
+        structure_with_persona = structure
+        if persona_scenario:
+            structure_with_persona = structure + build_personalization_block(persona_scenario)
+
         # Inject evolution data directly into main data so the AI sees old vs new together
         evolution_addition = ""
         if evolution_data and evolution_data.strip():
@@ -784,7 +880,7 @@ def generate_section_with_assignment(section_data: Tuple) -> str:
             casino=casino,
             section=sec,
             guidelines=guidelines,
-            structure=structure,
+            structure=structure_with_persona,
             main=content["main"] + section_comments + evolution_addition,
             top=content["top"],
             sim=content["sim"],
