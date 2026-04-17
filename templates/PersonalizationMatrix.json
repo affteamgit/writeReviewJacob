@@ -1,53 +1,46 @@
 {
   "jakob_traits": {
-    "crypto_habits": "Uses Tron for deposits after a bad experience waiting 40+ minutes for a Bitcoin confirmation during a live tournament. Keeps a dedicated wallet just for casino funds — learned the hard way after mixing gambling and portfolio funds during a bear market and losing track of everything. Has accumulated random tokens from airdrops and forgotten trades sitting across wallets.",
-    "gaming_style": "Pragmatic Play loyalist — Gates of Olympus was the game that landed him his first real crypto casino win, so it became his go-to test game at every new casino. Skeptical of huge game counts because he has tested casinos with 10,000+ titles where half the thumbnails were broken. Started filtering by RTP after realizing he was burning bankroll on sub-93% slots without knowing it.",
-    "bankroll_management": "Set-it-and-forget-it approach to deposit limits — made this a strict rule after watching a friend blow through three months of savings in one night at a crypto casino. Always tests a new casino with a small withdrawal first, because his first ever crypto casino held his payout for two weeks then asked for unexpected KYC.",
-    "general_habits": "Reads T&Cs before depositing — caught a 5x AML wagering requirement buried in the fine print once and it saved him real money. Been in the crypto casino space long enough to watch dozens of sites launch with big promises and vanish within a year. Checks self-exclusion availability as a trust signal — a casino that makes it hard to leave doesn't respect its players."
+    "crypto_habits": "Uses Tron for deposits after a bad experience waiting 40+ minutes for a Bitcoin confirmation during a live tournament. Keeps a dedicated wallet just for casino funds. Has random tokens from airdrops and forgotten trades sitting across wallets.",
+    "gaming_style": "Pragmatic Play loyalist — Gates of Olympus was the game that landed him his first real crypto casino win. Skeptical of huge game counts. Started filtering by RTP after burning bankroll on sub-93% slots without knowing it.",
+    "bankroll_management": "Strict deposit limit rule after watching a friend lose three months of savings in one night. Always tests a new casino with a small withdrawal first — his first crypto casino held his payout for two weeks then asked for unexpected KYC.",
+    "general_habits": "Reads T&Cs before depositing — caught a 5x AML requirement buried in fine print once. Been in crypto casinos long enough to watch dozens launch and vanish. Checks self-exclusion as a trust signal."
   },
   "sections": {
     "General": [
       {
-        "id": "gen_vpn_tested",
-        "data_keywords": ["VPN"],
-        "fallback_ok": false,
-        "target_question": "Can I use a VPN",
-        "instruction": "In the VPN answer, add a personal note: you review casinos from different locations, and you have had sessions cut short before because a casino flagged your VPN mid-game -- so how a casino handles VPN access matters to you beyond just the T&Cs. Tie it to the specific VPN policy or restricted countries from the data. One sentence."
-      },
-      {
-        "id": "gen_anon_privacy",
+        "id": "gen_anon_signup",
         "data_keywords": ["email-only", "anonymous", "email only"],
         "fallback_ok": false,
         "target_question": "Can I stay anonymous",
-        "instruction": "In the anonymity answer, add a personal note: you never hand over personal details until you have tested withdrawals first -- your first ever crypto casino collected all your info upfront and then made cashing out a nightmare, so now you treat KYC-free signups as a baseline requirement. Tie it to the specific signup process from the data. One sentence."
+        "instruction": "REWRITE the anonymity answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob signed up with just his email, made a deposit, and played without handing over any personal info — then checked how far he could get before KYC kicked in.\n(B) Jakob hit the registration page expecting the usual name/address/phone form, and was surprised to find only an email field — he was playing within two minutes.\n(C) Jakob specifically tested the withdrawal flow to see if KYC would be triggered — because he has had casinos collect everything upfront and then make cashing out a nightmare.\nAll facts (signup requirements, KYC thresholds) must come from the casino data."
       },
       {
         "id": "gen_longevity_matters",
         "data_keywords": ["years", "established", "founded", "launched"],
         "fallback_ok": false,
         "target_question": "Is [casino] legit",
-        "instruction": "In the legitimacy answer, add a personal note: you have been in the crypto casino space long enough to watch dozens of sites launch with big promises and disappear within a year, taking player funds with them -- so when a casino has actually survived multiple years, that carries weight with you. Tie it to the specific age from the data. One sentence."
+        "instruction": "REWRITE the legitimacy answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob checked the casino's founding year and licensing before depositing — he has watched dozens of crypto casinos launch with big promises and disappear within a year, so operational history is the first thing he looks at.\n(B) Jakob dug into the casino's track record and terms before his first deposit — after years in this space, he trusts operational longevity more than marketing claims.\nAll facts (founding year, years of operation, licensing, reputation details) must come from the casino data."
       },
       {
-        "id": "gen_tcs_saved_me",
+        "id": "gen_tcs_habit",
         "data_keywords": [],
         "fallback_ok": true,
         "target_question": null,
-        "instruction": "In the most natural answer for this section, add a personal note: you read T&Cs before depositing because you once caught a 5x AML wagering requirement buried in the fine print that would have locked up your funds -- boring habit, but it has saved you real money. Tie it to something specific from this casino's terms in the data. One sentence."
+        "instruction": "In the most natural answer for this section, frame Jakob's response around the fact that he read this casino's T&Cs before depositing. Pick ONE angle:\n(A) He found something noteworthy in the terms — good or bad — and it shaped his first impression.\n(B) He was specifically looking for hidden wagering requirements or withdrawal traps, because he once caught a 5x AML requirement buried in fine print that would have locked up his funds.\nTie it to a specific detail from this casino's data. One to two sentences woven into the answer."
       },
       {
         "id": "gen_standout_honest",
         "data_keywords": [],
         "fallback_ok": true,
         "target_question": "What makes [casino] stand out",
-        "instruction": "In the standout answer, add a sentence with your honest gut reaction: after testing dozens of crypto casinos, most standout features turn out to be marketing fluff -- say whether this casino's differentiator (from the data) is something that actually changes the player experience or just looks good on paper, and why. One sentence."
+        "instruction": "REWRITE the standout answer from Jakob's experience. Pick ONE scenario:\n(A) Jakob tried the standout feature himself and describes what it was actually like to use — whether it delivered on its promise or fell flat.\n(B) Jakob noticed the feature while browsing the casino and it caught his attention because most casinos he has tested don't offer this — narrate his discovery.\nAll facts about the standout feature must come from the casino data."
       },
       {
         "id": "gen_flashy_vs_functional",
         "data_keywords": ["modern", "pop-up", "broken", "outdated", "clean"],
         "fallback_ok": false,
         "target_question": "Does [casino] have good UX",
-        "instruction": "In the UX answer, add a personal note: you have tested enough crypto casinos to know that a flashy redesign means nothing if basic things are broken -- you would take an ugly site with working withdrawals over a pretty one with dead links any day. Tie it to the specific UX findings from the data. One sentence."
+        "instruction": "REWRITE the UX answer from Jakob's experience. Pick ONE scenario:\n(A) Jakob opened the site for the first time and describes his actual navigation experience — what he clicked, what annoyed him, what worked.\n(B) Jakob was trying to find a specific game or setting and the interface either helped or got in his way — he has tested enough casinos to know that a flashy site means nothing if basic things are broken.\nAll UX facts (pop-ups, broken elements, design quality) must come from the casino data."
       }
     ],
     "Payments": [
@@ -56,42 +49,35 @@
         "data_keywords": ["buy crypto", "Buy crypto", "buy cryptocurrency"],
         "fallback_ok": false,
         "target_question": "Can I deposit different altcoins",
-        "instruction": "In the altcoin answer, add a personal note: you keep a dedicated wallet just for casino deposits -- you learned the hard way not to mix gambling funds with your main portfolio during a bear market when you lost track of everything. So when that casino wallet runs dry mid-session, the buy-crypto feature is genuinely useful. Reference the feature from the data. One sentence."
+        "instruction": "REWRITE the altcoin answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob's dedicated casino wallet ran dry mid-session, so he used the buy-crypto feature directly on-site instead of switching to an exchange — describe how that went and whether it was smooth.\n(B) Jakob deposited with his usual coin but later noticed the buy-crypto option and tested it out of curiosity — he keeps gambling funds separate from his main portfolio, so being able to top up on-site is genuinely useful.\n(C) Jakob tried to deposit but his preferred coin wasn't available, so he used the buy-crypto feature to purchase a supported one directly.\nAll facts (crypto count, buy-crypto availability, supported coins) must come from the casino data."
       },
       {
         "id": "pay_crypto_swap_old_tokens",
         "data_keywords": ["crypto swap", "Crypto Swap", "token conversion", "Crypto swap"],
         "fallback_ok": false,
         "target_question": "Can I deposit different altcoins",
-        "instruction": "In the altcoin answer, add a personal note: you have random tokens from old airdrops and forgotten trades sitting across different wallets -- stuff that isn't worth the gas fee to convert on an exchange. The crypto swap feature means you can actually deposit those and play with them directly, which feels like finding money in an old jacket. Reference the feature from the data. One sentence."
+        "instruction": "REWRITE the altcoin answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob had leftover tokens from an old airdrop sitting in a wallet — not worth the gas fee to swap on an exchange, but the crypto swap feature let him deposit them directly and convert on-site.\n(B) Jakob deposited in one cryptocurrency but wanted to withdraw in a different one — he tested the swap feature to see if it actually worked and what the conversion rate looked like.\n(C) Jakob specifically chose this casino because the swap feature meant he could clean out small balances from multiple wallets without touching an exchange.\nAll facts (swap feature, crypto count, supported coins) must come from the casino data."
       },
       {
-        "id": "pay_tron_speed",
+        "id": "pay_tron_deposit",
         "data_keywords": ["cryptocurrencies", "crypto", "tokens"],
         "fallback_ok": true,
         "target_question": "Can I deposit different altcoins",
-        "instruction": "In the altcoin answer, add a personal note: Tron is your go-to deposit coin ever since you waited 40 minutes for a Bitcoin confirmation during a live tournament and missed the whole thing -- so you always check whether a casino supports TRX. Comment on whether it's supported based on the data. One sentence."
+        "instruction": "REWRITE the altcoin answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob deposited with Tron — his go-to since waiting 40 minutes for a Bitcoin confirmation during a live tournament. Describe whether TRX was supported and how the deposit went.\n(B) Jakob checked the supported coins list before depositing — he carries about 15 different tokens from old trades and airdrops, and wanted to see how many he could actually use here.\n(C) Jakob tried depositing with a less common token he had sitting in a wallet to test how broad the support really is.\nAll facts (crypto count, supported coins, major crypto coverage) must come from the casino data."
       },
       {
-        "id": "pay_test_withdrawal_habit",
-        "data_keywords": ["withdrawal", "processing time", "payout"],
-        "fallback_ok": false,
-        "target_question": "How long can withdrawals take",
-        "instruction": "In the withdrawal time answer, add a personal note: your first ever crypto casino held a withdrawal for two weeks and then hit you with KYC you didn't expect -- since then, you always test with a small cashout before depositing anything serious. Comment on whether this casino's stated timeframe (from the data) inspires confidence. One sentence."
-      },
-      {
-        "id": "pay_limits_big_win",
+        "id": "pay_limits_check",
         "data_keywords": ["daily limit", "weekly limit", "monthly limit", "withdrawal limit"],
         "fallback_ok": false,
         "target_question": "What are the withdrawal limits",
-        "instruction": "In the limits answer, add a personal note: you have seen enough forum posts from players who hit a big jackpot only to find out they'd be paid in monthly installments over a year -- withdrawal limits are the first thing you check after T&Cs because they determine whether winning big actually means anything. Comment on these specific limits from the data. One sentence."
+        "instruction": "REWRITE the withdrawal limits answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob checked the withdrawal limits right after reading the T&Cs — he has seen enough forum posts from players who hit a jackpot only to find out they'd be paid in installments over a year.\n(B) Jakob calculated whether the limits would work for a serious session — he mentally ran the numbers on what happens if you actually win big here.\n(C) Jakob compared these limits to other casinos he has tested to see where they stand — some numbers look good until you realize the daily cap would throttle any decent win.\nAll facts (limit amounts, daily/weekly/monthly caps) must come from the casino data."
       },
       {
         "id": "pay_altcoin_old_wallet",
         "data_keywords": ["more than 15", "more than 20", "more than 50", "more than 100"],
         "fallback_ok": false,
         "target_question": "Can I deposit different altcoins",
-        "instruction": "In the altcoin answer, add a personal note: you have accumulated random tokens over the years from airdrops and trades that are just sitting in wallets collecting dust -- most aren't worth the gas fee to swap on an exchange, but finding a casino that actually accepts them feels like putting dead money back to work. Reference the specific crypto count from the data. One sentence."
+        "instruction": "REWRITE the altcoin answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob scrolled through the supported coins list and found tokens he had forgotten about in old wallets — stuff that isn't worth the gas fee to swap on an exchange, but here he could deposit them directly.\n(B) Jakob tested depositing with a less mainstream token from an old airdrop that's been sitting untouched — with this many coins supported, it actually went through.\n(C) Jakob checked whether all his usual coins were covered — Tron for cheap fees, plus whatever random tokens he has accumulated over the years.\nAll facts (crypto count, major crypto coverage, specific supported coins) must come from the casino data."
       }
     ],
     "Games": [
@@ -100,86 +86,79 @@
         "data_keywords": ["Pragmatic Play"],
         "fallback_ok": false,
         "target_question": "Can I find games from most popular game providers",
-        "instruction": "In the providers answer, add a personal note: Gates of Olympus was the game that landed you your first real crypto casino win, and it has been your go-to test game ever since -- if a new casino doesn't feel right playing Gates, you move on. Comment on whether Pragmatic Play is in the lineup based on the data. One sentence."
+        "instruction": "REWRITE the providers answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob searched for Pragmatic Play first — Gates of Olympus was the game that landed him his first real crypto casino win, so it's always his first test. Describe whether he found it and what the provider coverage looks like.\n(B) Jakob opened the games lobby and filtered by provider to see who's represented — Pragmatic Play is his benchmark, but he also checked for the other major names.\n(C) Jakob fired up Gates of Olympus as his first game here — it's his standard test to see how a casino feels. Then he browsed the rest of the provider lineup.\nAll facts (provider count, which providers are present/missing, live game providers) must come from the casino data."
       },
       {
-        "id": "games_bgaming_transparency",
+        "id": "games_bgaming_check",
         "data_keywords": ["BGaming"],
         "fallback_ok": false,
         "target_question": "Can I find games from most popular game providers",
-        "instruction": "In the providers answer, add a personal note: BGaming has earned your respect because their provably fair slots aren't just a marketing checkbox -- they actually built their games around verifiable outcomes, which is rare in an industry where 'trust us' is the default. Comment on whether BGaming is present based on the data. One sentence."
+        "instruction": "REWRITE the providers answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob looked for BGaming specifically — their provably fair slots aren't just a marketing label, they actually built their games around verifiable outcomes. Describe what he found in the provider lineup.\n(B) Jakob browsed the provider list and was pleased (or disappointed) to see BGaming — he has been paying more attention to them lately because of their transparency approach.\nAll facts (provider count, which providers are present/missing) must come from the casino data."
       },
       {
-        "id": "games_quality_over_count",
+        "id": "games_library_browse",
         "data_keywords": ["games"],
         "fallback_ok": true,
         "target_question": "How many games are in [casino]",
-        "instruction": "In the game count answer, add a personal note: you have tested casinos with 10,000+ games where half the thumbnails were broken and the search was useless -- you would take 3,000 well-organized games from quality providers over 10,000 filler titles any day. Comment on whether this casino's count (from the data) feels like genuine variety or padding. One sentence."
+        "instruction": "REWRITE the game count answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob opened the game lobby and started browsing — he cares more about provider quality than raw count because he has tested casinos with 10,000+ games where half the thumbnails were broken and the search was useless.\n(B) Jakob filtered and searched through the library to see what's actually playable — a big number means nothing if it's padded with shovelware nobody touches.\n(C) Jakob counted the providers first, then looked at the total — in his experience, 3,000 well-organized games from quality providers beats 10,000 filler titles.\nAll facts (game count, evaluation of the count) must come from the casino data."
       },
       {
-        "id": "games_rtp_lesson",
+        "id": "games_rtp_filter_test",
         "data_keywords": ["RTP", "volatility", "filter"],
         "fallback_ok": false,
         "target_question": "Can I search for games based on RTP or volatility",
-        "instruction": "In the filters answer, add a personal note: you started filtering by RTP after realizing you had been burning through your bankroll on sub-93% slots without even knowing it -- casinos that let you sort by RTP aren't afraid of informed players, and that tells you something. Comment on whether the filters work based on the data. One sentence."
+        "instruction": "REWRITE the filters answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob used the RTP filter to sort games — he started doing this after realizing he had been burning through his bankroll on sub-93% slots without even knowing it. Describe whether the filters worked.\n(B) Jakob tried filtering by volatility to find medium-variance slots for a longer session — casinos that expose these filters aren't afraid of informed players, and that tells him something.\n(C) Jakob tested both the RTP and volatility filters to see if they actually return accurate results or if they're broken like at other casinos he has tested.\nAll facts (filter availability, whether filters work properly) must come from the casino data."
       },
       {
         "id": "games_missing_dealbreaker",
         "data_keywords": ["missing", "absent", "not available", "don't have"],
         "fallback_ok": false,
         "target_question": "Can I find games from most popular game providers",
-        "instruction": "In the providers answer, add a personal note about a specific missing provider from the data: if Pragmatic Play is missing, say it's close to a dealbreaker for you since Gates of Olympus is your main game. If another major one is missing, explain what you personally lose access to without them. One sentence."
+        "instruction": "REWRITE the providers answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob searched for his usual providers and noticed gaps — if Pragmatic Play is missing, it's close to a dealbreaker since Gates of Olympus is his main game. Narrate his search and what he found.\n(B) Jakob filtered by provider and was surprised by what's missing — he expected a casino of this size to have better coverage. Name the specific missing providers from the data.\nAll facts (provider count, missing providers, present providers) must come from the casino data."
       },
       {
-        "id": "games_provably_fair_attitude",
+        "id": "games_provably_fair_check",
         "data_keywords": ["Originals", "provably fair"],
         "fallback_ok": false,
         "target_question": "Does [casino] have Originals or provably fair games",
-        "instruction": "In the Originals/provably fair answer, add a personal note: you don't play provably fair games every session, but a casino that offers them is telling you they are willing to let players verify outcomes rather than just saying 'trust us' -- and after years in this space, you value that attitude. Ground it in the specific provably fair info from the data. One sentence."
+        "instruction": "REWRITE the Originals/provably fair answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob checked whether provably fair games were available — he doesn't play them every session, but a casino that offers them is willing to let players verify outcomes rather than just saying 'trust us', and after years in this space he values that.\n(B) Jakob looked for Originals in the game lobby — casino-made games can go either way, but when they're provably fair it shows the casino is putting its money where its mouth is on transparency.\nAll facts (Originals count, provably fair availability, which providers offer them) must come from the casino data."
       }
     ],
     "Responsible Gambling": [
       {
-        "id": "rg_deposit_limit_friend",
+        "id": "rg_deposit_limit_setup",
         "data_keywords": ["deposit limit", "loss limit", "Deposit limit", "Loss limit"],
         "fallback_ok": false,
         "target_question": "Which responsible gambling tools are available",
-        "instruction": "In the tools answer, add a personal note: you made it a strict rule to set a weekly deposit limit before playing a single spin after watching a friend blow through three months of savings in one night at a crypto casino -- you refuse to let that happen to you, and the first thing you do at any new casino is check whether this is easy to set up. Comment on this casino's tools from the data. One sentence."
+        "instruction": "REWRITE the tools answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob went straight to the responsible gambling settings before playing his first spin — his rule is to set a weekly deposit limit first, no exceptions. He made this rule after watching a friend blow through three months of savings in one night. Describe whether it was easy to set up here.\n(B) Jakob opened his account settings looking for deposit limits — he wanted to lock in a loss limit before his first session because once he starts playing, he doesn't trust himself to make that decision mid-game. Describe what tools he found.\n(C) Jakob tested the deposit limit by setting one, then tried to deposit above it to see if it actually works — because some casinos list these tools but they don't actually enforce them.\nAll facts (available tools, number of tools, whether support is needed) must come from the casino data."
       },
       {
-        "id": "rg_friction_defeats_purpose",
-        "data_keywords": ["without contacting support", "self-managed", "account settings", "manage directly", "without support"],
+        "id": "rg_friction_test",
+        "data_keywords": ["without contacting support", "self-managed", "account settings", "manage directly", "without support", "contact support", "contacting support", "through support", "reach out to support"],
         "fallback_ok": false,
         "target_question": "Which responsible gambling tools are available",
-        "instruction": "In the tools answer, add a personal note: the whole point of a deposit limit is that it works when your discipline doesn't -- if you have to start a support chat to set one up, you have already added a barrier at the exact moment you need it least. Comment on whether this casino lets you self-manage these tools based on the data. One sentence."
+        "instruction": "REWRITE the tools answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob tried to set a deposit limit and describes whether he could do it himself or had to contact support — the whole point of these tools is that they work when your discipline doesn't, and if you have to start a conversation to set one up, you've already added a barrier at the worst moment.\n(B) Jakob went to his account settings to activate responsible gambling tools and describes the process — did it take 30 seconds from his dashboard, or did he hit a 'contact support' wall?\n(C) Jakob specifically tested how many clicks it takes to set a loss limit — because the moment someone needs these tools is exactly the moment they don't want to explain themselves to a support agent.\nAll facts (available tools, self-managed vs support-required) must come from the casino data."
       },
       {
-        "id": "rg_support_backwards",
-        "data_keywords": ["contact support", "contacting support", "through support", "reach out to support"],
-        "fallback_ok": false,
-        "target_question": "Which responsible gambling tools are available",
-        "instruction": "In the tools answer, add a personal note: requiring support contact to activate responsible gambling tools is backwards -- the moment someone needs these tools is exactly the moment they don't want to explain themselves to a support agent. This is a real design failure, not just an inconvenience. Comment on this based on the data. One sentence."
-      },
-      {
-        "id": "rg_small_deposit_test",
+        "id": "rg_bankroll_routine",
         "data_keywords": [],
         "fallback_ok": true,
         "target_question": "Which responsible gambling tools are available",
-        "instruction": "In the tools answer, add a personal note: your approach to bankroll management is simple -- small test deposit first, loss limit set before the first spin, and never chase losses. You developed this routine after your first year in crypto gambling and it is non-negotiable. Comment on whether this casino's tools support that routine based on the data. One sentence."
+        "instruction": "REWRITE the tools answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob ran through his standard new-casino routine: small test deposit, set a loss limit, play a session, test a withdrawal. Describe which parts this casino's tools supported and which they didn't.\n(B) Jakob looked for his non-negotiables — deposit limit and loss limit — before playing. He developed this routine after his first year in crypto gambling and it hasn't changed since. Describe what he found.\nAll facts (available tools, number of tools, self-managed vs support) must come from the casino data."
       },
       {
         "id": "rg_self_exclusion_trust",
         "data_keywords": ["self-exclusion", "Self-exclusion", "self exclusion"],
         "fallback_ok": false,
         "target_question": "Can I self-exclude",
-        "instruction": "In the self-exclusion answer, add a personal note: you check self-exclusion at every casino not because you plan to use it, but because you have read enough forum posts from players who couldn't stop and the casino made it nearly impossible to leave -- a casino that makes self-exclusion hard is telling you everything about its priorities. Comment on the activation method from the data. One sentence."
+        "instruction": "REWRITE the self-exclusion answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob located the self-exclusion option and checked how it works — he doesn't plan to use it, but he has read enough forum posts from players who couldn't stop and the casino made it nearly impossible to leave. A casino that makes self-exclusion hard is telling you everything about its priorities.\n(B) Jakob tested whether self-exclusion can be activated without contacting support — because if you're at the point of needing it, the last thing you want is a support chat trying to talk you out of it.\nAll facts (self-exclusion availability, activation method) must come from the casino data."
       },
       {
-        "id": "rg_no_tools_red_flag",
+        "id": "rg_no_tools_problem",
         "data_keywords": ["no responsible gambling", "does not offer", "no tools", "lacks"],
         "fallback_ok": false,
         "target_question": "Which responsible gambling tools are available",
-        "instruction": "In the tools answer, add a personal note expressing genuine frustration: a casino without deposit limits is telling you it cares more about keeping you playing than keeping you safe. You have a non-negotiable rule about setting limits before your first spin, and a casino that doesn't even offer that option is asking you to gamble without a seatbelt. One sentence."
+        "instruction": "REWRITE the tools answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob went to set up his usual deposit limit and couldn't find it — a casino without basic responsible gambling tools is asking you to gamble without a seatbelt. His non-negotiable rule about setting limits before the first spin can't even be followed here.\n(B) Jakob searched the settings for responsible gambling tools and came up empty — this is a serious mark against any casino because it tells you they care more about keeping you playing than keeping you safe.\nAll facts must come from the casino data."
       }
     ]
   }

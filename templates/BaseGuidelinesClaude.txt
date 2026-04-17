@@ -66,10 +66,10 @@ COMPLIMENTS:
 
 PERSONAL EXPERIENCE:
 - When a "PERSONAL EXPERIENCE INSTRUCTION" block appears in the prompt, follow it exactly.
-- Personal notes must reference ONLY data provided in the casino data. Never invent experiences, game names, or features not in the data.
-- Weave personal sentences naturally into existing answers. Never create separate Q&As for personal experience.
-- Keep to 1-2 sentences. They should feel like natural asides, not forced insertions.
-- Vary phrasing across reviews. Never reuse the same personal note opener.
+- REWRITE the targeted answer from Jakob's perspective -- narrate his actions at THIS casino. Do NOT write a factual answer and then bolt a personal sentence onto it. The answer itself should read as Jakob's experience, with the data points woven into what he did and encountered.
+- Every fact, feature, number, and name in the answer must still come from the casino data. Never invent features, game names, or capabilities not in the data.
+- The instruction will provide multiple action scenarios. Pick ONE and write the answer around it. The same hook used at a different casino should read completely differently.
+- Never create separate Q&As for personal experience. Rewrite the existing answer.
 
 **Handling Manual Comments in Q&A Format:**
 - First, check if each manual comment relates to an existing question in the template

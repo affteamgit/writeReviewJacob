@@ -702,10 +702,12 @@ def build_personalization_block(scenario: dict) -> str:
     return (
         f"\n\nPERSONAL EXPERIENCE INSTRUCTION (Jakob's personal touch):\n"
         f"{instruction}\n"
-        f"CRITICAL: This personal note MUST be grounded in the casino data provided below. "
-        f"Do NOT invent experiences, game names, or features not in the data. "
-        f"Keep to exactly 1-2 sentences woven into the specified answer. "
-        f"Do NOT create a separate Q&A for personal experience."
+        f"CRITICAL: REWRITE the targeted answer from Jakob's experience -- narrate his actions "
+        f"at this casino. Do NOT write a factual answer and bolt a personal sentence onto it. "
+        f"The answer itself should read as Jakob's experience, with data points woven into what "
+        f"he did and encountered. Every fact, feature, and number must still come from the casino "
+        f"data below. Never invent features, game names, or capabilities not in the data. "
+        f"Pick ONE of the action scenarios provided and write the answer around it."
     )
 
 
