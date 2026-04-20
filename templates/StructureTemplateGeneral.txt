@@ -1,29 +1,4 @@
-* DO NOT USE Em DASH (—) ANYWHERE!
-
-## Q: Can I use a VPN to play in [casino]?
-
-* Include TWO facts: (1) how many countries are restricted, and (2) what the terms say about VPN use. You can present these in any order.
-* If many countries restricted (over 40), note this is significant.
-* Check the casino's terms and conditions for VPN-related language:
-  - If the terms explicitly prohibit VPN use or IP masking: state this clearly and warn about consequences (account closure, confiscated funds). Recommend one or two VPN-friendly alternatives from Top Casinos.
-  - If the terms mention detecting IP masking but don't explicitly ban VPN: warn the reader that using a VPN carries risk.
-  - If the terms say nothing about VPN use OR the data simply says "VPN friendly" without quoting specific T&C clauses: convey that the terms don't mention VPN restrictions. Vary the wording, e.g.: "their terms don't mention any VPN restrictions", "VPN use isn't addressed in the terms", "nothing in the T&Cs blocks VPN access", "the terms are silent on VPN use".
-  - ONLY say the terms "explicitly allow" VPN if you can point to a specific clause or sentence in the terms that says VPN use is permitted. A general "VPN friendly: yes" label in the data does NOT count as explicit allowance.
-* IMPORTANT: Do NOT call a casino "VPN friendly" or say "explicitly allowing VPN use." The most you can say when terms don't mention VPN is that the terms don't restrict it. There is a big difference between "not restricted" and "explicitly allowed."
-* Do NOT add closing sentences like "This makes [casino] accessible for players who..." -- the facts speak for themselves.
-* Do NOT add generic sentences about VPN benefits like "This gives you more flexibility if you're traveling" or "for privacy reasons". Stick to what the terms say. No benefit sentences.
-* 2-3 sentences max. No filler.
-
-## Q: Can I stay anonymous?
-
-* IMPORTANT: Anonymity is NOT just about registration. It covers the full player journey: signup, deposit, play, AND withdraw. A casino is only truly anonymous if you can do all four without providing personal details.
-* If anonymous (email-only signup AND no mandatory KYC for withdrawals up to a threshold): state this clearly. Mention what's NOT required. Vary the wording -- do NOT always write "offers anonymous registration requiring only your email address." Alternatives: "you only need an email to sign up", "registration is email-only", "no personal details needed beyond email", etc.
-* If not anonymous: be specific about what personal details are required (name, address, phone number, etc.) and at which stage. Different casinos ask for different things. Recommend one or two anonymous alternatives from Top Casinos.
-* IMPORTANT - Check the casino's terms for KYC activation thresholds:
-  - If specific thresholds are mentioned (withdrawal amounts, deposit amounts, etc.), state these thresholds clearly so the reader knows when KYC might be triggered. Include this in the anonymity answer.
-  - If the casino has the standard "we reserve the right to require KYC" language in a typical way, ignore it and don't mention it.
-  - If the casino does NOT mention any KYC thresholds or activation criteria (beyond the standard reserve right clause), warn the reader that KYC could be triggered at any time for any amounts.
-* Keep the answer factual and short. Do NOT add generic sentences about privacy benefits.
+* DO NOT USE Em DASH (--) ANYWHERE!
 
 ## Q: Is [casino] legit?
 
@@ -40,15 +15,7 @@
   - If REPUTATION DATA is missing, empty, contains only generic filler, or says nothing concrete: STOP after the first paragraph. Do NOT write a second paragraph. Do NOT acknowledge that reputation data is missing. Do NOT write any sentence that implies you lack information. Just end the answer after the age paragraph.
 * Keep it to 2-4 sentences total. Be direct and factual.
 
-## Q: Does [casino] offer sports betting or other products?
-
-* ONLY answer this question if the casino offers lottery or trading besides casino games and sports betting. If answered, mention this as something unique because most casinos don't offer this. Keep it to 2-3 short sentences about how this adds variety.
-* If the casino does not offer lottery or trading - DO NOT ANSWER THIS QUESTION AT ALL. Skip it entirely.
-
-## Q: Is live chat support available 24/7?
-
-* ONLY answer this question if the casino's live chat is not available 24/7. If answered, warn the reader about it. A responsive 24/7 live chat is the minimum standard. Offer an alternative from Top Casinos.
-* If the casino has live chat available 24/7 - DO NOT ANSWER THIS QUESTION. Skip it entirely.
+* IMPORTANT: The "What do players say about [casino]?" question will be DYNAMICALLY INSERTED after the legit question during post-processing. Do NOT generate any content for it. Do NOT create a "## Q: What do players say" heading. Just proceed to the next question below.
 
 ## Q: What makes [casino] stand out from other casinos?
 
@@ -59,29 +26,55 @@
 * This answer will always be unique across casinos, which is exactly the point. Keep it to 2-4 sentences.
 * Draw from manual comments and supporting casino data to identify the most compelling standout features.
 
-## Q: Does [casino] have good UX?
+## + questions/answers from manual comments about unique casino features
 
-* ONLY answer this question if the casino has any annoying pop-ups, broken images, or links. If answered:
-  - If the casino has annoying pop-ups, warn the reader.
-  - If the casino has broken images or links, mention this as a sign of lacking attention to detail.
-  - If the casino's look isn't modern, note this briefly.
-* If the casino has no annoying pop-ups, broken images, links, or issues with modern look - DO NOT ANSWER THIS QUESTION. Skip it entirely.
+For manual comments that describe unique features, products, or differentiators (but NOT bonuses, VIP, or promotions -- those belong below):
+1. If the comment relates to the standout question above: Integrate it into that answer.
+2. If the comment describes a DIFFERENT unique feature: Create a new Q&A pair.
 
-## + questions/answers from manual comments
+## Q: BONUS QUESTION -- USE CONDITIONAL LOGIC BELOW
 
-IMPORTANT: Review the CommentIntegrationGuide.txt for detailed instructions on handling manual comments.
+CHECK the BONUS DATA for the presence of a no-deposit bonus (free spins or bonus amount given without requiring a deposit, often with a bonus code).
 
-For each manual comment in this section:
-1. First, check if the comment relates to ANY of the existing questions above (VPN, anonymity, industry age, other products, live chat, UX)
-2. If YES: Add the comment information to that existing question's answer - DO NOT create a new Q&A
-3. If NO: Create a NEW Q&A pair below using this format:
+SCENARIO A -- Casino HAS a no-deposit bonus:
+Answer this question: "## Q: Is there a no deposit bonus code for [casino]?"
+* State the bonus code clearly and prominently if one exists.
+* Provide a brief summary covering: the bonus itself (amount or number of free spins), wagering requirement, maximum cashout, and the bonus code.
+* If the no-deposit bonus includes free spins, mention which game(s) they apply to if specified in the data.
+* Keep it factual and concise -- 2-4 sentences. The reader wants to grab the code and understand the terms quickly.
+* After the no-deposit summary, briefly mention the deposit welcome bonus if one exists (1-2 sentences overview).
 
-## Q: [Write a BROAD question a player would ask WITHOUT knowing the feature exists]?
+SCENARIO B -- Casino has welcome/deposit bonuses but NO no-deposit bonus:
+Answer this question instead: "## Q: How do [casino]'s bonuses compare to other sites?"
+* Comment on the casino's bonus structure: bonus percentages, maximum bonus amounts, free spin amounts, wagering requirements, minimum deposit amounts, maximum cashout limits.
+* Compare the bonus structure to Top Casinos and Similar Casinos data. Are the wagering requirements competitive? Are the bonus amounts generous or modest?
+* If the casino offers multiple deposit bonuses (e.g., across first 4 deposits), cover the overall package, not just the first deposit.
+* Keep it to 3-5 sentences. Be evaluative -- is this a good deal or are there better options?
 
-[Write a complete answer using ALL information from the comment, maintaining the same tone and style as other answers]
+SCENARIO C -- Casino has NO welcome bonuses at all:
+Answer this question instead: "## Q: Are there any bonuses in [casino]?"
+* If manual comments mention promotions, loyalty rewards, or other bonus-like features: describe what IS available based on those comments. Frame this positively if the casino compensates with other reward mechanisms.
+* If the casino truly has no bonuses or promotions: state this clearly and recommend 1-2 alternatives from Top Casinos that have strong bonus offerings.
+* Keep it to 2-3 sentences.
 
-* All manual comments MUST be addressed - either integrated into existing Q&A pairs OR converted into new Q&A pairs
-* Include ALL specific details from comments (numbers, names, exact mechanisms)
-* Never summarize or condense comment information
+## Q: Are there any ongoing promotions for returning players?
+
+* ONLY describe what the data explicitly provides. If the data does NOT mention tournaments, VIP programs, reload bonuses, or other ongoing promos, do NOT mention their absence. Just write about what IS available and nothing more.
+* NEVER write "the casino doesn't provide information about", "no details about additional promotions", "doesn't mention tournaments/VIP/etc". Only talk about what exists.
+* If the casino has ongoing promotions (tournaments, races, raffles, lootboxes, rakeback, cashback, reload bonuses, etc.): Describe the most notable ones. Be specific about what's available.
+* If the casino has sports betting promotions, include them here -- especially for brands where sports is a major draw.
+* If the casino has a VIP or loyalty program, describe it briefly. Note whether it's open to all or invitation-only, as this matters to the reader.
+* If the casino has unique gamification elements (daily tasks, token systems, leveling, rain features), mention them here.
+* If the data contains absolutely NO ongoing promotions at all, state briefly that the casino focuses its bonuses on the welcome package and recommend 1-2 alternatives from Top Casinos for ongoing rewards.
+* Keep it to 2-4 sentences depending on how much there is to cover.
+
+## + questions/answers from manual comments about VIP, promotions, and rewards
+
+For manual comments about VIP programs, loyalty features, ongoing promotions, cashback, rakeback, gamification, or reward systems:
+1. If the comment relates to the ongoing promotions question above: Integrate it into that answer.
+2. If the comment describes a DIFFERENT reward feature: Create a new Q&A pair using a broad question format.
+
 * QUESTION RULES: The question must be something a player would naturally search for BEFORE discovering the feature. Do NOT put the specific feature name in the question. Keep it broad -- "What unique features does [casino] offer?", "Are there any special promotions?", "What sets [casino] apart?" The ANSWER is where you reveal the specifics.
-* Also consider GROUPING related comments into a single broader Q&A instead of creating one question per comment. For example, 3 comments about loyalty/tokens/gamification can become one Q&A: "What reward and gamification features does [casino] have?"
+* Group related comments into a single broader Q&A when possible.
+* Include ALL specific details from comments (numbers, names, exact mechanisms).
+* Never summarize or condense comment information.

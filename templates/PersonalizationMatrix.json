@@ -8,13 +8,6 @@
   "sections": {
     "General": [
       {
-        "id": "gen_anon_signup",
-        "data_keywords": ["email-only", "anonymous", "email only"],
-        "fallback_ok": false,
-        "target_question": "Can I stay anonymous",
-        "instruction": "REWRITE the anonymity answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob signed up with just his email, made a deposit, and played without handing over any personal info — then checked how far he could get before KYC kicked in.\n(B) Jakob hit the registration page expecting the usual name/address/phone form, and was surprised to find only an email field — he was playing within two minutes.\n(C) Jakob specifically tested the withdrawal flow to see if KYC would be triggered — because he has had casinos collect everything upfront and then make cashing out a nightmare.\nAll facts (signup requirements, KYC thresholds) must come from the casino data."
-      },
-      {
         "id": "gen_longevity_matters",
         "data_keywords": ["years", "established", "founded", "launched"],
         "fallback_ok": false,
@@ -34,13 +27,6 @@
         "fallback_ok": false,
         "target_question": "What makes [casino] stand out",
         "instruction": "REWRITE the standout answer from Jakob's experience. Pick ONE scenario:\n(A) Jakob tried the standout feature himself and describes what it was actually like to use — whether it delivered on its promise or fell flat.\n(B) Jakob noticed the feature while browsing the casino and it caught his attention because most casinos he has tested don't offer this — narrate his discovery.\nAll facts about the standout feature must come from the casino data. NOTE: This personalization only applies when manual comments describe unique features."
-      },
-      {
-        "id": "gen_flashy_vs_functional",
-        "data_keywords": ["modern", "pop-up", "broken", "outdated", "clean"],
-        "fallback_ok": false,
-        "target_question": "Does [casino] have good UX",
-        "instruction": "REWRITE the UX answer from Jakob's experience. Pick ONE scenario:\n(A) Jakob opened the site for the first time and describes his actual navigation experience — what he clicked, what annoyed him, what worked.\n(B) Jakob was trying to find a specific game or setting and the interface either helped or got in his way — he has tested enough casinos to know that a flashy site means nothing if basic things are broken.\nAll UX facts (pop-ups, broken elements, design quality) must come from the casino data."
       }
     ],
     "Payments": [
@@ -152,6 +138,29 @@
         "fallback_ok": false,
         "target_question": "Which responsible gambling tools are available",
         "instruction": "REWRITE the tools answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob went to set up his usual deposit limit and couldn't find it — a casino without basic responsible gambling tools is asking you to gamble without a seatbelt. His non-negotiable rule about setting limits before the first spin can't even be followed here.\n(B) Jakob searched the settings for responsible gambling tools and came up empty — this is a serious mark against any casino because it tells you they care more about keeping you playing than keeping you safe.\nAll facts must come from the casino data."
+      }
+    ],
+    "FAQ": [
+      {
+        "id": "faq_anon_signup",
+        "data_keywords": ["email-only", "anonymous", "email only"],
+        "fallback_ok": false,
+        "target_question": "Can I stay anonymous",
+        "instruction": "REWRITE the anonymity answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob signed up with just his email, made a deposit, and played without handing over any personal info — then checked how far he could get before KYC kicked in.\n(B) Jakob hit the registration page expecting the usual name/address/phone form, and was surprised to find only an email field — he was playing within two minutes.\n(C) Jakob specifically tested the withdrawal flow to see if KYC would be triggered — because he has had casinos collect everything upfront and then make cashing out a nightmare.\nAll facts (signup requirements, KYC thresholds) must come from the casino data."
+      },
+      {
+        "id": "faq_support_test",
+        "data_keywords": ["live chat", "support", "24/7"],
+        "fallback_ok": false,
+        "target_question": "Is [casino]'s support any good",
+        "instruction": "REWRITE the support answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob tested the live chat with a question about withdrawal processing — in his experience, how a casino handles a simple support question tells you everything about how they'll handle a real problem.\n(B) Jakob checked whether support was available 24/7 before depositing — he has been stuck at 3 AM with a pending withdrawal and no one to talk to at other casinos, and that's not happening again.\nAll facts (support channels, availability, response quality) must come from the casino data."
+      },
+      {
+        "id": "faq_highroller_check",
+        "data_keywords": ["daily limit", "weekly limit", "monthly limit", "VIP", "high roller"],
+        "fallback_ok": false,
+        "target_question": "Is [casino] good for highrollers",
+        "instruction": "REWRITE the highroller answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob ran the numbers on the withdrawal limits to see if this casino could handle a serious win — he has seen casinos with impressive lobbies but withdrawal caps that would take months to cash out a big score.\n(B) Jakob checked the VIP program and withdrawal limits together — for anyone playing with real money, the limits matter more than the welcome bonus.\nAll facts (limits, VIP details, AML requirements) must come from the casino data."
       }
     ]
   }

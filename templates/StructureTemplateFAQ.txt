@@ -1,0 +1,79 @@
+* DO NOT USE Em DASH (--) ANYWHERE!
+
+## Q: Who owns [casino]?
+
+* Check the casino data and REPUTATION DATA for ownership information: parent company name, operator name, holding company, or any corporate entity mentioned.
+* If ownership info IS available:
+  - State who owns or operates the casino (company name).
+  - If the company operates other known casinos or iGaming brands, mention them briefly.
+  - If the REPUTATION DATA mentions any notable practices (good or bad), controversies, or regulatory actions related to the parent company, include them factually.
+  - If the company has a clean track record and operates multiple reputable brands, note this as a positive trust signal.
+  - Keep it to 2-4 sentences. Factual, direct.
+* If ownership info is NOT available or the data only names a generic shell company with no additional context:
+  - State that ownership details are not publicly transparent.
+  - Note that lack of clear ownership information is a yellow flag -- reputable casinos typically disclose their operating company.
+  - Keep it to 1-2 sentences. Do NOT pad with filler.
+
+## Q: Can I use a VPN to play in [casino]?
+
+* Include TWO facts: (1) how many countries are restricted, and (2) what the terms say about VPN use. You can present these in any order.
+* If many countries restricted (over 40), note this is significant.
+* Check the casino's terms and conditions for VPN-related language:
+  - If the terms explicitly prohibit VPN use or IP masking: state this clearly and warn about consequences (account closure, confiscated funds). Recommend one or two VPN-friendly alternatives from Top Casinos.
+  - If the terms mention detecting IP masking but don't explicitly ban VPN: warn the reader that using a VPN carries risk.
+  - If the terms say nothing about VPN use OR the data simply says "VPN friendly" without quoting specific T&C clauses: convey that the terms don't mention VPN restrictions. Vary the wording, e.g.: "their terms don't mention any VPN restrictions", "VPN use isn't addressed in the terms", "nothing in the T&Cs blocks VPN access", "the terms are silent on VPN use".
+  - ONLY say the terms "explicitly allow" VPN if you can point to a specific clause or sentence in the terms that says VPN use is permitted. A general "VPN friendly: yes" label in the data does NOT count as explicit allowance.
+* IMPORTANT: Do NOT call a casino "VPN friendly" or say "explicitly allowing VPN use." The most you can say when terms don't mention VPN is that the terms don't restrict it. There is a big difference between "not restricted" and "explicitly allowed."
+* Do NOT add closing sentences like "This makes [casino] accessible for players who..." -- the facts speak for themselves.
+* Do NOT add generic sentences about VPN benefits like "This gives you more flexibility if you're traveling" or "for privacy reasons". Stick to what the terms say. No benefit sentences.
+* 2-3 sentences max. No filler.
+
+## Q: Can I stay anonymous?
+
+* IMPORTANT: Anonymity is NOT just about registration. It covers the full player journey: signup, deposit, play, AND withdraw. A casino is only truly anonymous if you can do all four without providing personal details.
+* If anonymous (email-only signup AND no mandatory KYC for withdrawals up to a threshold): state this clearly. Mention what's NOT required. Vary the wording -- do NOT always write "offers anonymous registration requiring only your email address." Alternatives: "you only need an email to sign up", "registration is email-only", "no personal details needed beyond email", etc.
+* If not anonymous: be specific about what personal details are required (name, address, phone number, etc.) and at which stage. Different casinos ask for different things. Recommend one or two anonymous alternatives from Top Casinos.
+* IMPORTANT - Check the casino's terms for KYC activation thresholds:
+  - If specific thresholds are mentioned (withdrawal amounts, deposit amounts, etc.), state these thresholds clearly so the reader knows when KYC might be triggered. Include this in the anonymity answer.
+  - If the casino has the standard "we reserve the right to require KYC" language in a typical way, ignore it and don't mention it.
+  - If the casino does NOT mention any KYC thresholds or activation criteria (beyond the standard reserve right clause), warn the reader that KYC could be triggered at any time for any amounts.
+* Keep the answer factual and short. Do NOT add generic sentences about privacy benefits.
+
+## Q: Is [casino]'s support any good?
+
+* Check the casino data for support information: live chat availability (24/7 or not), response times, support channels (email, live chat, social media), support quality indicators.
+* If live chat IS available 24/7: mention this as meeting the expected standard. Keep it brief -- 24/7 live chat is the baseline, not something to celebrate.
+* If live chat is NOT available 24/7: warn the reader. A responsive 24/7 live chat is the minimum standard for crypto casinos. State what the actual availability is and recommend one or two alternatives from Top Casinos with proper 24/7 support.
+* If additional support channels exist (email, Telegram, social media), mention them briefly.
+* If the data mentions anything about support quality (response times, helpfulness, language support), include it.
+* Keep it to 2-3 sentences. Focus on what matters: is support accessible when you need it?
+
+## Q: Is [casino] good for highrollers?
+
+* Assess the casino's suitability for highrollers based on available data. Check for:
+  - **Withdrawal limits**: High daily/weekly/monthly limits are essential for highrollers. Reference the limits from the casino data. Daily limits above $10,000, weekly above $50,000, or monthly above $100,000 are highroller-friendly. Significantly lower limits are a dealbreaker.
+  - **VIP program**: If the casino has a VIP or loyalty program (especially invitation-only tiers), mention it as relevant to highrollers.
+  - **Game limits**: If the data mentions high table limits or maximum bet sizes, include them.
+  - **KYC/AML**: If there are strict AML wagering requirements (above 1x), note that this impacts highrollers more since larger deposits mean more wagering needed.
+* If the casino IS suitable for highrollers: explain why briefly, citing specific numbers.
+* If the casino is NOT suitable: state why (low limits, no VIP, etc.) and recommend 1-2 alternatives from Top Casinos that cater to highrollers.
+* Keep it to 2-4 sentences. Be direct -- highrollers want facts, not fluff.
+
+## + questions/answers from manual comments
+
+IMPORTANT: Review the CommentIntegrationGuide.txt for detailed instructions on handling manual comments.
+
+For each manual comment in this section:
+1. First, check if the comment relates to ANY of the existing questions above (ownership, VPN, anonymity, support, highrollers)
+2. If YES: Add the comment information to that existing question's answer - DO NOT create a new Q&A
+3. If NO: Create a NEW Q&A pair below using this format:
+
+## Q: [Write a BROAD question a player would ask WITHOUT knowing the feature exists]?
+
+[Write a complete answer using ALL information from the comment, maintaining the same tone and style as other answers]
+
+* All manual comments MUST be addressed - either integrated into existing Q&A pairs OR converted into new Q&A pairs
+* Include ALL specific details from comments (numbers, names, exact mechanisms)
+* Never summarize or condense comment information
+* QUESTION RULES: The question must be something a player would naturally search for BEFORE discovering the feature. Do NOT put the specific feature name in the question. Keep it broad. The ANSWER is where you reveal the specifics.
+* Group related comments into a single broader Q&A when possible.

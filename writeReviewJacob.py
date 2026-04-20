@@ -81,7 +81,7 @@ def get_all_templates():
         'StructureTemplatePayments',
         'StructureTemplateGames',
         'StructureTemplateResponsible',
-        'StructureTemplateBonuses'
+        'StructureTemplateFAQ'
     ]
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
@@ -424,7 +424,7 @@ def update_used_casinos_tracker(tracker, casino_name):
 def sort_comments_by_section(comments):
     """Use AI to intelligently sort comments by section."""
     if not comments or not comments.strip():
-        return {"General": "", "Payments": "", "Games": "", "Responsible Gambling": "", "Bonuses": ""}
+        return {"General": "", "Payments": "", "Games": "", "Responsible Gambling": "", "FAQ": ""}
 
     prompt = f"""Please analyze the following feedback comments and sort them by the casino review sections they belong to.
 
@@ -432,11 +432,11 @@ Comments:
 {comments}
 
 Sections:
-- General (overall casino experience, VPN support, reputation, establishment date, etc.)
-- Payments (deposits, withdrawals, KYC, payment methods, processing times, etc.)
+- General (unique casino features, standout features, bonuses, welcome offers, promotions, VIP programs, loyalty rewards, gamification, ongoing promos, reputation, establishment date, etc.)
+- Payments (deposits, withdrawals, KYC, payment methods, processing times, withdrawal restrictions, etc.)
 - Games (game selection, slots, table games, live casino, game providers, etc.)
 - Responsible Gambling (limits, self-exclusion, problem gambling tools, etc.)
-- Bonuses (welcome bonus, promotions, bonus terms, wagering requirements, etc.)
+- FAQ (VPN support, anonymity, registration process, customer support quality, highroller features, casino ownership, etc.)
 
 For each section, return ONLY the comments that belong to that section. If no comments belong to a section, leave it empty.
 
@@ -453,15 +453,15 @@ Format your response exactly like this:
 **Responsible Gambling**
 [relevant comments here or leave empty]
 
-**Bonuses**
+**FAQ**
 [relevant comments here or leave empty]"""
-    
+
     try:
         response = call_claude(prompt)
         # Parse the response into a dictionary
-        sections = {"General": "", "Payments": "", "Games": "", "Responsible Gambling": "", "Bonuses": ""}
+        sections = {"General": "", "Payments": "", "Games": "", "Responsible Gambling": "", "FAQ": ""}
         current_section = None
-        
+
         for line in response.split('\n'):
             line = line.strip()
             if line.startswith('**') and line.endswith('**'):
@@ -478,7 +478,7 @@ Format your response exactly like this:
     except Exception as e:
         print(f"Error sorting comments: {e}")
         # Fallback: return empty sections
-        return {"General": "", "Payments": "", "Games": "", "Responsible Gambling": "", "Bonuses": ""}
+        return {"General": "", "Payments": "", "Games": "", "Responsible Gambling": "", "FAQ": ""}
 
 def parse_review_sections(content):
     """Parse review content into sections based on **Section Name** format."""
@@ -754,7 +754,7 @@ def generate_sections_parallel(casino: str, secs: Dict, sorted_comments: Dict, t
 
     # Pre-assign a rotation list of casinos to each section
     # We need to do this sequentially before parallel generation
-    section_order = ["General", "Payments", "Games", "Responsible Gambling", "Bonuses"]
+    section_order = ["General", "Payments", "Games", "Responsible Gambling", "FAQ"]
     section_assignments = {}
 
     for sec in section_order:
@@ -825,46 +825,7 @@ def generate_sections_parallel(casino: str, secs: Dict, sorted_comments: Dict, t
                 print(f"Error in parallel generation for {section_name}: {e}")
                 results[section_name] = f"**{section_name}**\n[Error: {str(e)}]\n"
 
-    # Redistribute Bonuses content to General and Payments, then drop Bonuses section
-    if "Bonuses" in results:
-        bonuses_text = results["Bonuses"]
-
-        # Extract ongoing promotions Q&A -> move to General
-        if "General" in results:
-            promo_pattern = re.search(
-                r'(## Q: Are there any ongoing promotions for returning players\?.*?)(?=\n## Q:|\n## \+|\Z)',
-                bonuses_text,
-                re.DOTALL
-            )
-            if promo_pattern:
-                promo_qa = promo_pattern.group(1).strip()
-                bonuses_text = bonuses_text.replace(promo_pattern.group(0), '').strip()
-                results["General"] = results["General"].rstrip('\n') + "\n\n" + promo_qa + "\n"
-
-        # Extract bonus terms Q&A -> move to Payments
-        if "Payments" in results:
-            cashout_pattern = re.search(
-                r'(## Q: Do any bonus terms affect the withdrawals\?.*?)(?=\n## Q:|\n## \+|\Z)',
-                bonuses_text,
-                re.DOTALL
-            )
-            if cashout_pattern:
-                cashout_qa = cashout_pattern.group(1).strip()
-                bonuses_text = bonuses_text.replace(cashout_pattern.group(0), '').strip()
-                results["Payments"] = results["Payments"].rstrip('\n') + "\n\n" + cashout_qa + "\n"
-
-        # Any remaining manual comment Q&As from Bonuses -> append to General
-        remaining_qas = re.findall(r'(## Q: .*?)(?=\n## Q:|\Z)', bonuses_text, re.DOTALL)
-        if remaining_qas and "General" in results:
-            for qa in remaining_qas:
-                qa_stripped = qa.strip()
-                if qa_stripped and not qa_stripped.startswith("## + "):
-                    results["General"] = results["General"].rstrip('\n') + "\n\n" + qa_stripped + "\n"
-
-        # Remove Bonuses section from final output
-        del results["Bonuses"]
-
-    # Return results in the original section order (Bonuses excluded)
+    # Return results in the original section order
     return [results[sec] for sec in section_order if sec in results]
 
 def generate_section_with_assignment(section_data: Tuple) -> str:
@@ -877,7 +838,7 @@ def generate_section_with_assignment(section_data: Tuple) -> str:
         "Payments": ("BaseGuidelinesClaude", "StructureTemplatePayments", call_claude),
         "Games": ("BaseGuidelinesClaude", "StructureTemplateGames", call_claude),
         "Responsible Gambling": ("BaseGuidelinesClaude", "StructureTemplateResponsible", call_claude),
-        "Bonuses": ("BaseGuidelinesClaude", "StructureTemplateBonuses", call_claude),
+        "FAQ": ("BaseGuidelinesClaude", "StructureTemplateFAQ", call_claude),
     }
 
     try:
@@ -1163,6 +1124,32 @@ def main():
             if reputation_summary and "General" in secs:
                 secs["General"]["main"] += f"\n\nREPUTATION DATA (from online sources):\n{reputation_summary}"
 
+            # Inject Bonuses data into General and Payments (bonus questions now live in those sections)
+            if "Bonuses" in secs:
+                bonus_main = secs["Bonuses"]["main"]
+                bonus_top = secs["Bonuses"]["top"]
+                bonus_sim = secs["Bonuses"]["sim"]
+                if "General" in secs:
+                    secs["General"]["main"] += f"\n\nBONUS DATA:\n{bonus_main}"
+                    if bonus_top:
+                        secs["General"]["top"] += f"\n\nBonus comparison (Top Casinos):\n{bonus_top}"
+                    if bonus_sim:
+                        secs["General"]["sim"] += f"\n\nBonus comparison (Similar Casinos):\n{bonus_sim}"
+                if "Payments" in secs:
+                    secs["Payments"]["main"] += f"\n\nBONUS DATA (for bonus terms affecting withdrawals):\n{bonus_main}"
+                del secs["Bonuses"]
+
+            # Create FAQ section from General + Payments data (FAQ questions need VPN, anon, support, limits data)
+            if "General" in secs:
+                faq_main = secs["General"]["main"]
+                if "Payments" in secs:
+                    faq_main += f"\n\nPAYMENTS DATA (for highroller assessment):\n{secs['Payments']['main']}"
+                secs["FAQ"] = {
+                    "main": faq_main,
+                    "top": secs["General"]["top"],
+                    "sim": secs["General"]["sim"],
+                }
+
             # Generate all sections in parallel + scrape AskGamblers in background
             progress_placeholder.markdown("## Generating review sections in parallel...")
 
@@ -1187,10 +1174,24 @@ def main():
                 print(f"Player feedback: {review_count} reviews from {source}")
                 st.session_state.askgamblers_debug = f"Player feedback: {review_count} reviews from {source}"
 
-                # AI call for General section
+                # AI call for General section -- insert after legit question (position 2 in new order)
                 general_summary = generate_general_player_summary(casino, feedback_data)
                 if general_summary and len(parallel_results) > 0:
-                    parallel_results[0] = parallel_results[0].rstrip('\n') + "\n" + general_summary + "\n"
+                    general_text = parallel_results[0]
+                    # Find the end of the first Q&A (legit question) and insert player summary after it
+                    # Look for the second "## Q:" which starts the next question
+                    first_q_pos = general_text.find('## Q:')
+                    if first_q_pos >= 0:
+                        second_q_match = re.search(r'\n(## Q:)', general_text[first_q_pos + 5:])
+                        if second_q_match:
+                            insert_pos = first_q_pos + 5 + second_q_match.start()
+                            parallel_results[0] = general_text[:insert_pos] + general_summary + "\n" + general_text[insert_pos:]
+                        else:
+                            # Only one question -- append at end
+                            parallel_results[0] = general_text.rstrip('\n') + "\n" + general_summary + "\n"
+                    else:
+                        # No questions found -- append at end
+                        parallel_results[0] = general_text.rstrip('\n') + "\n" + general_summary + "\n"
 
                 # AI call for Payments section -- withdrawal feedback
                 withdrawal_summary = generate_withdrawal_player_summary(casino, feedback_data)

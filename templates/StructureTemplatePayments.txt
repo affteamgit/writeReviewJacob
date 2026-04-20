@@ -1,28 +1,6 @@
-* DO NOT USE Em DASH (—) ANYWHERE!
-
-## CONDITIONAL LOGIC FOR WITHDRAWAL TIME AND KYC QUESTIONS:
-##
-## CHECK the casino data for withdrawal time info AND KYC verification time info.
-##
-## SCENARIO A -- INFO MISSING for ONE or BOTH (withdrawal time and/or KYC time):
-##   Merge both topics into a SINGLE question: "## Q: How long can withdrawals take?"
-##   Do NOT include a separate KYC question at all.
-##   Follow the instructions under [WITHDRAWAL TIME QUESTION] below, and at the end of
-##   the answer add a SEPARATE PARAGRAPH noting that the same situation applies to KYC
-##   verification times -- the casino does not provide specific timeframes for KYC either,
-##   so the same considerations apply.
-##   IMPORTANT: Do NOT repeat or duplicate KYC information. The KYC note at the end of
-##   the withdrawal answer is the ONLY place KYC is mentioned. No separate KYC question.
-##
-## SCENARIO B -- SPECIFIC INFO EXISTS for BOTH withdrawal time AND KYC time:
-##   Only use TWO SEPARATE questions when you have concrete data for BOTH topics:
-##   1. "## Q: How long can withdrawal take?" -- follow [WITHDRAWAL TIME QUESTION] below
-##   2. "## Q: How long can KYC reviews take?" -- follow [KYC QUESTION] below
-##   If only ONE has data and the other doesn't, use SCENARIO A (single merged question).
-##
+* DO NOT USE Em DASH (--) ANYWHERE!
 
 ## Q: How long can withdrawals take?
-## [WITHDRAWAL TIME QUESTION]
 
 * IMPORTANT: The withdrawal timeframe data reflects what the casino states or promises. First, comment on whether the casino provides this information and where it can be found.
 * The stated timeframes are most relevant when manual processing is involved. Work this idea naturally into the answer -- do NOT tack it on as a separate clause like "especially if manual confirmation is required." Instead, weave it into the sentence flow. Examples of natural integration: "This is the timeframe you'd be looking at if your withdrawal goes through manual processing", "Withdrawals that get flagged for manual review could take up to...", "If your cashout needs manual approval, the terms say it can take...", "For manually processed withdrawals, the casino gives itself up to...". The key is that manual processing should feel like context within the sentence, not a bolted-on qualifier.
@@ -41,30 +19,28 @@
 * ADDITIONALLY, check player feedback for any mentions of actual withdrawal times experienced by players. If withdrawal time information is found in reviews, include this real-world feedback in your answer. NEVER name the source platform (no "Trustpilot", "AskGamblers") -- just say "player reviews" or "player feedback".
 * Do NOT add generic sentences about why fast withdrawals matter. The reader already knows.
 * Do NOT compare to or recommend other casinos in this answer. No Top Casinos or Similar Casinos references.
-* SCENARIO A ONLY: Add a SEPARATE PARAGRAPH (new line break) at the end about KYC -- the casino does not provide specific KYC processing timeframes either, so the same concerns about lack of commitment apply to identity verification as well. This KYC note must start its own paragraph, not be appended to the withdrawal paragraph. This is the ONLY place KYC is mentioned under Scenario A -- do NOT also create a separate KYC question.
 
-## Q: How long can KYC reviews take?
-## [KYC QUESTION] -- ONLY include this as a separate question under SCENARIO B (when BOTH withdrawal AND KYC have specific data). If EITHER topic lacks data, this question must NOT appear -- use Scenario A instead.
+## Q: Are there any withdrawal restrictions I should know about?
 
-* FIRST, check the casino's knowledge base/terms and conditions for any specified KYC processing timeframe.
-* IMPORTANT: The KYC verification timeframe data reflects what the casino states or promises. First, comment on whether the casino provides this information and where it can be found.
-* The stated timeframes are most relevant when manual document review is involved. Work this idea naturally into the answer -- do NOT tack it on as a separate clause like "especially if manual verification is required." Instead, weave it into the sentence flow. Examples of natural integration: "If your documents need manual review, the casino allows itself up to...", "For accounts that get flagged for manual verification, expect...", "The terms give them up to... to manually check your documents", "When your KYC goes through manual review, you could be waiting...". The key is that manual verification should feel like context within the sentence, not a bolted-on qualifier.
-* Then, frame the casino's stated KYC time using randomly one of the following three angles:
-  (1) This information should ideally be found in the casino's Terms & Conditions, because T&Cs are the legal binding agreement between the player and the casino -- if it's there, it holds legal weight.
-  (2) This is essentially the casino's promise to its players -- it sets an expectation, and players should hold the casino accountable to it.
-  (3) Without a binding commitment, casinos can technically drag out the verification as long as they want -- so having a stated timeframe, even if not in T&Cs, is still better than nothing.
-* SPECIAL CASE -- 0 hours / No KYC: If the casino's KYC verification time is 0 hours, this means the casino has NO KYC process at all -- not that there's no KYC up to a certain cap or threshold. This is a complete absence of identity verification. Mention this clearly and explain what it means for the player. Note that some casinos in this category may still have a soft-KYC process, such as confirming a phone number or email address, but this is not the same as a full KYC verification.
-* If a specific timeframe IS specified in the terms: Use that exact timeframe in your answer. Do NOT replace specific numbers with vague phrases. For example, write "up to 72 hours" instead of "a few days".
-* If NO timeframe is specified in the terms (which is most common): Warn the reader that the casino has nothing written in their terms about KYC processing time, which means the casino can take as much time as they want to process verification. Players should keep this in mind.
-* If the terms use deliberately vague language (e.g., "reasonable time", "as soon as practicable") with no concrete number, flag this: the casino avoids committing to a specific verification deadline, which gives them flexibility to delay.
-* If the terms mention "business days" for processing: Note that this prolongs the process even more since it excludes weekends and holidays.
-* DISTINGUISH between two different timeframes if present: (1) the deadline for YOU to submit documents after being asked, and (2) the time the CASINO takes to review your documents. Only the casino's review time matters for this question. Do not confuse these two.
-* The manual review context should already be woven into the answer per the instructions above. Do not repeat it as a separate sentence.
-* Only use the vague phrases below as a FALLBACK when no exact figure is available in the data:
-  - Less than 12 hours (but not 0): "within a few hours" -- this is really good.
-  - 12-24 hours: "less than 24 hours" / "less than a day" -- this is good and above average.
-  - 24-72 hours or more: "up to a few days" / "can take multiple days" -- this is not ideal and could be better.
-* Do NOT compare to or recommend other casinos in this answer. No Top Casinos or Similar Casinos references.
+* This question covers NON-MONETARY restrictions on withdrawals -- things that can delay, block, or complicate your cashout beyond just the processing time and monetary limits (which are covered in other questions).
+* CHECK the casino data for the following restriction types and include any that apply:
+
+* **KYC verification**: Check if the casino requires KYC (identity verification) before withdrawals.
+  - If KYC is required: State what triggers it (first withdrawal, specific threshold, random checks) and what documents are typically needed.
+  - If KYC has a specific processing timeframe in the terms: mention it. Use exact figures where available. If no timeframe is specified, note that the casino doesn't commit to a verification deadline.
+  - If KYC is NOT required or 0 hours (no KYC): mention this as a positive -- the casino has no identity verification process, which means faster cashouts.
+  - DISTINGUISH between two different timeframes if present: (1) the deadline for YOU to submit documents after being asked, and (2) the time the CASINO takes to review your documents. Only the casino's review time matters here.
+
+* **AML wagering requirement**: Check the casino's Anti-Money Laundering wagering requirement.
+  - If the requirement is 1x (wager deposited amount once): Do NOT mention it. 1x is standard.
+  - If the requirement is MORE than 1x: State it clearly -- "This casino requires you to wager your deposited amount [n] times before withdrawal." Explain that 1x is the industry standard and this is higher than normal. Recommend one or two brands from Top Casinos that require only 1x.
+
+* **Cooling-off / reverse period**: If the casino has a pending period where withdrawals can be cancelled or reversed, mention it.
+
+* **Maximum pending withdrawals**: If the casino limits how many withdrawal requests can be pending at once, mention it.
+
+* If NONE of these restrictions apply or the casino has a clean withdrawal process (no KYC, 1x AML, no cooling-off), you can state this briefly as a positive: the casino has no notable withdrawal restrictions beyond standard processing.
+* Keep it to 2-4 sentences total. Focus on what actually impacts the player.
 
 ## Q: What are the withdrawal limits?
 
@@ -75,11 +51,27 @@
 * If any BTC values appear, convert them internally to USD before comparing them to other casinos, but do not mention USD in the review text. Only mention the BTC amounts.
 * Comment briefly on whether the limits are player-friendly. Do not add filler about "why limits matter to you."
 * REMINDER: Do NOT cite any statistic like "only 30% of crypto casinos" or "only 31% of crypto casinos offer this". Express rarity in your own unique words if needed.
-* IMPORTANT - Check the casino's AML (Anti-Money Laundering) wagering requirement:
-  - If the requirement is 1x (wager deposited amount once), DO NOT mention it at all. 1x is standard and not worth noting. Completely skip the AML section.
-  - If the requirement is MORE than 1x, state it clearly: "This casino requires you to wager your deposited amount [n] times before withdrawal" where n > 1.
-  - If MORE than 1x, explain that 1x is the industry standard and this requirement is higher than normal.
-  - If MORE than 1x, recommend one or two brands from Top Casinos that require only 1x wagering (the industry standard).
+
+## Q: Do any bonus terms affect the withdrawals?
+
+* Check the BONUS DATA for any of these restriction terms: Max Cashout, Max Win, Wagering requirements, Wagering time. These may appear under various labels in the bonus details.
+* If ANY bonus has at least one of these restrictions specified: ANSWER this question.
+* If NO bonus mentions any restrictions at all: skip this question.
+* ALWAYS specify which bonus each restriction applies to by name (e.g., "the 100 free spins no-deposit bonus", "the 200% first deposit bonus"). Do NOT use vague references like "the bonuses" or "promotional offers".
+* For each bonus that has restrictions, cover:
+  - **Max Cashout**: The maximum you can withdraw from this bonus. A low cap limits your upside significantly.
+  - **Max Win**: The maximum you can win while playing with this bonus. Limits your potential even before withdrawal.
+  - **Wagering requirements**: The multiplier (e.g., 40x) and what it applies to (bonus only, deposit only, or both). Higher wagering = harder to clear = longer before you can withdraw. 20x or lower = good, 25-35x = average, 35x+ = bad.
+  - **Wagering time**: How long you have to complete wagering. Short timeframes (24 hours, 2 days) put pressure on the player and make it harder to meet requirements. 7 days or less = tight, 14 days = average, 30 days = comfortable.
+* Explain briefly how each restriction affects the player's ability to withdraw. The point is to connect the terms to real withdrawal impact.
+* If multiple bonuses have different restrictions, cover each separately.
+* Keep the answer factual and concise.
+
+## + questions/answers from manual comments about withdrawals
+
+For manual comments related to withdrawals (processing issues, withdrawal methods, cashout experiences, etc.):
+1. If the comment relates to ANY of the withdrawal questions above: Integrate it into the relevant answer.
+2. If NO match: Create a new Q&A pair using a broad question format.
 
 ## Q: Can I deposit different altcoins?
 
@@ -101,6 +93,17 @@
 * If the Crypto Swap feature is available in the casino, mention it as something very unique and useful. Very few casinos offer this and it can mean that players can play with virtually any token that's supported by the conversion tool. They can also deposit in one cryptocurrency and withdraw in another.
 * IMPORTANT: Only mention Buy crypto or Crypto Swap features if they are actually available. Do NOT mention them if they are not available.
 
+## + questions/answers from manual comments about deposits
+
+For manual comments related to deposits (deposit methods, minimum deposits, deposit issues, fiat options, etc.):
+1. If the comment relates to the altcoin question above: Integrate it into that answer.
+2. If NO match: Create a new Q&A pair using a broad question format.
+
+* QUESTION RULES: The question must be something a player would naturally search for BEFORE discovering the feature. Do NOT put the specific feature name in the question. Keep it broad. The ANSWER is where you reveal the specifics.
+* Group related comments into a single broader Q&A when possible.
+* Include ALL specific details from comments (numbers, names, exact mechanisms).
+* Never summarize or condense comment information.
+
 ## Q: Do players have any complaints regarding withdrawals?
 
 * This question is ONLY included when player review data is provided below. If no player review summary about withdrawals is appended after this template, SKIP this question entirely.
@@ -110,22 +113,3 @@
 * NEVER single out individual reviews. Always generalize: "some players report", "players mention", "feedback suggests".
 * Keep it to one short paragraph, 40-70 words. Direct, no filler.
 * If the feedback is mostly positive about withdrawals, say so. If there are problems, describe them clearly.
-
-## + questions/answers from manual comments
-
-IMPORTANT: Review the CommentIntegrationGuide.txt for detailed instructions on handling manual comments.
-
-For each manual comment in this section:
-1. First, check if the comment relates to ANY of the existing questions above (withdrawal times, limits, KYC, bonus restrictions, altcoins, crypto swapping)
-2. If YES: Add the comment information to that existing question's answer - DO NOT create a new Q&A
-3. If NO: Create a NEW Q&A pair below using this format:
-
-## Q: [Write a BROAD question a player would ask WITHOUT knowing the feature exists]?
-
-[Write a complete answer using ALL information from the comment, maintaining the same tone and style as other answers]
-
-* All manual comments MUST be addressed - either integrated into existing Q&A pairs OR converted into new Q&A pairs
-* Include ALL specific details from comments (numbers, names, exact mechanisms)
-* Never summarize or condense comment information
-* QUESTION RULES: The question must be something a player would naturally search for BEFORE discovering the feature. Do NOT put the specific feature name in the question. Keep it broad. The ANSWER is where you reveal the specifics.
-* Group related comments into a single broader Q&A when possible.
