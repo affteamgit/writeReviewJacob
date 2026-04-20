@@ -657,6 +657,41 @@ REVIEWS:
         return ""
 
 
+def generate_withdrawal_player_summary(casino_name, feedback_data):
+    """Use Claude to summarize withdrawal-related player feedback for the Payments section."""
+    reviews = feedback_data["reviews"]
+
+    reviews_text = _prepare_reviews_for_prompt(reviews, max_reviews=30)
+    if not reviews_text:
+        return ""
+
+    prompt = f"""From the following player reviews about {casino_name}, extract and summarize ONLY the feedback related to withdrawals (cashouts, payouts, cashing out, withdrawal speed, withdrawal problems, pending withdrawals, declined withdrawals).
+
+RULES:
+- CRITICAL: NEVER mention Trustpilot, AskGamblers, or any review platform by name. Use "player reviews", "player feedback", or "what players report" instead.
+- NEVER use the word "platform" to refer to a casino. Use "casino" or "site" instead.
+- NEVER single out individual reviews (e.g., "one player noted"). Always generalize: "some players report", "players mention", "feedback suggests".
+- If NO reviews mention withdrawals at all, respond with exactly: NO_WITHDRAWAL_FEEDBACK
+- One short paragraph, 40-70 words. Direct, no filler.
+- Focus on whether players report withdrawal problems or smooth experiences.
+- Be specific about the issues if any: delays, declined withdrawals, stuck pending status, etc.
+- If feedback is mostly positive about withdrawals, say so clearly.
+- No em dashes. Use "I" and "you". Bold key points with **asterisks**.
+- Output ONLY the paragraph text, no heading.
+
+REVIEWS:
+{reviews_text}"""
+
+    try:
+        summary = call_claude(prompt)
+        if not summary or "NO_WITHDRAWAL_FEEDBACK" in summary:
+            return ""
+        return summary
+    except Exception as e:
+        print(f"Withdrawal player summary AI call failed: {e}")
+        return ""
+
+
 def select_persona_scenario(section: str, main_data: str, matrix: dict, used_ids_this_review: list) -> dict:
     """Select a random personalization scenario for a section based on casino data."""
     section_hooks = matrix.get("sections", {}).get(section, [])
@@ -1156,6 +1191,12 @@ def main():
                 general_summary = generate_general_player_summary(casino, feedback_data)
                 if general_summary and len(parallel_results) > 0:
                     parallel_results[0] = parallel_results[0].rstrip('\n') + "\n" + general_summary + "\n"
+
+                # AI call for Payments section -- withdrawal feedback
+                withdrawal_summary = generate_withdrawal_player_summary(casino, feedback_data)
+                if withdrawal_summary and len(parallel_results) > 1:
+                    withdrawal_qa = f"\n## Q: Do players report any problems with withdrawals?\n\n{withdrawal_summary}"
+                    parallel_results[1] = parallel_results[1].rstrip('\n') + "\n" + withdrawal_qa + "\n"
             else:
                 print("No player feedback returned")
                 st.session_state.askgamblers_debug = "No player feedback returned"

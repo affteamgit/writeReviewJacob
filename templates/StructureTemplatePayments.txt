@@ -101,6 +101,16 @@
 * If the Crypto Swap feature is available in the casino, mention it as something very unique and useful. Very few casinos offer this and it can mean that players can play with virtually any token that's supported by the conversion tool. They can also deposit in one cryptocurrency and withdraw in another.
 * IMPORTANT: Only mention Buy crypto or Crypto Swap features if they are actually available. Do NOT mention them if they are not available.
 
+## Q: Do players report any problems with withdrawals?
+
+* This question is ONLY included when player review data is provided below. If no player review summary about withdrawals is appended after this template, SKIP this question entirely.
+* When provided, the withdrawal feedback summary will appear at the end of this section as "PLAYER WITHDRAWAL FEEDBACK". Use that summary as the basis for your answer.
+* Do NOT invent or assume withdrawal problems. Only report what the player feedback actually says.
+* NEVER mention Trustpilot, AskGamblers, or any review platform by name. Use "player reviews", "player feedback", or "what players report".
+* NEVER single out individual reviews. Always generalize: "some players report", "players mention", "feedback suggests".
+* Keep it to one short paragraph, 40-70 words. Direct, no filler.
+* If the feedback is mostly positive about withdrawals, say so. If there are problems, describe them clearly.
+
 ## + questions/answers from manual comments
 
 IMPORTANT: Review the CommentIntegrationGuide.txt for detailed instructions on handling manual comments.

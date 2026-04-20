@@ -30,10 +30,10 @@
       },
       {
         "id": "gen_standout_honest",
-        "data_keywords": [],
-        "fallback_ok": true,
+        "data_keywords": ["MANUAL_COMMENT_STANDOUT"],
+        "fallback_ok": false,
         "target_question": "What makes [casino] stand out",
-        "instruction": "REWRITE the standout answer from Jakob's experience. Pick ONE scenario:\n(A) Jakob tried the standout feature himself and describes what it was actually like to use — whether it delivered on its promise or fell flat.\n(B) Jakob noticed the feature while browsing the casino and it caught his attention because most casinos he has tested don't offer this — narrate his discovery.\nAll facts about the standout feature must come from the casino data."
+        "instruction": "REWRITE the standout answer from Jakob's experience. Pick ONE scenario:\n(A) Jakob tried the standout feature himself and describes what it was actually like to use — whether it delivered on its promise or fell flat.\n(B) Jakob noticed the feature while browsing the casino and it caught his attention because most casinos he has tested don't offer this — narrate his discovery.\nAll facts about the standout feature must come from the casino data. NOTE: This personalization only applies when manual comments describe unique features."
       },
       {
         "id": "gen_flashy_vs_functional",
@@ -93,7 +93,7 @@
         "data_keywords": ["BGaming"],
         "fallback_ok": false,
         "target_question": "Can I find games from most popular game providers",
-        "instruction": "REWRITE the providers answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob looked for BGaming specifically — their provably fair slots aren't just a marketing label, they actually built their games around verifiable outcomes. Describe what he found in the provider lineup.\n(B) Jakob browsed the provider list and was pleased (or disappointed) to see BGaming — he has been paying more attention to them lately because of their transparency approach.\nAll facts (provider count, which providers are present/missing) must come from the casino data."
+        "instruction": "REWRITE the providers answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob looked for BGaming specifically — he has been playing their slots more lately and considers them one of the stronger mid-tier providers. Describe what he found in the provider lineup.\n(B) Jakob browsed the provider list and was pleased (or disappointed) to see BGaming — their game quality has been consistently solid in his experience.\nAll facts (provider count, which providers are present/missing) must come from the casino data."
       },
       {
         "id": "games_library_browse",
@@ -115,13 +115,6 @@
         "fallback_ok": false,
         "target_question": "Can I find games from most popular game providers",
         "instruction": "REWRITE the providers answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob searched for his usual providers and noticed gaps — if Pragmatic Play is missing, it's close to a dealbreaker since Gates of Olympus is his main game. Narrate his search and what he found.\n(B) Jakob filtered by provider and was surprised by what's missing — he expected a casino of this size to have better coverage. Name the specific missing providers from the data.\nAll facts (provider count, missing providers, present providers) must come from the casino data."
-      },
-      {
-        "id": "games_provably_fair_check",
-        "data_keywords": ["Originals", "provably fair"],
-        "fallback_ok": false,
-        "target_question": "Does [casino] have Originals or provably fair games",
-        "instruction": "REWRITE the Originals/provably fair answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob checked whether provably fair games were available — he doesn't play them every session, but a casino that offers them is willing to let players verify outcomes rather than just saying 'trust us', and after years in this space he values that.\n(B) Jakob looked for Originals in the game lobby — casino-made games can go either way, but when they're provably fair it shows the casino is putting its money where its mouth is on transparency.\nAll facts (Originals count, provably fair availability, which providers offer them) must come from the casino data."
       }
     ],
     "Responsible Gambling": [

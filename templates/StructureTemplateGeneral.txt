@@ -52,12 +52,12 @@
 
 ## Q: What makes [casino] stand out from other casinos?
 
-* ALWAYS answer this question. Every casino has at least one unique or standout feature.
-* Focus on what genuinely differentiates this casino from the competition. This could be a unique feature, an unusual product, a strong community element, an exceptional bonus structure, standout support, or anything that makes it worth choosing over alternatives.
+* ONLY answer this question if manual comments are provided for this section AND those comments describe a genuinely unique or standout feature. Without manual comments calling out specific unique features, SKIP this question entirely -- do NOT answer it based on standard casino data alone (game counts, provider lists, crypto support, etc. are NOT standout features).
+* Focus on what genuinely differentiates this casino from the competition based on what the manual comments highlight. This could be a unique feature, an unusual product, a strong community element, an exceptional bonus structure, standout support, or anything that makes it worth choosing over alternatives.
 * Be specific and concrete. Don't just say "great features" -- name the actual feature and explain briefly why it matters to a player. If the casino has a specific tool, event, or product that competitors don't commonly offer, highlight it.
 * If the casino also offers sports betting, live streams, poker, or other non-casino products, this is a good place to mention them.
 * This answer will always be unique across casinos, which is exactly the point. Keep it to 2-4 sentences.
-* Draw from ALL available casino data, including manual comments, to identify the most compelling standout features.
+* Draw from manual comments and supporting casino data to identify the most compelling standout features.
 
 ## Q: Does [casino] have good UX?
 
