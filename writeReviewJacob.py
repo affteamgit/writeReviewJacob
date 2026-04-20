@@ -1195,7 +1195,7 @@ def main():
                 # AI call for Payments section -- withdrawal feedback
                 withdrawal_summary = generate_withdrawal_player_summary(casino, feedback_data)
                 if withdrawal_summary and len(parallel_results) > 1:
-                    withdrawal_qa = f"\n## Q: Do players report any problems with withdrawals?\n\n{withdrawal_summary}"
+                    withdrawal_qa = f"\n## Q: Do players have any complaints regarding withdrawals?\n\n{withdrawal_summary}"
                     parallel_results[1] = parallel_results[1].rstrip('\n') + "\n" + withdrawal_qa + "\n"
             else:
                 print("No player feedback returned")

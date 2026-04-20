@@ -101,7 +101,7 @@
 * If the Crypto Swap feature is available in the casino, mention it as something very unique and useful. Very few casinos offer this and it can mean that players can play with virtually any token that's supported by the conversion tool. They can also deposit in one cryptocurrency and withdraw in another.
 * IMPORTANT: Only mention Buy crypto or Crypto Swap features if they are actually available. Do NOT mention them if they are not available.
 
-## Q: Do players report any problems with withdrawals?
+## Q: Do players have any complaints regarding withdrawals?
 
 * This question is ONLY included when player review data is provided below. If no player review summary about withdrawals is appended after this template, SKIP this question entirely.
 * When provided, the withdrawal feedback summary will appear at the end of this section as "PLAYER WITHDRAWAL FEEDBACK". Use that summary as the basis for your answer.
