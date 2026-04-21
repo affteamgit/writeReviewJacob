@@ -84,11 +84,12 @@ For manual comments related to withdrawals (processing issues, withdrawal method
 * MAJOR CRYPTOCURRENCIES CHECK - Only do this check if the casino accepts at least 5 cryptocurrencies total:
   The following 12 are considered major cryptocurrencies: Bitcoin, Ethereum, Tether, Litecoin, Tron, Dogecoin, Binance Coin, Ripple, Bitcoin Cash, USD Coin, Cardano, Solana.
   Check which of these major cryptos the casino supports and comment accordingly:
-  - If the casino has ALL 12 major cryptos: Great coverage. Mention that all major cryptocurrencies are supported, including the total crypto count.
-  - If up to 3 major cryptos are missing: Good coverage overall. Name exactly which ones are missing and recommend an alternative that supports them.
+  - If the casino has ALL 12 major cryptos: Great coverage. Say all major cryptocurrencies are supported but do NOT list them all. Only name a few examples (Bitcoin, Ethereum, USDT, USDC, Solana -- 5 maximum). The reader does not need a full list.
+  - If up to 3 major cryptos are missing: Good coverage overall. Name exactly which ones are MISSING (not the ones present) and recommend an alternative that supports them.
   - If 3-5 major cryptos are missing: Some major cryptos are missing. Name 2 that are missing and recommend an alternative that supports them.
   - If more than 5 major cryptos are missing: Most major cryptos are missing. Name 2 that are missing. This is a notable gap. Recommend an alternative.
   - If the casino has fewer than 5 cryptos total, skip the major crypto check entirely.
+  - IMPORTANT: When listing crypto names, NEVER list more than 5 names total in this answer. Focus on what's missing, not what's present. If everything is covered, a brief mention with a few examples is enough.
 * If Buy crypto is available, mention it briefly. It's convenient despite fees.
 * If the Crypto Swap feature is available in the casino, mention it as something very unique and useful. Very few casinos offer this and it can mean that players can play with virtually any token that's supported by the conversion tool. They can also deposit in one cryptocurrency and withdraw in another.
 * IMPORTANT: Only mention Buy crypto or Crypto Swap features if they are actually available. Do NOT mention them if they are not available.
