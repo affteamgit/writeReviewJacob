@@ -1107,13 +1107,14 @@ def main():
                 st.error(f"Error: Could not fetch required templates: {', '.join(missing_templates)}")
                 return
             
-            # Sort comments by section using AI + fetch casino reputation + fetch old review
-            progress_placeholder.markdown("## Sorting comments, fetching reputation & old review data...")
+            # Sort comments, fetch reputation, fetch old review, and scrape player feedback -- all in parallel
+            progress_placeholder.markdown("## Sorting comments, fetching reputation, old review & player feedback...")
 
-            with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
                 comments_future = executor.submit(sort_comments_by_section, comments)
                 reputation_future = executor.submit(get_casino_reputation_summary, casino)
                 evolution_future = executor.submit(fetch_and_extract_evolution_data, casino_id, casino)
+                feedback_future = executor.submit(scrape_player_feedback, casino)
                 sorted_comments = comments_future.result()
                 reputation_summary = reputation_future.result()
                 try:
@@ -1123,6 +1124,25 @@ def main():
                     evolution_status = f"Old review fetch error: {e}"
                     print(f"Evolution data fetch failed: {e}")
                 st.session_state.evolution_debug = evolution_status
+                try:
+                    feedback_data = feedback_future.result(timeout=90)
+                except Exception as e:
+                    feedback_data = {}
+                    print(f"Player feedback scraper failed: {e}")
+
+            if feedback_data and feedback_data.get("reviews"):
+                review_count = feedback_data["total_count"]
+                source = feedback_data["source_str"]
+                print(f"Player feedback: {review_count} reviews from {source}")
+                st.session_state.askgamblers_debug = f"Player feedback: {review_count} reviews from {source}"
+            else:
+                print("No player feedback returned")
+                st.session_state.askgamblers_debug = "No player feedback returned"
+
+            # Generate withdrawal summary early so it's available for FAQ section generation
+            withdrawal_summary = ""
+            if feedback_data and feedback_data.get("reviews"):
+                withdrawal_summary = generate_withdrawal_player_summary(casino, feedback_data)
 
             # Inject reputation data into General section's main data
             if reputation_summary and "General" in secs:
@@ -1148,42 +1168,25 @@ def main():
                 faq_main = secs["General"]["main"]
                 if "Payments" in secs:
                     faq_main += f"\n\nPAYMENTS DATA (for highroller assessment):\n{secs['Payments']['main']}"
+                if withdrawal_summary:
+                    faq_main += f"\n\nPLAYER WITHDRAWAL FEEDBACK (from scraped reviews -- use for highroller withdrawal track record assessment):\n{withdrawal_summary}"
                 secs["FAQ"] = {
                     "main": faq_main,
                     "top": secs["General"]["top"],
                     "sim": secs["General"]["sim"],
                 }
 
-            # Generate all sections in parallel + scrape AskGamblers in background
+            # Generate all sections in parallel
             progress_placeholder.markdown("## Generating review sections in parallel...")
-
-            bg_executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
-            askgamblers_future = bg_executor.submit(scrape_player_feedback, casino)
 
             parallel_results = generate_sections_parallel(casino, secs, sorted_comments, templates, btc_str, evolution_facts)
 
-            # Collect scraper result (should be done by now since sections take longer)
-            try:
-                feedback_data = askgamblers_future.result(timeout=90)
-            except Exception as e:
-                feedback_data = {}
-                print(f"Player feedback scraper failed: {e}")
-            finally:
-                bg_executor.shutdown(wait=False)
-
-            # Generate AI summaries from scraped reviews
+            # Insert dynamically generated content from scraped reviews into section outputs
             if feedback_data and feedback_data.get("reviews"):
-                review_count = feedback_data["total_count"]
-                source = feedback_data["source_str"]
-                print(f"Player feedback: {review_count} reviews from {source}")
-                st.session_state.askgamblers_debug = f"Player feedback: {review_count} reviews from {source}"
-
-                # AI call for General section -- insert after legit question (position 2 in new order)
+                # General section: insert "What do players say" after legit question
                 general_summary = generate_general_player_summary(casino, feedback_data)
                 if general_summary and len(parallel_results) > 0:
                     general_text = parallel_results[0]
-                    # Find the end of the first Q&A (legit question) and insert player summary after it
-                    # Look for the second "## Q:" which starts the next question
                     first_q_pos = general_text.find('## Q:')
                     if first_q_pos >= 0:
                         second_q_match = re.search(r'\n(## Q:)', general_text[first_q_pos + 5:])
@@ -1191,20 +1194,14 @@ def main():
                             insert_pos = first_q_pos + 5 + second_q_match.start()
                             parallel_results[0] = general_text[:insert_pos] + general_summary + "\n" + general_text[insert_pos:]
                         else:
-                            # Only one question -- append at end
                             parallel_results[0] = general_text.rstrip('\n') + "\n" + general_summary + "\n"
                     else:
-                        # No questions found -- append at end
                         parallel_results[0] = general_text.rstrip('\n') + "\n" + general_summary + "\n"
 
-                # AI call for Payments section -- withdrawal feedback
-                withdrawal_summary = generate_withdrawal_player_summary(casino, feedback_data)
+                # Payments section: append withdrawal complaints Q&A
                 if withdrawal_summary and len(parallel_results) > 1:
                     withdrawal_qa = f"\n## Q: Do players have any complaints regarding withdrawals?\n\n{withdrawal_summary}"
                     parallel_results[1] = parallel_results[1].rstrip('\n') + "\n" + withdrawal_qa + "\n"
-            else:
-                print("No player feedback returned")
-                st.session_state.askgamblers_debug = "No player feedback returned"
 
             # Combine results into final factual review
             factual_review = "\n".join([f"{casino} review\n"] + parallel_results)

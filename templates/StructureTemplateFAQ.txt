@@ -50,14 +50,42 @@
 
 ## Q: Is [casino] good for highrollers?
 
-* Assess the casino's suitability for highrollers based on available data. Check for:
-  - **Withdrawal limits**: High daily/weekly/monthly limits are essential for highrollers. Reference the limits from the casino data. Daily limits above $10,000, weekly above $50,000, or monthly above $100,000 are highroller-friendly. Significantly lower limits are a dealbreaker.
-  - **VIP program**: If the casino has a VIP or loyalty program (especially invitation-only tiers), mention it as relevant to highrollers.
-  - **Game limits**: If the data mentions high table limits or maximum bet sizes, include them.
-  - **KYC/AML**: If there are strict AML wagering requirements (above 1x), note that this impacts highrollers more since larger deposits mean more wagering needed.
-* If the casino IS suitable for highrollers: explain why briefly, citing specific numbers.
-* If the casino is NOT suitable: state why (low limits, no VIP, etc.) and recommend 1-2 alternatives from Top Casinos that cater to highrollers.
-* Keep it to 2-4 sentences. Be direct -- highrollers want facts, not fluff.
+* Assess the casino's suitability for highrollers by checking ALL FIVE criteria below. Each criterion matters -- address every one that has data available:
+
+* **1. High deposit and withdrawal limits**:
+  - Check the PAYMENTS DATA for daily, weekly, and monthly withdrawal limits. High limits (or no caps on crypto) are essential.
+  - Daily limits above $10,000, weekly above $50,000, or monthly above $100,000 are highroller-friendly. Significantly lower limits are a dealbreaker for serious players.
+  - If the casino has no withdrawal caps on crypto, this is a major plus -- mention it explicitly.
+  - Also check for deposit limits if available. Highrollers need to be able to deposit large amounts without friction.
+
+* **2. Fast payouts (promised in terms)**:
+  - Check the PAYMENTS DATA for stated withdrawal processing times. Highrollers moving large sums need fast, reliable cashouts.
+  - If the casino commits to a specific timeframe in their terms (e.g., "within 24 hours"), note this. A casino that promises fast payouts in writing is accountable.
+  - If the casino uses vague language ("reasonable time") or makes no commitment, flag this as a concern for highrollers.
+
+* **3. Little to no terms limiting withdrawal of large wins**:
+  - Check for maximum payout caps, maximum cashout limits per transaction, or any T&C clauses that restrict how much you can withdraw from a single win.
+  - Check the AML wagering requirement: if it's above 1x, this disproportionately impacts highrollers since larger deposits mean significantly more wagering before withdrawal. A 3x AML requirement on a $50,000 deposit means $150,000 in required wagers.
+  - Check for bonus-related restrictions that could affect large wins: max win caps, max cashout from bonus funds.
+  - If the casino has clean terms with no payout caps and a standard 1x AML, note this as highroller-friendly.
+
+* **4. Good track record of smooth withdrawals (from player reviews)**:
+  - Check if PLAYER WITHDRAWAL FEEDBACK is available in the data below. If it is, use it to assess whether players report smooth withdrawal experiences or recurring problems.
+  - Specifically look for: large withdrawal delays, declined cashouts, accounts frozen after big wins, extended verification for large amounts.
+  - If player feedback shows a clean track record with no notable withdrawal issues, mention this as a positive signal.
+  - If player feedback shows problems (especially with larger amounts), warn the reader.
+  - If no player feedback is available, skip this criterion -- do NOT mention its absence.
+
+* **5. Good ongoing cashback (a plus, not a dealbreaker)**:
+  - Check the BONUS DATA for cashback or rakeback offers. For highrollers, a good cashback program softens variance on large bets.
+  - What makes cashback highroller-friendly: at least weekly frequency, high or no cap on the cashback amount, and 1x or no wagering requirement on the cashback itself.
+  - If the casino has a strong cashback program, mention it as an additional plus.
+  - If the casino has no cashback or a weak one (low cap, high wagering), note it briefly but don't make it a dealbreaker.
+
+* After assessing all criteria, give a clear verdict: is this casino suitable for highrollers or not?
+* If suitable: explain why, citing specific numbers from the criteria above.
+* If NOT suitable: state the specific dealbreakers and recommend 1-2 alternatives from Top Casinos.
+* Keep it to 3-6 sentences. Be direct and cite numbers -- highrollers want facts, not fluff.
 
 ## + questions/answers from manual comments
 

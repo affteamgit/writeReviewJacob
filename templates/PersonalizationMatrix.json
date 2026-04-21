@@ -171,10 +171,10 @@
       },
       {
         "id": "faq_highroller_check",
-        "data_keywords": ["daily limit", "weekly limit", "monthly limit", "VIP", "high roller"],
-        "fallback_ok": false,
+        "data_keywords": ["daily limit", "weekly limit", "monthly limit", "VIP", "high roller", "withdrawal limit"],
+        "fallback_ok": true,
         "target_question": "Is [casino] good for highrollers",
-        "instruction": "REWRITE the highroller answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob ran the numbers on the withdrawal limits to see if this casino could handle a serious win — he has seen casinos with impressive lobbies but withdrawal caps that would take months to cash out a big score.\n(B) Jakob checked the VIP program and withdrawal limits together — for anyone playing with real money, the limits matter more than the welcome bonus.\nAll facts (limits, VIP details, AML requirements) must come from the casino data."
+        "instruction": "REWRITE the highroller answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob ran the numbers on all five things that matter for highrollers — limits, payout speed, restrictive terms, actual player experiences with large withdrawals, and cashback quality. He has seen casinos with flashy VIP pages that fall apart when you actually try to cash out a big win.\n(B) Jakob assessed this casino the way he would if he were depositing serious money — first the withdrawal limits, then the terms for any hidden payout caps or aggressive AML requirements, then whether players actually report getting paid smoothly.\n(C) Jakob specifically checked the cashback terms and withdrawal caps — a casino can have great limits on paper, but if the AML requirement is 3x or the cashback has a $100 cap, it's not built for serious players.\nAll facts (limits, payout times, AML, cashback, player feedback) must come from the casino data."
       }
     ]
   }
