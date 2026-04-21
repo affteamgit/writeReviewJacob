@@ -170,15 +170,16 @@ def get_review_wp_id(casino_id):
         return None
 
 def fetch_old_review_from_mysql(wp_id):
-    """Fetch post_content from WordPress wp_posts for a given post ID."""
+    """Fetch post_content and post_date from WordPress wp_posts for a given post ID.
+    Returns (content, post_date) tuple, or (None, None) on failure."""
     if not wp_id:
-        return None
+        return None, None
     try:
         import pymysql
         mysql_config = st.secrets.get("mysql", {})
         if not mysql_config:
             print("MySQL secrets not configured, skipping old review fetch")
-            return None
+            return None, None
         connection = pymysql.connect(
             host=mysql_config["host"],
             port=int(mysql_config.get("port", 3306)),
@@ -190,14 +191,16 @@ def fetch_old_review_from_mysql(wp_id):
         )
         try:
             with connection.cursor() as cursor:
-                cursor.execute("SELECT post_content FROM wp_posts WHERE ID = %s", (int(wp_id),))
+                cursor.execute("SELECT post_content, post_date FROM wp_posts WHERE ID = %s", (int(wp_id),))
                 result = cursor.fetchone()
-                return result[0] if result else None
+                if result:
+                    return result[0], result[1]
+                return None, None
         finally:
             connection.close()
     except Exception as e:
         print(f"Error fetching old review from MySQL (WP ID {wp_id}): {e}")
-        return None
+        return None, None
 
 def strip_html_to_text(html_content):
     """Strip WordPress HTML to plain text for AI processing."""
@@ -277,9 +280,44 @@ Previous review text:
         print(f"Error extracting evolution facts: {e}")
         return {}
 
+def _compute_relative_time(post_date):
+    """Convert a post_date into a human-readable relative time phrase."""
+    if not post_date:
+        return None
+    try:
+        from datetime import datetime
+        if isinstance(post_date, str):
+            post_date = datetime.strptime(post_date, "%Y-%m-%d %H:%M:%S")
+        now = datetime.now()
+        delta = now - post_date
+        months = delta.days // 30
+        if months < 1:
+            return "a few weeks ago"
+        elif months == 1:
+            return "about a month ago"
+        elif months <= 3:
+            return "a couple of months ago"
+        elif months <= 6:
+            return "a few months ago"
+        elif months <= 11:
+            return "about half a year ago"
+        elif months <= 14:
+            return "about a year ago"
+        elif months <= 20:
+            return "over a year ago"
+        elif months <= 30:
+            return "about two years ago"
+        else:
+            years = months // 12
+            return f"about {years} years ago"
+    except Exception as e:
+        print(f"Error computing relative time: {e}")
+        return None
+
 def fetch_and_extract_evolution_data(casino_id, casino_name):
     """Full pipeline: look up WP ID -> fetch old review -> extract facts.
     Returns (facts_dict, status_message) tuple.
+    facts_dict may include a special "_relative_time" key with the time since the old review.
     """
     if not casino_id:
         return {}, "No Casino ID found -- old review comparison skipped"
@@ -289,9 +327,13 @@ def fetch_and_extract_evolution_data(casino_id, casino_name):
         return {}, f"No WP_ID found in spreadsheet for Casino ID {casino_id}"
     print(f"Found WP ID {wp_id} for casino ID {casino_id}")
 
-    html_content = fetch_old_review_from_mysql(wp_id)
+    html_content, post_date = fetch_old_review_from_mysql(wp_id)
     if html_content is None:
         return {}, f"Could not fetch review from database for WP ID {wp_id} (connection issue or post not found)"
+
+    relative_time = _compute_relative_time(post_date)
+    if relative_time:
+        print(f"Old review date: {post_date} ({relative_time})")
 
     plain_text = strip_html_to_text(html_content)
     if not plain_text or len(plain_text.strip()) < 100:
@@ -299,9 +341,14 @@ def fetch_and_extract_evolution_data(casino_id, casino_name):
     print(f"Fetched old review: {len(plain_text)} chars")
 
     facts = extract_evolution_facts(casino_name, plain_text)
-    non_empty = {k: v for k, v in facts.items() if v.strip()}
+
+    # Attach relative time to facts so it can be included in the prompt
+    if relative_time:
+        facts["_relative_time"] = relative_time
+
+    non_empty = {k: v for k, v in facts.items() if v.strip() and not k.startswith("_")}
     if non_empty:
-        return facts, f"Old review data integrated ({len(non_empty)} section{'s' if len(non_empty) != 1 else ''} with evolution info)"
+        return facts, f"Old review data integrated ({len(non_empty)} section{'s' if len(non_empty) != 1 else ''} with evolution info, reviewed {relative_time or 'unknown time ago'})"
     else:
         return facts, f"Old review fetched (WP ID {wp_id}, {len(plain_text)} chars) but no comparable facts extracted"
 
@@ -806,8 +853,16 @@ def generate_sections_parallel(casino: str, secs: Dict, sorted_comments: Dict, t
                 section_persona[sec] = None
 
     # Prepare data for each section with pre-assigned casino rotation lists and persona scenarios
+    # Prepend relative time to evolution data so the AI knows when the old review was written
+    relative_time = (evolution_facts or {}).get("_relative_time", "")
+    def _get_evolution_for_section(sec):
+        facts = (evolution_facts or {}).get(sec, "")
+        if facts and facts.strip() and relative_time:
+            return f"(The previous review was written {relative_time}.)\n{facts}"
+        return facts
+
     section_data = [
-        (sec, secs[sec], templates, sorted_comments, casino, btc_str, section_assignments.get(sec, []), (evolution_facts or {}).get(sec, ""), section_persona.get(sec))
+        (sec, secs[sec], templates, sorted_comments, casino, btc_str, section_assignments.get(sec, []), _get_evolution_for_section(sec), section_persona.get(sec))
         for sec in section_order if sec in secs
     ]
 
