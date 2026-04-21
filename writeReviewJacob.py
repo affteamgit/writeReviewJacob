@@ -785,15 +785,30 @@ def select_persona_scenario(section: str, main_data: str, matrix: dict, used_ids
 def build_personalization_block(scenario: dict) -> str:
     """Build the personalization instruction block to inject into the prompt."""
     instruction = scenario.get("instruction", "")
+
+    # Randomized framing layer -- changes HOW the personalization reads,
+    # so even the same scenario produces different narrative structures
+    framings = [
+        "FRAMING: Start the answer mid-action, as if the reader joins Jakob in the middle of testing this casino. No preamble.",
+        "FRAMING: Open with what surprised or caught Jakob's attention about this specific aspect. Lead with the unexpected.",
+        "FRAMING: Lead with Jakob's verdict first, then walk the reader through how he got there.",
+        "FRAMING: Frame this as if Jakob is telling a friend who asked him specifically about this. Conversational, direct.",
+        "FRAMING: Start with a specific detail Jakob noticed, then zoom out to the bigger picture.",
+        "FRAMING: Contrast this casino with what Jakob usually sees. What's different here -- better or worse?",
+        "FRAMING: Write this as a sequence of what Jakob did -- first he checked X, then he tried Y, and here's what he found.",
+        "FRAMING: Start with the casino data point that matters most for this question, then layer in Jakob's reaction to it.",
+    ]
+    framing = random.choice(framings)
+
     return (
         f"\n\nPERSONAL EXPERIENCE INSTRUCTION (Jakob's personal touch):\n"
         f"{instruction}\n"
+        f"{framing}\n"
         f"CRITICAL: REWRITE the targeted answer from Jakob's experience -- narrate his actions "
         f"at this casino. Do NOT write a factual answer and bolt a personal sentence onto it. "
         f"The answer itself should read as Jakob's experience, with data points woven into what "
         f"he did and encountered. Every fact, feature, and number must still come from the casino "
-        f"data below. Never invent features, game names, or capabilities not in the data. "
-        f"Pick ONE of the action scenarios provided and write the answer around it."
+        f"data below. Never invent features, game names, or capabilities not in the data."
     )
 
 

@@ -12,35 +12,35 @@
         "data_keywords": ["years", "established", "founded", "launched"],
         "fallback_ok": false,
         "target_question": "Is [casino] legit",
-        "instruction": "REWRITE the legitimacy answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob checked the casino's founding year and licensing before depositing — he has watched dozens of crypto casinos launch with big promises and disappear within a year, so operational history is the first thing he looks at.\n(B) Jakob dug into the casino's track record and terms before his first deposit — after years in this space, he trusts operational longevity more than marketing claims.\nAll facts (founding year, years of operation, licensing, reputation details) must come from the casino data."
+        "instruction": "REWRITE the legitimacy answer as Jakob's experience. He assessed this casino's trustworthiness before depositing. How old is it? What did he find about its track record? Jakob has watched many crypto casinos appear and vanish, so operational history matters to him. Weave the casino's age, licensing, and reputation facts into his assessment naturally. All facts must come from the casino data."
       },
       {
         "id": "gen_tcs_habit",
         "data_keywords": [],
         "fallback_ok": true,
         "target_question": null,
-        "instruction": "In the most natural answer for this section, frame Jakob's response around the fact that he read this casino's T&Cs before depositing. Pick ONE angle:\n(A) He found something noteworthy in the terms — good or bad — and it shaped his first impression.\n(B) He was specifically looking for hidden wagering requirements or withdrawal traps, because he once caught a 5x AML requirement buried in fine print that would have locked up his funds.\nTie it to a specific detail from this casino's data. One to two sentences woven into the answer."
+        "instruction": "In the most natural answer for this section, weave in the fact that Jakob reads the T&Cs before depositing. He should reference something specific he noticed in THIS casino's terms — good or bad. Jakob has a habit of checking fine print after once finding a punishing AML requirement hidden in a casino's terms. Tie it to a concrete detail from the casino data. One to two sentences woven into the answer, not bolted on."
       },
       {
         "id": "gen_standout_honest",
         "data_keywords": ["MANUAL_COMMENT_STANDOUT"],
         "fallback_ok": false,
         "target_question": "What makes [casino] stand out",
-        "instruction": "REWRITE the standout answer from Jakob's experience. Pick ONE scenario:\n(A) Jakob tried the standout feature himself and describes what it was actually like to use — whether it delivered on its promise or fell flat.\n(B) Jakob noticed the feature while browsing the casino and it caught his attention because most casinos he has tested don't offer this — narrate his discovery.\nAll facts about the standout feature must come from the casino data. NOTE: This personalization only applies when manual comments describe unique features."
+        "instruction": "REWRITE the standout answer as Jakob's experience with this casino's unique feature. He either tried it himself and has an opinion, or he noticed it while exploring the casino and it caught his attention. Describe his genuine reaction — does it deliver, or is it more marketing than substance? All facts must come from the casino data. Only applies when manual comments describe unique features."
       },
       {
         "id": "gen_bonus_terms_reader",
         "data_keywords": ["bonus", "welcome", "deposit bonus", "free spins", "no deposit", "wagering"],
         "fallback_ok": true,
         "target_question": null,
-        "instruction": "REWRITE the bonus answer (whichever conditional scenario applies) from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob read the bonus terms before claiming anything — he once lost a decent win because he missed a 60x wagering requirement buried in the fine print, so now he checks the terms first and the bonus second.\n(B) Jakob compared the bonus structure to other casinos he has tested — the headline number means nothing if the wagering, max cashout, or time limit makes it unplayable.\n(C) Jakob looked at what the casino actually gives new players and ran the numbers — a 100% bonus sounds great until you realize the wagering requirement means you need to bet 50x before seeing a cent.\nAll facts (bonus amounts, wagering, max cashout, bonus codes, free spins) must come from the casino data."
+        "instruction": "REWRITE the bonus answer as Jakob's experience evaluating this casino's bonus offer. Jakob always reads the terms before claiming anything — he's learned that headline bonus numbers are meaningless without checking wagering, max cashout, and time limits. Describe how he assessed THIS casino's bonus structure and what stood out to him. All facts (bonus amounts, wagering, max cashout, bonus codes, free spins) must come from the casino data."
       },
       {
         "id": "gen_promos_after_welcome",
         "data_keywords": ["tournament", "cashback", "reload", "rakeback", "VIP", "loyalty", "lootbox", "rain"],
         "fallback_ok": false,
         "target_question": "Are there any ongoing promotions for returning players",
-        "instruction": "REWRITE the promotions answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob checked the promotions page after signing up to see if there was any reason to stick around — a casino that only hooks you with a welcome bonus and offers nothing after is a one-night stand, not a place to play regularly.\n(B) Jakob browsed the ongoing promotions and compared them to what he gets at other casinos — reload bonuses, tournaments, or cashback can make a real difference when you play multiple sessions a week.\n(C) Jakob specifically looked for a VIP or loyalty program — he has been at casinos where consistent play gets you nothing, and at others where it unlocks genuinely better terms and faster withdrawals.\nAll facts (promotion types, VIP tiers, gamification features) must come from the casino data."
+        "instruction": "REWRITE the promotions answer as Jakob's experience checking what this casino offers beyond the welcome bonus. Jakob plays regularly and cares about whether a casino rewards returning players or just new signups. Describe what he found when he looked at the promotions, VIP program, or loyalty features — and whether it's enough to keep coming back. All facts (promotion types, VIP tiers, gamification features) must come from the casino data."
       }
     ],
     "Payments": [
@@ -49,28 +49,28 @@
         "data_keywords": ["buy crypto", "Buy crypto", "buy cryptocurrency"],
         "fallback_ok": false,
         "target_question": "Can I deposit different altcoins",
-        "instruction": "REWRITE the altcoin answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob's dedicated casino wallet ran dry mid-session, so he used the buy-crypto feature directly on-site instead of switching to an exchange — describe how that went and whether it was smooth.\n(B) Jakob deposited with his usual coin but later noticed the buy-crypto option and tested it out of curiosity — he keeps gambling funds separate from his main portfolio, so being able to top up on-site is genuinely useful.\n(C) Jakob tried to deposit but his preferred coin wasn't available, so he used the buy-crypto feature to purchase a supported one directly.\nAll facts (crypto count, buy-crypto availability, supported coins) must come from the casino data."
+        "instruction": "REWRITE the altcoin answer as Jakob's experience with the crypto deposit options. The casino has a buy-crypto feature — Jakob has an opinion on it. He keeps gambling funds in a dedicated wallet and has used on-site purchase features before. Describe his experience with the crypto options at this casino. All facts (crypto count, buy-crypto availability, supported coins) must come from the casino data."
       },
       {
         "id": "pay_crypto_swap_old_tokens",
         "data_keywords": ["crypto swap", "Crypto Swap", "token conversion", "Crypto swap"],
         "fallback_ok": false,
         "target_question": "Can I deposit different altcoins",
-        "instruction": "REWRITE the altcoin answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob had leftover tokens from an old airdrop sitting in a wallet — not worth the gas fee to swap on an exchange, but the crypto swap feature let him deposit them directly and convert on-site.\n(B) Jakob deposited in one cryptocurrency but wanted to withdraw in a different one — he tested the swap feature to see if it actually worked and what the conversion rate looked like.\n(C) Jakob specifically chose this casino because the swap feature meant he could clean out small balances from multiple wallets without touching an exchange.\nAll facts (swap feature, crypto count, supported coins) must come from the casino data."
+        "instruction": "REWRITE the altcoin answer as Jakob's experience with the crypto options, focusing on the swap feature. Jakob has random tokens scattered across wallets from old airdrops and trades. A swap feature is genuinely useful to him. Describe how the crypto swap factored into his experience at this casino. All facts (swap feature, crypto count, supported coins) must come from the casino data."
       },
       {
         "id": "pay_tron_deposit",
         "data_keywords": ["cryptocurrencies", "crypto", "tokens"],
         "fallback_ok": true,
         "target_question": "Can I deposit different altcoins",
-        "instruction": "REWRITE the altcoin answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob deposited with Tron — his go-to since waiting 40 minutes for a Bitcoin confirmation during a live tournament. Describe whether TRX was supported and how the deposit went.\n(B) Jakob checked the supported coins list before depositing — he carries about 15 different tokens from old trades and airdrops, and wanted to see how many he could actually use here.\n(C) Jakob tried depositing with a less common token he had sitting in a wallet to test how broad the support really is.\nAll facts (crypto count, supported coins, major crypto coverage) must come from the casino data."
+        "instruction": "REWRITE the altcoin answer as Jakob's experience depositing at this casino. Jakob prefers Tron for speed and low fees, and he carries various tokens from years of trading and airdrops. Describe his experience checking what's supported and making a deposit — what worked, what was missing, how it compares to what he's used to. All facts (crypto count, supported coins, major crypto coverage) must come from the casino data."
       },
       {
         "id": "pay_altcoin_old_wallet",
         "data_keywords": ["more than 15", "more than 20", "more than 50", "more than 100"],
         "fallback_ok": false,
         "target_question": "Can I deposit different altcoins",
-        "instruction": "REWRITE the altcoin answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob scrolled through the supported coins list and found tokens he had forgotten about in old wallets — stuff that isn't worth the gas fee to swap on an exchange, but here he could deposit them directly.\n(B) Jakob tested depositing with a less mainstream token from an old airdrop that's been sitting untouched — with this many coins supported, it actually went through.\n(C) Jakob checked whether all his usual coins were covered — Tron for cheap fees, plus whatever random tokens he has accumulated over the years.\nAll facts (crypto count, major crypto coverage, specific supported coins) must come from the casino data."
+        "instruction": "REWRITE the altcoin answer as Jakob's experience with a casino that supports a large number of cryptocurrencies. Jakob has tokens scattered across old wallets that aren't worth the gas fee to move to an exchange. A big supported coins list matters to him practically, not just on paper. Describe his reaction to the selection and whether it actually covers what he uses. All facts (crypto count, major crypto coverage, specific supported coins) must come from the casino data."
       }
     ],
     "Games": [
@@ -79,35 +79,35 @@
         "data_keywords": ["Pragmatic Play"],
         "fallback_ok": false,
         "target_question": "Can I find games from most popular game providers",
-        "instruction": "REWRITE the providers answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob searched for Pragmatic Play first — Gates of Olympus was the game that landed him his first real crypto casino win, so it's always his first test. Describe whether he found it and what the provider coverage looks like.\n(B) Jakob opened the games lobby and filtered by provider to see who's represented — Pragmatic Play is his benchmark, but he also checked for the other major names.\n(C) Jakob fired up Gates of Olympus as his first game here — it's his standard test to see how a casino feels. Then he browsed the rest of the provider lineup.\nAll facts (provider count, which providers are present/missing, live game providers) must come from the casino data."
+        "instruction": "REWRITE the providers answer as Jakob's experience exploring the game lobby. Pragmatic Play is his benchmark provider — it's always the first thing he checks at a new casino. Describe what he found when he looked at the provider lineup at this casino and how the coverage stacks up. All facts (provider count, which providers are present/missing, live game providers) must come from the casino data."
       },
       {
         "id": "games_bgaming_check",
         "data_keywords": ["BGaming"],
         "fallback_ok": false,
         "target_question": "Can I find games from most popular game providers",
-        "instruction": "REWRITE the providers answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob looked for BGaming specifically — he has been playing their slots more lately and considers them one of the stronger mid-tier providers. Describe what he found in the provider lineup.\n(B) Jakob browsed the provider list and was pleased (or disappointed) to see BGaming — their game quality has been consistently solid in his experience.\nAll facts (provider count, which providers are present/missing) must come from the casino data."
+        "instruction": "REWRITE the providers answer as Jakob's experience browsing the provider list. He has been paying more attention to BGaming lately and considers them a strong mid-tier provider. Describe what the provider lineup looks like at this casino and whether the coverage impressed or disappointed him. All facts (provider count, which providers are present/missing) must come from the casino data."
       },
       {
         "id": "games_library_browse",
         "data_keywords": ["games"],
         "fallback_ok": true,
         "target_question": "How many games are in [casino]",
-        "instruction": "REWRITE the game count answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob opened the game lobby and started browsing — he cares more about provider quality than raw count because he has tested casinos with 10,000+ games where half the thumbnails were broken and the search was useless.\n(B) Jakob filtered and searched through the library to see what's actually playable — a big number means nothing if it's padded with shovelware nobody touches.\n(C) Jakob counted the providers first, then looked at the total — in his experience, 3,000 well-organized games from quality providers beats 10,000 filler titles.\nAll facts (game count, evaluation of the count) must come from the casino data."
+        "instruction": "REWRITE the game count answer as Jakob's experience browsing the library. Jakob is skeptical of big numbers — he cares more about provider quality and whether the library is well-organized. Describe his impression of this casino's game selection and what the count actually means in practice. All facts (game count, evaluation of the count) must come from the casino data."
       },
       {
         "id": "games_rtp_filter_test",
         "data_keywords": ["RTP", "volatility", "filter"],
         "fallback_ok": false,
         "target_question": "Can I search for games based on RTP or volatility",
-        "instruction": "REWRITE the filters answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob used the RTP filter to sort games — he started doing this after realizing he had been burning through his bankroll on sub-93% slots without even knowing it. Describe whether the filters worked.\n(B) Jakob tried filtering by volatility to find medium-variance slots for a longer session — casinos that expose these filters aren't afraid of informed players, and that tells him something.\n(C) Jakob tested both the RTP and volatility filters to see if they actually return accurate results or if they're broken like at other casinos he has tested.\nAll facts (filter availability, whether filters work properly) must come from the casino data."
+        "instruction": "REWRITE the filters answer as Jakob's experience testing the game filters. Jakob started using RTP filters after losing money on low-RTP slots without realizing it. Describe what happened when he tried the filters at this casino — did they work properly or were they broken? All facts (filter availability, whether filters work properly) must come from the casino data."
       },
       {
         "id": "games_missing_dealbreaker",
         "data_keywords": ["missing", "absent", "not available", "don't have"],
         "fallback_ok": false,
         "target_question": "Can I find games from most popular game providers",
-        "instruction": "REWRITE the providers answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob searched for his usual providers and noticed gaps — if Pragmatic Play is missing, it's close to a dealbreaker since Gates of Olympus is his main game. Narrate his search and what he found.\n(B) Jakob filtered by provider and was surprised by what's missing — he expected a casino of this size to have better coverage. Name the specific missing providers from the data.\nAll facts (provider count, missing providers, present providers) must come from the casino data."
+        "instruction": "REWRITE the providers answer as Jakob's experience discovering gaps in the provider lineup. Missing major providers is a real issue for Jakob — some are close to dealbreakers. Describe his reaction to what's missing at this casino and how significant the gaps are. All facts (provider count, missing providers, present providers) must come from the casino data."
       }
     ],
     "Responsible Gambling": [
@@ -116,35 +116,35 @@
         "data_keywords": ["deposit limit", "loss limit", "Deposit limit", "Loss limit"],
         "fallback_ok": false,
         "target_question": "Which responsible gambling tools are available",
-        "instruction": "REWRITE the tools answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob went straight to the responsible gambling settings before playing his first spin — his rule is to set a weekly deposit limit first, no exceptions. He made this rule after watching a friend blow through three months of savings in one night. Describe whether it was easy to set up here.\n(B) Jakob opened his account settings looking for deposit limits — he wanted to lock in a loss limit before his first session because once he starts playing, he doesn't trust himself to make that decision mid-game. Describe what tools he found.\n(C) Jakob tested the deposit limit by setting one, then tried to deposit above it to see if it actually works — because some casinos list these tools but they don't actually enforce them.\nAll facts (available tools, number of tools, whether support is needed) must come from the casino data."
+        "instruction": "REWRITE the tools answer as Jakob's experience setting up responsible gambling features. Jakob always configures deposit or loss limits before his first session — it's a non-negotiable rule. Describe what he found when he looked for these tools at this casino and whether the setup was straightforward. All facts (available tools, number of tools, whether support is needed) must come from the casino data."
       },
       {
         "id": "rg_friction_test",
         "data_keywords": ["without contacting support", "self-managed", "account settings", "manage directly", "without support", "contact support", "contacting support", "through support", "reach out to support"],
         "fallback_ok": false,
         "target_question": "Which responsible gambling tools are available",
-        "instruction": "REWRITE the tools answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob tried to set a deposit limit and describes whether he could do it himself or had to contact support — the whole point of these tools is that they work when your discipline doesn't, and if you have to start a conversation to set one up, you've already added a barrier at the worst moment.\n(B) Jakob went to his account settings to activate responsible gambling tools and describes the process — did it take 30 seconds from his dashboard, or did he hit a 'contact support' wall?\n(C) Jakob specifically tested how many clicks it takes to set a loss limit — because the moment someone needs these tools is exactly the moment they don't want to explain themselves to a support agent.\nAll facts (available tools, self-managed vs support-required) must come from the casino data."
+        "instruction": "REWRITE the tools answer as Jakob's experience testing how easy it is to activate responsible gambling tools. The friction matters — if you have to contact support to set a limit, that's a barrier at the worst possible moment. Describe Jakob's experience: could he manage it himself, or did the casino put obstacles in the way? All facts (available tools, self-managed vs support-required) must come from the casino data."
       },
       {
         "id": "rg_bankroll_routine",
         "data_keywords": [],
         "fallback_ok": true,
         "target_question": "Which responsible gambling tools are available",
-        "instruction": "REWRITE the tools answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob ran through his standard new-casino routine: small test deposit, set a loss limit, play a session, test a withdrawal. Describe which parts this casino's tools supported and which they didn't.\n(B) Jakob looked for his non-negotiables — deposit limit and loss limit — before playing. He developed this routine after his first year in crypto gambling and it hasn't changed since. Describe what he found.\nAll facts (available tools, number of tools, self-managed vs support) must come from the casino data."
+        "instruction": "REWRITE the tools answer as Jakob's experience running his standard new-casino check. He has a routine: look for deposit limits and loss limits before doing anything else. Describe what this casino's responsible gambling setup looks like through that lens. All facts (available tools, number of tools, self-managed vs support) must come from the casino data."
       },
       {
         "id": "rg_self_exclusion_trust",
         "data_keywords": ["self-exclusion", "Self-exclusion", "self exclusion"],
         "fallback_ok": false,
         "target_question": "Can I self-exclude",
-        "instruction": "REWRITE the self-exclusion answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob located the self-exclusion option and checked how it works — he doesn't plan to use it, but he has read enough forum posts from players who couldn't stop and the casino made it nearly impossible to leave. A casino that makes self-exclusion hard is telling you everything about its priorities.\n(B) Jakob tested whether self-exclusion can be activated without contacting support — because if you're at the point of needing it, the last thing you want is a support chat trying to talk you out of it.\nAll facts (self-exclusion availability, activation method) must come from the casino data."
+        "instruction": "REWRITE the self-exclusion answer as Jakob's experience checking this casino's self-exclusion option. Jakob sees self-exclusion accessibility as a trust signal — a casino that makes it hard to leave tells you about its priorities. Describe what he found when he looked into how self-exclusion works here. All facts (self-exclusion availability, activation method) must come from the casino data."
       },
       {
         "id": "rg_no_tools_problem",
         "data_keywords": ["no responsible gambling", "does not offer", "no tools", "lacks"],
         "fallback_ok": false,
         "target_question": "Which responsible gambling tools are available",
-        "instruction": "REWRITE the tools answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob went to set up his usual deposit limit and couldn't find it — a casino without basic responsible gambling tools is asking you to gamble without a seatbelt. His non-negotiable rule about setting limits before the first spin can't even be followed here.\n(B) Jakob searched the settings for responsible gambling tools and came up empty — this is a serious mark against any casino because it tells you they care more about keeping you playing than keeping you safe.\nAll facts must come from the casino data."
+        "instruction": "REWRITE the tools answer as Jakob's experience discovering this casino lacks responsible gambling tools. This is a serious negative for him — a casino without basic deposit limits is asking you to gamble without safeguards. Describe his reaction and what it means for the player. All facts must come from the casino data."
       }
     ],
     "FAQ": [
@@ -153,28 +153,28 @@
         "data_keywords": ["owned", "operated", "parent company", "operator", "founded by", "holding"],
         "fallback_ok": true,
         "target_question": "Who owns [casino]",
-        "instruction": "REWRITE the ownership answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob looked into who runs this casino before depositing — he has seen enough fly-by-night operations to know that a transparent parent company with other established brands is a sign the casino plans to stick around.\n(B) Jakob checked the company behind this casino — knowing who is actually responsible for your funds matters more than any marketing page, and he has been burned before by casinos with zero corporate accountability.\n(C) Jakob dug into the operator's background — if the same company runs other casinos he has tested and they were solid, that carries weight. If the company is unknown or has a shady track record, that's a red flag.\nAll facts (company name, other brands, track record, licensing) must come from the casino data."
+        "instruction": "REWRITE the ownership answer as Jakob's experience researching who's behind this casino. Jakob always checks the operator before depositing — he has seen too many anonymous operations disappear with player funds. Describe what he found about the company and what it tells him about the casino's reliability. All facts (company name, other brands, track record, licensing) must come from the casino data."
       },
       {
         "id": "faq_anon_signup",
         "data_keywords": ["email-only", "anonymous", "email only"],
         "fallback_ok": false,
         "target_question": "Can I stay anonymous",
-        "instruction": "REWRITE the anonymity answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob signed up with just his email, made a deposit, and played without handing over any personal info — then checked how far he could get before KYC kicked in.\n(B) Jakob hit the registration page expecting the usual name/address/phone form, and was surprised to find only an email field — he was playing within two minutes.\n(C) Jakob specifically tested the withdrawal flow to see if KYC would be triggered — because he has had casinos collect everything upfront and then make cashing out a nightmare.\nAll facts (signup requirements, KYC thresholds) must come from the casino data."
+        "instruction": "REWRITE the anonymity answer as Jakob's experience going through this casino's registration and testing how private the experience actually is. Anonymity covers the full journey — signup, deposit, play, and withdrawal. Describe what Jakob encountered at each stage and where (if anywhere) personal details were required. All facts (signup requirements, KYC thresholds) must come from the casino data."
       },
       {
         "id": "faq_support_test",
         "data_keywords": ["live chat", "support", "24/7"],
         "fallback_ok": false,
         "target_question": "Is [casino]'s support any good",
-        "instruction": "REWRITE the support answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob tested the live chat with a question about withdrawal processing — in his experience, how a casino handles a simple support question tells you everything about how they'll handle a real problem.\n(B) Jakob checked whether support was available 24/7 before depositing — he has been stuck at 3 AM with a pending withdrawal and no one to talk to at other casinos, and that's not happening again.\nAll facts (support channels, availability, response quality) must come from the casino data."
+        "instruction": "REWRITE the support answer as Jakob's experience checking or using this casino's customer support. Jakob has been stuck with unresponsive support at other casinos at the worst times. Describe what he found about support availability and quality here — does it meet the baseline or fall short? All facts (support channels, availability, response quality) must come from the casino data."
       },
       {
         "id": "faq_highroller_check",
         "data_keywords": ["daily limit", "weekly limit", "monthly limit", "VIP", "high roller", "withdrawal limit"],
         "fallback_ok": true,
         "target_question": "Is [casino] good for highrollers",
-        "instruction": "REWRITE the highroller answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob ran the numbers on all five things that matter for highrollers — limits, payout speed, restrictive terms, actual player experiences with large withdrawals, and cashback quality. He has seen casinos with flashy VIP pages that fall apart when you actually try to cash out a big win.\n(B) Jakob assessed this casino the way he would if he were depositing serious money — first the withdrawal limits, then the terms for any hidden payout caps or aggressive AML requirements, then whether players actually report getting paid smoothly.\n(C) Jakob specifically checked the cashback terms and withdrawal caps — a casino can have great limits on paper, but if the AML requirement is 3x or the cashback has a $100 cap, it's not built for serious players.\nAll facts (limits, payout times, AML, cashback, player feedback) must come from the casino data."
+        "instruction": "REWRITE the highroller answer as Jakob's experience assessing whether this casino can handle serious money. He evaluates five things: withdrawal limits, payout speed promises, restrictive terms (AML, payout caps), player track record with large cashouts, and cashback quality. Describe his assessment of this casino across those criteria. All facts (limits, payout times, AML, cashback, player feedback) must come from the casino data."
       }
     ]
   }
