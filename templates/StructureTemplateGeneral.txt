@@ -28,9 +28,11 @@
 
 ## + questions/answers from manual comments about unique casino features
 
+DEDUPLICATION RULE: Before creating ANY new Q&A from manual comments, check if the standout question above already covers the same feature or topic. If the standout answer already mentions a feature (e.g., customizable homepage, special support channels, unique tools), do NOT create a separate Q&A that repeats it. The standout answer is the primary home for unique features. Only create a new Q&A if the comment describes something genuinely DIFFERENT from what the standout answer covers.
+
 For manual comments that describe unique features, products, or differentiators (but NOT bonuses, VIP, or promotions -- those belong below):
-1. If the comment relates to the standout question above: Integrate it into that answer.
-2. If the comment describes a DIFFERENT unique feature: Create a new Q&A pair.
+1. If the comment relates to ANY feature already covered in the standout question: Integrate it there. Do NOT create a new Q&A.
+2. ONLY if the comment describes a completely DIFFERENT unique feature not mentioned in the standout answer: Create a new Q&A pair.
 
 ## Q: BONUS QUESTION -- USE CONDITIONAL LOGIC BELOW
 

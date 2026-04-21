@@ -39,7 +39,18 @@ After adding comment "VPN works but connection drops sometimes":
 Q: Can I use a VPN to play in [casino]?
 A: Yes, [casino] is VPN friendly, which means you can access it from restricted regions. However, I noticed that VPN connections can drop occasionally, which might interrupt your gaming session.
 
-**STEP 3b: If No Match Found - Create New Q&A Pair**
+**STEP 3b: If No Match Found - Check for Consolidation Before Creating New Q&A**
+
+CONSOLIDATION RULE: Before creating a new Q&A, ask yourself:
+- Would this new Q&A have fewer than 4 sentences?
+- Does it partially overlap with information in an existing answer (e.g., KYC info that's already in the restrictions answer, deposit details that expand on the altcoin answer)?
+- Could this information make an existing answer more complete rather than standing on its own?
+
+If YES to any of these: MERGE the comment into the most relevant existing answer instead of creating a thin standalone Q&A. A short paragraph added to an existing comprehensive answer is better than a separate 2-sentence Q&A that fragments information.
+
+Only create a NEW Q&A pair when the comment describes a topic that is genuinely UNRELATED to any existing question AND has enough substance to warrant its own section (at least 3-4 sentences of useful content).
+
+When creating a new Q&A:
 - Formulate a BROAD, GENERAL question that a player would naturally ask WITHOUT knowing the specific feature exists. The comment reveals the answer, but the question should be something a curious player would search for.
 - WRONG approach: comment about a blockchain token → "Does [casino] have a blockchain token?" (too specific, assumes knowledge)
 - RIGHT approach: comment about a blockchain token → "Are there any unique reward systems at [casino]?" or "What special features does [casino] offer?" (broad, discoverable)

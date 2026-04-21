@@ -69,9 +69,11 @@
 
 ## + questions/answers from manual comments about withdrawals
 
+CONSOLIDATION RULE: Before creating a new Q&A, check if the comment's information could strengthen an existing answer instead. For example: KYC details belong in the restrictions answer, pending withdrawal policies belong in restrictions or limits, processing speed details belong in the withdrawal time answer. Only create a standalone Q&A if the topic is genuinely unrelated to all existing questions AND has enough substance for 3-4+ sentences.
+
 For manual comments related to withdrawals (processing issues, withdrawal methods, cashout experiences, etc.):
 1. If the comment relates to ANY of the withdrawal questions above: Integrate it into the relevant answer.
-2. If NO match: Create a new Q&A pair using a broad question format.
+2. ONLY if no match AND the topic has enough substance: Create a new Q&A pair using a broad question format.
 
 ## Q: Can I deposit different altcoins?
 
@@ -96,9 +98,11 @@ For manual comments related to withdrawals (processing issues, withdrawal method
 
 ## + questions/answers from manual comments about deposits
 
+CONSOLIDATION RULE: Deposit-related details (fiat options, verification requirements for deposits, minimum amounts) should be merged into the altcoin answer or the withdrawal restrictions answer where relevant. Only create a standalone Q&A if the topic is completely separate AND has enough substance for 3-4+ sentences.
+
 For manual comments related to deposits (deposit methods, minimum deposits, deposit issues, fiat options, etc.):
-1. If the comment relates to the altcoin question above: Integrate it into that answer.
-2. If NO match: Create a new Q&A pair using a broad question format.
+1. If the comment relates to the altcoin question above or any other existing question: Integrate it into that answer.
+2. ONLY if no match AND the topic has enough substance: Create a new Q&A pair using a broad question format.
 
 * QUESTION RULES: The question must be something a player would naturally search for BEFORE discovering the feature. Do NOT put the specific feature name in the question. Keep it broad. The ANSWER is where you reveal the specifics.
 * Group related comments into a single broader Q&A when possible.

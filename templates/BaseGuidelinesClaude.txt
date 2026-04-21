@@ -46,7 +46,13 @@ FORMATTING:
 - Only mention broken images and links or annoying pop-ups IF the casino has them.
 
 COMPARISONS:
-- When comparing to other casinos, always start the sentence with "In comparison" or "For example".
+- Vary how you introduce comparisons. Do NOT always use the same opener. Pick from different structures each time:
+  * Direct contrast: "BitStarz has no withdrawal limits, while Bspin caps you at 0.005 BTC per day."
+  * Recommendation: "If you want more crypto options, Bets.io supports over 200 tokens."
+  * Context: "To put this in perspective, most crypto casinos offer 40-60 providers."
+  * Alternative: "For players who need VPN access, Bitsler is a better fit with only 23 restricted countries."
+  * Benchmark: "Jackpoker.com handles KYC in 24 hours, which makes Bspin's 30-day window look rough."
+  You can also use "In comparison" or "For example" occasionally, but NEVER use the same opener twice in the same section. Each comparison in a section MUST use a different structure.
 - Always accompany comparisons with values for the compared casino from Top and Similar Casinos columns.
 - After the comparison sentence, do NOT add extra sentences explaining why the comparison matters.
 - Comparisons should feel purpose-driven, not formulaic. Recommend an alternative that solves a specific shortcoming. The comparison should help the reader, not just display data.
