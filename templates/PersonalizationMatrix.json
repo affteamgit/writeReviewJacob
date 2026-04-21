@@ -27,6 +27,20 @@
         "fallback_ok": false,
         "target_question": "What makes [casino] stand out",
         "instruction": "REWRITE the standout answer from Jakob's experience. Pick ONE scenario:\n(A) Jakob tried the standout feature himself and describes what it was actually like to use — whether it delivered on its promise or fell flat.\n(B) Jakob noticed the feature while browsing the casino and it caught his attention because most casinos he has tested don't offer this — narrate his discovery.\nAll facts about the standout feature must come from the casino data. NOTE: This personalization only applies when manual comments describe unique features."
+      },
+      {
+        "id": "gen_bonus_terms_reader",
+        "data_keywords": ["bonus", "welcome", "deposit bonus", "free spins", "no deposit", "wagering"],
+        "fallback_ok": true,
+        "target_question": null,
+        "instruction": "REWRITE the bonus answer (whichever conditional scenario applies) from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob read the bonus terms before claiming anything — he once lost a decent win because he missed a 60x wagering requirement buried in the fine print, so now he checks the terms first and the bonus second.\n(B) Jakob compared the bonus structure to other casinos he has tested — the headline number means nothing if the wagering, max cashout, or time limit makes it unplayable.\n(C) Jakob looked at what the casino actually gives new players and ran the numbers — a 100% bonus sounds great until you realize the wagering requirement means you need to bet 50x before seeing a cent.\nAll facts (bonus amounts, wagering, max cashout, bonus codes, free spins) must come from the casino data."
+      },
+      {
+        "id": "gen_promos_after_welcome",
+        "data_keywords": ["tournament", "cashback", "reload", "rakeback", "VIP", "loyalty", "lootbox", "rain"],
+        "fallback_ok": false,
+        "target_question": "Are there any ongoing promotions for returning players",
+        "instruction": "REWRITE the promotions answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob checked the promotions page after signing up to see if there was any reason to stick around — a casino that only hooks you with a welcome bonus and offers nothing after is a one-night stand, not a place to play regularly.\n(B) Jakob browsed the ongoing promotions and compared them to what he gets at other casinos — reload bonuses, tournaments, or cashback can make a real difference when you play multiple sessions a week.\n(C) Jakob specifically looked for a VIP or loyalty program — he has been at casinos where consistent play gets you nothing, and at others where it unlocks genuinely better terms and faster withdrawals.\nAll facts (promotion types, VIP tiers, gamification features) must come from the casino data."
       }
     ],
     "Payments": [
@@ -50,13 +64,6 @@
         "fallback_ok": true,
         "target_question": "Can I deposit different altcoins",
         "instruction": "REWRITE the altcoin answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob deposited with Tron — his go-to since waiting 40 minutes for a Bitcoin confirmation during a live tournament. Describe whether TRX was supported and how the deposit went.\n(B) Jakob checked the supported coins list before depositing — he carries about 15 different tokens from old trades and airdrops, and wanted to see how many he could actually use here.\n(C) Jakob tried depositing with a less common token he had sitting in a wallet to test how broad the support really is.\nAll facts (crypto count, supported coins, major crypto coverage) must come from the casino data."
-      },
-      {
-        "id": "pay_limits_check",
-        "data_keywords": ["daily limit", "weekly limit", "monthly limit", "withdrawal limit"],
-        "fallback_ok": false,
-        "target_question": "What are the withdrawal limits",
-        "instruction": "REWRITE the withdrawal limits answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob checked the withdrawal limits right after reading the T&Cs — he has seen enough forum posts from players who hit a jackpot only to find out they'd be paid in installments over a year.\n(B) Jakob calculated whether the limits would work for a serious session — he mentally ran the numbers on what happens if you actually win big here.\n(C) Jakob compared these limits to other casinos he has tested to see where they stand — some numbers look good until you realize the daily cap would throttle any decent win.\nAll facts (limit amounts, daily/weekly/monthly caps) must come from the casino data."
       },
       {
         "id": "pay_altcoin_old_wallet",
@@ -141,6 +148,13 @@
       }
     ],
     "FAQ": [
+      {
+        "id": "faq_company_check",
+        "data_keywords": ["owned", "operated", "parent company", "operator", "founded by", "holding"],
+        "fallback_ok": true,
+        "target_question": "Who owns [casino]",
+        "instruction": "REWRITE the ownership answer from Jakob's experience. Pick ONE scenario and narrate his actions:\n(A) Jakob looked into who runs this casino before depositing — he has seen enough fly-by-night operations to know that a transparent parent company with other established brands is a sign the casino plans to stick around.\n(B) Jakob checked the company behind this casino — knowing who is actually responsible for your funds matters more than any marketing page, and he has been burned before by casinos with zero corporate accountability.\n(C) Jakob dug into the operator's background — if the same company runs other casinos he has tested and they were solid, that carries weight. If the company is unknown or has a shady track record, that's a red flag.\nAll facts (company name, other brands, track record, licensing) must come from the casino data."
+      },
       {
         "id": "faq_anon_signup",
         "data_keywords": ["email-only", "anonymous", "email only"],

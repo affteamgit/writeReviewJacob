@@ -582,7 +582,7 @@ def scrape_player_feedback(casino_name: str) -> dict:
     }
 
 
-def _prepare_reviews_for_prompt(reviews, max_reviews=20):
+def _prepare_reviews_for_prompt(reviews, max_reviews=25):
     """Prepare a compact text block of reviews for an AI prompt."""
     lines = []
     for i, rev in enumerate(reviews[:max_reviews], 1):
@@ -590,9 +590,9 @@ def _prepare_reviews_for_prompt(reviews, max_reviews=20):
         text = (rev.get('text') or rev.get('title') or '').strip()
         if not text:
             continue
-        # Truncate long reviews
-        if len(text) > 300:
-            text = text[:300].rsplit(' ', 1)[0] + "..."
+        # Truncate long reviews but keep enough for specifics
+        if len(text) > 500:
+            text = text[:500].rsplit(' ', 1)[0] + "..."
         lines.append(f"[{rating}] {text}")
     return "\n".join(lines)
 
@@ -610,38 +610,42 @@ def generate_general_player_summary(casino_name, feedback_data):
     # Pick a random style to force structural variation
     styles = [
         {
-            "instruction": "Start by mentioning a specific standout feature players love, then summarize the rest.",
-            "example": f"**Fast crypto payouts** are the most common praise in player reviews for {casino_name}, along with..."
+            "instruction": "Lead with the most specific, concrete thing players keep bringing up, then add Jakob's take.",
+            "example": f"Players keep coming back to {casino_name}'s **instant crypto withdrawals** — and after testing it myself, I can confirm my BTC hit my wallet in under 10 minutes."
         },
         {
-            "instruction": "Start with your own take as a reviewer who checked player feedback, then summarize what you found.",
-            "example": f"I looked into what players think of {casino_name}, and the feedback is..."
+            "instruction": "Start with Jakob's own reaction to what he found in the reviews, then cite specific details.",
+            "example": f"I went through player feedback for {casino_name} and one thing kept coming up: the **support team actually resolves issues fast**. Multiple players described getting stuck withdrawals sorted within hours, not days."
         },
         {
-            "instruction": "Start with the overall sentiment (positive/mixed/negative) in one short sentence, then give details.",
-            "example": f"{casino_name} gets mostly positive marks from players. They enjoy..."
+            "instruction": "Start with the dominant theme across reviews (positive or negative), backed by specifics.",
+            "example": f"The recurring theme in {casino_name}'s player feedback is **speed** — fast deposits, fast withdrawals, fast support responses. Players specifically mention getting payouts processed in under 2 hours."
         },
         {
-            "instruction": "Lead with what makes this casino different from others according to player reviews.",
-            "example": f"What stands out in player feedback is {casino_name}'s..."
+            "instruction": "Lead with something surprising or notable from the reviews that stood out to Jakob.",
+            "example": f"What caught my attention in player feedback is that {casino_name} players rarely complain about withdrawal delays — in fact, several describe getting **paid out the same day**, which is not something I see often."
         },
     ]
     style = random.choice(styles)
 
-    prompt = f"""Summarize player sentiment about {casino_name} for a casino review article.
+    prompt = f"""You are Jakob, a crypto casino reviewer. Summarize what players say about {casino_name} based on the reviews below. Write this as Jakob reacting to what he found in the feedback.
 
 STYLE: {style["instruction"]}
-Example opening (adapt, don't copy): {style["example"]}
+Example (adapt, don't copy): {style["example"]}
+
+APPROACH:
+- Be SPECIFIC. Pull out concrete details from the reviews: specific features praised, specific problems described, actual experiences mentioned. Vague phrases like "some complaints emerge" or "players are generally satisfied" are useless. What EXACTLY are they satisfied about? What EXACTLY are they complaining about?
+- Cite the substance of what players say without quoting them directly. For example: "Players describe getting withdrawals processed in under 2 hours" or "the most common complaint is account verification taking over a week" or "several players mention the live chat resolving issues on the spot."
+- Add Jakob's own voice. React to what you found: does it match your own experience testing this casino? Does something surprise you? Do the complaints seem legitimate or like sore losers?
+- If a specific complaint or praise appears multiple times across reviews, that pattern matters more than one-off mentions.
 
 RULES:
-- CRITICAL: NEVER mention Trustpilot, AskGamblers, or any review platform by name. Use "player reviews", "player feedback", or "what players report" instead. This is a hard requirement.
+- CRITICAL: NEVER mention Trustpilot, AskGamblers, or any review platform by name. Say "player reviews" or "player feedback" instead. This is a hard requirement.
 - NEVER use the word "platform" to refer to a casino. Use "casino" or "site" instead.
-- NEVER single out individual reviews (e.g., "one player noted"). Always generalize: "some players report", "players mention", "feedback suggests".
-- One short paragraph, 50-80 words. Direct, no filler.
-- FORBIDDEN phrases: "Based on recent reviews", "players frequently praise", "players consistently praise", "with many highlighting". Do NOT use these.
+- One paragraph, 70-110 words. Packed with specifics, not padded with filler.
+- FORBIDDEN phrases: "Based on recent reviews", "players frequently praise", "players consistently praise", "with many highlighting", "some complaints emerge", "players report mixed experiences", "feedback is generally positive". These are all too vague.
 - Do NOT mention how many reviews were analyzed.
-- Focus on positives. Briefly note complaints if relevant, one short clause max.
-- Negative reviews often come from emotional post-loss players, so weigh positives more. Do NOT mention this bias.
+- Weigh positives more heavily — negative reviews often come from emotional post-loss players. But if a real pattern of complaints exists, mention the specific issue.
 - No em dashes. Use "I" and "you". Bold key points with **asterisks**.
 - Output ONLY the paragraph text, no heading.
 
