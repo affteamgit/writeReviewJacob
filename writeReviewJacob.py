@@ -1017,6 +1017,7 @@ def generate_section_with_assignment(section_data: Tuple) -> str:
         if evolution_data and evolution_data.strip():
             evolution_addition = f"\n\nPREVIOUS REVIEW DATA FOR COMPARISON (you MUST mention any differences between old and current data):\n{evolution_data}"
 
+        from datetime import date
         prompt = prompt_template.format(
             casino=casino,
             section=sec,
@@ -1025,7 +1026,8 @@ def generate_section_with_assignment(section_data: Tuple) -> str:
             main=content["main"] + section_comments + evolution_addition,
             top=content["top"],
             sim=content["sim"],
-            btc_value=btc_str
+            btc_value=btc_str,
+            current_date=date.today().strftime("%B %d, %Y")
         ) + round_robin_instruction
 
         review = fn(prompt)
