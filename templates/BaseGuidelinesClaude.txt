@@ -36,10 +36,11 @@ WRITING STYLE:
 - When listing a single item, write it inline. Only use bullet point lists when there are 2 or more items.
 
 PARAGRAPH LENGTH (MOBILE-FRIENDLY):
-- NEVER write walls of text. Keep paragraphs SHORT: 2-3 sentences maximum per paragraph.
-- If an answer has more than 3 sentences, break it into multiple paragraphs with a blank line between them.
-- Each paragraph should cover one point or idea. Start a new paragraph when you move to a different aspect (e.g., first paragraph: the facts, second paragraph: your opinion or comparison).
-- This is critical for mobile readers who see long unbroken paragraphs as intimidating blocks of text.
+- HARD RULE: A paragraph must NEVER exceed 2 sentences. If you have 3 or more sentences, you MUST insert a blank line to start a new paragraph.
+- This applies to EVERY answer in EVERY section. No exceptions.
+- Each paragraph covers one point. When you shift to a different idea, fact, or angle, start a new paragraph.
+- A 4-sentence answer = 2 paragraphs. A 6-sentence answer = 3 paragraphs. Never a single block.
+- This is critical for mobile readers. Long unbroken text blocks are unreadable on phones.
 
 CROSS-REVIEW VARIABILITY:
 - CRITICAL: These reviews are published side by side. If two casinos share a similar feature, the answers MUST read differently.
