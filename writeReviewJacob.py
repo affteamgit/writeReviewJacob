@@ -722,7 +722,7 @@ def generate_general_player_summary(casino_name, feedback_data):
     styles = [
         {
             "instruction": "Lead with the most specific, concrete thing players keep bringing up, then add Jakob's take.",
-            "example": f"Players keep coming back to {casino_name}'s **instant crypto withdrawals** — and after testing it myself, I can confirm my BTC hit my wallet in under 10 minutes."
+            "example": f"Players keep coming back to {casino_name}'s **instant crypto withdrawals**, and after testing it myself I can confirm my BTC hit my wallet in under 10 minutes."
         },
         {
             "instruction": "Start with Jakob's own reaction to what he found in the reviews, then cite specific details.",
@@ -730,11 +730,11 @@ def generate_general_player_summary(casino_name, feedback_data):
         },
         {
             "instruction": "Start with the dominant theme across reviews (positive or negative), backed by specifics.",
-            "example": f"The recurring theme in {casino_name}'s player feedback is **speed** — fast deposits, fast withdrawals, fast support responses. Players specifically mention getting payouts processed in under 2 hours."
+            "example": f"The recurring theme in {casino_name}'s player feedback is **speed**. Fast deposits, fast withdrawals, fast support responses. Players specifically mention getting payouts processed in under 2 hours."
         },
         {
             "instruction": "Lead with something surprising or notable from the reviews that stood out to Jakob.",
-            "example": f"What caught my attention in player feedback is that {casino_name} players rarely complain about withdrawal delays — in fact, several describe getting **paid out the same day**, which is not something I see often."
+            "example": f"The thing that stood out in player feedback is that {casino_name} players rarely complain about withdrawal delays. Several describe getting **paid out the same day**, which is not something I see often."
         },
     ]
     style = random.choice(styles)
@@ -756,8 +756,11 @@ RULES:
 - One paragraph, 70-110 words. Packed with specifics, not padded with filler.
 - FORBIDDEN phrases: "Based on recent reviews", "players frequently praise", "players consistently praise", "with many highlighting", "some complaints emerge", "players report mixed experiences", "feedback is generally positive". These are all too vague.
 - Do NOT mention how many reviews were analyzed.
-- Weigh positives more heavily — negative reviews often come from emotional post-loss players. But if a real pattern of complaints exists, mention the specific issue.
-- No em dashes. Use "I" and "you". Bold key points with **asterisks**.
+- Weigh positives more heavily. Negative reviews often come from emotional post-loss players. But if a real pattern of complaints exists, mention the specific issue.
+- NEVER use em dashes (—), en dashes (–), or hyphens as clause connectors. Use commas, periods, or rewrite the sentence. This is a hard formatting requirement.
+- Use "I" and "you". Bold key points with **asterisks**.
+- ALWAYS use commas for numbers over 999: $1,500 not $1500.
+- Keep paragraphs short: 2-3 sentences max per paragraph. Break into multiple paragraphs if needed.
 - Output ONLY the paragraph text, no heading.
 
 REVIEWS:
@@ -791,7 +794,9 @@ RULES:
 - Focus on whether players report withdrawal problems or smooth experiences.
 - Be specific about the issues if any: delays, declined withdrawals, stuck pending status, etc.
 - If feedback is mostly positive about withdrawals, say so clearly.
-- No em dashes. Use "I" and "you". Bold key points with **asterisks**.
+- NEVER use em dashes (—), en dashes (–), or hyphens as clause connectors. Use commas, periods, or rewrite the sentence.
+- Use "I" and "you". Bold key points with **asterisks**.
+- ALWAYS use commas for numbers over 999: $1,500 not $1500.
 - Output ONLY the paragraph text, no heading.
 
 REVIEWS:
