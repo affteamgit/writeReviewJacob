@@ -48,7 +48,7 @@
 
 ## Q: Is [casino] good for highrollers?
 
-* Assess the casino's suitability for highrollers by checking ALL FIVE criteria below. Each criterion matters -- address every one that has data available:
+* Assess the casino's suitability for highrollers by checking ALL FOUR criteria below. Each criterion matters -- address every one that has data available:
 
 * **1. High deposit and withdrawal limits**:
   - Check the PAYMENTS DATA for daily, weekly, and monthly withdrawal limits. High limits (or no caps on crypto) are essential.
@@ -73,12 +73,6 @@
   - If player feedback shows a clean track record with no notable withdrawal issues, mention this as a positive signal.
   - If player feedback shows problems (especially with larger amounts), warn the reader.
   - If no player feedback is available, skip this criterion -- do NOT mention its absence.
-
-* **5. Good ongoing cashback (a plus, not a dealbreaker)**:
-  - Check the BONUS DATA for cashback or rakeback offers. For highrollers, a good cashback program softens variance on large bets.
-  - What makes cashback highroller-friendly: at least weekly frequency, high or no cap on the cashback amount, and 1x or no wagering requirement on the cashback itself.
-  - If the casino has a strong cashback program, mention it as an additional plus.
-  - If the casino has no cashback or a weak one (low cap, high wagering), note it briefly but don't make it a dealbreaker.
 
 * After assessing all criteria, give a clear verdict: is this casino suitable for highrollers or not?
 * If suitable: explain why, citing specific numbers from the criteria above.

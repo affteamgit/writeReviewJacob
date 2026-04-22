@@ -174,7 +174,7 @@
         "data_keywords": ["daily limit", "weekly limit", "monthly limit", "VIP", "high roller", "withdrawal limit"],
         "fallback_ok": true,
         "target_question": "Is [casino] good for highrollers",
-        "instruction": "REWRITE the highroller answer as Jakob's experience assessing whether this casino can handle serious money. He evaluates five things: withdrawal limits, payout speed promises, restrictive terms (AML, payout caps), player track record with large cashouts, and cashback quality. Describe his assessment of this casino across those criteria. All facts (limits, payout times, AML, cashback, player feedback) must come from the casino data."
+        "instruction": "REWRITE the highroller answer as Jakob's experience assessing whether this casino can handle serious money. He evaluates four things: withdrawal limits, payout speed promises, restrictive terms (AML, payout caps), and player track record with large cashouts. Describe his assessment of this casino across those criteria. All facts (limits, payout times, AML, player feedback) must come from the casino data."
       }
     ]
   }
