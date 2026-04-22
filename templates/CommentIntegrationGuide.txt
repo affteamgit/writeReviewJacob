@@ -45,10 +45,18 @@ CONSOLIDATION RULE: Before creating a new Q&A, ask yourself:
 - Would this new Q&A have fewer than 4 sentences?
 - Does it partially overlap with information in an existing answer (e.g., KYC info that's already in the restrictions answer, deposit details that expand on the altcoin answer)?
 - Could this information make an existing answer more complete rather than standing on its own?
+- Does it restate or expand on a detail already mentioned in another answer?
 
 If YES to any of these: MERGE the comment into the most relevant existing answer instead of creating a thin standalone Q&A. A short paragraph added to an existing comprehensive answer is better than a separate 2-sentence Q&A that fragments information.
 
-Only create a NEW Q&A pair when the comment describes a topic that is genuinely UNRELATED to any existing question AND has enough substance to warrant its own section (at least 3-4 sentences of useful content).
+EXAMPLES OF WHAT SHOULD NOT BECOME STANDALONE Q&As:
+- "Are there fiat deposit options?" → merge into the altcoin/deposit answer
+- "What happens if I have multiple pending withdrawals?" → merge into the withdrawal restrictions answer
+- "Are the wagering terms clearly explained?" → this is filler, not a real question. Skip it or weave the observation into the bonus terms answer.
+- "Do I need to complete verification to deposit?" → merge into the withdrawal restrictions or anonymity answer
+- Any Q&A that would essentially repeat information already present in another answer with slightly different wording
+
+Only create a NEW Q&A pair when the comment describes a topic that is genuinely UNRELATED to any existing question AND has enough substance to warrant its own section (at least 4-5 sentences of useful, specific content).
 
 When creating a new Q&A:
 - Formulate a BROAD, GENERAL question that a player would naturally ask WITHOUT knowing the specific feature exists. The comment reveals the answer, but the question should be something a curious player would search for.

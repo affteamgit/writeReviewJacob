@@ -20,11 +20,11 @@
 ## Q: What makes [casino] stand out from other casinos?
 
 * ONLY answer this question if manual comments are provided for this section AND those comments describe a genuinely unique or standout feature. Without manual comments calling out specific unique features, SKIP this question entirely -- do NOT answer it based on standard casino data alone (game counts, provider lists, crypto support, etc. are NOT standout features).
-* Focus on what genuinely differentiates this casino from the competition based on what the manual comments highlight. This could be a unique feature, an unusual product, a strong community element, an exceptional bonus structure, standout support, or anything that makes it worth choosing over alternatives.
-* Be specific and concrete. Don't just say "great features" -- name the actual feature and explain briefly why it matters to a player. If the casino has a specific tool, event, or product that competitors don't commonly offer, highlight it.
+* SCOPE: This question is about unique PRODUCTS, TOOLS, and FEATURES -- things the casino offers that competitors typically don't. Examples: sports betting + live streams, a poker room, a customizable homepage, unusual support channels, a proprietary game engine.
+* DO NOT COVER HERE: VIP programs, loyalty tiers, rakeback, cashback, tournaments, daily races, gamification details, token systems, or any ongoing reward mechanics. Those belong EXCLUSIVELY in the "ongoing promotions" question and its manual comment Q&As below. If the standout answer mentions a VIP program or promotion details, it is WRONG.
+* Be specific and concrete. Don't just say "great features" -- name the actual product/tool and explain briefly why it matters.
 * If the casino also offers sports betting, live streams, poker, or other non-casino products, this is a good place to mention them.
-* This answer will always be unique across casinos, which is exactly the point. Keep it to 2-4 sentences.
-* Draw from manual comments and supporting casino data to identify the most compelling standout features.
+* Keep it to 2-4 sentences. Draw from manual comments and supporting casino data.
 
 ## + questions/answers from manual comments about unique casino features
 
@@ -61,6 +61,7 @@ Answer this question instead: "## Q: Are there any bonuses in [casino]?"
 
 ## Q: Are there any ongoing promotions for returning players?
 
+* This is the PRIMARY home for VIP programs, loyalty systems, rakeback, cashback, tournaments, races, gamification, token systems, and all ongoing reward mechanics. If these details appear in the standout answer above, that is an error -- they belong HERE.
 * ONLY describe what the data explicitly provides. If the data does NOT mention tournaments, VIP programs, reload bonuses, or other ongoing promos, do NOT mention their absence. Just write about what IS available and nothing more.
 * NEVER write "the casino doesn't provide information about", "no details about additional promotions", "doesn't mention tournaments/VIP/etc". Only talk about what exists.
 * If the casino has ongoing promotions (tournaments, races, raffles, lootboxes, rakeback, cashback, reload bonuses, etc.): Describe the most notable ones. Be specific about what's available.
@@ -72,11 +73,21 @@ Answer this question instead: "## Q: Are there any bonuses in [casino]?"
 
 ## + questions/answers from manual comments about VIP, promotions, and rewards
 
-For manual comments about VIP programs, loyalty features, ongoing promotions, cashback, rakeback, gamification, or reward systems:
-1. If the comment relates to the ongoing promotions question above: Integrate it into that answer.
-2. If the comment describes a DIFFERENT reward feature: Create a new Q&A pair using a broad question format.
+CONSOLIDATION RULE FOR PROMOTIONS: All VIP, loyalty, rakeback, cashback, gamification, and reward system details should be consolidated into as FEW answers as possible. The "ongoing promotions" answer above is the primary home. Only create a separate Q&A if the manual comment describes a complex, self-contained system (e.g., a token ecosystem with its own earning mechanics) that genuinely needs its own explanation AND cannot fit naturally into the promotions answer.
 
-* QUESTION RULES: The question must be something a player would naturally search for BEFORE discovering the feature. Do NOT put the specific feature name in the question. Keep it broad -- "What unique features does [casino] offer?", "Are there any special promotions?", "What sets [casino] apart?" The ANSWER is where you reveal the specifics.
+DO NOT create separate Q&As for:
+- VIP tier details that expand on information already in the promotions answer
+- Rakeback percentages or formulas that expand on rakeback mentioned in promotions
+- Gamification mechanics (daily races, raffles) already mentioned in promotions
+- Minor promotional features that can be added as a sentence to an existing answer
+
+DO create a separate Q&A only for:
+- A completely distinct reward system (e.g., blockchain token with its own earning/spending mechanics) that has enough substance for 4+ sentences and would make the promotions answer too long
+
+For manual comments about VIP programs, loyalty features, ongoing promotions, cashback, rakeback, gamification, or reward systems:
+1. FIRST: Integrate into the ongoing promotions answer if possible.
+2. ONLY if the topic is complex enough to warrant its own section AND is distinct from what's already covered: Create ONE broader Q&A that consolidates ALL related reward details.
+
 * Group related comments into a single broader Q&A when possible.
 * Include ALL specific details from comments (numbers, names, exact mechanisms).
 * Never summarize or condense comment information.

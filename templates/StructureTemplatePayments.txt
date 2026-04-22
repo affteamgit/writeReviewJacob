@@ -16,9 +16,9 @@
   - More than 72 hours: "more than three days"
 * If the terms use deliberately vague language (e.g., "reasonable time", "as soon as practicable") with no concrete number, flag this explicitly: the casino does not commit to a specific withdrawal timeframe in its terms, which means delays are harder to dispute.
 * Do NOT say "the data doesn't specify" as a cop-out. If the provided data genuinely lacks this information, say the casino doesn't publish this information, and explain what that means for the player.
-* ADDITIONALLY, check player feedback for any mentions of actual withdrawal times experienced by players. If withdrawal time information is found in reviews, include this real-world feedback in your answer. NEVER name the source platform (no "Trustpilot", "AskGamblers") -- just say "player reviews" or "player feedback".
 * Do NOT add generic sentences about why fast withdrawals matter. The reader already knows.
 * Do NOT compare to or recommend other casinos in this answer. No Top Casinos or Similar Casinos references.
+* Do NOT include any player feedback about withdrawal experiences in this answer. Player feedback about withdrawals will be handled in a separate, dynamically generated question. Do NOT create any Q&A about player withdrawal experiences, player complaints about withdrawals, or withdrawal track record -- this is generated automatically and appended to the section.
 
 ## Q: Are there any withdrawal restrictions I should know about?
 
@@ -69,7 +69,9 @@
 
 ## + questions/answers from manual comments about withdrawals
 
-CONSOLIDATION RULE: Before creating a new Q&A, check if the comment's information could strengthen an existing answer instead. For example: KYC details belong in the restrictions answer, pending withdrawal policies belong in restrictions or limits, processing speed details belong in the withdrawal time answer. Only create a standalone Q&A if the topic is genuinely unrelated to all existing questions AND has enough substance for 3-4+ sentences.
+CONSOLIDATION RULE: Before creating a new Q&A, check if the comment's information could strengthen an existing answer instead. For example: KYC details belong in the restrictions answer, pending withdrawal policies belong in restrictions or limits, processing speed details belong in the withdrawal time answer. Only create a standalone Q&A if the topic is genuinely unrelated to all existing questions AND has enough substance for 4-5+ sentences.
+
+IMPORTANT: Do NOT create any Q&A about player withdrawal feedback, player complaints about withdrawals, or withdrawal track record. This topic is handled by a dynamically generated question that is automatically appended to this section. Creating one here will result in duplicate content.
 
 For manual comments related to withdrawals (processing issues, withdrawal methods, cashout experiences, etc.):
 1. If the comment relates to ANY of the withdrawal questions above: Integrate it into the relevant answer.
