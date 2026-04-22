@@ -100,11 +100,18 @@ For manual comments related to withdrawals (processing issues, withdrawal method
 
 ## + questions/answers from manual comments about deposits
 
-CONSOLIDATION RULE: Deposit-related details (fiat options, verification requirements for deposits, minimum amounts) should be merged into the altcoin answer or the withdrawal restrictions answer where relevant. Only create a standalone Q&A if the topic is completely separate AND has enough substance for 3-4+ sentences.
+CONSOLIDATION RULE: Deposit-related details MUST be merged into the altcoin answer. Do NOT create standalone Q&As for:
+- Cryptocurrency conversion systems (e.g., "tokens converted to USDT") -- this is part of the altcoin answer
+- Fiat deposit options -- add a sentence to the altcoin answer or skip if trivial
+- Deposit verification requirements -- merge into the withdrawal restrictions answer
+- Minimum deposit amounts -- mention in the altcoin answer or bonus answer
+- Buy-crypto features -- already covered in the altcoin answer instructions
 
-For manual comments related to deposits (deposit methods, minimum deposits, deposit issues, fiat options, etc.):
-1. If the comment relates to the altcoin question above or any other existing question: Integrate it into that answer.
-2. ONLY if no match AND the topic has enough substance: Create a new Q&A pair using a broad question format.
+The altcoin question is the PRIMARY home for ALL deposit-related information. Only create a separate Q&A if the comment describes something completely unrelated to deposits/crypto AND has 4+ sentences of substance.
+
+For manual comments related to deposits:
+1. ALWAYS try to integrate into the altcoin answer first.
+2. ONLY if genuinely unrelated to crypto/deposits AND substantial: Create a new Q&A.
 
 * QUESTION RULES: The question must be something a player would naturally search for BEFORE discovering the feature. Do NOT put the specific feature name in the question. Keep it broad. The ANSWER is where you reveal the specifics.
 * Group related comments into a single broader Q&A when possible.

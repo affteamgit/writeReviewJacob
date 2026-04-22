@@ -20,8 +20,16 @@
 ## Q: What makes [casino] stand out from other casinos?
 
 * ONLY answer this question if manual comments are provided for this section AND those comments describe a genuinely unique or standout feature. Without manual comments calling out specific unique features, SKIP this question entirely -- do NOT answer it based on standard casino data alone (game counts, provider lists, crypto support, etc. are NOT standout features).
-* SCOPE: This question is about unique PRODUCTS, TOOLS, and FEATURES -- things the casino offers that competitors typically don't. Examples: sports betting + live streams, a poker room, a customizable homepage, unusual support channels, a proprietary game engine.
-* DO NOT COVER HERE: VIP programs, loyalty tiers, rakeback, cashback, tournaments, daily races, gamification details, token systems, or any ongoing reward mechanics. Those belong EXCLUSIVELY in the "ongoing promotions" question and its manual comment Q&As below. If the standout answer mentions a VIP program or promotion details, it is WRONG.
+* SCOPE: This question is about unique PRODUCTS, TOOLS, and FEATURES that competitors typically don't have. Examples: sports betting + live streams, a poker room, a customizable homepage, unusual support channels (WhatsApp, Telegram), a proprietary game engine.
+* BANNED FROM THIS ANSWER (even if manual comments mention them as "features"):
+  - VIP programs, VIP clubs, VIP tiers (e.g., "VIP Starz club" belongs in promotions, NOT here)
+  - Loyalty programs, loyalty tiers, loyalty rewards
+  - Rakeback, cashback, reload bonuses
+  - Tournaments, daily races, weekly raffles, giveaways
+  - Gamification systems, token systems, Play-to-Earn
+  - Bonuz Mania, jackpot campaigns, progressive reward systems
+  - ANY form of ongoing reward or promotional mechanic
+  ALL of these belong EXCLUSIVELY in the "ongoing promotions" question below. If ANY of these appear in the standout answer, it is WRONG. Move them to promotions.
 * Be specific and concrete. Don't just say "great features" -- name the actual product/tool and explain briefly why it matters.
 * If the casino also offers sports betting, live streams, poker, or other non-casino products, this is a good place to mention them.
 * Keep it to 2-4 sentences. Draw from manual comments and supporting casino data.
@@ -76,21 +84,16 @@ Answer this question instead: "## Q: Are there any bonuses in [casino]?"
 
 ## + questions/answers from manual comments about VIP, promotions, and rewards
 
-CONSOLIDATION RULE FOR PROMOTIONS: All VIP, loyalty, rakeback, cashback, gamification, and reward system details should be consolidated into as FEW answers as possible. The "ongoing promotions" answer above is the primary home. Only create a separate Q&A if the manual comment describes a complex, self-contained system (e.g., a token ecosystem with its own earning mechanics) that genuinely needs its own explanation AND cannot fit naturally into the promotions answer.
+STRICT CONSOLIDATION RULE: You may create AT MOST ONE additional Q&A from manual comments about rewards/promotions. Everything else MUST be integrated into the ongoing promotions answer above.
 
-DO NOT create separate Q&As for:
-- VIP tier details that expand on information already in the promotions answer
-- Rakeback percentages or formulas that expand on rakeback mentioned in promotions
-- Gamification mechanics (daily races, raffles) already mentioned in promotions
-- Minor promotional features that can be added as a sentence to an existing answer
-
-DO create a separate Q&A only for:
-- A completely distinct reward system (e.g., blockchain token with its own earning/spending mechanics) that has enough substance for 4+ sentences and would make the promotions answer too long
+The logic:
+1. FIRST: Integrate ALL reward details into the ongoing promotions answer. VIP tiers, rakeback percentages, gamification mechanics, loyalty levels, monthly bonuses -- all of this goes into the promotions answer.
+2. IF the casino has a complex blockchain token or Play-to-Earn system with its own earning formula and multiple acquisition methods: Create exactly ONE separate Q&A that covers the token system comprehensively. Put ALL token-related details in this single Q&A (earning formula, distribution mechanics, token uses, acquisition methods).
+3. NEVER create separate Q&As for: loyalty tier details, rakeback formulas, gamification features (daily tasks, quests), level-up bonuses, monthly bonuses, or VIP benefits. These MUST be in the promotions answer or the token Q&A. Three separate Q&As about loyalty/gamification/token is ALWAYS wrong.
 
 For manual comments about VIP programs, loyalty features, ongoing promotions, cashback, rakeback, gamification, or reward systems:
-1. FIRST: Integrate into the ongoing promotions answer if possible.
-2. ONLY if the topic is complex enough to warrant its own section AND is distinct from what's already covered: Create ONE broader Q&A that consolidates ALL related reward details.
-
-* Group related comments into a single broader Q&A when possible.
+1. Integrate into the ongoing promotions answer.
+2. If a token/Play-to-Earn system exists: Create ONE comprehensive token Q&A covering ALL related mechanics.
+3. That's it. Maximum 2 answers total for all reward content (promotions + optionally 1 token Q&A).
 * Include ALL specific details from comments (numbers, names, exact mechanisms).
 * Never summarize or condense comment information.

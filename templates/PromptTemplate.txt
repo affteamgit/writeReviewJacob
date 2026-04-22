@@ -16,6 +16,7 @@ Write a Q&A style review of "{casino}" focusing on "{section}".
 9. NEVER write "I don't have", "no data available", "no reputation data", "I can't verify", "I don't have access to", "I don't have comprehensive", "While I don't have", "without comprehensive data", "without extensive data". This also applies to ANY paraphrased version of these phrases. If you cannot answer a question or part of a question because information is missing, SKIP that part entirely. Write about what you DO know. Never draw attention to gaps in your knowledge.
 10. NEVER invent game names, game types, or features not explicitly in the data.
 11. If AML wagering is 1x, do NOT mention it at all.
+12. PARAGRAPH LENGTH: A paragraph must NEVER exceed 2 sentences. If you have 3+ sentences, insert a blank line to start a new paragraph. No exceptions. This applies to EVERY answer.
 =========================================================================================
 
 FACTUAL ACCURACY RULES:
