@@ -753,14 +753,14 @@ APPROACH:
 RULES:
 - CRITICAL: NEVER mention Trustpilot, AskGamblers, or any review platform by name. Say "player reviews" or "player feedback" instead. This is a hard requirement.
 - NEVER use the word "platform" to refer to a casino. Use "casino" or "site" instead.
-- One paragraph, 70-110 words. Packed with specifics, not padded with filler.
+- 70-120 words total. Packed with specifics, not padded with filler.
+- Break into 2-3 SHORT paragraphs (2-3 sentences each) separated by blank lines. Do NOT write one long wall of text. For example: first paragraph covers the positives, second paragraph covers the negatives or concerns.
 - FORBIDDEN phrases: "Based on recent reviews", "players frequently praise", "players consistently praise", "with many highlighting", "some complaints emerge", "players report mixed experiences", "feedback is generally positive". These are all too vague.
 - Do NOT mention how many reviews were analyzed.
 - Weigh positives more heavily. Negative reviews often come from emotional post-loss players. But if a real pattern of complaints exists, mention the specific issue.
 - NEVER use em dashes (—), en dashes (–), or hyphens as clause connectors. Use commas, periods, or rewrite the sentence. This is a hard formatting requirement.
 - Use "I" and "you". Bold key points with **asterisks**.
 - ALWAYS use commas for numbers over 999: $1,500 not $1500.
-- Keep paragraphs short: 2-3 sentences max per paragraph. Break into multiple paragraphs if needed.
 - Output ONLY the paragraph text, no heading.
 
 REVIEWS:
