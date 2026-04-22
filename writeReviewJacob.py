@@ -29,6 +29,10 @@ GUIDELINES_FOLDER_ID = st.secrets["GUIDELINES_FOLDER_ID"]
 # Evolution comparison config
 CALCULATION_SPREADSHEET_ID = "1av0ZgZQGPWErmlzFmCIyZg1ApkzOQPht2AUoB_MGvLg"
 
+# AFF SITES spreadsheet for review dates
+AFF_SITES_SPREADSHEET_ID = "1s7FcUQN57SnQ3Ihq2iewoPf5TpivX4PYmCo8zQCIocc"
+AFF_SITES_TAB = "BCK"
+
 # No fine-tuned model needed - Jacob will generate factual reviews only
 
 SCOPES = [
@@ -170,8 +174,8 @@ def get_review_wp_id(casino_id):
         return None
 
 def fetch_old_review_from_mysql(wp_id):
-    """Fetch post_content and post_date from WordPress wp_posts for a given post ID.
-    Returns (content, post_date) tuple, or (None, None) on failure."""
+    """Fetch post_content and post_name from WordPress wp_posts for a given post ID.
+    Returns (content, post_name) tuple, or (None, None) on failure."""
     if not wp_id:
         return None, None
     try:
@@ -191,7 +195,7 @@ def fetch_old_review_from_mysql(wp_id):
         )
         try:
             with connection.cursor() as cursor:
-                cursor.execute("SELECT post_content, post_date FROM wp_posts WHERE ID = %s", (int(wp_id),))
+                cursor.execute("SELECT post_content, post_name FROM wp_posts WHERE ID = %s", (int(wp_id),))
                 result = cursor.fetchone()
                 if result:
                     return result[0], result[1]
@@ -280,16 +284,27 @@ Previous review text:
         print(f"Error extracting evolution facts: {e}")
         return {}
 
-def _compute_relative_time(post_date):
-    """Convert a post_date into a human-readable relative time phrase."""
-    if not post_date:
+def _compute_relative_time(date_value):
+    """Convert a date into a human-readable relative time phrase.
+    Accepts datetime objects or strings in YYYY-MM-DD or YYYY-MM-DD HH:MM:SS format."""
+    if not date_value:
         return None
     try:
         from datetime import datetime
-        if isinstance(post_date, str):
-            post_date = datetime.strptime(post_date, "%Y-%m-%d %H:%M:%S")
+        if isinstance(date_value, str):
+            date_value = date_value.strip()
+            # Try YMD format first (from AFF SITES spreadsheet)
+            for fmt in ["%Y-%m-%d", "%Y-%m-%d %H:%M:%S", "%Y/%m/%d"]:
+                try:
+                    date_value = datetime.strptime(date_value, fmt)
+                    break
+                except ValueError:
+                    continue
+            else:
+                print(f"Could not parse date string: {date_value}")
+                return None
         now = datetime.now()
-        delta = now - post_date
+        delta = now - date_value
         months = delta.days // 30
         if months < 1:
             return "a few weeks ago"
@@ -314,8 +329,53 @@ def _compute_relative_time(post_date):
         print(f"Error computing relative time: {e}")
         return None
 
+def _get_review_date_from_affsites(post_name):
+    """Look up the Last Updated date from the AFF SITES spreadsheet.
+    Builds /reviews/{post_name}/ slug and matches against Column D (URL Slug).
+    Returns the Last Updated date string from Column E, or None."""
+    if not post_name:
+        return None
+    try:
+        creds = get_service_account_credentials()
+        sheets = build("sheets", "v4", credentials=creds)
+        # Read columns D (URL Slug) and E (Last Updated) from BCK tab
+        result = sheets.spreadsheets().values().get(
+            spreadsheetId=AFF_SITES_SPREADSHEET_ID,
+            range=f"{AFF_SITES_TAB}!D:E"
+        ).execute()
+        rows = result.get("values", [])
+
+        # Build the slug to match: /reviews/post_name/
+        target_slug = f"/reviews/{post_name}/"
+        # Also try without trailing slash and with variations
+        target_variants = [
+            target_slug,
+            f"/reviews/{post_name}",
+            f"/{post_name}/",
+            f"/{post_name}",
+        ]
+
+        for row in rows:
+            if not row or not row[0]:
+                continue
+            slug = row[0].strip()
+            if slug in target_variants:
+                if len(row) >= 2 and row[1].strip():
+                    date_str = row[1].strip()
+                    print(f"Found review date in AFF SITES: slug={slug}, date={date_str}")
+                    return date_str
+                else:
+                    print(f"Found slug {slug} in AFF SITES but no date in column E")
+                    return None
+
+        print(f"No matching slug found in AFF SITES for post_name={post_name} (tried {target_variants[0]})")
+        return None
+    except Exception as e:
+        print(f"Error looking up review date from AFF SITES: {e}")
+        return None
+
 def fetch_and_extract_evolution_data(casino_id, casino_name):
-    """Full pipeline: look up WP ID -> fetch old review -> extract facts.
+    """Full pipeline: look up WP ID -> fetch old review -> get review date from AFF SITES -> extract facts.
     Returns (facts_dict, status_message) tuple.
     facts_dict may include a special "_relative_time" key with the time since the old review.
     """
@@ -327,13 +387,17 @@ def fetch_and_extract_evolution_data(casino_id, casino_name):
         return {}, f"No WP_ID found in spreadsheet for Casino ID {casino_id}"
     print(f"Found WP ID {wp_id} for casino ID {casino_id}")
 
-    html_content, post_date = fetch_old_review_from_mysql(wp_id)
+    html_content, post_name = fetch_old_review_from_mysql(wp_id)
     if html_content is None:
         return {}, f"Could not fetch review from database for WP ID {wp_id} (connection issue or post not found)"
 
-    relative_time = _compute_relative_time(post_date)
+    # Get the review date from AFF SITES spreadsheet using post_name slug
+    review_date_str = _get_review_date_from_affsites(post_name)
+    relative_time = _compute_relative_time(review_date_str)
     if relative_time:
-        print(f"Old review date: {post_date} ({relative_time})")
+        print(f"Review date from AFF SITES: {review_date_str} ({relative_time})")
+    elif post_name:
+        print(f"Could not determine review date for post_name={post_name}")
 
     plain_text = strip_html_to_text(html_content)
     if not plain_text or len(plain_text.strip()) < 100:

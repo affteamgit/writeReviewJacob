@@ -1,4 +1,4 @@
-NEVER USE Em dashes (—)!
+NEVER USE Em dashes (—) or en dashes (–)! Do NOT use hyphens as dashes to connect clauses either. If you need to add a side note or clarification, use a comma, a period, or rewrite the sentence. Hyphens are only for compound words (e.g., "email-only") and number ranges (e.g., "24-48 hours").
 
 The current year is 2026. Use this when calculating how long a casino has been operating or referencing any time-related facts.
 

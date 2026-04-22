@@ -38,20 +38,23 @@ For manual comments that describe unique features, products, or differentiators 
 
 CHECK the BONUS DATA for the presence of a no-deposit bonus (free spins or bonus amount given without requiring a deposit, often with a bonus code).
 
+IMPORTANT: This question is ONLY about WELCOME BONUSES (no-deposit bonus, first deposit bonus, welcome package). Do NOT discuss ongoing promotions, VIP, cashback, rakeback, or loyalty rewards here. Those belong in the ongoing promotions question below.
+
 SCENARIO A -- Casino HAS a no-deposit bonus:
 Answer this question: "## Q: Is there a no deposit bonus code for [casino]?"
-* State the bonus code clearly and prominently if one exists.
-* Provide a brief summary covering: the bonus itself (amount or number of free spins), wagering requirement, maximum cashout, and the bonus code.
+* The question asks about a bonus CODE. If a bonus code exists in the data, you MUST include it prominently in the answer. If no code is mentioned in the data, state that no code is required.
+* STAY FOCUSED: This answer is ONLY about the no-deposit bonus. Do NOT mention deposit bonuses, welcome packages, or any other bonus in this answer. The reader clicked on this question specifically for the no-deposit offer.
+* Provide a brief summary covering: the bonus itself (amount or number of free spins), the bonus code (if any), wagering requirement, maximum cashout, and time limit.
 * If the no-deposit bonus includes free spins, mention which game(s) they apply to if specified in the data.
-* Keep it factual and concise -- 2-4 sentences. The reader wants to grab the code and understand the terms quickly.
-* After the no-deposit summary, briefly mention the deposit welcome bonus if one exists (1-2 sentences overview).
+* Keep it factual and concise. 2-3 sentences max.
 
 SCENARIO B -- Casino has welcome/deposit bonuses but NO no-deposit bonus:
-Answer this question instead: "## Q: How do [casino]'s bonuses compare to other sites?"
-* Comment on the casino's bonus structure: bonus percentages, maximum bonus amounts, free spin amounts, wagering requirements, minimum deposit amounts, maximum cashout limits.
-* Compare the bonus structure to Top Casinos and Similar Casinos data. Are the wagering requirements competitive? Are the bonus amounts generous or modest?
-* If the casino offers multiple deposit bonuses (e.g., across first 4 deposits), cover the overall package, not just the first deposit.
-* Keep it to 3-5 sentences. Be evaluative -- is this a good deal or are there better options?
+Answer this question instead: "## Q: How do [casino]'s welcome bonuses compare to other sites?"
+* ONLY discuss the welcome bonus package (first deposit, second deposit, etc.). Do NOT include ongoing promotions, VIP, or loyalty rewards.
+* Comment on: bonus percentages, maximum bonus amounts, free spin amounts, wagering requirements, minimum deposit amounts, maximum cashout limits.
+* Compare to Top Casinos and Similar Casinos. Are the wagering requirements competitive? Are the bonus amounts generous or modest?
+* If the casino offers multiple deposit bonuses (e.g., across first 4 deposits), cover the overall package.
+* Keep it to 3-5 sentences. Be evaluative.
 
 SCENARIO C -- Casino has NO welcome bonuses at all:
 Answer this question instead: "## Q: Are there any bonuses in [casino]?"
