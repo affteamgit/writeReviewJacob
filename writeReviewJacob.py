@@ -1050,7 +1050,7 @@ def insert_parsed_text_with_formatting(docs_service, doc_id, review_text):
 
     doc = docs_service.documents().get(documentId=doc_id).execute()
     header_requests = []
-    section_titles = ["Overview", "General", "Payments", "Games", "Responsible Gambling"]
+    section_titles = ["Overview", "General", "Payments", "Games", "Responsible Gambling", "FAQ"]
 
     for element in doc.get('body', {}).get('content', []):
         if 'paragraph' in element:
