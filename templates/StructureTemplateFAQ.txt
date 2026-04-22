@@ -4,11 +4,9 @@
 
 * Check the casino data and REPUTATION DATA for ownership information: parent company name, operator name, holding company, or any corporate entity mentioned.
 * If ownership info IS available:
-  - State who owns or operates the casino (company name).
-  - If the company operates other known casinos or iGaming brands, mention them briefly.
-  - If the REPUTATION DATA mentions any notable practices (good or bad), controversies, or regulatory actions related to the parent company, include them factually.
-  - If the company has a clean track record and operates multiple reputable brands, note this as a positive trust signal.
-  - Keep it to 2-4 sentences. Factual, direct.
+  - State who owns or operates the casino (company name). If the company operates other known casinos or brands, mention them.
+  - If REPUTATION DATA mentions notable practices, controversies, or regulatory actions, include them.
+  - Keep it to 2-4 SHORT sentences across max 2 paragraphs. Each paragraph max 2 sentences. Each sentence under 25 words. Do NOT write long run-on sentences.
 * If ownership info is NOT available or the data only names a generic shell company with no additional context:
   - State that ownership details are not publicly transparent.
   - Note that lack of clear ownership information is a yellow flag -- reputable casinos typically disclose their operating company.

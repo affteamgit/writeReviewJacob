@@ -4,16 +4,16 @@
 
 * ALWAYS answer this question -- it applies to every casino regardless of age.
 * REMINDER: NEVER write "Trustpilot", "AskGamblers", or any review platform name anywhere in this answer. Use "player reviews" or "player feedback".
-* STEP 1 -- ALWAYS write a paragraph about the casino's age and track record:
-  - 1 year or less (brand new): This is a very new casino with no track record. Caution is warranted. However, also add a personal touch: if we are reviewing this casino, it means we've tested it ourselves. Say something like "I've personally used this casino and had no issues so far, but only time will tell if that experience holds up for everyone." Don't just leave the reader with pure caution -- balance it with your own experience.
+* STEP 1 -- State the casino's age and comment on it. MAX 2 sentences.
+  - 1 year or less: Very new, no track record. Add personal touch: you've tested it but only time will tell.
   - 1-2 years: Still relatively new. Limited track record.
-  - 3-4 years: Has been around for a few years. Starting to build a track record.
-  - 5-10 years: Well-established. This is a positive sign. Experienced casinos tend to have more refined operations and more consistent payouts.
-  - 10+ years: A veteran in the industry. Long-standing presence is a strong trust signal.
-* STEP 2 -- CHECK if REPUTATION DATA exists in the casino data. REPUTATION DATA is an AI-generated summary containing licensing, notable events, and community standing.
-  - If REPUTATION DATA is present and contains useful facts (licensing info, controversies, community standing): Write a SECOND paragraph covering those facts. If it mentions licensing (e.g., Curacao, Malta Gaming Authority), include it. If it mentions controversies, mention them briefly.
-  - If REPUTATION DATA is missing, empty, contains only generic filler, or says nothing concrete: STOP after the first paragraph. Do NOT write a second paragraph. Do NOT acknowledge that reputation data is missing. Do NOT write any sentence that implies you lack information. Just end the answer after the age paragraph.
-* Keep it to 2-4 sentences total. Be direct and factual.
+  - 3-4 years: Been around a few years. Starting to build a track record.
+  - 5-10 years: Well-established. Positive sign for refined operations.
+  - 10+ years: Veteran in the industry. Strong trust signal.
+* STEP 2 -- CHECK if REPUTATION DATA exists. If it has useful facts (licensing, controversies, community standing):
+  - Write 1-2 MORE sentences covering those facts in a NEW paragraph. Keep sentences short and direct. Do NOT write long run-on sentences that pack multiple facts into one clause.
+  - If REPUTATION DATA is missing or generic: STOP after step 1. Do NOT acknowledge missing data.
+* TOTAL: 2-4 short sentences across 2 paragraphs max. Each paragraph max 2 sentences. Keep sentences under 25 words each.
 
 * IMPORTANT: The "What do players say about [casino]?" question will be DYNAMICALLY INSERTED after the legit question during post-processing. Do NOT generate any content for it. Do NOT create a "## Q: What do players say" heading. Just proceed to the next question below.
 
