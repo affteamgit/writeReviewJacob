@@ -1487,7 +1487,7 @@ def main():
 
             # Upload to Google Docs
             progress_placeholder.markdown("## Uploading to Google Drive...")
-            doc_title = f"{casino} Review - Jacob Factual"
+            doc_title = f"{casino} Review - Jakob"
             existing_doc_id = find_existing_doc(drive_service, FOLDER_ID, doc_title)
 
             if existing_doc_id:
