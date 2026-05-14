@@ -23,7 +23,7 @@ COINMARKETCAP_API_KEY = st.secrets["COINMARKETCAP_API_KEY"]
 SPREADSHEET_ID = st.secrets["SPREADSHEET_ID"]
 SHEET_NAME     = st.secrets["SHEET_NAME"]
 
-FOLDER_ID = "1nnZqze6IkPdWrUDY-kHD0SexSOcJWCAB"
+FOLDER_ID = "1v_tznTpI5WyUd8m49dWSemC3Td7em9dc"
 GUIDELINES_FOLDER_ID = st.secrets["GUIDELINES_FOLDER_ID"]
 
 # Evolution comparison config
@@ -1338,8 +1338,8 @@ def main():
         return
     
     # Show casino name and generate button
-    st.markdown(f"## Ready to write a factual review for: **{casino}**")
-    st.markdown("The review will be generated in the Jacob structure with all factual data and comments.")
+    st.markdown(f"## Jakob is ready to write a review for: **{casino}**")
+    st.markdown("The review will be generated in the Jakob Q/A structure, in his tone of voice with all factual data and comments.")
     
     # Only generate review when button is clicked
     if st.button("Write Review", type="primary", use_container_width=True):
