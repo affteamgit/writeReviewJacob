@@ -33,7 +33,18 @@ CALCULATION_SPREADSHEET_ID = "1av0ZgZQGPWErmlzFmCIyZg1ApkzOQPht2AUoB_MGvLg"
 AFF_SITES_SPREADSHEET_ID = "1s7FcUQN57SnQ3Ihq2iewoPf5TpivX4PYmCo8zQCIocc"
 AFF_SITES_TAB = "BCK"
 
-# No fine-tuned model needed - Jacob will generate factual reviews only
+# Fine-tuned model for Jakob's rewriting (inject model name here)
+FINE_TUNED_MODEL = "ft:gpt-4.1-mini-2025-04-14:affiliation:jakob1:Df95DIeu"
+
+def _load_rewrite_system_prompt():
+    try:
+        prompt_path = Path(__file__).parent / "prompt.txt"
+        return prompt_path.read_text(encoding="utf-8").strip()
+    except Exception as e:
+        print(f"Error loading rewrite prompt: {e}")
+        return "You are Jakob, a casino review rewriter for BCK. Rewrite the user's casino review answer in BCK's editorial voice."
+
+REWRITE_SYSTEM_PROMPT = _load_rewrite_system_prompt()
 
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets.readonly",
@@ -590,6 +601,127 @@ Format your response exactly like this:
         print(f"Error sorting comments: {e}")
         # Fallback: return empty sections
         return {"General": "", "Payments": "", "Games": "", "Responsible Gambling": "", "FAQ": ""}
+
+def parse_qa_blocks(content):
+    """Parse review content into a list of (kind, header, body) tuples.
+
+    kind is one of:
+      - 'preamble': content before any header (e.g., the title)
+      - 'section':  a **Section Name** header (body unused)
+      - 'question': a ## Q: ... header followed by its answer body
+
+    Only 'question' blocks are subject to rewriting; the others are preserved verbatim.
+    """
+    lines = content.split('\n')
+    blocks = []
+    current_kind = 'preamble'
+    current_header = None
+    current_body = []
+
+    def flush():
+        if current_kind == 'preamble' and not ''.join(current_body).strip():
+            return
+        blocks.append((current_kind, current_header, '\n'.join(current_body).strip('\n')))
+
+    for line in lines:
+        stripped = line.strip()
+        if re.match(r'^\*\*[^*]+\*\*$', stripped):
+            flush()
+            current_kind = 'section'
+            current_header = stripped
+            current_body = []
+        elif stripped.startswith('## Q:'):
+            flush()
+            current_kind = 'question'
+            current_header = line.rstrip()
+            current_body = []
+        else:
+            current_body.append(line)
+
+    flush()
+    return blocks
+
+
+def rewrite_answer(question_header, answer_body):
+    """Rewrite a single Q&A answer using the fine-tuned model."""
+    if not answer_body.strip():
+        return answer_body
+    try:
+        print(f"Rewriting answer for: {question_header[:80]}")
+        response = client.chat.completions.create(
+            model=FINE_TUNED_MODEL,
+            messages=[
+                {"role": "system", "content": REWRITE_SYSTEM_PROMPT},
+                {"role": "user", "content": answer_body}
+            ],
+            timeout=30
+        )
+        return response.choices[0].message.content
+    except Exception as error:
+        print(f"Fine-tuned model failed for question '{question_header[:60]}': {error}")
+        return answer_body
+
+
+def rewrite_review_with_jakob(review_content):
+    """Rewrite the review question by question.
+
+    Section headers (**Section**) and question headers (## Q: ...) are preserved verbatim.
+    Only the answer prose under each question is sent to the fine-tuned model.
+    Q&A rewrites run in parallel to keep latency reasonable.
+    """
+    try:
+        print("Starting Jakob's rewrite process...")
+        blocks = parse_qa_blocks(review_content)
+
+        question_indices = [i for i, (kind, _, _) in enumerate(blocks) if kind == 'question']
+        print(f"Found {len(question_indices)} Q&A pairs to rewrite")
+
+        rewritten_answers = {}
+        with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+            future_to_idx = {
+                executor.submit(rewrite_answer, blocks[i][1], blocks[i][2]): i
+                for i in question_indices
+            }
+            for future in concurrent.futures.as_completed(future_to_idx):
+                idx = future_to_idx[future]
+                try:
+                    rewritten_answers[idx] = future.result()
+                except Exception as e:
+                    print(f"Error rewriting answer at index {idx}: {e}")
+                    rewritten_answers[idx] = blocks[idx][2]
+
+        output_parts = []
+        for i, (kind, header, body) in enumerate(blocks):
+            if kind == 'preamble':
+                if body.strip():
+                    output_parts.append(body)
+            elif kind == 'section':
+                output_parts.append(header)
+            elif kind == 'question':
+                new_body = rewritten_answers.get(i, body)
+                output_parts.append(f"{header}\n\n{new_body}")
+
+        print("Jakob's rewrite process completed successfully")
+        return "\n\n".join(output_parts)
+
+    except Exception as e:
+        print(f"Fatal error in rewrite_review_with_jakob: {e}")
+        return review_content
+
+
+def fix_bullet_points(review_content):
+    """Clean up escaped formatting that the fine-tuned model sometimes emits."""
+    try:
+        fixed_content = re.sub(r'^\\\\\* ', r'- ', review_content, flags=re.MULTILINE)
+        fixed_content = re.sub(r'^\\\\\#\\\\\#\\\\\# \*\*(.+?)\*\*$', r'**\1**', fixed_content, flags=re.MULTILINE)
+        fixed_content = re.sub(r'^\\\\\#\\\\\#\\\\\# (.+)$', r'**\1**', fixed_content, flags=re.MULTILINE)
+        fixed_content = re.sub(r'\\\\\+', r'+', fixed_content)
+        fixed_content = re.sub(r'^\\\\\- ', r'- ', fixed_content, flags=re.MULTILINE)
+        return fixed_content
+    except Exception as e:
+        print(f"Error fixing formatting: {e}")
+        return review_content
+
 
 def parse_review_sections(content):
     """Parse review content into sections based on **Section Name** format."""
@@ -1344,8 +1476,14 @@ def main():
                     withdrawal_qa = f"\n## Q: Do players have any complaints regarding withdrawals?\n\n{withdrawal_summary}"
                     parallel_results[1] = parallel_results[1].rstrip('\n') + "\n" + withdrawal_qa + "\n"
 
-            # Combine results into final factual review
+            # Combine results into the factual review
             factual_review = "\n".join([f"{casino} review\n"] + parallel_results)
+
+            # Rewrite each Q&A answer with Jakob's voice (questions and section headers preserved)
+            progress_placeholder.markdown("## Rewriting answers with Jakob's voice...")
+            rewritten_body = rewrite_review_with_jakob(factual_review)
+            final_review = f"{casino} review\n\n{rewritten_body}"
+            final_review = fix_bullet_points(final_review)
 
             # Upload to Google Docs
             progress_placeholder.markdown("## Uploading to Google Drive...")
@@ -1355,7 +1493,7 @@ def main():
             if existing_doc_id:
                 drive_service.files().delete(fileId=existing_doc_id).execute()
 
-            doc_id = create_google_doc_in_folder(docs_service, drive_service, FOLDER_ID, doc_title, factual_review)
+            doc_id = create_google_doc_in_folder(docs_service, drive_service, FOLDER_ID, doc_title, final_review)
             doc_url = f"https://docs.google.com/document/d/{doc_id}"
 
             # Write the review link to the spreadsheet
