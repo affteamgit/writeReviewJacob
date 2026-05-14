@@ -23,7 +23,7 @@ COINMARKETCAP_API_KEY = st.secrets["COINMARKETCAP_API_KEY"]
 SPREADSHEET_ID = st.secrets["SPREADSHEET_ID"]
 SHEET_NAME     = st.secrets["SHEET_NAME"]
 
-FOLDER_ID = st.secrets["FOLDER_ID"]
+FOLDER_ID = "1nnZqze6IkPdWrUDY-kHD0SexSOcJWCAB"
 GUIDELINES_FOLDER_ID = st.secrets["GUIDELINES_FOLDER_ID"]
 
 # Evolution comparison config
@@ -1479,10 +1479,10 @@ def main():
             # Combine results into the factual review
             factual_review = "\n".join([f"{casino} review\n"] + parallel_results)
 
-            # Rewrite each Q&A answer with Jakob's voice (questions and section headers preserved)
+            # Rewrite each Q&A answer with Jakob's voice. The title and section headers
+            # live in non-question blocks and are preserved verbatim by rewrite_review_with_jakob.
             progress_placeholder.markdown("## Rewriting answers with Jakob's voice...")
-            rewritten_body = rewrite_review_with_jakob(factual_review)
-            final_review = f"{casino} review\n\n{rewritten_body}"
+            final_review = rewrite_review_with_jakob(factual_review)
             final_review = fix_bullet_points(final_review)
 
             # Upload to Google Docs
