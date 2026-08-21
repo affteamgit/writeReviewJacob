@@ -728,6 +728,9 @@ def fix_bullet_points(review_content):
         # Strip stray single backslashes before markdown/punctuation characters
         # (e.g. "\*\*" instead of "**", "\--" instead of "--", "Yes\!" instead of "Yes!")
         fixed_content = re.sub(r'\\([!.*#+\-])', r'\1', fixed_content)
+        # Replace leaked LaTeX ellipsis macro (e.g. "\(\ldots\)") with a plain ellipsis
+        fixed_content = re.sub(r'\\\(\\ldots\\\)', '...', fixed_content)
+        fixed_content = re.sub(r'\\ldots', '...', fixed_content)
         return fixed_content
     except Exception as e:
         print(f"Error fixing formatting: {e}")
@@ -1193,10 +1196,10 @@ def write_review_link_to_sheet(link):
     ).execute()
 
 def insert_parsed_text_with_formatting(docs_service, doc_id, review_text):
-    """Convert the AI's markdown-ish output (**bold**, [text](url), ## Q: headers,
-    - bullets) into native Google Docs formatting instead of inserting the literal
-    markdown characters."""
-    inline_pattern = r'(\*\*(.*?)\*\*|\[([^\]]+?)\]\((https?://[^\)]+)\))'
+    """Convert the AI's markdown-ish output (**bold**, *italic*, [text](url),
+    ## Q: headers, - or * bullets) into native Google Docs formatting instead of
+    inserting the literal markdown characters."""
+    inline_pattern = r'(\*\*(.*?)\*\*|\[([^\]]+?)\]\((https?://[^\)]+)\)|(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*))'
 
     plain_lines = []
     formatting_requests = []
@@ -1220,7 +1223,7 @@ def insert_parsed_text_with_formatting(docs_service, doc_id, review_text):
 
     for raw_line in review_text.split('\n'):
         heading_match = re.match(r'^##\s+(.*)$', raw_line)
-        bullet_match = re.match(r'^-\s+(.*)$', raw_line)
+        bullet_match = re.match(r'^[-*]\s+(.*)$', raw_line)
         content = heading_match.group(1) if heading_match else bullet_match.group(1) if bullet_match else raw_line
 
         line_start = cursor
@@ -1250,6 +1253,16 @@ def insert_parsed_text_with_formatting(docs_service, doc_id, review_text):
                         "range": {"startIndex": seg_start, "endIndex": seg_start + len(link_text)},
                         "textStyle": {"link": {"url": url}},
                         "fields": "link"
+                    }
+                })
+            elif match.group(5) is not None:  # Italic (*text*)
+                italic_text = match.group(5)
+                line_plain += italic_text
+                formatting_requests.append({
+                    "updateTextStyle": {
+                        "range": {"startIndex": seg_start, "endIndex": seg_start + len(italic_text)},
+                        "textStyle": {"italic": True},
+                        "fields": "italic"
                     }
                 })
             last_end = end
