@@ -259,9 +259,8 @@ Previous review text:
 
     try:
         response = anthropic_client.messages.create(
-            model="claude-sonnet-4-20250514",
+            model="claude-sonnet-5",
             max_tokens=1500,
-            temperature=0.1,
             messages=[{"role": "user", "content": prompt}]
         ).content[0].text.strip()
 
@@ -450,7 +449,7 @@ def call_claude(prompt):
     # Add fact constraint system message
     fact_constraint = "CRITICAL: Only use facts explicitly provided in the prompt. Never add information not in the source data. Do not make assumptions or add general knowledge about casinos. Never claim exclusivity or uniqueness unless the data explicitly states it."
     full_prompt = f"{fact_constraint}\n\n{prompt}"
-    return anthropic_client.messages.create(model="claude-sonnet-4-20250514", max_tokens=1200, temperature=0.45, messages=[{"role": "user", "content": full_prompt}]).content[0].text.strip()
+    return anthropic_client.messages.create(model="claude-sonnet-5", max_tokens=1200, messages=[{"role": "user", "content": full_prompt}]).content[0].text.strip()
 
 def get_casino_reputation_summary(casino_name: str) -> str:
     """Use Claude to generate a reputation summary of the casino based on its general knowledge.
@@ -472,9 +471,8 @@ Output ONLY the summary paragraph, no headings or labels."""
     try:
         # Call Claude WITHOUT the strict fact constraint -- we want general knowledge here
         result = anthropic_client.messages.create(
-            model="claude-sonnet-4-20250514",
+            model="claude-sonnet-5",
             max_tokens=400,
-            temperature=0.3,
             messages=[{"role": "user", "content": prompt}]
         ).content[0].text.strip()
         return result
