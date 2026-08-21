@@ -258,11 +258,12 @@ Previous review text:
 {old_review_text}"""
 
     try:
-        response = anthropic_client.messages.create(
+        response = _extract_claude_text(anthropic_client.messages.create(
             model="claude-sonnet-5",
             max_tokens=1500,
+            thinking={"type": "disabled"},
             messages=[{"role": "user", "content": prompt}]
-        ).content[0].text.strip()
+        ))
 
         # Strip markdown code fences if the AI wrapped the JSON
         cleaned = response
@@ -430,6 +431,14 @@ def fetch_and_extract_evolution_data(casino_id, casino_name):
 client = openai.OpenAI(api_key=OPENAI_API_KEY)
 anthropic_client = Anthropic(api_key=ANTHROPIC_API_KEY)
 
+def _extract_claude_text(response):
+    """Return the first text block's content. Claude Sonnet 5 has adaptive thinking
+    on by default, so content[0] may be a thinking block instead of the text block."""
+    for block in response.content:
+        if block.type == "text":
+            return block.text.strip()
+    return ""
+
 def call_openai(prompt):
     # Add fact constraint system message
     fact_constraint = "CRITICAL: Only use facts explicitly provided in the prompt. Never add information not in the source data. Do not make assumptions or add general knowledge about casinos. Never claim exclusivity or uniqueness unless the data explicitly states it."
@@ -449,7 +458,7 @@ def call_claude(prompt):
     # Add fact constraint system message
     fact_constraint = "CRITICAL: Only use facts explicitly provided in the prompt. Never add information not in the source data. Do not make assumptions or add general knowledge about casinos. Never claim exclusivity or uniqueness unless the data explicitly states it."
     full_prompt = f"{fact_constraint}\n\n{prompt}"
-    return anthropic_client.messages.create(model="claude-sonnet-5", max_tokens=1200, messages=[{"role": "user", "content": full_prompt}]).content[0].text.strip()
+    return _extract_claude_text(anthropic_client.messages.create(model="claude-sonnet-5", max_tokens=1200, thinking={"type": "disabled"}, messages=[{"role": "user", "content": full_prompt}]))
 
 def get_casino_reputation_summary(casino_name: str) -> str:
     """Use Claude to generate a reputation summary of the casino based on its general knowledge.
@@ -470,11 +479,12 @@ Output ONLY the summary paragraph, no headings or labels."""
 
     try:
         # Call Claude WITHOUT the strict fact constraint -- we want general knowledge here
-        result = anthropic_client.messages.create(
+        result = _extract_claude_text(anthropic_client.messages.create(
             model="claude-sonnet-5",
             max_tokens=400,
+            thinking={"type": "disabled"},
             messages=[{"role": "user", "content": prompt}]
-        ).content[0].text.strip()
+        ))
         return result
     except Exception as e:
         print(f"Reputation summary failed for {casino_name}: {e}")
