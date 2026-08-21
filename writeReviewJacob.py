@@ -1190,49 +1190,91 @@ def write_review_link_to_sheet(link):
     ).execute()
 
 def insert_parsed_text_with_formatting(docs_service, doc_id, review_text):
-    # Parse the text into clean text and extract formatting positions
-    plain_text = ""
+    """Convert the AI's markdown-ish output (**bold**, [text](url), ## Q: headers,
+    - bullets) into native Google Docs formatting instead of inserting the literal
+    markdown characters."""
+    inline_pattern = r'(\*\*(.*?)\*\*|\[([^\]]+?)\]\((https?://[^\)]+)\))'
+
+    plain_lines = []
     formatting_requests = []
+    bullet_requests = []
     cursor = 1  # Google Docs uses 1-based index after the title
 
-    pattern = r'(\*\*(.*?)\*\*|\[([^\]]+?)\]\((https?://[^\)]+)\))'
-    last_end = 0
+    bullet_run_start = None
+    bullet_run_end = None
 
-    for match in re.finditer(pattern, review_text):
-        start, end = match.span()
-        before_text = review_text[last_end:start]
-        plain_text += before_text
-        cursor_start = cursor + len(before_text)
-
-        if match.group(2):  # Bold (**text**)
-            bold_text = match.group(2)
-            plain_text += bold_text
-            formatting_requests.append({
-                "updateTextStyle": {
-                    "range": {"startIndex": cursor_start, "endIndex": cursor_start + len(bold_text)},
-                    "textStyle": {"bold": True},
-                    "fields": "bold"
+    def flush_bullet_run():
+        nonlocal bullet_run_start, bullet_run_end
+        if bullet_run_start is not None:
+            bullet_requests.append({
+                "createParagraphBullets": {
+                    "range": {"startIndex": bullet_run_start, "endIndex": bullet_run_end},
+                    "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
                 }
             })
-            cursor += len(before_text) + len(bold_text)
+        bullet_run_start = None
+        bullet_run_end = None
 
-        elif match.group(3) and match.group(4):  # Link [text](url)
-            link_text = match.group(3)
-            url = match.group(4)
-            plain_text += link_text
+    for raw_line in review_text.split('\n'):
+        heading_match = re.match(r'^##\s+(.*)$', raw_line)
+        bullet_match = re.match(r'^-\s+(.*)$', raw_line)
+        content = heading_match.group(1) if heading_match else bullet_match.group(1) if bullet_match else raw_line
+
+        line_start = cursor
+        line_plain = ""
+        last_end = 0
+        for match in re.finditer(inline_pattern, content):
+            start, end = match.span()
+            line_plain += content[last_end:start]
+            seg_start = line_start + len(line_plain)
+
+            if match.group(2):  # Bold (**text**)
+                bold_text = match.group(2)
+                line_plain += bold_text
+                formatting_requests.append({
+                    "updateTextStyle": {
+                        "range": {"startIndex": seg_start, "endIndex": seg_start + len(bold_text)},
+                        "textStyle": {"bold": True},
+                        "fields": "bold"
+                    }
+                })
+            elif match.group(3) and match.group(4):  # Link [text](url)
+                link_text = match.group(3)
+                url = match.group(4)
+                line_plain += link_text
+                formatting_requests.append({
+                    "updateTextStyle": {
+                        "range": {"startIndex": seg_start, "endIndex": seg_start + len(link_text)},
+                        "textStyle": {"link": {"url": url}},
+                        "fields": "link"
+                    }
+                })
+            last_end = end
+        line_plain += content[last_end:]
+
+        line_end = line_start + len(line_plain)
+        plain_lines.append(line_plain)
+
+        if heading_match:
+            flush_bullet_run()
             formatting_requests.append({
-                "updateTextStyle": {
-                    "range": {"startIndex": cursor_start, "endIndex": cursor_start + len(link_text)},
-                    "textStyle": {"link": {"url": url}},
-                    "fields": "link"
+                "updateParagraphStyle": {
+                    "range": {"startIndex": line_start, "endIndex": line_end},
+                    "paragraphStyle": {"namedStyleType": "HEADING_3"},
+                    "fields": "namedStyleType"
                 }
             })
-            cursor += len(before_text) + len(link_text)
+        elif bullet_match:
+            if bullet_run_start is None:
+                bullet_run_start = line_start
+            bullet_run_end = line_end
+        else:
+            flush_bullet_run()
 
-        last_end = end
+        cursor = line_end + 1  # +1 for the newline joining this line to the next
 
-    remaining_text = review_text[last_end:]
-    plain_text += remaining_text
+    flush_bullet_run()
+    plain_text = '\n'.join(plain_lines)
 
     #  Insert clean plain text first
     docs_service.documents().batchUpdate(
@@ -1252,11 +1294,18 @@ def insert_parsed_text_with_formatting(docs_service, doc_id, review_text):
         }
     })
 
-    # Apply inline bold & links
+    # Apply inline bold, links & heading styles
     if formatting_requests:
         docs_service.documents().batchUpdate(
             documentId=doc_id,
             body={"requests": formatting_requests}
+        ).execute()
+
+    # Apply bullet lists (separate call, after paragraph styles are settled)
+    if bullet_requests:
+        docs_service.documents().batchUpdate(
+            documentId=doc_id,
+            body={"requests": bullet_requests}
         ).execute()
 
     doc = docs_service.documents().get(documentId=doc_id).execute()
