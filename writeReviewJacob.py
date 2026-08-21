@@ -725,6 +725,9 @@ def fix_bullet_points(review_content):
         fixed_content = re.sub(r'^\\\\\#\\\\\#\\\\\# (.+)$', r'**\1**', fixed_content, flags=re.MULTILINE)
         fixed_content = re.sub(r'\\\\\+', r'+', fixed_content)
         fixed_content = re.sub(r'^\\\\\- ', r'- ', fixed_content, flags=re.MULTILINE)
+        # Strip stray single backslashes before markdown/punctuation characters
+        # (e.g. "\*\*" instead of "**", "\--" instead of "--", "Yes\!" instead of "Yes!")
+        fixed_content = re.sub(r'\\([!.*#+\-])', r'\1', fixed_content)
         return fixed_content
     except Exception as e:
         print(f"Error fixing formatting: {e}")
